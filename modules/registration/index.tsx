@@ -1,10 +1,11 @@
 import { CloseRounded } from '@mui/icons-material';
-import { createTheme, Link, Grid, Box } from '@mui/material';
-import { useState } from 'react';
+import { Link, Grid, Box } from '@mui/material';
+import { FC, useState } from 'react';
 import Login from './Login';
 import Register from './Register';
 
-function Index() {
+type Props = { closeLoginModal: () => void };
+const Index: FC<Props> = ({ closeLoginModal }) => {
   const [isRegistred, setIsRegistred] = useState<boolean>(true);
   return (
     <Box
@@ -24,14 +25,18 @@ function Index() {
           justifyContent: 'center',
           alignContent: 'center',
           alignItems: 'center',
-          borderRadius: 100,
+          borderRadius: '100 100',
           position: 'absolute',
-          top: -4,
-          right: -1,
+          top: 0,
+          right: 0,
           backgroundColor: '#fff',
         }}
       >
-        <CloseRounded color='primary' />
+        <CloseRounded
+          onClick={closeLoginModal}
+          sx={{ width: 29, height: 27 }}
+          color='primary'
+        />
       </Box>
       {/* close */}
       {isRegistred ? <Login /> : <Register />}
@@ -42,10 +47,10 @@ function Index() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'flex-end',
-          backgroundColor: 'rgba(0,0,0,0.4)',
-          ml: -4,
-          mr: -5,
-          p: 3,
+          backgroundColor: 'rgba(0,0,0,0.1)',
+          ml: -8,
+          mr: -8,
+          p: 4,
         }}
         item
       >
@@ -56,6 +61,6 @@ function Index() {
       </Grid>
     </Box>
   );
-}
+};
 
 export default Index;

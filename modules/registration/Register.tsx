@@ -10,58 +10,10 @@ import {
 import { Box } from '@mui/system';
 import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
-
-const MyTextInput = ({ label, ...props }: any) => {
-  // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
-  // which we can spread on <input>. We can use field meta to show an error
-  // message if the field is invalid and it has been touched (i.e. visited)
-  const [field, meta] = useField(props);
-  return (
-    <>
-      <Box component='div'>
-        <label htmlFor={props.id || props.name}>{label}</label>
-      </Box>
-      <TextField fullWidth {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <Typography
-          className='error'
-          sx={{
-            color: 'red',
-          }}
-        >
-          {meta.error}
-        </Typography>
-      ) : null}
-    </>
-  );
-};
-
-const MyCheckbox = ({ children, ...props }: any) => {
-  // React treats radios and checkbox inputs differently other input types, select, and textarea.
-  // Formik does this too! When you specify `type` to useField(), it will
-  // return the correct bag of props for you -- a `checked` prop will be included
-  // in `field` alongside `name`, `value`, `onChange`, and `onBlur`
-  const [field, meta] = useField({ ...props, type: 'checkbox' });
-  return (
-    <div>
-      <div className='checkbox-input'>
-        <Radio
-          sx={{ color: '#fff', '& .checked': { color: '#fff' } }}
-          type='checkbox'
-          {...field}
-          {...props}
-        />
-        {children}
-      </div>
-      {meta.touched && meta.error ? (
-        <div className='error'>{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
+import { MyCheckbox, MyTextInput } from './components/Inputs';
 
 // And now we can use these
-const SignupForm = () => {
+const Register = () => {
   return (
     <Box
       sx={{
@@ -115,15 +67,15 @@ const SignupForm = () => {
             </Grid>
             <Grid item>
               <MyTextInput
-                label='Password'
-                name='password'
+                label='Confirm Password'
+                name='confirPpassword'
                 type='password'
                 placeholder='*****'
               />
             </Grid>
 
             <Grid item>
-              <MyCheckbox name='remenberMe'>
+              <MyCheckbox name='acceptTerms'>
                 I accept the terms and conditions
               </MyCheckbox>
             </Grid>
@@ -139,4 +91,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default Register;

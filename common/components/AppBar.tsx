@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import LoginModalToggle from './LoginModalToggle';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -128,6 +129,7 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
+          <LoginModalToggle />
         </Toolbar>
       </Container>
     </AppBar>
