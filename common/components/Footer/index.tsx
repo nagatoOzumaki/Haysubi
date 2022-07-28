@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <Grid
       container
-      spacing={5}
+      spacing={7}
       p={8}
       sx={{ backgroundColor: 'rgba(225, 205,205, 0.2)', mt: 12 }}
     >
@@ -29,10 +29,13 @@ const Footer = () => {
         <Grid
           key={index}
           item
-          sx={{ borderRadius: 100, backgroundColor: '#fff', width: 200 }}
-        >
-          <Image src={logo} alt='logo' />
-        </Grid>
+          sx={{
+            borderRadius: 100,
+            backgroundColor: '#fff',
+            width: 200,
+            height: 200,
+          }}
+        ></Grid>
       ))}
     </Grid>
   );
