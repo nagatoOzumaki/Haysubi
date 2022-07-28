@@ -23,7 +23,7 @@ export default function CenteredTabs() {
   };
 
   return (
-    <Container sx={{ width: '100%', bgcolor: 'rgba(255,255,255,.9)' }}>
+    <Container sx={{ bgcolor: 'rgba(255,255,255,.9)' }}>
       <Tabs value={value} onChange={handleChange}>
         {navLinks.map((link) => (
           <Tab key={link} label={link} />

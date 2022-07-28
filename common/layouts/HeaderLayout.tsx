@@ -1,4 +1,4 @@
-import { Box, Divider } from '@mui/material';
+import { Box, Container, Divider } from '@mui/material';
 import React, { FC } from 'react';
 import AppBar from '../components/AppBar';
 import NavBar from '../components/NavBar';
@@ -7,14 +7,13 @@ import { ChildrenProps } from '../types/@appTypes';
 const HeaderLayout: FC<ChildrenProps> = ({ children }) => (
   <Box
     component='div'
-    sx={{
-      height: '100%',
-      backgroundColor: 'secondary.main',
-    }}
+    sx={{ height: '100%', backgroundColor: 'secondary.main' }}
   >
     <AppBar />
     <Divider sx={{ mt: 5 }} />
-    <NavBar />
+    <Container>
+      <NavBar />
+    </Container>
     <Divider sx={{ mb: 5 }} />
     {children}
   </Box>
