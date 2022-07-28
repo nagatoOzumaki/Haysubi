@@ -1,5 +1,5 @@
 import { CloseRounded } from '@mui/icons-material';
-import { Link, Grid, Box } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import { FC, useState } from 'react';
 import Login from './Login';
 import Register from './Register';
@@ -36,7 +36,7 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
         <CloseRounded
           onClick={closeLoginModal}
           sx={{ width: 34, height: 34 }}
-          color='primary'
+          color="primary"
         />
       </Box>
       {/* close */}
@@ -55,9 +55,9 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
         }}
         item
       >
-        {isRegistred ? `Don't have an acocunt ?` : 'Do you have an account'}
+        {isRegistred ? "Don't have an acocunt ?" : 'Do you have an account'}
         <Box
-          component='a'
+          component="a"
           sx={{ ml: 1, color: 'primary.main' }}
           onClick={() => setIsRegistred(!isRegistred)}
         >

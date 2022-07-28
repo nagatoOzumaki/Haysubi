@@ -1,11 +1,10 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Container } from '@mui/material';
+import { FC, SyntheticEvent, useState } from 'react';
 
-export default function CenteredTabs() {
-  const [value, setValue] = React.useState(0);
+const CenteredTabs: FC = () => {
+  const [value, setValue] = useState<number>(0);
   const navLinks = [
     'Trending',
     'Top Rated',
@@ -18,7 +17,7 @@ export default function CenteredTabs() {
     'Design',
     'Animation',
   ];
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
@@ -31,4 +30,5 @@ export default function CenteredTabs() {
       </Tabs>
     </Container>
   );
-}
+};
+export default CenteredTabs;
