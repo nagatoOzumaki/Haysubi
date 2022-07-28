@@ -44,6 +44,7 @@ const Login: FC = () => (
               type="email"
               placeholder="example@gmail.com"
             />{' '}
+<<<<<<< HEAD
           </Grid>
           <Grid item>
             <MyTextInput
@@ -53,6 +54,31 @@ const Login: FC = () => (
               placeholder="*****"
             />
           </Grid>
+=======
+          </Grid>
+          <Grid item>
+            <MyTextInput
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="*****"
+            />
+          </Grid>
+
+          <Grid item sx={{ padding: 4 }}>
+            <MyCheckbox name="remenberMe">Remember Me</MyCheckbox>
+          </Grid>
+          <Grid item>
+            <Button type="submit" variant="contained" fullWidth>
+              Submit
+            </Button>
+          </Grid>
+        </Grid>
+      </Form>
+    </Formik>
+  </Box>
+);
+>>>>>>> origin/main
 
           <Grid item sx={{ padding: 4 }}>
             <MyCheckbox name="remenberMe">Remember Me</MyCheckbox>

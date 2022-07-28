@@ -1,5 +1,4 @@
 import { Grid } from '@mui/material';
-
 import { FC } from 'react';
 import OracleLogo from '../../../public/images/oracle-logo.png';
 import IntelLogo from '../../../public/images/intel-logo.png';
