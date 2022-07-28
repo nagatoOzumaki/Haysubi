@@ -22,19 +22,20 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
       <Box
         sx={{
           display: 'flex',
+          p: '3px',
           justifyContent: 'center',
           alignContent: 'center',
           alignItems: 'center',
-          borderRadius: '100 100',
+          borderRadius: 100,
           position: 'absolute',
-          top: 0,
-          right: 0,
+          top: 8,
+          right: 9,
           backgroundColor: '#fff',
         }}
       >
         <CloseRounded
           onClick={closeLoginModal}
-          sx={{ width: 29, height: 27 }}
+          sx={{ width: 34, height: 34 }}
           color='primary'
         />
       </Box>
@@ -54,10 +55,14 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
         }}
         item
       >
-        Don't have an acocunt ?{' '}
-        <Link onClick={() => setIsRegistred(!isRegistred)}>
-          {isRegistred ? 'Register' : 'Sign Up'}
-        </Link>
+        Don't have an acocunt ?
+        <Box
+          component='a'
+          sx={{ ml: 1, color: 'primary.main' }}
+          onClick={() => setIsRegistred(!isRegistred)}
+        >
+          {isRegistred ? '  Register' : '  Sign Up'}
+        </Box>
       </Grid>
     </Box>
   );

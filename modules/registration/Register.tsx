@@ -29,6 +29,7 @@ const Register = () => {
         initialValues={{
           email: '',
           password: '',
+          confirmPassword: '',
           remenberMe: false, // added for our checkbox
         }}
         validationSchema={Yup.object({
@@ -38,6 +39,10 @@ const Register = () => {
           password: Yup.string()
             .min(8, 'Must be 8 characters or more')
             .required('Required'),
+          confirmPassword: Yup.string().oneOf(
+            [Yup.ref('password'), null],
+            'Password must match'
+          ),
           remenberMe: Yup.boolean(),
         })}
         onSubmit={(values, { setSubmitting }) => {
@@ -68,7 +73,7 @@ const Register = () => {
             <Grid item>
               <MyTextInput
                 label='Confirm Password'
-                name='confirPpassword'
+                name='confirmPassword'
                 type='password'
                 placeholder='*****'
               />
