@@ -36,6 +36,7 @@ const Register: FC = () => (
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
+          // eslint-disable-next-line no-alert
           alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
         }, 400);
