@@ -3,15 +3,16 @@ import React, { useState } from 'react';
 import { TransitionProps } from '@mui/material/transitions';
 import Registration from '../../modules/registration';
 
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
-  },
-  ref: React.Ref<unknown>
-) {
-  return <Slide direction='up' ref={ref} {...props} />;
-});
-function LoginModalToggle() {
+const Transition = React.forwardRef(
+  (
+    props: TransitionProps & {
+      children: React.ReactElement<any, any>;
+    },
+    ref: React.Ref<unknown>
+  ) => <Slide direction="up" ref={ref} {...props} />
+);
+
+const LoginModalToggle = () => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -23,7 +24,7 @@ function LoginModalToggle() {
   };
   return (
     <div>
-      <Button variant='contained' color='secondary' onClick={handleClickOpen}>
+      <Button variant="contained" color="secondary" onClick={handleClickOpen}>
         Login
       </Button>
       <Dialog
@@ -31,12 +32,12 @@ function LoginModalToggle() {
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-describedby='alert-dialog-slide-description'
+        aria-describedby="alert-dialog-slide-description"
       >
         <Registration closeLoginModal={handleClose} />
       </Dialog>
     </div>
   );
-}
+};
 
 export default LoginModalToggle;

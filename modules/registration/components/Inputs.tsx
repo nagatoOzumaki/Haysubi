@@ -1,5 +1,4 @@
-import { Radio, TextField, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Radio, Box, TextField, Typography } from '@mui/material';
 import { useField } from 'formik';
 
 export const MyTextInput = ({ label, ...props }: any) => {
@@ -9,14 +8,14 @@ export const MyTextInput = ({ label, ...props }: any) => {
   const [field, meta] = useField(props);
   return (
     <>
-      <Box component='div'>
+      <Box component="div">
         <label htmlFor={props.id || props.name}>{label}</label>
       </Box>
       <TextField
         fullWidth
         {...field}
         {...props}
-        variant='outlined'
+        variant="outlined"
         sx={{
           input: {
             borderWidth: 3,
@@ -30,7 +29,7 @@ export const MyTextInput = ({ label, ...props }: any) => {
       />
       {meta.touched && meta.error ? (
         <Typography
-          className='error'
+          className="error"
           sx={{
             color: 'red',
           }}
@@ -50,17 +49,17 @@ export const MyCheckbox = ({ children, ...props }: any) => {
   const [field, meta] = useField({ ...props, type: 'checkbox' });
   return (
     <div>
-      <div className='checkbox-input'>
+      <div className="checkbox-input">
         <Radio
           sx={{ color: '#fff', '& .checked': { color: '#fff' } }}
-          type='checkbox'
+          type="checkbox"
           {...field}
           {...props}
         />
         {children}
       </div>
       {meta.touched && meta.error ? (
-        <div className='error'>{meta.error}</div>
+        <div className="error">{meta.error}</div>
       ) : null}
     </div>
   );

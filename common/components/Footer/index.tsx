@@ -1,12 +1,12 @@
 import { Grid } from '@mui/material';
 
+import Image from 'next/image';
 import OracleLogo from '../../../public/images/oracle-logo.png';
 import IntelLogo from '../../../public/images/intel-logo.png';
 import SamsungLogo from '../../../public/images/samsung-logo.png';
 import IbmLogo from '../../../public/images/ibm-logo.png';
 import DellLogo from '../../../public/images/dell-logo.jpeg';
 import CiscoLogo from '../../../public/images/cisco-logo.png';
-import Image from 'next/image';
 
 const Footer = () => {
   const partnersLogo = [
