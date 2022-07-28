@@ -55,7 +55,7 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
         }}
         item
       >
-        Don't have an acocunt ?
+        {isRegistred ? `Don't have an acocunt ?` : 'Do you have an account'}
         <Box
           component='a'
           sx={{ ml: 1, color: 'primary.main' }}

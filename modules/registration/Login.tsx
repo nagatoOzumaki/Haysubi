@@ -41,7 +41,7 @@ const SignupForm = () => {
         }}
       >
         <Form>
-          <Grid direction='column' spacing={1} container>
+          <Grid direction='column' spacing={3} container>
             <Grid item>
               <MyTextInput
                 label='Email Address'
@@ -59,7 +59,7 @@ const SignupForm = () => {
               />
             </Grid>
 
-            <Grid item>
+            <Grid item sx={{ padding: 4 }}>
               <MyCheckbox name='remenberMe'>Remember Me</MyCheckbox>
             </Grid>
             <Grid item>
