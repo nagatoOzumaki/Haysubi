@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { Products } from '../common/types/@appTypes';
 import ProductCard from '../common/components/ProductCard';
 import Footer from '../common/components/Footer';
-import fetchData from '../sevices/hooks/fetchData';
+import fetchData from '../common/utils/hooks/fetchData';
 
 type Props = {
   products: Products;
@@ -16,6 +16,7 @@ const Home: NextPage<Props> = ({ products }) => {
   useEffect(() => {
     console.log(products);
   }, []);
+
   return (
     <Box sx={{ backgroundColor: 'secondary.main', height: '100%' }}>
       <Head>
