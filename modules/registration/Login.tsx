@@ -7,8 +7,7 @@ import { MyCheckbox, MyTextInput } from './components/Inputs';
 const Login: FC = () => (
   <Box
     sx={{
-      padding: 1,
-      width: 400,
+      padding: 2,
       backgroundColor: 'secondary.main',
       color: '#ddd',
       pb: 0,

@@ -26,6 +26,9 @@ export const MyTextInput: FC<any> = ({ label, ...props }) => {
           contan: {
             color: 'blue',
           },
+          borderColor: 'rgba(255,255,255,0.3)',
+          borderWidth: '1px',
+          borderStyle: 'solid',
         }}
       />
       {meta.touched && meta.error ? (
@@ -52,7 +55,10 @@ export const MyCheckbox = ({ children, ...props }: any) => {
     <div>
       <div className="checkbox-input">
         <Radio
-          sx={{ color: '#fff', '& .checked': { color: '#fff' } }}
+          sx={{
+            color: '#fff',
+            '& .checked': { color: '#fff' },
+          }}
           type="checkbox"
           {...field}
           {...props}

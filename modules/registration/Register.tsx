@@ -9,7 +9,7 @@ const Register: FC = () => (
   <Box
     sx={{
       padding: 5,
-      width: 400,
+      // width: 400,
       backgroundColor: 'secondary.main',
       color: '#ddd',
       pb: 0,
