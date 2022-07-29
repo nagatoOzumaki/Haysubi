@@ -14,7 +14,7 @@ type Props = {
 
 const Home: NextPage<Props> = ({ products }) => {
   useEffect(() => {
-    console.log(products);
+    console.log('products', products);
   }, []);
   return (
     <Box sx={{ backgroundColor: 'secondary.main', height: '100%' }}>
