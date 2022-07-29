@@ -44,7 +44,7 @@ const Login: FC = () => (
               name="email"
               type="email"
               placeholder="example@gmail.com"
-            />{' '}
+            />
           </Grid>
           <Grid item>
             <MyTextInput

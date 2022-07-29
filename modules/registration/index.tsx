@@ -61,7 +61,7 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
           sx={{ ml: 1, color: 'primary.main' }}
           onClick={() => setIsRegistred(!isRegistred)}
         >
-          {isRegistred ? '  Register' : '  Sign Up'}
+          {isRegistred ? '  Register' : '  Login'}
         </Box>
       </Grid>
     </Box>

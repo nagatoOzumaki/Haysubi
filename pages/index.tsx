@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import axios from 'axios';
 import { Box, Container, Grid } from '@mui/material';
 import { useEffect } from 'react';
 import { Products } from '../common/types/@appTypes';
 import ProductCard from '../common/components/ProductCard';
 import Footer from '../common/components/Footer';
+import fetchData from '../sevices/hooks/fetchData';
 
 type Props = {
   products: Products;
@@ -41,11 +41,10 @@ const Home: NextPage<Props> = ({ products }) => {
 
 export default Home;
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   let returnObject;
   try {
-    const res = await axios.get('https://fakestoreapi.com/products');
-    const products: Products = await res.data;
+    const products: Products = await fetchData<Products>();
     returnObject = {
       props: {
         products,
@@ -53,7 +52,6 @@ export const getServerSideProps = async () => {
     };
   } catch (e) {
     returnObject = { notFound: true };
-    console.log('error');
   }
   return returnObject;
 };
