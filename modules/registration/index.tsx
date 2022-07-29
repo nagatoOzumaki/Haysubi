@@ -10,11 +10,14 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
   return (
     <Box
       sx={{
-        p: 8,
-        width: 550,
+        p: { xs: 2, md: 8 },
+
+        width: { md: 550, xs: 300 },
         backgroundColor: 'secondary.main',
         color: '#ddd',
         pb: 0,
+        borderRadius: { xs: 3 },
+        overflow: 'hidden',
       }}
     >
       {/* close */}
@@ -22,7 +25,8 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
       <Box
         sx={{
           display: 'flex',
-          p: '3px',
+          p: { xs: 0, md: 1 },
+
           justifyContent: 'center',
           alignContent: 'center',
           alignItems: 'center',
@@ -51,7 +55,7 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
           backgroundColor: 'rgba(0,0,0,0.1)',
           ml: -8,
           mr: -8,
-          p: 4,
+          p: { xs: 1, md: 4 },
         }}
         item
       >

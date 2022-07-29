@@ -1,4 +1,4 @@
-import { Button, Dialog, Slide } from '@mui/material';
+import { Button, Container, Dialog, Slide } from '@mui/material';
 import React, { FC, useState } from 'react';
 import { TransitionProps } from '@mui/material/transitions';
 import Registration from '../../modules/registration';
