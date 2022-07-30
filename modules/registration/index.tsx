@@ -12,7 +12,7 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
       sx={{
         p: { xs: 2, md: 8 },
         borderWidth: 3,
-        borderColor: 'rgba(255,255,255,0.5)',
+        borderColor: 'rgba(255,255,255,0.4)',
         borderStyle: 'solid',
         width: { md: 550, xs: 300 },
         backgroundColor: 'secondary.main',
