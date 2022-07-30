@@ -8,8 +8,8 @@ import { MyCheckbox, MyTextInput } from './components/Inputs';
 const Register: FC = () => (
   <Box
     sx={{
-      padding: 5,
-      // width: 400,
+      padding: 2,
+
       backgroundColor: 'secondary.main',
       color: '#ddd',
       pb: 0,
