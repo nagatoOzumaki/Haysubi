@@ -31,7 +31,7 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
           justifyContent: 'center',
           alignContent: 'center',
           alignItems: 'center',
-
+          cursor: 'pointer',
           position: 'absolute',
           top: 8,
           right: 9,
