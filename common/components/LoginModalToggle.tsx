@@ -37,7 +37,7 @@ const LoginModalToggle: FC = () => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'flex-start',
-              mt: -16,
+              mt: { xs: -33, md: -16 },
             }}
           >
             <Registration closeLoginModal={handleClose} />

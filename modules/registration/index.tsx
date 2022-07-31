@@ -37,7 +37,7 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
           top: -23,
           right: -23,
           backgroundColor: 'rgba(255,255,255,0.9)',
-
+          cursor: 'pointer',
           border: 'none',
         }}
       >
