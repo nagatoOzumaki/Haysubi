@@ -14,7 +14,7 @@ type Props = {
 
 const Home: NextPage<Props> = ({ products }) => {
   useEffect(() => {
-    console.log('products', products);
+    console.log('products', products[0]);
   }, []);
   return (
     <Box sx={{ backgroundColor: 'secondary.main', height: '100%' }}>
@@ -49,6 +49,7 @@ export const getStaticProps = async () => {
       props: {
         products,
       },
+      revalidate: 20,
     };
   } catch (e) {
     returnObject = { notFound: true };
