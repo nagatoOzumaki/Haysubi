@@ -34,10 +34,10 @@ const LoginModalToggle: FC = () => {
         <Fade in={open}>
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'flex-start',
-              mt: -16,
+              position: 'absolute',
+              top: '10%',
+              marginTop: '-20%',
+              right: '20%',
             }}
           >
             <Registration closeLoginModal={handleClose} />
