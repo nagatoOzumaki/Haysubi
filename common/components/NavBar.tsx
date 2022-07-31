@@ -1,6 +1,6 @@
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Container } from '@mui/material';
+import { Box } from '@mui/material';
 import { FC, SyntheticEvent, useState } from 'react';
 
 const CenteredTabs: FC = () => {
@@ -22,13 +22,23 @@ const CenteredTabs: FC = () => {
   };
 
   return (
-    <Container sx={{ bgcolor: 'rgba(255,255,255,.9)' }}>
-      <Tabs value={value} onChange={handleChange}>
+    <Box
+      sx={{
+        bgcolor: 'rgba(255,255,255,.9)',
+      }}
+    >
+      <Tabs
+        sx={{
+          backgroundColor: 'grey',
+        }}
+        value={value}
+        onChange={handleChange}
+      >
         {navLinks.map((link) => (
           <Tab key={link} label={link} />
         ))}
       </Tabs>
-    </Container>
+    </Box>
   );
 };
 export default CenteredTabs;
