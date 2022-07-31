@@ -11,40 +11,49 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
     <Box
       sx={{
         p: { xs: 2, md: 8 },
-        borderWidth: 3,
+        borderWidth: 1,
         borderColor: 'rgba(255,255,255,0.4)',
         borderStyle: 'solid',
         width: { md: 550, xs: 300 },
         backgroundColor: 'secondary.main',
         color: '#ddd',
         pb: 0,
-        overflow: 'hidden',
+        position: 'relative',
+        zIndex: 1330,
       }}
     >
-      {/* close */}
+      {/*  close modal */}
 
       <Box
         sx={{
           display: 'flex',
-          p: { xs: 0, md: 1 },
-
+          p: { xs: 0, md: 0 },
+          borderRadius: 100,
           justifyContent: 'center',
           alignContent: 'center',
           alignItems: 'center',
           cursor: 'pointer',
           position: 'absolute',
-          top: 8,
-          right: 9,
-          backgroundColor: '#fff',
+          top: -23,
+          right: -23,
+          backgroundColor: 'rgba(255,255,255,0.9)',
+
+          border: 'none',
         }}
       >
         <CloseRounded
           onClick={closeLoginModal}
-          sx={{ width: 34, height: 34 }}
-          color="primary"
+          sx={{
+            width: 40,
+            height: 40,
+            color: '#000',
+            fontWeight: 'bold',
+            fontSize: 25,
+          }}
         />
       </Box>
-      {/* close */}
+
+      {/* /close modal */}
       {isRegistred ? <Login /> : <Register />}
 
       <Grid
