@@ -1,8 +1,9 @@
 export default {
   primary: {
-    main: '#083f8f',
+    // main: '#083f8f',
+    main: 'rgba(0,0,0,0.9)',
   },
   secondary: {
-    main: '#000',
+    main: '#fff',
   },
 };

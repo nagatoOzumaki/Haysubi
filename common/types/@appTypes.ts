@@ -3,16 +3,28 @@ export type ChildrenProps = {
   children: JSX.Element[] | JSX.Element;
 };
 
-export type Product = {
+
+
+
+export type CartItem = {
   id: number;
-  title: string;
+  name: string;
   price: number;
+  rating: number;
+  discription: string;
+  quantity: number;
+  img: string;
+  date: Date;
+};
+
+export type Product = {
+   id: string;
+   categories: string;
+  name: string;
+  rating: string;
   description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  price: string;
+  image: string[];
+  review: string[];
 };
 export type Products = Product[];

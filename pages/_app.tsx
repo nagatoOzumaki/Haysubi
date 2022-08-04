@@ -4,7 +4,7 @@ import { CssBaseline } from '@mui/material';
 import { DefaultSeo } from 'next-seo';
 import ThemeProvider from '../common/layouts/ThemeProvider';
 import defaultSeoInfo from '../common/config/default-seo-config';
-import HeaderLayout from '../common/layouts/HeaderLayout';
+import HeaderLayout from '../common/layouts/headerLayout/HeaderLayout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

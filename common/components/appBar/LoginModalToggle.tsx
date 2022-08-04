@@ -1,7 +1,7 @@
 import { Button, Dialog, Slide } from '@mui/material';
 import React, { FC, useState } from 'react';
 import { TransitionProps } from '@mui/material/transitions';
-import Registration from '../../modules/registration';
+import Registration from '../../../modules/registration';
 
 const Transition = React.forwardRef(
   (
