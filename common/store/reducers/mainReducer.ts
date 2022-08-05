@@ -1,10 +1,10 @@
-
-import { Action, State,Products } from "../../types/@appTypes";
-import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SET_ITEMS, DARK_MODE_OFF, DARK_MODE_ON, USER_LOGIN, USER_LOGOUT } from "../actions/mainAction";
+import { Action, State } from "../../types/@appTypes";
+import { storeCartItemsInLocalStorage } from "../../utils/hooks/useLocalStorage";
+import { appActions } from "../actions/mainAction";
 
 const InitialState={
     darkMode:false,
-    cart: {cartItems:[] },
+    cart: {cartItems:[]},
     userInfo: null
 }
  const mainReducer = (
@@ -12,27 +12,22 @@ const InitialState={
     action: Action
   ) => {
     switch (action.type) {
-      case DARK_MODE_ON:
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('theme', JSON.stringify(true));
-        }
+      case appActions.DARK_MODE_ON:
         return { ...state, darkMode: true };
-      case DARK_MODE_OFF:
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('theme', JSON.stringify(false));
-        }
+      case appActions.DARK_MODE_OFF:
         return { ...state, darkMode: false };
-      case CART_SET_ITEMS:{        const storedItems = action.payload;
+      case appActions.SET_ITEMS_TO_CART:{      
+        const storedItems = action.payload;
         return { ...state, cart: { ...state.cart, cartItems: storedItems } };
       }
-      case CART_ADD_ITEM:
+      case appActions.ADD_ITEM_TO_CART:
         {
         const ids = state.cart.cartItems.map((item) => item.id);
         let newState = state;
         const {id}=action.payload
 
         if (!ids.includes(id)) {
-          newState = {
+            newState = {
             ...state,
             cart: {
               ...state.cart,
@@ -40,14 +35,9 @@ const InitialState={
             },
           };
         }
-        if (typeof window !== 'undefined') {
-          localStorage.setItem(
-            'cartItems',
-            JSON.stringify(newState.cart.cartItems)
-          );
-        }
-        return newState;}
-      case CART_REMOVE_ITEM:{
+        storeCartItemsInLocalStorage(state.cart.cartItems);
+          return newState;}
+      case appActions.REMOVE_ITEM_FROM_CART:{
         const cartItems = state.cart.cartItems.filter(
           (item) => item.id !== action.payload.id
         );
@@ -55,23 +45,16 @@ const InitialState={
           ...state,
           cart: { ...state.cart, cartItems },
         };
-        if (typeof window !== 'undefined') {
-          localStorage.setItem(
-            'cartItems',
-            JSON.stringify(removeItemState.cart.cartItems)
-          );
-        }
+        
         return removeItemState;}
      
-      case USER_LOGIN:
+      case appActions.USER_LOGIN:
         {
         const newUserInfo = action.payload;
         const loginState: State = { ...state, userInfo: newUserInfo };
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('userInfo', JSON.stringify(loginState.userInfo));
-        }
-        return loginState;}
-      case USER_LOGOUT:{
+        return loginState;
+      }
+      case appActions.USER_LOGOUT:{
         const logoutState: State = {
           ...state,
           userInfo: null,
@@ -81,9 +64,6 @@ const InitialState={
             paymentMethod: '',
           },
         };
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('userInfo', JSON.stringify(''));
-        }
         return logoutState;}
       default:
         return state;

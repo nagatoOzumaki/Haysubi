@@ -1,39 +1,50 @@
-
+/* eslint-disable import/no-extraneous-dependencies */
 import { Dispatch } from "react";
-import { Action, Product, Products, UserInfo } from "../../types/@appTypes";
+import { ActionCreator } from "redux";
+import { ThunkAction } from "redux-thunk";
+import { Action, CartItem, State, UserInfo } from "../../types/@appTypes";
+import { storeCartItemsInLocalStorage, storeUserInfoInLocalStorage } from "../../utils/hooks/useLocalStorage";
+//-----------------------------
+  // eslint-disable-next-line no-unused-vars
+export  const appActions={
+        ADD_ITEM_TO_CART : 'ADD_TO_CART',
+        DARK_MODE_ON : 'DARK_MODE_ON',
+        DARK_MODE_OFF : 'DARK_MODE_OFF',
+        REMOVE_ITEM_FROM_CART: 'REMOVE_ITEM_FROM_CART',
+        CLEAR_CART : 'CART_CLEAR',
+        USER_LOGIN: 'USER_LOGIN',
+        USER_LOGOUT : 'USER_LOGOUT',
+        SET_ITEMS_TO_CART : 'SET_ITEMS_TO_CART'
+      }
+//-----------------------------
 
-export const CART_ADD_ITEM = 'ADD_TO_CART';
-export const DARK_MODE_ON = 'DARK_MODE_ON';
-export const DARK_MODE_OFF = 'DARK_MODE_OFF';
-export const CART_REMOVE_ITEM = 'CART_REMOVE_ITEM';
-export const CART_CLEAR = 'CART_CLEAR';
-export const USER_LOGIN = 'USER_LOGIN';
-export const USER_LOGOUT = 'USER_LOGOUT';
-export const CART_SET_ITEMS = 'CART_SET_ITEMS';
 
-export const SetItemsToCart = (items:Products) => async (dispatch: Dispatch<Action>) => {
-    
-    dispatch({ type: CART_SET_ITEMS, payload: items });
+export type AppThunk = ActionCreator<ThunkAction<void, State, null, Action>>;
+
+export const setItemsToCart :AppThunk= (items:CartItem[]) => async (dispatch: Dispatch<Action>) => {
+    storeCartItemsInLocalStorage(items);
+    dispatch({ type: appActions.SET_ITEMS_TO_CART, payload: items });
   };
 
-export const addItemToCart = (item:Product) => async (dispatch: Dispatch<Action>) => {
-    
-    dispatch({ type: CART_ADD_ITEM, payload: item });
+export const addItemToCart:AppThunk = (item:CartItem) => async (dispatch: Dispatch<Action>) => {
+
+    dispatch({ type: appActions.ADD_ITEM_TO_CART, payload: item });
   };
 
-export const removeItemFromCart = (itemId: number) => (dispatch: Dispatch<Action>) => {
-    dispatch({ type: CART_REMOVE_ITEM, payload: itemId });
+export const removeItemFromCart :AppThunk= (itemId: number) => (dispatch: Dispatch<Action>) => {
+    dispatch({ type: appActions.REMOVE_ITEM_FROM_CART, payload: itemId });
   };
-
-export const setDarkMode = () => (dispatch: Dispatch<Action>) => {
-    dispatch({ type: DARK_MODE_ON});
+export const setDarkMode :AppThunk= () => (dispatch: Dispatch<Action>) => {
+    dispatch({ type: appActions.DARK_MODE_ON});
   };
-export const setLightMode = () => (dispatch: Dispatch<Action>) => {
-    dispatch({ type: DARK_MODE_OFF});
+export const setLightMode :AppThunk= () => (dispatch: Dispatch<Action>) => {
+    dispatch({ type: appActions.DARK_MODE_OFF});
   };
-export const setlogin = (userInfo:UserInfo) => (dispatch: Dispatch<Action>) => {
-    dispatch({ type: USER_LOGIN,payload:userInfo});
+export const setLogin :AppThunk= (userInfo:UserInfo) => (dispatch: Dispatch<Action>) => {
+    storeUserInfoInLocalStorage(userInfo);
+    dispatch({ type: appActions.USER_LOGIN,payload:userInfo});
   };
-export const setlogout = () => (dispatch: Dispatch<Action>) => {
-    dispatch({ type: USER_LOGOUT});
+export const setLogout:AppThunk = () => (dispatch: Dispatch<Action>) => {
+    storeUserInfoInLocalStorage(null);
+    dispatch({ type: appActions.USER_LOGOUT});
   };

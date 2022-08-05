@@ -15,7 +15,7 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
         borderColor: 'rgba(255,255,255,0.4)',
         borderStyle: 'solid',
         width: { md: 550, xs: 300 },
-        backgroundColor: 'secondary.main',
+        backgroundColor: '#000',
         color: '#ddd',
         pb: 0,
         overflow: 'hidden',

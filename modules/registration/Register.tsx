@@ -9,8 +9,6 @@ const Register: FC = () => (
   <Box
     sx={{
       padding: 2,
-
-      backgroundColor: 'secondary.main',
       color: '#ddd',
       pb: 0,
     }}

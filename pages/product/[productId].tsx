@@ -12,11 +12,13 @@ import { useEffect, useState } from 'react';
 import NextLink from 'next/link'
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
-import { Action, Product } from '../../common/types/@appTypes';
+import {  Product } from '../../common/types/@appTypes';
 import data from '../../data/Data';
 import Reviews from '../../modules/productPage/reviews'
-import { CART_ADD_ITEM } from '../../common/store/actions/mainAction';
+import { addItemToCart } from '../../common/store/actions/mainAction';
 import { useCartState } from '../../common/store/Store';
+
+
 
 type Props = { product: Product };
 
@@ -27,11 +29,11 @@ const ProductDetails = ({ product }: Props) => {
   // missing typing for currentMainImage
   const [currentMainImage,setCurrentMainImage]=useState(product.image[0]);
 
-  const dispatch=useDispatch()<Action>;
+  const dispatch=useDispatch()<any>;
 
   const handleAddItemToCart=()=>{
 
-      dispatch({type:CART_ADD_ITEM,payload:product})
+      dispatch(addItemToCart(product))
       setItemInCart(true)
 
         }
@@ -41,50 +43,55 @@ const ProductDetails = ({ product }: Props) => {
     return parseInt(oldPrice, 10) - 23;
   };
  
-  const handleAddItemToWishlist = (item: Product) => {
+  const handleAddItemToWishlist = () => {
   // dispatch
   setInWishList(true)
   };
   const imageLoader=(src:string)=>src
   useEffect(()=>{
       let isExistInCart=false;
-          cartItems.map(item=>{
-            if(item.id===product.id) isExistInCart=true
+          // eslint-disable-next-line array-callback-return
+          cartItems.map((item)=>{
+            if(item.id===product.id)  isExistInCart=true
+             
           })
           setItemInCart(isExistInCart)
-  },[])
+  },[cartItems,product.id])
   
 
 
 
   return (
     <Container maxWidth="xl" sx={{ bgcolor: '#fff', boxShadow: 3 }}>
-      <Grid container spacing={1} p={2}>
-        <Grid md={2} item container direction={{ md: 'column', xs: 'row' }}>
+          <Grid container spacing={5} p={1}>
+        {/* 1----------- */}
+          <Grid md={0.8} item container  direction={{ md: 'column', xs: 'row' }}>
           {
           product.image.map((imageSrc:string) => 
-            <Grid key={imageSrc} item>
-              <Image onClick={()=>setCurrentMainImage(imageSrc)} loader={()=>imageLoader(imageSrc)} width={60} height={100} src={imageSrc} alt="image" />
+            <Grid key={imageSrc} sx={{border:'2px solid #bbb' ,mb:4 }} item>
+              <Image  onClick={()=>setCurrentMainImage(imageSrc)} loader={()=>imageLoader(imageSrc)} width='100%' height='100%' src={imageSrc} alt="image" />
             </Grid>
           )
           }
         </Grid>
-        <Grid md={4} item>
-          <Image loader={()=>imageLoader(currentMainImage)} width={250} height={500} src={currentMainImage} alt="image" />
+        {/* 2----------------------- */}
+        <Grid md={3.2} sx={{display:'flex',pb:2,justifyContent:'center',p:4}} item>
+          <Image loader={()=>imageLoader(currentMainImage)} width={280}  height={500} src={currentMainImage} alt="image" />
         </Grid>
-        <Grid md={6} item>
+        {/* 3------------ */}
+        <Grid md={8}  item>
           <Typography component="h1" variant="h2">
             {product.name}
           </Typography>
 
           <Box className="prod-price" sx={{ display: 'flex', gap: 4, pt: 3 }}>
-            <Typography component="h1" className="productPage__right__price">
+            <Typography component="h1" >
               {product.price}
             </Typography>
             <Typography component="h1" sx={{ textDecoration: 'line-through' }}>
               ₹{increasedPrice(product.price)}
             </Typography>
-            <Typography component="h1" className="productPage__right__price">
+            <Typography component="h1" >
               ( 25% OFF )
             </Typography>
           </Box>
@@ -117,7 +124,7 @@ const ProductDetails = ({ product }: Props) => {
                 <Button
                   variant="contained"
                   onClick={() => {
-                    handleAddItemToWishlist(product);
+                    handleAddItemToWishlist();
                     setInWishList(true);
                   }}
                 >

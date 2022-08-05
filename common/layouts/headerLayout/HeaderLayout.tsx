@@ -9,6 +9,7 @@ const HeaderLayout: FC<ChildrenProps> = ({ children }) => (
     component="div"
     sx={{ height: '100%', backgroundColor: 'secondary.main' }}
   >
+     
     <ResponsiveAppBar />
     <Divider sx={{ mt: 5 }} />
     <Box

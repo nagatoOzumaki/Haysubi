@@ -7,18 +7,8 @@ export type ChildrenProps = {
 
 
 
-// export type CartItem = {
-//   id: number;
-//   name: string;
-//   price: number;
-//   rating: number;
-//   discription: string;
-//   quantity: number;
-//   img: string;
-//   date: Date;
-// };
 
-export type Product = {
+export interface Product  {
    id: string;
    categories: string;
   name: string;
@@ -28,24 +18,43 @@ export type Product = {
   image: string[];
   review: string[];
 };
+
+
 export type Products = Product[];
 // State management types
+export interface CartItem extends Product {
+  quantity:number
+};
+
 export type Cart= {
-  cartItems: Products;
+  cartItems: CartItem[];
   shippingAddress?: Object;
   paymentMethod?: string;
 };
 export type UserInfo= {
-  json?: string;
+  token?: string;
   name: string;
   username: string;
   isAdmin: boolean;
 } | null
-export type State={ 
+export interface State{ 
   darkMode:boolean;
   cart: Cart;
   userInfo: UserInfo;
 };
-export type Action={type:string,payload?:any}
+
+
+
+
+
+
+
+
+
+
+
+
+
+export interface Action{type:string,payload?:any}
 
 export type ThemeContextType ={}

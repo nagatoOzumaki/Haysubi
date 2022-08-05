@@ -1,156 +1,199 @@
-import { CartItem } from '../../types/@appTypes';
+import { CartItem, UserInfo } from '../../types/@appTypes';
+import isSsr from '../isServerSideRendering';
 
-function getCart() {
+const getCartItemsFromLocalStorage=() =>{
+ if(!isSsr){
   if (localStorage.getItem('cartItems'))
-    return JSON.parse(localStorage.getItem('cartItems') || '');
+  return JSON.parse(localStorage.getItem('cartItems') || '');
 
-  localStorage.setItem('cartItems', JSON.stringify([]));
+    localStorage.setItem('cartItems', JSON.stringify([]));
+ }
   return [];
 }
 
-function addItemToCart({
-  id,
-  name,
-  price,
-  rating,
-  discription,
-  quantity,
-  img,
-  date,
-}: CartItem) {
-  const cart = JSON.parse(localStorage.getItem('cartItems') || '');
-  // console.log(cart);
-  cart.push({ id, name, price, rating, discription, quantity, img, date });
-  // console.log(cart);
-  localStorage.setItem('cartItems', JSON.stringify(cart));
+const storeCartItemsInLocalStorage=(items: CartItem[])=> {
+  if(!isSsr)localStorage.setItem('cartItems', JSON.stringify(items));
+}
+// --------------------------
+
+const getUserInfoFromLocalStorage=()=> {
+  if(!isSsr){
+    const storedUserInfo=localStorage.getItem('userInfo')
+    if (storedUserInfo) {return   JSON.parse(storedUserInfo)};
+    localStorage.setItem('userInfo', JSON.stringify(null));
+   }
+    return null;
+}
+const storeUserInfoInLocalStorage=(userInfo: UserInfo)=> {
+  if(!isSsr)localStorage.setItem('userInfo', JSON.stringify(userInfo));
 }
 
-function removeItemFromCart(id: number) {
-  const cart = JSON.parse(localStorage.getItem('cartItems') || '');
-  const tempCart = cart.filter((item: CartItem) => item.id !== id);
-  localStorage.setItem('cartItems', JSON.stringify(tempCart));
-}
-
-function reduceItemQuantity(id: number) {
-  const cart = JSON.parse(localStorage.getItem('cartItems') || '');
-  const tempCart = cart.map((item: CartItem) => {
-    let newItem;
-    if (item.id === id && item.quantity > 1) {
-      newItem = { ...item, quantity: item.quantity - 1 };
-    }
-
-    return newItem;
-  });
-  localStorage.setItem('cartItems', JSON.stringify(tempCart));
-}
-
-function addItemQuantity(id: number) {
-  const cart = JSON.parse(localStorage.getItem('cartItems') || '');
-  const tempCart = cart.map((item: CartItem) => {
-    let newItem;
-    if (item.id === id) {
-      newItem = { ...item, quantity: item.quantity + 1 };
-    }
-    return newItem;
-  });
-  localStorage.setItem('cartItems', JSON.stringify(tempCart));
-}
-
-function getOrders() {
-  if (localStorage.getItem('orderItems')) {
-    return JSON.parse(localStorage.getItem('orderItems') || '');
-  }
-  return null;
-}
-
-function addOrderItem({
-  id,
-  name,
-  price,
-  rating,
-  discription,
-  quantity,
-  img,
-  date,
-}: CartItem) {
-  const orders = JSON.parse(localStorage.getItem('orderItems') || '') || [];
-
-  let flag = true;
-
-  // eslint-disable-next-line array-callback-return
-  orders.map((item: CartItem) => {
-    if (item.id === id) flag = false;
-  });
-
-  if (flag) {
-    orders.push({ id, name, price, rating, discription, quantity, img, date });
-    localStorage.setItem('orderItems', JSON.stringify(orders));
-  }
-}
-
-function addOrderArr(arr: any) {
-  const orders = JSON.parse(localStorage.getItem('orderItems') || '') || [];
-  orders.push(...arr);
-  localStorage.setItem('orderItems', JSON.stringify(orders));
-}
-
-function getWishlist() {
-  if (localStorage.getItem('wishlist'))
-    return JSON.parse(localStorage.getItem('wishlist') || '');
-
-  localStorage.setItem('wishlist', JSON.stringify([]));
-  return [];
-}
-
-function addItemToWishlist({ id, name, price, img, rating }: CartItem) {
-  const list = getWishlist();
-
-  let flag = true;
-
-  //   console.log({ id, name, price, img, rating });
-
-  // eslint-disable-next-line array-callback-return
-  list.map((item: CartItem) => {
-    if (item?.id === id) {
-      flag = false;
-    }
-  });
-
-  if (flag) return;
-  list.push({ id, name, price, img, rating });
-
-  localStorage.setItem('wishlist', JSON.stringify(list));
-}
-
-function removeItemFromWishlist(id: number) {
-  const list = getWishlist();
-  const tempList = list.filter((item: CartItem) => item?.id !== id);
-  localStorage.setItem('wishlist', JSON.stringify(tempList));
-}
-
-function itemPresentInWishlist(id: number) {
-  const list = getWishlist();
-  let flag = false;
-
-  // eslint-disable-next-line array-callback-return
-  list.map((item: CartItem) => {
-    if (item?.id === id) flag = true;
-  });
-
-  return flag;
-}
 
 export {
-  getCart,
-  addItemToCart,
-  removeItemFromCart,
-  addItemQuantity,
-  reduceItemQuantity,
-  getOrders,
-  addOrderItem,
-  addOrderArr,
-  getWishlist,
-  addItemToWishlist,
-  removeItemFromWishlist,
-  itemPresentInWishlist,
+  getCartItemsFromLocalStorage,
+  storeCartItemsInLocalStorage,
+  storeUserInfoInLocalStorage,
+  getUserInfoFromLocalStorage
+
 };
+
+
+
+
+
+
+  // addItemToCart,
+  // removeItemFromCart,
+  // addItemQuantity,
+  // reduceItemQuantity,
+  // getOrders,
+  // addOrderItem,
+  // addOrderArr,
+  // getWishlist,
+  // addItemToWishlist,
+  // removeItemFromWishlist,
+  // itemPresentInWishlist,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function removeItemFromCart(id: number) {
+//   const cart = JSON.parse(localStorage.getItem('cartItems') || '');
+//   const tempCart = cart.filter((item: CartItem) => item.id !== id);
+//   localStorage.setItem('cartItems', JSON.stringify(tempCart));
+// }
+
+// function reduceItemQuantity(id: number) {
+//   const cart = JSON.parse(localStorage.getItem('cartItems') || '');
+//   const tempCart = cart.map((item: CartItem) => {
+//     let newItem;
+//     if (item.id === id && item.quantity > 1) {
+//       newItem = { ...item, quantity: item.quantity - 1 };
+//     }
+
+//     return newItem;
+//   });
+//   localStorage.setItem('cartItems', JSON.stringify(tempCart));
+// }
+
+// function addItemQuantity(id: number) {
+//   const cart = JSON.parse(localStorage.getItem('cartItems') || '');
+//   const tempCart = cart.map((item: CartItem) => {
+//     let newItem;
+//     if (item.id === id) {
+//       newItem = { ...item, quantity: item.quantity + 1 };
+//     }
+//     return newItem;
+//   });
+//   localStorage.setItem('cartItems', JSON.stringify(tempCart));
+// }
+
+// function getOrders() {
+//   if (localStorage.getItem('orderItems')) {
+//     return JSON.parse(localStorage.getItem('orderItems') || '');
+//   }
+//   return null;
+// }
+
+// function addOrderItem({
+//   id,
+//   name,
+//   price,
+//   rating,
+//   discription,
+//   quantity,
+//   img,
+//   date,
+// }: CartItem) {
+//   const orders = JSON.parse(localStorage.getItem('orderItems') || '') || [];
+
+//   let flag = true;
+
+//   // eslint-disable-next-line array-callback-return
+//   orders.map((item: CartItem) => {
+//     if (item.id === id) flag = false;
+//   });
+
+//   if (flag) {
+//     orders.push({ id, name, price, rating, discription, quantity, img, date });
+//     localStorage.setItem('orderItems', JSON.stringify(orders));
+//   }
+// }
+
+// function addOrderArr(arr: any) {
+//   const orders = JSON.parse(localStorage.getItem('orderItems') || '') || [];
+//   orders.push(...arr);
+//   localStorage.setItem('orderItems', JSON.stringify(orders));
+// }
+
+// function getWishlist() {
+//   if (localStorage.getItem('wishlist'))
+//     return JSON.parse(localStorage.getItem('wishlist') || '');
+
+//   localStorage.setItem('wishlist', JSON.stringify([]));
+//   return [];
+// }
+
+// function addItemToWishlist({ id, name, price, img, rating }: CartItem) {
+//   const list = getWishlist();
+
+//   let flag = true;
+
+//   //   console.log({ id, name, price, img, rating });
+
+//   // eslint-disable-next-line array-callback-return
+//   list.map((item: CartItem) => {
+//     if (item?.id === id) {
+//       flag = false;
+//     }
+//   });
+
+//   if (flag) return;
+//   list.push({ id, name, price, img, rating });
+
+//   localStorage.setItem('wishlist', JSON.stringify(list));
+// }
+
+// function removeItemFromWishlist(id: number) {
+//   const list = getWishlist();
+//   const tempList = list.filter((item: CartItem) => item?.id !== id);
+//   localStorage.setItem('wishlist', JSON.stringify(tempList));
+// }
+
+// function itemPresentInWishlist(id: number) {
+//   const list = getWishlist();
+//   let flag = false;
+
+//   // eslint-disable-next-line array-callback-return
+//   list.map((item: CartItem) => {
+//     if (item?.id === id) flag = true;
+//   });
+
+//   return flag;
+// }

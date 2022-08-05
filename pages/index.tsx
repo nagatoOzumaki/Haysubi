@@ -1,12 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Box, Container, Grid } from '@mui/material';
-import { useEffect } from 'react';
+import {  Container, Grid } from '@mui/material';
 import { Products } from '../common/types/@appTypes';
 import fetchData from '../common/utils/hooks/fetchData';
 import ProductsList from '../common/components/productList/ProductsList';
-import Footer from '../common/components/footer';
 import SideBar from '../modules/homePage/sideBar';
 
 type Props = {
