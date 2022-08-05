@@ -8,37 +8,69 @@ import {
   Typography,
 } from '@mui/material';
 import { GetServerSidePropsContext } from 'next';
-import { useState } from 'react';
+import { Dispatch, useEffect, useState } from 'react';
 import NextLink from 'next/link'
-import { Product, Products } from '../../common/types/@appTypes';
+import { useDispatch } from 'react-redux';
+import Image from 'next/image';
+import { Action, Product, Products } from '../../common/types/@appTypes';
 import data from '../../data/Data';
 import Reviews from '../../modules/productPage/reviews'
+import { CART_ADD_ITEM } from '../../common/store/actions/mainAction';
+import { useCartState } from '../../common/store/Store';
 
 type Props = { product: Product };
 
 const ProductDetails = ({ product }: Props) => {
   const [inWishList, setInWishList] = useState(false);
   const [itemInCart, setItemInCart] = useState(false);
+  const {cartItems}=useCartState();
+  // missing typing for currentMainImage
+  const [currentMainImage,setCurrentMainImage]=useState(product.image[0]);
+
+  const dispatch=useDispatch()<Action>;
+
+  const handleAddItemToCart=()=>{
+
+      dispatch({type:CART_ADD_ITEM,payload:product})
+      setItemInCart(true)
+
+        }
+  
   const increasedPrice = (price: string) => {
     const oldPrice = price.slice(1);
     return parseInt(oldPrice, 10) - 23;
   };
-  const addItem = (item: any) => {
-    setItemInCart(true);
+ 
+  const handleAddItemToWishlist = (item: Product) => {
+  // dispatch
+  setInWishList(true)
   };
-  const addItemToWishlist = (item: Product) => null;
+  const imageLoader=(src:string)=>src
+  useEffect(()=>{
+      let isExistInCart=false;
+          cartItems.map(item=>{
+            if(item.id===product.id) isExistInCart=true
+          })
+          setItemInCart(isExistInCart)
+  },[])
+  
+
+
+
   return (
     <Container maxWidth="xl" sx={{ bgcolor: '#fff', boxShadow: 3 }}>
       <Grid container spacing={1} p={2}>
         <Grid md={2} item container direction={{ md: 'column', xs: 'row' }}>
-          {product.image.map((imageSrc:string) => (
+          {
+          product.image.map((imageSrc:string) => 
             <Grid key={imageSrc} item>
-              <img width={60} height={100} src={imageSrc} alt="image" />
+              <Image onClick={()=>setCurrentMainImage(imageSrc)} loader={()=>imageLoader(imageSrc)} width={60} height={100} src={imageSrc} alt="image" />
             </Grid>
-          ))}
+          )
+          }
         </Grid>
         <Grid md={4} item>
-          <img width={250} height={500} src={product.image[0]} alt="image" />
+          <Image loader={()=>imageLoader(currentMainImage)} width={250} height={500} src={currentMainImage} alt="image" />
         </Grid>
         <Grid md={6} item>
           <Typography component="h1" variant="h2">
@@ -73,10 +105,10 @@ const ProductDetails = ({ product }: Props) => {
             >
               {itemInCart ? (
                 <NextLink href="/cart">
-                  <Button variant="contained">GO TO CART BAG</Button>
+                  <Button variant="contained" >GO TO CART BAG</Button>
                 </NextLink>
               ) : (
-                <Button variant="contained" onClick={addItem}>
+                <Button variant="contained" onClick={handleAddItemToCart}>
                   ADD TO BAG
                 </Button>
               )}
@@ -85,7 +117,7 @@ const ProductDetails = ({ product }: Props) => {
                 <Button
                   variant="contained"
                   onClick={() => {
-                    addItemToWishlist(product);
+                    handleAddItemToWishlist(product);
                     setInWishList(true);
                   }}
                 >
