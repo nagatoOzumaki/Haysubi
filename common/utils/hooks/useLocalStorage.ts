@@ -1,18 +1,20 @@
-import { CartItem, UserInfo } from '../../types/@appTypes';
+import { CartItem, UserInfo,Products } from '../../types/@appTypes';
 import isSsr from '../isServerSideRendering';
 
-const getCartItemsFromLocalStorage=() =>{
- if(!isSsr){
-  if (localStorage.getItem('cartItems'))
-  return JSON.parse(localStorage.getItem('cartItems') || '');
+const getDataFromLocalStorage=(key:string) =>{
+  if(key==='userInfo')getUserInfoFromLocalStorage();
+  if(!isSsr){
+  if (localStorage.getItem(key))
+  return JSON.parse(localStorage.getItem(key) || '');
 
-    localStorage.setItem('cartItems', JSON.stringify([]));
+    localStorage.setItem(key, JSON.stringify([]));
  }
   return [];
 }
 
-const storeCartItemsInLocalStorage=(items: CartItem[])=> {
-  if(!isSsr)localStorage.setItem('cartItems', JSON.stringify(items));
+const storeDataInLocalStorage=(key:string,value:CartItem[]|Products|UserInfo)=> {
+
+  if(!isSsr)localStorage.setItem(key, JSON.stringify(value));
 }
 // --------------------------
 
@@ -24,16 +26,12 @@ const getUserInfoFromLocalStorage=()=> {
    }
     return null;
 }
-const storeUserInfoInLocalStorage=(userInfo: UserInfo)=> {
-  if(!isSsr)localStorage.setItem('userInfo', JSON.stringify(userInfo));
-}
 
 
 export {
-  getCartItemsFromLocalStorage,
-  storeCartItemsInLocalStorage,
-  storeUserInfoInLocalStorage,
-  getUserInfoFromLocalStorage
+  getDataFromLocalStorage,
+  storeDataInLocalStorage,
+  
 
 };
 

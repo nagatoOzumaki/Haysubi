@@ -316,4 +316,13 @@
 // export default dynamic(() => Promise.resolve(CartPage), { ssr: false });
 
 // // ---------------------------------------------------------------------------
-export {}
+
+function cart() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default cart

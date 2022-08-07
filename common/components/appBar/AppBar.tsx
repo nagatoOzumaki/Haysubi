@@ -6,20 +6,28 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import React, { FC } from 'react';
 import {
+  FavoriteBorder,
   LaptopChromebook,
-  PersonOutlineOutlined,
-  ShoppingBagOutlined,
-  Storefront,
+
+  ShoppingCartOutlined,
+  StoreOutlined,
 } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
 import SearchBar from './SearchBar';
 import LoginModalToggle from './LoginModalToggle';
-import { useCartState, useUserInfoState } from '../../store/Store';
+import { useCartState, useUserInfoState, useWishList } from '../../store/Store';
+import UserMenu from './UserMenu';
+import { setLogout } from '../../store/actions/mainAction';
 
 const ResponsiveAppBar: FC = () => {
 
   const cart=useCartState();
+  const wishList=useWishList();
   const userInfo=useUserInfoState();
-  
+  const dispatch=useDispatch()<any>;
+  const handleLogout=()=>{
+    dispatch(setLogout());
+  }
 
   return (
     <AppBar position="static">
@@ -69,13 +77,17 @@ const ResponsiveAppBar: FC = () => {
               justifyContent: 'center',
               alignItems: 'center',
               gap: 9,
+              pt:2,pb:1
+
             }}
           >
 
-           <Box><Storefront /></Box> 
-           <Box><ShoppingBagOutlined />{cart.cartItems.length}</Box>
-           <Box>{userInfo?<PersonOutlineOutlined />:<LoginModalToggle />}</Box> 
-           
+           <Box sx={{cursor:'pointer'}}><StoreOutlined/></Box> 
+           <Box sx={{cursor:'pointer',position:'relative',p:1}}><ShoppingCartOutlined /><Typography sx={{fontSize:12,position:'absolute',top:0,right:0}}>{cart.cartItems.length}</Typography></Box>
+           <Box sx={{cursor:'pointer',position:'relative',p:1}}><FavoriteBorder /><Typography sx={{fontSize:12,position:'absolute',top:0,right:0}}>{wishList.length}</Typography></Box>
+           <Box sx={{cursor:'pointer',position:'relative'}}>{userInfo?<Box>
+            <UserMenu userInfo={userInfo} handleLogout={handleLogout}/></Box>:<LoginModalToggle />}</Box> 
+            {/* <PersonOutlineOutlined /><Typography sx={{fontSize:12,mt:-1}}>{userInfo.name}</Typography> */}
 
           </Box>
         </Toolbar>

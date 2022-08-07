@@ -15,8 +15,8 @@ import Image from 'next/image';
 import {  Product } from '../../common/types/@appTypes';
 import data from '../../data/Data';
 import Reviews from '../../modules/productPage/reviews'
-import { addItemToCart } from '../../common/store/actions/mainAction';
-import { useCartState } from '../../common/store/Store';
+import { addItemToCart, addProductToWishList } from '../../common/store/actions/mainAction';
+import { useCartState, useWishList } from '../../common/store/Store';
 
 
 
@@ -26,14 +26,15 @@ const ProductDetails = ({ product }: Props) => {
   const [inWishList, setInWishList] = useState(false);
   const [itemInCart, setItemInCart] = useState(false);
   const {cartItems}=useCartState();
+  const wishList=useWishList();
   // missing typing for currentMainImage
   const [currentMainImage,setCurrentMainImage]=useState(product.image[0]);
 
   const dispatch=useDispatch()<any>;
 
   const handleAddItemToCart=()=>{
-
-      dispatch(addItemToCart(product))
+      
+      dispatch(addItemToCart({...product,quantity:1}))
       setItemInCart(true)
 
         }
@@ -43,21 +44,32 @@ const ProductDetails = ({ product }: Props) => {
     return parseInt(oldPrice, 10) - 23;
   };
  
-  const handleAddItemToWishlist = () => {
-  // dispatch
-  setInWishList(true)
+  const handleAddProductToWishlist = (myproduct:Product) => {
+        dispatch(addProductToWishList(myproduct));
+        setInWishList(true);
   };
   const imageLoader=(src:string)=>src
   useEffect(()=>{
+     
       let isExistInCart=false;
           // eslint-disable-next-line array-callback-return
           cartItems.map((item)=>{
             if(item.id===product.id)  isExistInCart=true
-             
           })
           setItemInCart(isExistInCart)
+
+        
   },[cartItems,product.id])
-  
+
+  useEffect(()=>{
+    let isExistInWishList=false;
+    // eslint-disable-next-line array-callback-return
+    wishList.map((myProduct)=>{
+      if(myProduct.id===product.id)  isExistInWishList=true
+    })
+    setInWishList(isExistInWishList)
+      
+},[product.id,wishList])
 
 
 
@@ -68,7 +80,7 @@ const ProductDetails = ({ product }: Props) => {
           <Grid md={0.8} item container  direction={{ md: 'column', xs: 'row' }}>
           {
           product.image.map((imageSrc:string) => 
-            <Grid key={imageSrc} sx={{border:'2px solid #bbb' ,mb:4 }} item>
+            <Grid key={imageSrc} sx={{border:'2px solid #bbb' ,mb:4 ,cursor:'pointer'}} item>
               <Image  onClick={()=>setCurrentMainImage(imageSrc)} loader={()=>imageLoader(imageSrc)} width='100%' height='100%' src={imageSrc} alt="image" />
             </Grid>
           )
@@ -123,10 +135,7 @@ const ProductDetails = ({ product }: Props) => {
               {!inWishList ? (
                 <Button
                   variant="contained"
-                  onClick={() => {
-                    handleAddItemToWishlist();
-                    setInWishList(true);
-                  }}
+                  onClick={() =>handleAddProductToWishlist(product)}
                 >
                   WISHLIST
                 </Button>

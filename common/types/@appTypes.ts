@@ -30,6 +30,7 @@ export type Cart= {
   cartItems: CartItem[];
   shippingAddress?: Object;
   paymentMethod?: string;
+  
 };
 export type UserInfo= {
   token?: string;
@@ -40,6 +41,7 @@ export type UserInfo= {
 export interface State{ 
   darkMode:boolean;
   cart: Cart;
+  wishList:Products
   userInfo: UserInfo;
 };
 
