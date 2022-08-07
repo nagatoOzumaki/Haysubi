@@ -43,11 +43,13 @@ export default Home;
 
 export const getStaticProps = async () => {
   let returnObject;
+  
   try {
     const products: Products = await fetchData<Products>();
+    const productss=async()=> products;
     returnObject = {
       props: {
-        products,
+        products:productss,
       },
       revalidate: 20,
     };
