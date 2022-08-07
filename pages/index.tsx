@@ -46,10 +46,10 @@ export const getStaticProps = async () => {
   
   try {
     const products: Products = await fetchData<Products>();
-    const productss=async()=> products;
+
     returnObject = {
       props: {
-        products:productss,
+        products,
       },
       revalidate: 20,
     };

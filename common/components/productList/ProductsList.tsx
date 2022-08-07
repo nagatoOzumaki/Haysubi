@@ -7,7 +7,7 @@ type Props = { products: Products };
 const ProductsList: FC<Props> = ({ products }) => (
   <Grid container spacing={0.4} pb={2}>
     {products.map((product) => (
-      <Grid key={product.id} xs={12} sm={6} md={4} lg={3}  item>
+      <Grid key={product.id} xs={12} sm={6} md={4} lg={3}  item sx={{position:'relative'}}>
         <ProductCard product={product} />
       </Grid>
     ))}

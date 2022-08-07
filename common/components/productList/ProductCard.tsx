@@ -15,14 +15,23 @@ const ProductCard:FC<Props>=({product})=> {
   const {image}=product||{image:['','','']};
   
   return (
-    <NextLink href={`/product/${id}`} passHref>
+    <NextLink href={`/product/${id}`} passHref >
       <Card
         elevation={2}
         sx={{
           backgroundColor: 'rgba(255,255,255,1)',
           p: 2,
           pb:0,
-          height:'100%'
+          height:500,
+          cursor:'pointer',
+          "&:hover": {
+            backgroundColor: '#eee',
+            padding:1,
+            position:'absolute',
+            p:2,
+            transition:2,
+            
+          }
         }}
       >
         <CardMedia

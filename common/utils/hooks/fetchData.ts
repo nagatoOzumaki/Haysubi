@@ -3,9 +3,12 @@ import axios from 'axios';
 import products from '../../../data/Data'
 
 const fetchData = async <T>() => {
+
   const res = await axios.get(`${process.env.SERVER}/products`);
-  // const data: T = await res.data;
-  return products;
+    const data: T = await res.data;
+    // eslint-disable-next-line no-console
+    console.log(data)
+  return  products;
 };
 
 export default fetchData;
