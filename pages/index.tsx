@@ -29,7 +29,7 @@ const Home: NextPage<Props> = ({ products }) => (
         backgroundColor: '#eee',
       }}
     >
-      <Grid md={12} item>
+      <Grid xs={12} item>
         <FilterBar />
       </Grid>
       <Grid md={12} item>
