@@ -1,6 +1,7 @@
-import { Button, Dialog, Slide } from '@mui/material';
+import { Dialog, IconButton, Slide } from '@mui/material';
 import React, { FC, useState } from 'react';
 import { TransitionProps } from '@mui/material/transitions';
+import { LogoutOutlined } from '@mui/icons-material';
 import Registration from '../../../modules/registration';
 
 const Transition = React.forwardRef(
@@ -24,9 +25,9 @@ const LoginModalToggle: FC = () => {
   };
   return (
     <div>
-      <Button variant="contained" color="secondary" onClick={handleClickOpen}>
-        Login
-      </Button>
+      <IconButton color="secondary" onClick={handleClickOpen}>
+        <LogoutOutlined />
+      </IconButton>
       <Dialog
         open={open}
         TransitionComponent={Transition}
