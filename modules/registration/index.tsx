@@ -63,7 +63,7 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
         {isRegistred ? "Don't have an acocunt ?" : 'Do you have an account'}
         <Box
           component="a"
-          sx={{ ml: 1, color: 'primary.main' }}
+          sx={{ ml: 1, color: 'blue', fontWeight: 'bold' }}
           onClick={() => setIsRegistred(!isRegistred)}
         >
           {isRegistred ? '  Register' : '  Login'}

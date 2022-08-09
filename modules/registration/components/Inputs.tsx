@@ -53,11 +53,11 @@ export const MyCheckbox = ({ children, ...props }: any) => {
   const [field, meta] = useField({ ...props, type: 'checkbox' });
   return (
     <div>
-      <div className="checkbox-input">
+      <div>
         <Radio
           sx={{
             color: '#fff',
-            '& .checked': { color: '#fff' },
+            '&:checked': { color: '#fff' },
           }}
           type="checkbox"
           {...field}
@@ -65,9 +65,7 @@ export const MyCheckbox = ({ children, ...props }: any) => {
         />
         {children}
       </div>
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
+      {meta.touched && meta.error ? <div>{meta.error}</div> : null}
     </div>
   );
 };

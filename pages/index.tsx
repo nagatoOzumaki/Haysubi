@@ -45,7 +45,7 @@ export const getStaticProps = async () => {
   let returnObject;
 
   try {
-    const products: Products = await fetchData<Products>();
+    const products: Products = await fetchData<Products>('/products');
 
     returnObject = {
       props: {
