@@ -5,7 +5,7 @@ import { Container, Grid } from '@mui/material';
 import { Products } from '../common/types/@appTypes';
 import fetchData from '../common/utils/hooks/fetchData';
 import ProductsList from '../common/components/productList/ProductsList';
-import SideBar from '../modules/homePage/filterBar';
+import FilterBar from '../modules/homePage/filterBar';
 
 type Props = {
   products: Products;
@@ -30,7 +30,7 @@ const Home: NextPage<Props> = ({ products }) => (
       }}
     >
       <Grid md={12} item>
-        <SideBar />
+        <FilterBar />
       </Grid>
       <Grid md={12} item>
         <ProductsList products={products} />
