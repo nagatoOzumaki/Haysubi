@@ -117,6 +117,8 @@ import NextLink from 'next/link';
 import { useDispatch } from 'react-redux';
 import {
   FavoriteBorder,
+  HomeMaxOutlined,
+  HomeOutlined,
   LogoutOutlined,
   ShoppingCartOutlined,
 } from '@mui/icons-material';
@@ -160,7 +162,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
+      width: '70ch',
     },
   },
 }));
@@ -230,9 +232,10 @@ export default function ResponsiveAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleLogout}>
-        <LogoutOutlined />
-
+      <MenuItem onClick={handleMenuClose}>
+        <IconButton onClick={handleLogout}>
+          <LogoutOutlined />
+        </IconButton>{' '}
         <p>Log Out</p>
       </MenuItem>
     </Menu>
@@ -286,6 +289,17 @@ export default function ResponsiveAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+        <NextLink href="/content">
+          <a>Content</a>
+        </NextLink>
+      </MenuItem>
+      <MenuItem>
+        <NextLink href="/contactUs">
+          <a>Contact Us</a>
+        </NextLink>
+      </MenuItem>
+
+      <MenuItem>
         <NextLink href="/cart">
           <a>
             <IconButton
@@ -338,10 +352,18 @@ export default function ResponsiveAppBar() {
   );
   // -----------------------------------
   return (
-    <Container maxWidth="xl" sx={{ flexGrow: 1 }}>
+    <Container
+      maxWidth="xl"
+      sx={
+        {
+          // flexGrow: 1,
+          // zIndex: 12333,
+        }
+      }
+    >
       <AppBar position="static">
         <Toolbar>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="open-drawer"
@@ -352,7 +374,7 @@ export default function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
-          </Box>
+          </Box> */}
 
           {/* --------- */}
 
@@ -362,7 +384,7 @@ export default function ResponsiveAppBar() {
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ display: { xs: 'none', sm: 'block' }, cursor: 'pointer' }}
+                sx={{ cursor: 'pointer', mr: 1 }}
               >
                 Haysubi
               </Typography>
@@ -490,7 +512,7 @@ export default function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
-      {leftRenderMenu}
+
       {renderMobileMenu}
       {renderMenu}
     </Container>

@@ -1,16 +1,82 @@
-import { Box, Container, Grid } from '@mui/material'
-import { FC } from 'react'
-import Post from './Post'
+import * as React from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 
-type Props={review:string[]}
+type Props = { review: string[] };
 
-const FeedBack:FC <Props>=({review})=>
-      <Container>
-        {
-        review.map((postText,index)=><Post key={index} postText={postText}/>)
+const FeedBack: React.FC<Props> = ({ review }) => (
+  <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <ListItem alignItems="flex-start">
+      <ListItemAvatar>
+        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+      </ListItemAvatar>
+      <ListItemText
+        primary="Brunch this weekend?"
+        secondary={
+          <React.Fragment>
+            <Typography
+              sx={{ display: 'inline' }}
+              component="span"
+              variant="body2"
+              color="text.primary"
+            >
+              Ali Connors
+            </Typography>
+            {review[0]}
+          </React.Fragment>
         }
-     
-    </Container>
+      />
+    </ListItem>
+    <Divider variant="inset" component="li" />
+    <ListItem alignItems="flex-start">
+      <ListItemAvatar>
+        <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+      </ListItemAvatar>
+      <ListItemText
+        primary="Summer BBQ"
+        secondary={
+          <React.Fragment>
+            <Typography
+              sx={{ display: 'inline' }}
+              component="span"
+              variant="body2"
+              color="text.primary"
+            >
+              to Scott, Alex, Jennifer
+            </Typography>
+            {review[1]}
+          </React.Fragment>
+        }
+      />
+    </ListItem>
+    <Divider variant="inset" component="li" />
+    <ListItem alignItems="flex-start">
+      <ListItemAvatar>
+        <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+      </ListItemAvatar>
+      <ListItemText
+        primary="Oui Oui"
+        secondary={
+          <React.Fragment>
+            <Typography
+              sx={{ display: 'inline' }}
+              component="span"
+              variant="body2"
+              color="text.primary"
+            >
+              Sandra Adams
+            </Typography>
+            {review[2]}
+          </React.Fragment>
+        }
+      />
+    </ListItem>
+  </List>
+);
 
-
-export default FeedBack
+export default FeedBack;
