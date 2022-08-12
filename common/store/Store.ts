@@ -4,12 +4,15 @@ import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { State } from '../types/@appTypes';
-import usersReducer from './reducers';
+import mainReducer from './reducers';
+
 
 export const Store = createStore(
-  usersReducer,
+  mainReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+export const useFilter=()=>useSelector((state:State)=>state.filter)
+export const useProductsState=()=>useSelector((state:State)=>state.products)
 export const useDarkModeState = () => useSelector((state:State) => state.darkMode);
 export const useCartState = () => useSelector((state :State) => state.cart);
 export const useUserInfoState = () => useSelector((state: State) => state.userInfo);

@@ -21,6 +21,8 @@ import {
 } from '../../common/store/actions/mainAction';
 import { useCartState, useWishList } from '../../common/store/Store';
 import fetchData from '../../common/utils/hooks/fetchData';
+import HoverRating from '../../modules/productPage/Rating';
+import ProductsList from '../../common/components/productList/ProductsList';
 
 type Props = { product: Product };
 
@@ -189,7 +191,7 @@ const ProductDetails = ({ product }: Props) => {
             </div>
             <Divider />
 
-            <Box sx={{ pt: 3 }}>
+            <Box sx={{ pt: 3, mb: 3 }}>
               <Typography variant="h5">Product details</Typography>
               <Typography sx={{ p: 1 }}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ad
@@ -202,14 +204,28 @@ const ProductDetails = ({ product }: Props) => {
                 cupiditate architecto.
               </Typography>
             </Box>
+            <HoverRating />
           </Grid>
         </Grid>
         {/* reviews */}
         <Divider sx={{ mb: 2 }} />
-        <Typography variant="h5">Reviews</Typography>
-        <Box sx={{ mt: 2 }}>
-          <Reviews review={product.review} />
-        </Box>
+
+        <Grid container sx={{ mt: 2, display: 'flex', gap: 18 }}>
+          <Grid item>
+            {' '}
+            <Typography variant="h5" sx={{ mb: 2 }}>
+              Reviews
+            </Typography>
+            <Reviews review={product.review} />
+          </Grid>
+          <Grid item>
+            <Typography variant="h5" sx={{ mb: 2 }}>
+              {' '}
+              You May Also Like ?
+            </Typography>
+            <ProductsList products={[product, product, product]} />
+          </Grid>
+        </Grid>
       </Container>
     </>
   );

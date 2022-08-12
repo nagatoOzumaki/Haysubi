@@ -1,44 +1,117 @@
-import type { NextPage } from 'next';
-import { Container } from '@mui/material';
-import { NextSeo } from 'next-seo';
-import { Products } from '../common/types/@appTypes';
-import fetchData from '../common/utils/hooks/fetchData';
-import ProductsList from '../common/components/productList/ProductsList';
-import FilterBar from '../modules/homePage/filterBar';
+import { Grid, Paper, Container, Fab, Link } from '@mui/material';
+import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined';
+import NextLink from 'next/link';
 
-type Props = {
-  products: Products;
-};
+const categories = [1, 2, 3, 4];
+const profils = [
+  'designer',
+  'photographer',
+  'developper',
+  'student',
+  'gamer',
+  'architect',
+];
 
-const Home: NextPage<Props> = ({ products }) => (
-  <>
-    {/* ---------------- */}
-    <NextSeo title="pc portable" description="dell,hp,asus,mac" />
-    {/* ---------------- */}
-    <Container maxWidth="xl" sx={{ backgroundColor: 'secondary.main' }}>
-      <FilterBar />
+function Index() {
+  return (
+    <Container maxWidth="xl">
+      <Grid container p={3}>
+        <Grid container item xs={12} columnSpacing={1}>
+          {categories.map(category => (
+            <Grid key={category} item xs={3}>
+              <Paper
+                elevation={2}
+                sx={{
+                  p: 0,
+                  bgcolor: '#bbb',
+                  '&:hover': {
+                    boxShadow: '1px solid #000',
+                  },
+                }}
+              >
+                <NextLink href={`/products?category=${category}`}>
+                  <Link
+                    sx={{
+                      cursor: 'pointer',
+                      p: 2,
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    Categorie {category}
+                  </Link>
+                </NextLink>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
 
-      <ProductsList products={products} />
+        <Grid container item spacing={3} xs={12} p={12}>
+          {profils.map(profil => (
+            <Grid key={profil} item sx={{ p: 1 }} md={4}>
+              <NextLink href={`/products?profil=${profil}`}>
+                <Paper
+                  elevation={3}
+                  sx={{
+                    p: 11,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    color: '#fff',
+                    fontSize: 20,
+                    '&:hover': {
+                      m: -1,
+                      p: 12,
+                      cursor: 'pointer',
+                    },
+                  }}
+                >
+                  <a> As a {profil}</a>
+                </Paper>
+              </NextLink>
+            </Grid>
+          ))}
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          mb={20}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <NextLink href="/products">
+            <a>
+              <Fab
+                variant="extended"
+                sx={{
+                  p: 9,
+                  pt: 4,
+                  pb: 4,
+                  backgroundColor: '#000',
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  fontSize: 16,
+                  '&:hover': {
+                    backgroundColor: '#fff',
+                    color: '#000',
+                  },
+                }}
+              >
+                <ScreenSearchDesktopOutlinedIcon sx={{ mr: 1 }} />
+                Decouvrire nos produits
+              </Fab>
+            </a>
+          </NextLink>
+        </Grid>
+      </Grid>
     </Container>
-  </>
-);
+  );
+}
 
-export default Home;
-
-export const getStaticProps = async () => {
-  let returnObject;
-
-  try {
-    const products: Products = await fetchData<Products>('/products');
-
-    returnObject = {
-      props: {
-        products,
-      },
-      revalidate: 20,
-    };
-  } catch (e) {
-    returnObject = { notFound: true };
-  }
-  return returnObject;
-};
+export default Index;

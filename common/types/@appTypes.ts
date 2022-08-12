@@ -39,12 +39,29 @@ export type UserInfo= {
   isAdmin: boolean;
 } | null
 export interface State{ 
+  products:Products;
   darkMode:boolean;
   cart: Cart;
   wishList:Products
   userInfo: UserInfo;
+  filter:Filter
 };
+// the following interface is used for allowing indexing by string for example in utils/constructQueryString
+export interface MapInterface{
+  [key:string]:string
+}
+export interface Filter extends MapInterface{
+  ram:string,
+  cpu:string,
+  storage:string,
+  screen:string,
+  gpu:string,
+  brand:string,
+  model:string,
+}
 
+
+export type FilterElement='cpu'|'ram'|'brand'|'model'|'gpu'|'storage'|'screen'
 
 
 

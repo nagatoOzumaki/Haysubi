@@ -41,14 +41,14 @@ const Footer: FC = () => {
       <Grid spacing={2} sx={{ mt: 5 }} container>
         <Grid item md={3}>
           <Typography variant="h6">Pour mieux nous connaître</Typography> À
-          propos d'Amazon Carrières Durabilité Haysubi Science
+          propos d&rsquo;Amazon Carrières Durabilité Haysubi Science
         </Grid>
         <Grid item md={3}>
-          <Typography variant="h6">Gagnez de l'argent </Typography>
+          <Typography variant="h6">Gagnez de l&rsquo;argent </Typography>
           Vendez sur Haysubi Vendez sur Haysubi Business Vendez sur Haysubi
           Handmade Haysubi pour les start-ups Devenez Partenaire Expédié par
           Haysubi Faites la promotion de vos produits Auto-publiez votre livre
-          Haysubi Pay ›Voir plus : Gagner de l'argent avec nous
+          Haysubi Pay ›Voir plus : Gagner de l&rsquo;argent avec nous
         </Grid>
 
         <Grid item md={3}>
@@ -59,12 +59,12 @@ const Footer: FC = () => {
         </Grid>
 
         <Grid item md={3}>
-          <Typography variant="h6">Besoin d 'aide ? </Typography>Haysubi et
-          COVID-19 Voir ou suivre vos commandes Tarifs et options de livraison
-          Haysubi Prime Retours et remplacements Recyclage (y compris les
-          équipements électriques et électroniques) Infos sur notre Marketplace
-          Application Haysubi Mobile Haysubi Assistant Service Client
-          Accessibilité
+          <Typography variant="h6">Besoin d &rsquo;aide ? </Typography>Haysubi
+          et COVID-19 Voir ou suivre vos commandes Tarifs et options de
+          livraison Haysubi Prime Retours et remplacements Recyclage (y compris
+          les équipements électriques et électroniques) Infos sur notre
+          Marketplace Application Haysubi Mobile Haysubi Assistant Service
+          Client Accessibilité
         </Grid>
       </Grid>
     </Container>

@@ -119,6 +119,7 @@ import {
   FavoriteBorder,
   HomeMaxOutlined,
   HomeOutlined,
+  LaptopOutlined,
   LogoutOutlined,
   ShoppingCartOutlined,
 } from '@mui/icons-material';
@@ -232,12 +233,14 @@ export default function ResponsiveAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <IconButton onClick={handleLogout}>
-          <LogoutOutlined />
-        </IconButton>{' '}
-        <p>Log Out</p>
-      </MenuItem>
+      {userInfo ? (
+        <MenuItem onClick={handleMenuClose}>
+          <IconButton onClick={handleLogout}>
+            <LogoutOutlined />
+          </IconButton>{' '}
+          <p>Log Out</p>
+        </MenuItem>
+      ) : null}
     </Menu>
   );
   // -----------------------------------------
@@ -379,12 +382,19 @@ export default function ResponsiveAppBar() {
           {/* --------- */}
 
           <NextLink href="/">
-            <a>
+            <a
+              style={{
+                display: 'flex',
+
+                alignItems: 'center',
+              }}
+            >
+              <LaptopOutlined />
               <Typography
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ cursor: 'pointer', mr: 1 }}
+                sx={{ cursor: 'pointer', mr: 1, ml: 1.3 }}
               >
                 Haysubi
               </Typography>
@@ -407,6 +417,19 @@ export default function ResponsiveAppBar() {
             </NextLink>
           </MenuItem>
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <NextLink href="/about">
+              <Link
+                sx={{
+                  color: '#fff',
+                  fontSize: 13,
+                  fontWeight: 'bold',
+                }}
+              >
+                ABOUT US
+              </Link>
+            </NextLink>
+          </MenuItem>
+          <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
             <NextLink href="/contactUs">
               <Link
                 sx={{
@@ -419,7 +442,6 @@ export default function ResponsiveAppBar() {
               </Link>
             </NextLink>
           </MenuItem>
-
           {/*  */}
           <div style={{ flexGrow: 1 }} />
           <Search>
