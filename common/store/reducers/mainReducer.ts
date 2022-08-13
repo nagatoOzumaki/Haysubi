@@ -1,9 +1,11 @@
-import { Action, Filter, State } from '../../types/@appTypes';
+import { Action, Filter, Product, State } from '../../types/@appTypes';
 import { storeDataInLocalStorage } from '../../utils/hooks/useLocalStorage';
-import { appActions } from '../actions/mainAction';
+import { appActions } from '../actions';
 
 const InitialState = {
   products: [],
+  currentProduct:{} as Product,
+  isDrawerOpen:false,
   darkMode: false,
   cart: { cartItems: [] },
   wishList: [],
@@ -138,6 +140,18 @@ const mainReducer = (state: State = InitialState, action: Action) => {
     case appActions.CLEAR_FILTER: {
       return { ...state, filter: {} as Filter };
     }
+    // --------------------------
+    case appActions.OPEN_DRAWER:
+      {
+        return {...state,isDrawerOpen:true}
+      }
+      case appActions.CLOSE_DRAWER:
+      {
+        return {...state,isDrawerOpen:false}
+      }
+
+
+    // ------------------------------
     default:
       return state;
   }

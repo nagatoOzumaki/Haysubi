@@ -108,7 +108,6 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
@@ -117,14 +116,12 @@ import NextLink from 'next/link';
 import { useDispatch } from 'react-redux';
 import {
   FavoriteBorder,
-  HomeMaxOutlined,
-  HomeOutlined,
   LaptopOutlined,
   LogoutOutlined,
   ShoppingCartOutlined,
 } from '@mui/icons-material';
 import { useCartState, useUserInfoState, useWishList } from '../../store/Store';
-import { setLogout } from '../../store/actions/mainAction';
+import { setLogout } from '../../store/actions';
 import LoginModalToggle from './LoginModalToggle';
 
 // ------------------
@@ -178,15 +175,15 @@ export default function ResponsiveAppBar() {
   };
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [leftAnchorEl, setLeftAnchorEl] = React.useState<null | HTMLElement>(
-    null
-  );
+  // const [leftAnchorEl, setLeftAnchorEl] = React.useState<null | HTMLElement>(
+  //   null
+  // );
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
 
   const isMenuOpen = Boolean(anchorEl);
-  const isLeftMenuOpen = Boolean(leftAnchorEl);
+  // const isLeftMenuOpen = Boolean(leftAnchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -206,12 +203,12 @@ export default function ResponsiveAppBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
   // -----------
-  const handleLeftMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setLeftAnchorEl(event.currentTarget);
-  };
-  const handleLeftMenuClose = () => {
-    setLeftAnchorEl(null);
-  };
+  // const handleLeftMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+  //   setLeftAnchorEl(event.currentTarget);
+  // };
+  // const handleLeftMenuClose = () => {
+  //   setLeftAnchorEl(null);
+  // };
 
   // ------------------------------
   const menuId = 'primary-search-account-menu';
@@ -244,35 +241,35 @@ export default function ResponsiveAppBar() {
     </Menu>
   );
   // -----------------------------------------
-  const leftMenuId = 'left-mobile-menu';
-  const leftRenderMenu = (
-    <Menu
-      anchorEl={leftAnchorEl}
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'left',
-      }}
-      id={leftMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'left',
-      }}
-      open={isLeftMenuOpen}
-      onClose={handleLeftMenuClose}
-    >
-      <MenuItem onClick={handleLeftMenuClose}>
-        <NextLink href="/content">
-          <a>Content</a>
-        </NextLink>
-      </MenuItem>
-      <MenuItem onClick={handleLeftMenuClose}>
-        <NextLink href="/contactUs">
-          <a>Contact Us</a>
-        </NextLink>
-      </MenuItem>
-    </Menu>
-  );
+  // const leftMenuId = 'left-mobile-menu';
+  // const leftRenderMenu = (
+  //   <Menu
+  //     anchorEl={leftAnchorEl}
+  //     anchorOrigin={{
+  //       vertical: 'bottom',
+  //       horizontal: 'left',
+  //     }}
+  //     id={leftMenuId}
+  //     keepMounted
+  //     transformOrigin={{
+  //       vertical: 'top',
+  //       horizontal: 'left',
+  //     }}
+  //     open={isLeftMenuOpen}
+  //     onClose={handleLeftMenuClose}
+  //   >
+  //     <MenuItem onClick={handleLeftMenuClose}>
+  //       <NextLink href="/content">
+  //         <a>Content</a>
+  //       </NextLink>
+  //     </MenuItem>
+  //     <MenuItem onClick={handleLeftMenuClose}>
+  //       <NextLink href="/contactUs">
+  //         <a>Contact Us</a>
+  //       </NextLink>
+  //     </MenuItem>
+  //   </Menu>
+  // );
   // ----------------------------
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (

@@ -14,15 +14,15 @@ import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 import { Product } from '../../common/types/@appTypes';
-import Reviews from '../../modules/productPage/reviews';
 import {
   addItemToCart,
   addProductToWishList,
-} from '../../common/store/actions/mainAction';
+} from '../../common/store/actions';
 import { useCartState, useWishList } from '../../common/store/Store';
 import fetchData from '../../common/utils/hooks/fetchData';
 import HoverRating from '../../modules/productPage/Rating';
 import ProductsList from '../../common/components/productList/ProductsList';
+import Reviews from '../../modules/productPage/reviews';
 
 type Props = { product: Product };
 
@@ -211,16 +211,14 @@ const ProductDetails = ({ product }: Props) => {
         <Divider sx={{ mb: 2 }} />
 
         <Grid container sx={{ mt: 2, display: 'flex', gap: 18 }}>
-          <Grid item>
-            {' '}
+          <Grid item md={12}>
             <Typography variant="h5" sx={{ mb: 2 }}>
               Reviews
             </Typography>
-            <Reviews review={product.review} />
+            <Reviews reviews={product.review} />
           </Grid>
-          <Grid item>
+          <Grid item md={12}>
             <Typography variant="h5" sx={{ mb: 2 }}>
-              {' '}
               You May Also Like ?
             </Typography>
             <ProductsList products={[product, product, product]} />

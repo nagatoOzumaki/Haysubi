@@ -1,6 +1,6 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { addFilter } from '../../../common/store/actions/mainAction';
+import { addFilter } from '../../../common/store/actions';
 import { useFilter } from '../../../common/store/Store';
 
 // const ITEM_HEIGHT = 48;

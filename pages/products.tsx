@@ -12,7 +12,7 @@ import { useProductsState } from '../common/store/Store';
 import {
   addProductsToStore,
   clearProductsToStore,
-} from '../common/store/actions/mainAction';
+} from '../common/store/actions';
 
 type Props = {
   products: Products;

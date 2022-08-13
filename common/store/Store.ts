@@ -17,6 +17,7 @@ export const useDarkModeState = () => useSelector((state:State) => state.darkMod
 export const useCartState = () => useSelector((state :State) => state.cart);
 export const useUserInfoState = () => useSelector((state: State) => state.userInfo);
 export const useWishList=()=>useSelector((state:State)=>state.wishList)
+export const useDrawerState=()=>useSelector((state:State)=>state.isDrawerOpen)
 // export const UpdateStore:Dispatch<Action>=(action)=>{
 //   // eslint-disable-next-line react-hooks/rules-of-hooks
 //   if(typeof window!=='undefined') useDispatch()(action)

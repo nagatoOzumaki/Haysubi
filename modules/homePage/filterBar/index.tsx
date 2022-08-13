@@ -1,7 +1,7 @@
 import { Button, Grid } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
-import { addProductsToStore } from '../../../common/store/actions/mainAction';
+import { addProductsToStore } from '../../../common/store/actions';
 import { useFilter } from '../../../common/store/Store';
 import { Products } from '../../../common/types/@appTypes';
 import fetchData from '../../../common/utils/hooks/fetchData';

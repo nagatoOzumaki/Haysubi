@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { ActionCreator } from "redux";
+import { ThunkAction } from "redux-thunk";
 
 /* eslint-disable no-undef */
 export type ChildrenProps = {
@@ -40,6 +43,8 @@ export type UserInfo= {
 } | null
 export interface State{ 
   products:Products;
+  currentProduct:Product;
+  isDrawerOpen:boolean;
   darkMode:boolean;
   cart: Cart;
   wishList:Products
@@ -67,7 +72,7 @@ export type FilterElement='cpu'|'ram'|'brand'|'model'|'gpu'|'storage'|'screen'
 
 
 
-
+export type AppThunk = ActionCreator<ThunkAction<void, State, null, Action>>;
 
 
 

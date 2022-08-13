@@ -1,13 +1,34 @@
-import { Grid, Typography } from '@mui/material';
+import {
+  Avatar,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from '@mui/material';
+import { UserInfo } from '../../../common/types/@appTypes';
 
-function Post({ postText }: { postText: string }) {
+function Post({ user, review }: { user: UserInfo; review: string }) {
   return (
-    <Grid container sx={{ p: 2 }}>
-      <Grid item>
-        <Typography variant="body1">{postText}</Typography>
-      </Grid>
-      <Grid item></Grid>
-    </Grid>
+    <ListItem alignItems="flex-start">
+      <ListItemAvatar>
+        <Avatar alt={user?.name} src="/static/images/avatar/3.jpg" />
+      </ListItemAvatar>
+      <ListItemText
+        primary={user?.username}
+        secondary={
+          <>
+            <Typography
+              sx={{ display: 'inline' }}
+              component="span"
+              variant="body2"
+              color="text.primary"
+            >
+              {review}
+            </Typography>
+          </>
+        }
+      />
+    </ListItem>
   );
 }
 

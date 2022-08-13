@@ -1,82 +1,75 @@
-import * as React from 'react';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
 
-type Props = { review: string[] };
+import { Button, Grid, TextField, Typography } from '@mui/material';
+import { FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { UserInfo } from '../../../common/types/@appTypes';
+import Post from './Post';
+import HoverRating from '../Rating';
 
-const FeedBack: React.FC<Props> = ({ review }) => (
-  <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-    <ListItem alignItems="flex-start">
-      <ListItemAvatar>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-      </ListItemAvatar>
-      <ListItemText
-        primary="Brunch this weekend?"
-        secondary={
-          <React.Fragment>
-            <Typography
-              sx={{ display: 'inline' }}
-              component="span"
-              variant="body2"
-              color="text.primary"
-            >
-              Ali Connors
-            </Typography>
-            {review[0]}
-          </React.Fragment>
-        }
-      />
-    </ListItem>
-    <Divider variant="inset" component="li" />
-    <ListItem alignItems="flex-start">
-      <ListItemAvatar>
-        <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-      </ListItemAvatar>
-      <ListItemText
-        primary="Summer BBQ"
-        secondary={
-          <React.Fragment>
-            <Typography
-              sx={{ display: 'inline' }}
-              component="span"
-              variant="body2"
-              color="text.primary"
-            >
-              to Scott, Alex, Jennifer
-            </Typography>
-            {review[1]}
-          </React.Fragment>
-        }
-      />
-    </ListItem>
-    <Divider variant="inset" component="li" />
-    <ListItem alignItems="flex-start">
-      <ListItemAvatar>
-        <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-      </ListItemAvatar>
-      <ListItemText
-        primary="Oui Oui"
-        secondary={
-          <React.Fragment>
-            <Typography
-              sx={{ display: 'inline' }}
-              component="span"
-              variant="body2"
-              color="text.primary"
-            >
-              Sandra Adams
-            </Typography>
-            {review[2]}
-          </React.Fragment>
-        }
-      />
-    </ListItem>
-  </List>
-);
+type Props = { reviews: string[] };
 
-export default FeedBack;
+const Reviews: FC<Props> = ({ reviews }) => {
+  const dispatch = useDispatch();
+
+  // const handleAddReview = () => {
+  //   dispatch(addReview({ review }));
+  // };
+
+  return (
+    <Grid container spacing={4}>
+      <Grid item sx={{ mr: 3 }}>
+        <form>
+          <Typography variant="h6" sx={{ mb: 2 }}>
+            Give your feedback
+          </Typography>
+
+          <HoverRating />
+
+          <TextField fullWidth sx={{ mb: 2, mt: 2, wordWrap: 'wrap' }} />
+          <Button type="submit" variant="outlined">
+            Submit
+          </Button>
+        </form>
+      </Grid>
+      <Grid item>
+        <List
+          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+        >
+          {reviews.map(review => (
+            <>
+              <Post
+                review={review}
+                user={{ name: 'riad', username: 'riad@gmail.com' } as UserInfo}
+              />
+              <Divider variant="inset" component="li" sx={{ mb: 2, mt: 2 }} />
+            </>
+          ))}
+        </List>
+      </Grid>
+    </Grid>
+  );
+};
+
+export default Reviews;
+
+// import InputEmoji from 'react-input-emoji'
+
+// export default function Example () {
+//   const [ text, setText ] = useState('')
+
+//   function handleOnEnter (text) {
+//     console.log('enter', text)
+//   }
+
+//   return (
+//     <InputEmoji
+//       value={text}
+//       onChange={setText}
+//       cleanOnEnter
+//       onEnter={handleOnEnter}
+//       placeholder="Type a message"
+//     />
+//   )
+// }
