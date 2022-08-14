@@ -17,12 +17,14 @@ import { Product } from '../../common/types/@appTypes';
 import {
   addItemToCart,
   addProductToWishList,
+  setCurrentProduct,
 } from '../../common/store/actions';
 import { useCartState, useWishList } from '../../common/store/Store';
 import fetchData from '../../common/utils/hooks/fetchData';
 import HoverRating from '../../modules/productPage/Rating';
 import ProductsList from '../../common/components/productList/ProductsList';
 import Reviews from '../../modules/productPage/reviews';
+import SuggestionsSilder from '../../modules/productPage/slider/suggestionsSlider';
 
 type Props = { product: Product };
 
@@ -51,6 +53,9 @@ const ProductDetails = ({ product }: Props) => {
     setInWishList(true);
   };
   const imageLoader = (src: string) => src;
+  useEffect(() => {
+    dispatch(setCurrentProduct(product));
+  }, [dispatch, product]);
   useEffect(() => {
     let isExistInCart = false;
     // eslint-disable-next-line array-callback-return
@@ -143,12 +148,12 @@ const ProductDetails = ({ product }: Props) => {
             </Typography>
 
             <Box className="prod-price" sx={{ display: 'flex', gap: 4, pt: 3 }}>
-              <Typography component="h1">{product.price}</Typography>
+              <Typography component="h1"> {product.price} DH</Typography>
               <Typography
                 component="h1"
                 sx={{ textDecoration: 'line-through' }}
               >
-                ₹{increasedPrice(product.price)}
+                {increasedPrice(product.price)} DH
               </Typography>
               <Typography component="h1">( 25% OFF )</Typography>
             </Box>
@@ -217,11 +222,11 @@ const ProductDetails = ({ product }: Props) => {
             </Typography>
             <Reviews reviews={product.review} />
           </Grid>
-          <Grid item md={12}>
+          <Grid item md={12} mb={4}>
             <Typography variant="h5" sx={{ mb: 2 }}>
               You May Also Like ?
             </Typography>
-            <ProductsList products={[product, product, product]} />
+            <SuggestionsSilder products={[product, product, product]} />
           </Grid>
         </Grid>
       </Container>

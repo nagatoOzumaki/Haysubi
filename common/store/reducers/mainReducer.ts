@@ -152,6 +152,36 @@ const mainReducer = (state: State = InitialState, action: Action) => {
 
 
     // ------------------------------
+    case appActions.ADD_REVIEW:
+      {
+        const {product}=action.payload;
+        const {newReview}=action.payload
+        
+        const newProducts=state.products.filter(_product=>_product.id!==product.id)
+        const newReviews=[...product.review,newReview]
+        const updatedProduct:Product={...product,review:newReviews}
+        return {...state,products:[...newProducts,updatedProduct]}
+      }
+      case appActions.ADD_RATING:
+      {
+        const {product,newRating}=action.payload;
+        const newProducts=state.products.filter(_product=>_product.id!==product.id)
+        const updatedProduct={...product,rating:newRating}
+        return {...state,products:[...newProducts,updatedProduct]}
+      }
+
+
+    // ------------------------------
+    case appActions.SET_CURRENT_PRODUCT:
+      {
+        return {...state,currentProduct:action.payload}
+      }
+      case appActions.CLEAR_CURRENT_PRODUCT:
+      {
+        return {...state,currentProduct:{} as Product}
+      }
+// ------------
+
     default:
       return state;
   }

@@ -43,7 +43,7 @@ export type UserInfo= {
 } | null
 export interface State{ 
   products:Products;
-  currentProduct:Product;
+  currentProduct:Product,
   isDrawerOpen:boolean;
   darkMode:boolean;
   cart: Cart;

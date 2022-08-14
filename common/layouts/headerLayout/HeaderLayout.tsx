@@ -19,7 +19,7 @@ const HeaderLayout: FC<ChildrenProps> = ({ children }) => {
       <Fab
         onClick={handleOpenDrawer}
         sx={{
-          position: 'absolute',
+          position: 'fixed',
           ml: 4,
           mt: 40,
         }}
