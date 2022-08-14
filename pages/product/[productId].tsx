@@ -22,7 +22,6 @@ import {
 import { useCartState, useWishList } from '../../common/store/Store';
 import fetchData from '../../common/utils/hooks/fetchData';
 import HoverRating from '../../modules/productPage/Rating';
-import ProductsList from '../../common/components/productList/ProductsList';
 import Reviews from '../../modules/productPage/reviews';
 import SuggestionsSilder from '../../modules/productPage/slider/suggestionsSlider';
 
@@ -226,7 +225,7 @@ const ProductDetails = ({ product }: Props) => {
             <Typography variant="h5" sx={{ mb: 2 }}>
               You May Also Like ?
             </Typography>
-            <SuggestionsSilder products={[product, product, product]} />
+            <SuggestionsSilder />
           </Grid>
         </Grid>
       </Container>

@@ -10,18 +10,15 @@ const breakPoints = [
   { width: 1200, itemsToShow: 4 },
 ];
 
-export default function SuggestionsSilder() {
+const SuggestionsSilder = () => {
   const [items, setItems] = useState(products);
 
   return (
-    <div className="App">
-      <div className="carousel-wrapper">
-        <Carousel enableAutoPlay autoPlaySpeed={3500} breakPoints={breakPoints}>
-          {items.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </Carousel>
-      </div>
-    </div>
+    <Carousel enableAutoPlay autoPlaySpeed={3500} breakPoints={breakPoints}>
+      {items.map(product => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </Carousel>
   );
-}
+};
+export default SuggestionsSilder;
