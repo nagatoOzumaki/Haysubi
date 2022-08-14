@@ -14,7 +14,12 @@ const SuggestionsSilder = () => {
   const [items, setItems] = useState(products);
 
   return (
-    <Carousel enableAutoPlay autoPlaySpeed={3500} breakPoints={breakPoints}>
+    <Carousel
+      isRTL
+      enableAutoPlay
+      autoPlaySpeed={3500}
+      breakPoints={breakPoints}
+    >
       {items.map(product => (
         <ProductCard key={product.id} product={product} />
       ))}
