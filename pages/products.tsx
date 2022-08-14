@@ -38,7 +38,7 @@ const Home: NextPage<Props> = ({ products }) => {
     }
 
     return () => dispatch(clearProductsToStore());
-  }, [profil, dispatch]);
+  }, [profil, dispatch, products]);
 
   return (
     <>

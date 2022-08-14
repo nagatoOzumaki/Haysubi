@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Carousel from 'react-elastic-carousel';
+import ReactElasticCarousel from 'react-elastic-carousel';
 import ProductCard from '../../../common/components/productList/ProductCard';
 import products from '../../../data/Data';
 
@@ -11,10 +11,12 @@ const breakPoints = [
 ];
 
 const SuggestionsSilder = () => {
-  const [items, setItems] = useState(products);
+  const [items] = useState(products);
 
   return (
-    <Carousel
+    // /* tslint:disable-next-line */
+    // @ts-ignore
+    <ReactElasticCarousel
       isRTL
       enableAutoPlay
       autoPlaySpeed={3500}
@@ -23,7 +25,7 @@ const SuggestionsSilder = () => {
       {items.map(product => (
         <ProductCard key={product.id} product={product} />
       ))}
-    </Carousel>
+    </ReactElasticCarousel>
   );
 };
 export default SuggestionsSilder;

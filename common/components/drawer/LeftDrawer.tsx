@@ -1,7 +1,7 @@
 import { Person } from '@mui/icons-material';
 import {
   Box,
-  createMuiTheme,
+  createTheme,
   Drawer,
   SwipeableDrawer,
   ThemeProvider,
@@ -15,7 +15,7 @@ import { useDrawerState, useUserInfoState } from '../../store/Store';
 import LoginModalToggle from '../appBar/LoginModalToggle';
 import DrawerList from './DrawerList';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#000',

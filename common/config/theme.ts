@@ -9,7 +9,7 @@ export const lightTheme = createTheme({
     },
     secondary: {
       main: colors.secondary.main,
-    },
+    },      
   },
 });
 

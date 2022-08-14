@@ -24,6 +24,7 @@ import fetchData from '../../common/utils/hooks/fetchData';
 import HoverRating from '../../modules/productPage/Rating';
 import Reviews from '../../modules/productPage/reviews';
 import SuggestionsSilder from '../../modules/productPage/slider/suggestionsSlider';
+import { ButtonColors } from '../../common/config/colors';
 
 type Props = { product: Product };
 
@@ -36,6 +37,8 @@ const ProductDetails = ({ product }: Props) => {
   const [currentMainImage, setCurrentMainImage] = useState(product.image[0]);
 
   const dispatch = useDispatch()<any>;
+
+  const handleBuyProduct = () => null;
 
   const handleAddItemToCart = () => {
     dispatch(addItemToCart({ ...product, quantity: 1 }));
@@ -191,6 +194,24 @@ const ProductDetails = ({ product }: Props) => {
                 ) : (
                   <Button variant="contained">Already In Wishlist</Button>
                 )}
+                <Button
+                  sx={{
+                    ml: 20,
+                    color: '#000',
+                    backgroundColor: ButtonColors.buyProductButton,
+                    p: 1,
+                    pl: 7,
+                    pr: 7,
+                    fontWeight: 'bold',
+                    fontSize: 15,
+                    '&:hover': { color: '#000', backgroundColor: 'green' },
+                    borderRadius: 0,
+                  }}
+                  variant="contained"
+                  onClick={handleBuyProduct}
+                >
+                  Buy It
+                </Button>
               </ButtonGroup>
             </div>
             <Divider />
