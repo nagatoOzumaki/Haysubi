@@ -55,6 +55,8 @@ function Index() {
                 <Paper
                   elevation={3}
                   sx={{
+                    width: 300,
+                    height: 240,
                     p: 11,
                     display: 'flex',
                     justifyContent: 'center',
@@ -64,7 +66,7 @@ function Index() {
                     fontSize: 20,
                     '&:hover': {
                       m: -1,
-                      p: 12,
+                      p: 11,
                       cursor: 'pointer',
                     },
                   }}
@@ -104,7 +106,7 @@ function Index() {
                 }}
               >
                 <ScreenSearchDesktopOutlinedIcon sx={{ mr: 1 }} />
-                Decouvrire nos produits
+                Explore Our Products
               </Fab>
             </a>
           </NextLink>
