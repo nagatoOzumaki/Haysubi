@@ -3,19 +3,19 @@ import { TextField, Grid, Typography } from '@mui/material';
 import {
   PaymentInfoActions,
   PaymentInfoState,
-} from '../store/reducers/payementReducer';
+} from '../../../common/store/reducers/payementReducer';
 
 type PropsType = {
   dispatch: any;
   paymentInfo: PaymentInfoState;
 };
 
-const DeliveryMethod: FC<PropsType> = ({ dispatch, paymentInfo }) => {
+const PayementMethod: FC<PropsType> = ({ dispatch, paymentInfo }) => {
   console.log(3);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Typography variant="h6">Delivery information</Typography>
+        <Typography variant="h6">Paiement Method information</Typography>
       </Grid>
       <Grid item xs={12} sm={4}>
         <TextField
@@ -102,4 +102,4 @@ const DeliveryMethod: FC<PropsType> = ({ dispatch, paymentInfo }) => {
   );
 };
 
-export default DeliveryMethod;
+export default PayementMethod;

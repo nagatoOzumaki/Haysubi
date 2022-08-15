@@ -244,6 +244,7 @@ const ProductDetails = ({ product }: Props) => {
             </Typography>
             <Reviews reviews={product.review} />
           </Grid>
+          <a href="#reviews" />
           <Grid item md={12} mb={4}>
             <Typography variant="h5" sx={{ mb: 2 }}>
               You May Also Like ?

@@ -3,7 +3,7 @@ import { TextField, Grid, Typography } from '@mui/material';
 import {
   PaymentInfoActions,
   PaymentInfoState,
-} from '../store/reducers/payementReducer';
+} from '../../../common/store/reducers/payementReducer';
 
 type PropsType = {
   dispatch: any;

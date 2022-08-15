@@ -1,13 +1,13 @@
 import { Button, ButtonGroup, Container, Box, Typography } from '@mui/material';
 import { useReducer } from 'react';
-import paymentReducer, {
-  PaymentInfoActions,
-} from '../store/reducers/payementReducer';
 import DeliveryMethod from './DeliveryMethod';
 import PaimentSuccess from './PaimentSuccess';
 import PayementMethod from './PayementMethod';
 import PersonalInfo from './PersonalInfo';
-import PaimentStepper from './Stepper';
+import PaimentStepper from './components/Stepper';
+import paymentReducer, {
+  PaymentInfoActions,
+} from '../../../common/store/reducers/payementReducer';
 
 const PayementForm = () => {
   const InitialState = {
