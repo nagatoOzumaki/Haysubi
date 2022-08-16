@@ -17,6 +17,15 @@ type ListType = ListItemType[];
 
 const ListContent: ListType = [
   {
+    title: 'categories',
+    subTitles: [
+      ['/', 'laptop'],
+      ['/', 'bags'],
+      ['/', 'mouse'],
+      ['/', 'router'],
+    ],
+  },
+  {
     title: 'services',
     subTitles: [
       ['/', 'maintenance'],
@@ -29,15 +38,6 @@ const ListContent: ListType = [
       ['/', 'how to ...'],
       ['/', 'how to '],
       ['/', 'what is'],
-    ],
-  },
-  {
-    title: 'categories',
-    subTitles: [
-      ['/', 'laptop'],
-      ['/', 'bags'],
-      ['/', 'mouse'],
-      ['/', 'router'],
     ],
   },
 ];

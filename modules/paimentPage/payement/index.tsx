@@ -2,7 +2,6 @@ import { Container, Box, Typography } from '@mui/material';
 import { useReducer } from 'react';
 import DeliveryMethodStep from './DeliveryMethodStep';
 import FinalStep from './FinalStep';
-
 import paymentReducer from '../../../common/store/reducers/payementReducer';
 import PaimentStepper from './components/Stepper';
 import PersonalInfoStep from './PersonalInfoStep';
