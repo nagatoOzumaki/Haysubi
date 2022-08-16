@@ -15,7 +15,7 @@ const HeaderLayout: FC<ChildrenProps> = ({ children }) => {
   };
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div>
       <Fab
         onClick={handleOpenDrawer}
         sx={{
@@ -32,7 +32,7 @@ const HeaderLayout: FC<ChildrenProps> = ({ children }) => {
 
       <Grid container direction="column" spacing={1}>
         <LeftDrawer />
-        <Grid item component="div" sx={{ position: 'absolute', width: '100%' }}>
+        <Grid item component="div">
           <ResponsiveAppBar />
         </Grid>
         <Grid item component="div">

@@ -1,9 +1,9 @@
 import { Container, Box, Typography } from '@mui/material';
 import { useReducer } from 'react';
-import DeliveryMethod from './DeliveryMethodStep';
-import PaimentSuccess from './FinalStep';
-import PayementMethod from './PayementStep';
-import PersonalInfo from './PersonalInfoStep';
+import DeliveryMethodStep from './DeliveryMethodStep';
+import FinalStep from './FinalStep';
+import PayementStep from './PayementStep';
+import PersonalInfoStep from './PersonalInfoStep';
 import PaimentStepper from './components/Stepper';
 import paymentReducer from '../../../common/store/reducers/payementReducer';
 
@@ -41,15 +41,15 @@ const PayementForm = () => {
       ) : null}
       <Box sx={{ p: 12, height: 400, pb: 30 }}>
         {step === 1 ? (
-          <PersonalInfo dispatch={dispatch} paymentInfo={paymentInfo} />
+          <PersonalInfoStep dispatch={dispatch} paymentInfo={paymentInfo} />
         ) : null}
         {step === 2 ? (
-          <DeliveryMethod dispatch={dispatch} paymentInfo={paymentInfo} />
+          <DeliveryMethodStep dispatch={dispatch} paymentInfo={paymentInfo} />
         ) : null}
         {step === 3 ? (
-          <PayementMethod dispatch={dispatch} paymentInfo={paymentInfo} />
+          <PayementStep dispatch={dispatch} paymentInfo={paymentInfo} />
         ) : null}
-        {step === 4 ? <PaimentSuccess /> : null}
+        {step === 4 ? <FinalStep /> : null}
       </Box>
     </Container>
   );
