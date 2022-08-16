@@ -1,10 +1,13 @@
 export type PaymentInfoState = {
+  
   step: number;
   firstname: string;
   lastname: string;
   email: string;
   address: { city: string; zipCode: number,street:string,country:string };
   paymentMethod: string;
+  isNextButtonEnabled:boolean
+
 };
 export type PaymentInfoAction = {
   type: string;
@@ -21,6 +24,8 @@ export const PaymentInfoActions = {
   SET_PAYMENT_METHOD: 'SET_PAYMENT_METHOD',
   NEXT_STEP: 'NEXT_STEP',
   PREVIOUS_STEP: 'PREVIOUS_STEP',
+  ENABLE_NEXT_BUTTON:'ENABLE_NEXT_BUTTON',
+  DISABLE_NEXT_BUTTON:'DISABLE_NEXT_BUTTON'
 };
 
 const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
@@ -56,6 +61,14 @@ const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
         return { ...state, step: state.step - 1 };
       }
       return state;
+    }
+    case PaymentInfoActions.ENABLE_NEXT_BUTTON: {
+      return { ...state, isNextButtonEnabled: true };
+    }
+    case PaymentInfoActions.DISABLE_NEXT_BUTTON: {
+    
+        return { ...state, isNextButtonEnabled: false };
+      
     }
     default:
       return state;

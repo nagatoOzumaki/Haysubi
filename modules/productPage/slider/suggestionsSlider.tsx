@@ -14,7 +14,6 @@ const SuggestionsSilder = () => {
   const [items] = useState(products);
 
   return (
-    // /* tslint:disable-next-line */
     // @ts-ignore
     <ReactElasticCarousel
       isRTL

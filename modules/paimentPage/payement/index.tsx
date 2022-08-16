@@ -1,13 +1,11 @@
-import { Button, ButtonGroup, Container, Box, Typography } from '@mui/material';
+import { Container, Box, Typography } from '@mui/material';
 import { useReducer } from 'react';
-import DeliveryMethod from './DeliveryMethod';
-import PaimentSuccess from './PaimentSuccess';
-import PayementMethod from './PayementMethod';
-import PersonalInfo from './PersonalInfo';
+import DeliveryMethod from './DeliveryMethodStep';
+import PaimentSuccess from './FinalStep';
+import PayementMethod from './PayementStep';
+import PersonalInfo from './PersonalInfoStep';
 import PaimentStepper from './components/Stepper';
-import paymentReducer, {
-  PaymentInfoActions,
-} from '../../../common/store/reducers/payementReducer';
+import paymentReducer from '../../../common/store/reducers/payementReducer';
 
 const PayementForm = () => {
   const InitialState = {
@@ -17,19 +15,18 @@ const PayementForm = () => {
     email: '',
     address: { city: '', zipCode: 0, street: '', country: '' },
     paymentMethod: '',
+    isNextButtonEnabled: false,
   };
   const [paymentInfo, dispatch] = useReducer(paymentReducer, InitialState);
   const { step } = paymentInfo;
-  const nextStep = () => dispatch({ type: PaymentInfoActions.NEXT_STEP });
-  const previousStep = () =>
-    dispatch({ type: PaymentInfoActions.PREVIOUS_STEP });
+
   return (
     <Container
       sx={{
         border: '1px solid #000',
         p: 7,
         mt: 5,
-        mb: 4,
+        mb: 220,
         position: 'relative',
         height: 600,
       }}
@@ -53,28 +50,6 @@ const PayementForm = () => {
           <PayementMethod dispatch={dispatch} paymentInfo={paymentInfo} />
         ) : null}
         {step === 4 ? <PaimentSuccess /> : null}
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          position: 'absolute',
-          bottom: 50,
-          right: 50,
-        }}
-      >
-        <ButtonGroup>
-          <Button sx={{ mr: 2 }} variant="outlined" onClick={previousStep}>
-            Back
-          </Button>
-          <Button
-            variant="contained"
-            sx={{ backgroundColor: 'green' }}
-            onClick={nextStep}
-          >
-            Next
-          </Button>
-        </ButtonGroup>
       </Box>
     </Container>
   );

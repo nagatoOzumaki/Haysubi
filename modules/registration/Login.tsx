@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { setLogin } from '../../common/store/actions';
 
-import { MyCheckbox, MyTextInput } from './components/Inputs';
+import { MyCheckbox, MyTextInput } from '../../common/components/Inputs';
 
 const Login: FC = () => {
   const dispatch = useDispatch()<any>;

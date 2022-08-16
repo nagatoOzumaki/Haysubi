@@ -2,7 +2,7 @@ import { Button, Grid, Box } from '@mui/material';
 import { Formik, Form } from 'formik';
 import { FC } from 'react';
 import * as Yup from 'yup';
-import { MyCheckbox, MyTextInput } from './components/Inputs';
+import { MyCheckbox, MyTextInput } from '../../common/components/Inputs';
 
 // And now we can use these
 const Register: FC = () => (

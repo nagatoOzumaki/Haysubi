@@ -393,7 +393,7 @@ export default function ResponsiveAppBar() {
                 component="div"
                 sx={{ cursor: 'pointer', mr: 1, ml: 1.3 }}
               >
-                Haysubi
+                Hysubi
               </Typography>
             </a>
           </NextLink>
