@@ -2,7 +2,7 @@ const products = [
   {
     categories: 'phone',
     id: '1',
-    name: 'APPLE iPhone 12 Pro (Gold, 128 GB)',
+    title: 'APPLE iPhone 12 Pro (Gold, 128 GB)',
     rating: '4.5',
     description:
       'A14 Bionic rockets past every other smartphone chip. The Pro camera system takes low-light photography to the next level — with an even bigger jump on iPhone 12 Pro Max. And Ceramic Shield delivers four times better drop performance. Let’s see what this thing can do.',
@@ -26,7 +26,7 @@ const products = [
   {
     categories: 'phone',
     id: '2',
-    name: 'realme Narzo 30 5G (Racing Blue, 128 GB)',
+    title: 'realme Narzo 30 5G (Racing Blue, 128 GB)',
     rating: '4.5',
     description:
       'High-speed internet, smooth gaming, and stunning photos, the realme Narzo Pro 5G is a power-packed smartphone for impressive performance. This smartphone features the 5G Technology for high-speed web browsing, the Dimensity 700 5G Processor for smooth gaming, and a 5000 mAh Massive Battery for hours of uninterrupted performance.',
@@ -64,7 +64,7 @@ const products = [
   {
     categories: 'phone',
     id: '3',
-    name: 'POCO M3 (Power Black, 64 GB)',
+    title: 'POCO M3 (Power Black, 64 GB)',
     rating: '4.5',
     description:
       'High-speed internet, smooth gaming, and stunning photos, the realme Narzo Pro 5G is a power-packed smartphone for impressive performance. This smartphone features the 5G Technology for high-speed web browsing, the Dimensity 700 5G Processor for smooth gaming, and a 5000 mAh Massive Battery for hours of uninterrupted performance.',
@@ -107,7 +107,7 @@ const products = [
   {
     categories: 'phone',
     id: '4',
-    name: 'MOTOROLA G60 (Dynamic Gray, 128 GB)',
+    title: 'MOTOROLA G60 (Dynamic Gray, 128 GB)',
     rating: '4.5',
     description:
       'The moto g60 enables you to capture spectacular selfies wherever you are, thanks to its 32 MP selfie camera, the Quad Pixel technology, and LED flash. Thanks to the smooth 17.2 cm (6.8) HDR10 Display, you can enjoy a lifelike experience while streaming content, gaming, and more. And, thanks to the powerful 6000 mAh battery, you can enjoy using your mobile phone for all that you need, without any low-battery interruptions for a long time.',
@@ -141,7 +141,7 @@ const products = [
   {
     categories: 'phone',
     id: '5',
-    name: 'Mi 11X (Lunar White, 128 GB)',
+    title: 'Mi 11X (Lunar White, 128 GB)',
     rating: '4.2',
     description:
       "The Mi 11X from Xiaomi is the most affordable of three new models in the Mi 11 family. It's priced a bit lower than the Mi 10T but offers plenty of updated features, most notably its Qualcomm Snapdragon 870 SoC which is only one step below the current flagship level. ",
@@ -160,7 +160,7 @@ const products = [
   },
   {
     categories: 'phone',
-    name: 'OPPO Reno6 Pro 5G (Aurora, 256 GB)',
+    title: 'OPPO Reno6 Pro 5G (Aurora, 256 GB)',
     id: '6',
     rating: '4.5',
     description:
@@ -190,7 +190,7 @@ const products = [
   {
     categories: 'phone',
     id: '7',
-    name: 'realme 8 Pro (Infinite Black, 128 GB)',
+    title: 'realme 8 Pro (Infinite Black, 128 GB)',
     rating: '4.2',
     description:
       'The realme 8 Pro features a Tilt-shift mode and the Tilt-shift Time Lapse video so that you can add a creative perspective to the content that you create. Thanks to the Super AMOLED Display, your favourite movies, games, and more are more bright and vivid on screen. And, thanks to the 4500 mAh battery, you can stream content, game, and more without worrying about recharging your phone.',
@@ -210,7 +210,7 @@ const products = [
   {
     categories: 'phone',
     id: '8',
-    name: 'Google Pixel 4a (Just Black, 128 GB)',
+    title: 'Google Pixel 4a (Just Black, 128 GB)',
     rating: '4.1',
     description:
       'The Google Pixel 4a is more than just another smartphone for your tasks! Its HDR+ will help you take stunning photos. The Night Sight mode with astrophotography is just what you need to click those stunning images of the star-lit skies you have been meaning to capture. This phone also features apps such as the Pixel Recorder app that transcribes speech automatically.',
@@ -238,7 +238,7 @@ const products = [
   {
     categories: 'phone',
     id: '9',
-    name: 'SAMSUNG Galaxy A52 (Awesome Blue, 128 GB)',
+    title: 'SAMSUNG Galaxy A52 (Awesome Blue, 128 GB)',
     rating: '4.3',
     description:
       'Bring home the Samsung Galaxy A52 smartphone to enjoy viewing sharp visuals, click clear images, record stable videos, and do more. Its rear camera setup, with OIS, helps you capture clear shots. While its 16.40 cm (6.5) FHD+ Super AMOLED display delivers vivid visuals, the Eye Comfort Shield ensures reduced blue light emissions, thereby preventing eye strain.',
@@ -259,7 +259,7 @@ const products = [
   {
     categories: 'phone',
     id: '10',
-    name: 'SAMSUNG Galaxy F12 (Celestial Black, 64 GB)',
+    title: 'SAMSUNG Galaxy F12 (Celestial Black, 64 GB)',
     rating: '4.5',
     description:
       'The Samsung Galaxy F12 features a stylish design and innovative features so that you can enjoy using the mobile phone for all that you need. Thanks to its 6000 mAh battery, you will have a blast using your phone for a long time while you stream content and much more. It provides surround sound with Dolby Atmos so that you can delve into a world of rich music. And, it’s equipped with features that ensure the protection of your mobile phone.',
@@ -278,7 +278,7 @@ const products = [
   {
     categories: 'Electronics',
     id: '11',
-    name: 'HP Chromebook 14a-na0002TU Laptop ',
+    title: 'HP Chromebook 14a-na0002TU Laptop ',
     rating: '4.5',
     description:
       'Celeron N4020/4GB/64GB SSD/Chrome OS/Integrated Graphics, Ceremic White, 35.6 cm (14 inch)',
@@ -301,7 +301,7 @@ const products = [
   {
     categories: 'Electronics',
     id: '12',
-    name: 'Canon EOS 3000D DSLR Camera 1 Camera Body, 18 - 55 mm Lens  (Black) ',
+    title: 'Canon EOS 3000D DSLR Camera 1 Camera Body, 18 - 55 mm Lens  (Black) ',
     rating: '4.3',
     description:
       'Self-Timer | Type C and Mini HDMI, |9 Auto Focus Points | 35x Optical Zoom., Effective Pixels: 18 MP APS-C CMOS sensor-which is 25 times larger than a typical Smartphone sensor., WiFi | Full HD | Video Recording at 1080 p on 30fps.',
@@ -324,7 +324,7 @@ const products = [
   {
     categories: 'Electronics',
     id: '13',
-    name: 'HP 27 inch Full HD LED Backlit IPS Panel Monitor (27m)  33000 mAh Power Bank  (Blue, Lithium-ion)',
+    title: 'HP 27 inch Full HD LED Backlit IPS Panel Monitor (27m)  33000 mAh Power Bank  (Blue, Lithium-ion)',
     rating: '4.2',
     description:
       '(Frameless, Response Time: 5 ms, 60 Hz Refresh Rate) N4020/4GB/64GB SSD/Chrome OS/Integrated Graphics, Ceremic White, 35.6 cm (14 inch)',
@@ -347,7 +347,7 @@ const products = [
   {
     categories: 'Electronics',
     id: '14',
-    name: 'Worricow Deep Bass Wireless Portable Bluetooth Mp3 Headphone MP3 Player ',
+    title: 'Worricow Deep Bass Wireless Portable Bluetooth Mp3 Headphone MP3 Player ',
     rating: '4.0',
     description:
       'WORRICOW Presents P-47 HEADPHONE:-With a combination of great sound, ergonomic design, and modern appeal the headphones are a great fit for anyone who wants to enjoy their tunes. Wear your headphones all day without discomfort. Alter the headband to fit perfectly and securely on your head.',
@@ -370,7 +370,7 @@ const products = [
   {
     categories: 'Electronics',
     id: '15',
-    name: 'realme Buds Wireless Bluetooth Headset  (Yellow, In the Ear) ',
+    title: 'realme Buds Wireless Bluetooth Headset  (Yellow, In the Ear) ',
     rating: '4.9',
     description: 'With Mic:Yes,Bluetooth version: 5 Wireless range: 10 m',
     price: '₹1,799',
@@ -391,7 +391,7 @@ const products = [
   {
     categories: 'Electronics',
     id: '16',
-    name: 'NLG-428-BLUE-BLU All Blue Boys Series Analog Watch - For Men ',
+    title: 'NLG-428-BLUE-BLU All Blue Boys Series Analog Watch - For Men ',
     rating: '3.9',
     description:
       'Celeron N4020/4GB/64GB SSD/Chrome OS/Integrated Graphics, Ceremic White, 35.6 cm (14 inch)',
@@ -413,7 +413,7 @@ const products = [
   {
     categories: 'Electronics',
     id: '17',
-    name: 'AGARO AG50 Movie Projector Video Projector Full HD  ',
+    title: 'AGARO AG50 Movie Projector Video Projector Full HD  ',
     rating: '4.7',
     description:
       '1280x720P Home Theater Projector,1080P Supported Compatible with for HDMI/USB Projector  (White)',
@@ -436,7 +436,7 @@ const products = [
   {
     categories: 'Electronics',
     id: '18',
-    name: 'Epson L3100 Multi-function Color Printer  (Black, Ink Tank) ',
+    title: 'Epson L3100 Multi-function Color Printer  (Black, Ink Tank) ',
     rating: '4.6',
     description:
       'Similar features as Epson L3110, Epson L3101 printer Printer Type - Ink Tank; Functionality - All-in-One (Print, Scan, Copy) , Scanner type - Flatbed; Printer Output',
@@ -458,7 +458,7 @@ const products = [
   {
     categories: 'fashion',
     id: '19',
-    name: 'Allen Solly',
+    title: 'Allen Solly',
     rating: '4.4',
     description:
       'Care Instructions: Wash with mild detergent, do not bleach, dry in shade Fit Type: regular fit 60% cotton and 40% polyester Regular fit ',
@@ -479,7 +479,7 @@ const products = [
   {
     categories: 'Sports',
     id: '20',
-    name: 'CEAT POPLAR WILLOW CRICKET BAT (No- 6) Poplar Willow Cricket Bat  (0.900 g) ',
+    title: 'CEAT POPLAR WILLOW CRICKET BAT (No- 6) Poplar Willow Cricket Bat  (0.900 g) ',
     rating: '3.6',
     description:
       'Advanced, Training, Beginner Playing Level Bat Grade: Grade 3 Sport Type: Cricket Weight Range 0.900 g',
@@ -502,7 +502,7 @@ const products = [
   {
     categories: 'Sports',
     id: '21',
-    name: 'JetFire Regular Wicket Keeping Gloves Combo With Inner Gloves(Men, Blue) Wicket Keeping Gloves  (Blue) ',
+    title: 'JetFire Regular Wicket Keeping Gloves Combo With Inner Gloves(Men, Blue) Wicket Keeping Gloves  (Blue) ',
     rating: '4.0',
     description:
       'Made from high quality PVC cuffs Rubber grip on the front face of the Glove Cloth lining in the cuffs Color May Vary Ideal for Beginners & Above',
@@ -525,7 +525,7 @@ const products = [
   {
     categories: 'Sports',
     id: '22',
-    name: 'NODENS Cricket Bat Grip, (Multicolour Pack of 6) Mesh Grip  (White, Pack of 6) ',
+    title: 'NODENS Cricket Bat Grip, (Multicolour Pack of 6) Mesh Grip  (White, Pack of 6) ',
     rating: '4.1',
     description:
       'The batsman in the game of cricket has an exceptionally challenging role to play as he is the one who takes the game forward for his team',
@@ -548,7 +548,7 @@ const products = [
   {
     categories: 'Sports',
     id: '23',
-    name: 'Aurion Cricket Bag Shoulder Straps Sports Cricket Kit Bag for 2 Bat Caves with 2 pockets  (Multicolor, Kit Bag)',
+    title: 'Aurion Cricket Bag Shoulder Straps Sports Cricket Kit Bag for 2 Bat Caves with 2 pockets  (Multicolor, Kit Bag)',
     rating: '4.5',
     description:
       'Cricket Easy zip opening access Straps for easy transportability Padded Adjustable Shoulder Straps & Hanger Multiple External Pockets 2 Bat Caves, One front pocket one main compartment',
@@ -571,7 +571,7 @@ const products = [
   {
     categories: 'Sports',
     id: '24',
-    name: 'SBM  Cricket Ball (Pack Of 12) Cricket Ball  (Pack of 12, Green) ',
+    title: 'SBM  Cricket Ball (Pack Of 12) Cricket Ball  (Pack of 12, Green) ',
     rating: '3.7',
     description: 'Cricket Ball Green Pack Of 12',
     price: '₹339',
@@ -592,7 +592,7 @@ const products = [
   {
     categories: 'Sports',
     id: '25',
-    name: 'NIVIA Storm Football - Size: 5',
+    title: 'NIVIA Storm Football - Size: 5',
     rating: '4.4',
     description:
       'Playing a sport like football helps the players strengthen team spirit and the same time keeps them fit. This Nivia Storm Football - 5 allows you to play a few matches with friends or colleagues when you have free time. Offers optimum response and feel',
@@ -614,7 +614,7 @@ const products = [
   {
     categories: 'Sports',
     id: '26',
-    name: 'COSCO HI-GRIP Basketball - Size: 7',
+    title: 'COSCO HI-GRIP Basketball - Size: 7',
     rating: '4.7',
     description: 'Cricket Ball Green Pack Of 12',
     price: '₹616',
@@ -634,7 +634,7 @@ const products = [
   {
     categories: 'Sports',
     id: '27',
-    name: 'LI-NING Windstorm Nano 73 Professional Badminton Racquet',
+    title: 'LI-NING Windstorm Nano 73 Professional Badminton Racquet',
     rating: '3.9',
     description:
       'Lightweight just got a new word in the dictionary and its the Li-Ning windstorm series. The Windstorm technology included in the Windstorm Nano 73 delivers a feather-like 73-gram weight and makes this racket flag bearer of speed and control. ',
@@ -655,7 +655,7 @@ const products = [
   {
     categories: 'fashion',
     id: '28',
-    name: "Classic Polo Men's Regular Fit",
+    title: "Classic Polo Men's Regular Fit",
     rating: '4.4',
     description:
       "Classic Polo Men's Regular Fit Polo T-Shirt (B07YYGMTZM_Purple, Violet_XXXX-Large)Classic Polo Men's Regular Fit Polo T-Shirt (B07YYGMTZM_Purple, Violet_XXXX-Large)",
@@ -676,7 +676,7 @@ const products = [
   {
     categories: 'fashion',
     id: '29',
-    name: "Benetton Men's Slim Polo Shirt",
+    title: "Benetton Men's Slim Polo Shirt",
     rating: '4.2',
     description:
       "United Colors of Benetton Men's Slim Polo Shirt (3081J7107I_RED XL) United Colors of Benetton Men's Slim Polo Shirt",
@@ -697,7 +697,7 @@ const products = [
   {
     categories: 'fashion',
     id: '30',
-    name: 'GODFREY Cotton Polo',
+    title: 'GODFREY Cotton Polo',
     rating: '4.1',
     description:
       'GODFREY Cotton Polo Neck Half Sleeve Mens T Shirt Size - Small (S / 36)',
@@ -718,7 +718,7 @@ const products = [
   {
     categories: 'fashion',
     id: '31',
-    name: "Adidas Men's Drogo M Running Shoes",
+    title: "Adidas Men's Drogo M Running Shoes",
     rating: '3.4',
     description:
       'Closure: Lace-Up Shoe Width: Medium Material Type: Mesh Lifestyle: Sports Closure Type: Lace-Up',
@@ -739,7 +739,7 @@ const products = [
   {
     categories: 'fashion',
     id: '32',
-    name: "Reebok Men's Fast Motion ",
+    title: "Reebok Men's Fast Motion ",
     rating: '4.1',
     description:
       "Reebok Men's Fast Motion Run Lp Shoe Reebok Men's Fast Motion Run Lp Shoe",
@@ -760,7 +760,7 @@ const products = [
   {
     categories: 'fashion',
     id: '33',
-    name: 'Navy Running Shoes-6 UK',
+    title: 'Navy Running Shoes-6 UK',
     rating: '4.2',
     description:
       'FURO by Redchief Men Navy Running Shoes-6 UK (40 EU) (R1013 C585_6) FURO by Redchief Men Navy Running Shoes-6 UK (40 EU) (R1013 C585_6)',
@@ -781,7 +781,7 @@ const products = [
   {
     categories: 'fashion',
     id: '34',
-    name: 'Ray-Ban Men Square Sunglasses',
+    title: 'Ray-Ban Men Square Sunglasses',
     rating: '4.4',
     description:
       'Model Number 601S71 Part Number: 601S71 Frame Color:Black , Lens Color: Green Frame type:Full Rim, Lens type:Non polarized Frame Material: Composite Lens Width : 56 mm Bridge Width : 20 mm Temple Length : 145 mm',
@@ -802,7 +802,7 @@ const products = [
   {
     categories: 'Beauty and Cosmetics',
     id: '35',
-    name: 'NIVEA Soft Moisturizing Cream  (200 ml)',
+    title: 'NIVEA Soft Moisturizing Cream  (200 ml)',
     rating: '4.5',
     description:
       'Get smooth and radiant skin by using this Nivea Moisturiser. This cream suits almost all skin types.Enriched with the goodness of vitamin E and Jojoba oil, this cream gently moisturizes your skin, leaving it soft and supple.',
@@ -824,7 +824,7 @@ const products = [
   {
     categories: 'Beauty and Cosmetics',
     id: '36',
-    name: 'DOVE Intense Repair Conditioner  (175 ml)',
+    title: 'DOVE Intense Repair Conditioner  (175 ml)',
     rating: '4.4',
     description:
       'Beautiful and healthy hair is just a wash away. This conditioner gently repairs the signs of damage by penetrating deep into the hair strands and provides nourished and strong hair.It deeply penetrates into the hair and strengthens them, reducing damage.',
@@ -846,7 +846,7 @@ const products = [
   {
     categories: 'Beauty and Cosmetics',
     id: '37',
-    name: 'Clean & Clear Face Wash  (450 ml)',
+    title: 'Clean & Clear Face Wash  (450 ml)',
     rating: '4.5',
     description:
       'Clean & Clear Foaming Face Wash helps prevent oily skin and pimples. Its rich foam gently cleanses to remove dirt without drying your skin. It is specially designed unique formulation cleanses skin thoroughly preventing common skin problems. Gentle enough to use every day, it leaves your skin feeling clean and beautifully clear.',
@@ -868,7 +868,7 @@ const products = [
   {
     categories: 'Beauty and Cosmetics',
     id: '38',
-    name: 'Kesh King Scalp and Medicinal Ayurvedic Hair Oil  (100 ml)',
+    title: 'Kesh King Scalp and Medicinal Ayurvedic Hair Oil  (100 ml)',
     rating: '4.3',
     description:
       'Kesh King ayurvedic oil is a proprietary medicinal preparation without any side effects. It is a complete solution for hair related problems especially hair fall. It is prepared using tel pak vidhi as prescribed in ayurveda using 21 precious herbs cooked in sesame oil',
@@ -888,7 +888,7 @@ const products = [
   {
     categories: 'Beauty and Cosmetics',
     id: '39',
-    name: 'SET WET Cool, Charm and Swag Avatar Deodorant Spray - For Men  (450 ml, Pack of 3)',
+    title: 'SET WET Cool, Charm and Swag Avatar Deodorant Spray - For Men  (450 ml, Pack of 3)',
     rating: '4.2',
     description:
       ' Kickstart your day with the masculine and refreshing fragrances of this Set Wet deo set. It contains the Set Wet Cool Avatar, Charm Avatar and Swag Avatar. Spritz on a few drops of any deo from this pack according to your mood and get ready to take on the world.',
@@ -909,7 +909,7 @@ const products = [
   {
     categories: 'Beauty and Cosmetics',
     id: '40',
-    name: 'BOROPLUS Antiseptic + Moisturising Soap - Neem, Eucalyptus & Honey  (6 x 125 g)',
+    title: 'BOROPLUS Antiseptic + Moisturising Soap - Neem, Eucalyptus & Honey  (6 x 125 g)',
     rating: '4.4',
     description:
       'BoroPlus Antiseptic + Moisturising Soap Neem, Eucalyptus & Honey Kills 99.99% Germs^ and Kills Virus* Softens and Moisturises Skin From Indias No. 1 Antiseptic# Brand Recommended by Doctors Gives Healthy Skin Enriched with Antiseptic & Healing Power of Neem & Eucalyptus Moisturising power of Honey Protects your entire family Free from Paraben, Silicones and Artificial colorants Anti-bacterial Toilet soap: Grade 1. TFM 76%',
@@ -930,7 +930,7 @@ const products = [
   {
     categories: 'Beauty and Cosmetics',
     id: '41',
-    name: 'FOGG 1 Royal and 1 Napoleon Deodorant Combo Pack of 2 Deodorant Spray - For Men  (300 ml, Pack of 2)',
+    title: 'FOGG 1 Royal and 1 Napoleon Deodorant Combo Pack of 2 Deodorant Spray - For Men  (300 ml, Pack of 2)',
     rating: '4.3',
     description:
       'This Status fragrance body spray from Fogg is a power packed deodorant that offers more than you bargain for. This perfumed body spray has an invigorating scent which envelops you in a pleasant smell for a long time.',
@@ -949,7 +949,7 @@ const products = [
   {
     categories: 'Beauty and Cosmetics',
     id: '42',
-    name: 'GARNIER Skin Naturals Bright Complete Brightening Face Wash  (200 g)',
+    title: 'GARNIER Skin Naturals Bright Complete Brightening Face Wash  (200 g)',
     rating: '4.5',
     description:
       'Garnier Bright Complete is a womens facewash enriched with Yuzu Lemon essence. Yuzu Lemon is known as the King of Lemons since it contains a high concentration of Vitamin C and is known for its strong brightening, exfoliating and anti-oxidant properties. ',
@@ -971,7 +971,7 @@ const products = [
   {
     categories: 'phone',
     id: '43',
-    name: 'OnePlus Nord 2 5G (Gray Sierra, 8GB RAM, 128GB Storage)',
+    title: 'OnePlus Nord 2 5G (Gray Sierra, 8GB RAM, 128GB Storage)',
     rating: '4.8',
     description:
       'OnePlus Nord 2 5G (Gray Sierra, 8GB RAM, 128GB Storage) features a stylish design and innovative features so that you can enjoy using the mobile phone for all that you need. Thanks to its 6000 mAh battery, you will have a blast using your phone for a long time while you stream content and much more. It provides surround sound with Dolby Atmos so that you can delve into a world of rich music. And, it’s equipped with features that ensure the protection of your mobile phone.',
@@ -1003,7 +1003,7 @@ const products = [
   {
     categories: 'phone',
     id: '44',
-    name: 'Samsung Galaxy M31 (Ocean Blue, 6GB RAM, 128GB Storage)',
+    title: 'Samsung Galaxy M31 (Ocean Blue, 6GB RAM, 128GB Storage)',
     rating: '4.1',
     description:
       'The Samsung Galaxy M31 features a stylish design and innovative features so that you can enjoy using the mobile phone for all that you need. Thanks to its 6000 mAh battery, you will have a blast using your phone for a long time while you stream content and much more. It provides surround sound with Dolby Atmos so that you can delve into a world of rich music. And, it’s equipped with features that ensure the protection of your mobile phone.',
@@ -1044,7 +1044,7 @@ const products = [
   {
     categories: 'Beauty and Cosmetics',
     id: '45',
-    name: 'Aroma Magic Face Wash 100 ml (Charcoal)',
+    title: 'Aroma Magic Face Wash 100 ml (Charcoal)',
     rating: '4.8',
     description:
       'Aroma Magic Face Wash 100 ml (Charcoal) facewash enriched with Yuzu Lemon essence. Yuzu Lemon is known as the King of Lemons since it contains a high concentration of Vitamin C and is known for its strong brightening, exfoliating and anti-oxidant properties. ',
@@ -1067,7 +1067,7 @@ const products = [
   {
     categories: 'Beauty and Cosmetics',
     id: '46',
-    name: 'NIVEA Men Face Wash, Deep Impact Intense Clean, for Beard & Face, with Black Carbon, 100 g',
+    title: 'NIVEA Men Face Wash, Deep Impact Intense Clean, for Beard & Face, with Black Carbon, 100 g',
     rating: '4.2',
     description:
       'NIVEA Men Face Wash Complete is a men facewash enriched with Yuzu Lemon essence. Yuzu Lemon is known as the King of Lemons since it contains a high concentration of Vitamin C and is known for its strong brightening, exfoliating and anti-oxidant properties. ',
@@ -1089,7 +1089,7 @@ const products = [
   {
     categories: 'fashion',
     id: '47',
-    name: 'Rozior® Kids Sunglass with UV Protection Green Mirror Lens with Black Frame, MODEL: RWUK1028M1',
+    title: 'Rozior® Kids Sunglass with UV Protection Green Mirror Lens with Black Frame, MODEL: RWUK1028M1',
     rating: '4.4',
     description:
       'MODEL: RWUK1028M1 || SIZE: Small || FRAME: Glossy Black Poly Carbonate || LENS: Green Mirror AC-Acrylic SUN PROTECTION: Rozior latest UV400 protected lens to block 100% Ultra Violet rays and protect eyes from UVA, UVB, UVC, Blue Light or any kind of harmful sun rays.',
@@ -1110,7 +1110,7 @@ const products = [
   {
     categories: 'fashion',
     id: '48',
-    name: "Skeletos Men's Wayfarer Sunglasses (Black Frame, Black Lens)",
+    title: "Skeletos Men's Wayfarer Sunglasses (Black Frame, Black Lens)",
     rating: '4.5',
     description:
       'Comfortable Nose Pads Design - This pair of polarized sunglasses for men with its one-piece nose pads design which will not oppress nose bridge. It will make you more stable and more comfortable to wear Retro Classic Style - Vintage square sunglasses are suitable for any face, show your unique and high-end taste',
@@ -1131,7 +1131,7 @@ const products = [
   {
     categories: 'fashion',
     id: '49',
-    name: "Campus Men's VIBGYOR Running Shoes",
+    title: "Campus Men's VIBGYOR Running Shoes",
     rating: '4.3',
     description:
       'Campus Men Navy Running Shoes-6 UK (40 EU) (R1013 C585_6) Campus f Men Navy Running Shoes-6 UK (40 EU) (R1013 C585_6)',
@@ -1152,7 +1152,7 @@ const products = [
   {
     categories: 'fashion',
     id: '50',
-    name: "Sparx Men's Running Shoes",
+    title: "Sparx Men's Running Shoes",
     rating: '4.8',
     description:
       'Sparks Men Navy Running Shoes-6 UK (40 EU) (R1013 C585_6) Sparks Running Shoes-6 UK (40 EU) (R1013 C585_6)',
