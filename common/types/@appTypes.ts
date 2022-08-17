@@ -14,7 +14,7 @@ export type ChildrenProps = {
 export interface Product  {
    id: string;
    categories: string;
-  name: string;
+  title: string;
   rating: string;
   description: string;
   price: string;

@@ -7,6 +7,15 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogProps,
+  DialogTitle,
+} from '@mui/material';
+import WithdrawalPointsMap from './WithdrawalPointsMap';
 
 const steps = [
   {
@@ -93,3 +102,4 @@ export default function TextMobileStepper() {
     </Box>
   );
 }
+

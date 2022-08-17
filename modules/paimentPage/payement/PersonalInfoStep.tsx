@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { FC, useEffect } from 'react';
-import { Box, Button, ButtonGroup, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -145,23 +145,17 @@ const PersonalInfoStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
                 right: 50,
               }}
             >
-              <ButtonGroup>
-                <Button
-                  sx={{ mr: 2 }}
-                  variant="outlined"
-                  onClick={previousStep}
-                >
-                  Back
-                </Button>
-                <Button
-                  type="submit"
-                  disabled={!isNextButtonEnabled}
-                  variant="contained"
-                  sx={{ backgroundColor: 'green' }}
-                >
-                  Next
-                </Button>
-              </ButtonGroup>
+              <Button sx={{ mr: 2 }} variant="outlined" onClick={previousStep}>
+                Back
+              </Button>
+              <Button
+                type="submit"
+                disabled={!isNextButtonEnabled}
+                variant="contained"
+                sx={{ backgroundColor: 'green' }}
+              >
+                Next
+              </Button>
             </Box>
           </Form>
         )}

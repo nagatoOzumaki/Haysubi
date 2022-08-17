@@ -37,7 +37,7 @@ const ProductCard: FC<Props> = ({ product }) => {
           />
 
           <Typography variant="h6" color="text.secondary">
-            {product?.name}
+            {product.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {product?.description}

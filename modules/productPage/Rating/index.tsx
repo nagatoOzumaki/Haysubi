@@ -3,10 +3,7 @@ import { useState } from 'react';
 import StarIcon from '@mui/icons-material/Star';
 
 const labels: { [index: string]: string } = {
-  0.5: 'Useless',
-  1: 'Useless+',
-  1.5: 'Poor',
-  2: 'Poor+',
+  0.5: 'bad',
   2.5: 'Ok',
   3: 'Ok+',
   3.5: 'Good',
@@ -41,7 +38,9 @@ export default function HoverRating() {
         onChangeActive={(event, newHover) => {
           setHover(newHover);
         }}
-        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+        emptyIcon={
+          <StarIcon style={{ opacity: 0.55, padding: 3 }} fontSize="inherit" />
+        }
       />
       {value !== null && (
         <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>

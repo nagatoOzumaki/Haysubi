@@ -11,27 +11,44 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import * as Yup from 'yup';
 
-import {
-  Grid,
-  Typography,
-  Button,
-  Box,
-  Link,
-  ButtonGroup,
-} from '@mui/material';
+import { Grid, Typography, Button, Box, Link } from '@mui/material';
 import { HelpCenterOutlined } from '@mui/icons-material';
 import { Form, Formik } from 'formik';
 import {
   PaymentInfoActions,
   PaymentInfoState,
 } from '../../../common/store/reducers/payementReducer';
+import WithdrawalPointsMap from './components/WithdrawalPointsMap';
 
 type PropsType = {
   dispatch: any;
   paymentInfo: PaymentInfoState;
 };
 
+const withdrawalPoints = [
+  {
+    address: 'taza',
+    coordonates: 1,
+  },
+  {
+    address: 'fes',
+    coordonates: 2,
+  },
+
+  {
+    address: 'meknes',
+    coordonates: 3,
+  },
+
+  {
+    address: 'casa',
+    coordonates: 4,
+  },
+];
+
 const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
+  const [city, setCity] = useState('');
+
   const { isNextButtonEnabled } = paymentInfo;
   const disableNext = useCallback(() => {
     dispatch({ type: PaymentInfoActions.DISABLE_NEXT_BUTTON });
@@ -55,14 +72,23 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
 
   const initialValues = {
     method: 'Delivery',
+    withdrawalPoint: '',
   };
 
   const handleOnChange = (values: any) => {
     if (!values.method) {
       disableNext();
     } else {
-      enableNext();
+      // eslint-disable-next-line no-lonely-if
+      if (values.method === 'withdrawal' && !values.withdrawalPoint) {
+        disableNext();
+      } else {
+        enableNext();
+      }
     }
+  };
+  const handleWithdrawalPointChange = (_city: string) => {
+    setCity(_city);
   };
   useEffect(() => {
     disableNext();
@@ -112,7 +138,43 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
                 </Select>
               </FormControl>
               {errors.method}
-
+              {/* --------------------------------------------------------- */}
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                {values.method === 'withdrawal' ? (
+                  <>
+                    {' '}
+                    <FormControl sx={{ mt: 2, minWidth: 120, ml: 50 }}>
+                      <InputLabel htmlFor="withdrawal-point">Points</InputLabel>
+                      <Select
+                        sx={{ width: 200 }}
+                        autoFocus
+                        value={values.withdrawalPoint}
+                        onChange={(e: any) => {
+                          values.withdrawalPoint = e.target.value;
+                          handleOnChange(values);
+                          handleWithdrawalPointChange(e.target.value);
+                        }}
+                        label="Withdrawal Points"
+                        inputProps={{
+                          name: 'points',
+                          id: 'points',
+                        }}
+                      >
+                        {withdrawalPoints.map(point => (
+                          <MenuItem
+                            key={point.coordonates}
+                            value={point.address}
+                          >
+                            {point.address}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                    {city ? <MapDialog city={city} /> : null}
+                  </>
+                ) : null}
+              </Box>
+              {/* --------------------------------------------------- */}
               <Box
                 sx={{
                   display: 'flex',
@@ -122,23 +184,21 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
                   right: 50,
                 }}
               >
-                <ButtonGroup>
-                  <Button
-                    sx={{ mr: 2 }}
-                    variant="outlined"
-                    onClick={previousStep}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    type="submit"
-                    disabled={!isNextButtonEnabled}
-                    variant="contained"
-                    sx={{ backgroundColor: 'green' }}
-                  >
-                    Next
-                  </Button>
-                </ButtonGroup>
+                <Button
+                  sx={{ mr: 2 }}
+                  variant="outlined"
+                  onClick={previousStep}
+                >
+                  Back
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={!isNextButtonEnabled}
+                  variant="contained"
+                  sx={{ backgroundColor: 'green' }}
+                >
+                  Next
+                </Button>
               </Box>
             </Form>
           )}
@@ -224,3 +284,50 @@ function ScrollDialog() {
     </div>
   );
 }
+
+const MapDialog = ({ city }: { city: string }) => {
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState<DialogProps['scroll']>('paper');
+
+  const handleClickOpen = (scrollType: DialogProps['scroll']) => () => {
+    setOpen(true);
+    setScroll(scrollType);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const descriptionElementRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    if (open) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [open]);
+
+  return (
+    <>
+      <Button onClick={handleClickOpen('paper')} sx={{ mt: 1, color: 'red' }}>
+        See Our Points In {city}
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        scroll={scroll}
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+      >
+        <DialogTitle id="scroll-dialog-title">Points</DialogTitle>
+        <DialogContent dividers={scroll === 'paper'}>
+          <WithdrawalPointsMap />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+};

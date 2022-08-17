@@ -19,8 +19,8 @@ export const addProductToWishList:AppThunk = (product:Product) => async(dispatch
     dispatch({ type: wishListActions.ADD_PRODUCT_TO_WISHLIST, payload: product });
   };
 
-export const removeProductromWishList :AppThunk= (itemId: number) => (dispatch: Dispatch<Action>) => {
-    dispatch({ type: wishListActions.REMOVE_PRODUCT_FROM_WISHLIST, payload: itemId });
+export const removeProductromWishList :AppThunk= (product) => (dispatch: Dispatch<Action>) => {
+    dispatch({ type: wishListActions.REMOVE_PRODUCT_FROM_WISHLIST, payload: product });
   };
 
 

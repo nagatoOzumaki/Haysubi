@@ -67,7 +67,7 @@ const mainReducer = (state: State = InitialState, action: Action) => {
         ...state,
         cart: { ...state.cart, cartItems },
       };
-
+      storeDataInLocalStorage('cartItems', removeItemState.cart.cartItems);
       return removeItemState;
     }
 
@@ -94,14 +94,15 @@ const mainReducer = (state: State = InitialState, action: Action) => {
       );
       const removeItemState = {
         ...state,
-        wishList: [...state.wishList, productWishList],
+        wishList: [...productWishList],
       };
-
+      storeDataInLocalStorage('wishList', removeItemState.wishList);
       return removeItemState;
     }
 
     case appActions.SET_PRODUCT_TO_WISHLIST: {
       const storedItems = action.payload;
+
       return { ...state, wishList: storedItems };
     }
 

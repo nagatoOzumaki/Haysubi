@@ -78,20 +78,20 @@ const ProductDetails = ({ product }: Props) => {
 
   const ProductMetaData = () => (
     <NextSeo
-      title={product.name}
+      title={product.title}
       titleTemplate=""
       defaultTitle="pc portable"
       description={product.description}
       canonical="https://www.haysubi.ma/"
       openGraph={{
         url: 'https://www.haysubi.ma/',
-        title: product.name,
+        title: product.title,
         description: product.description,
         images: product.image.map(img => ({
           url: img,
           width: 800,
           height: 420,
-          alt: product.name,
+          alt: product.title,
         })),
       }}
       twitter={{
@@ -146,7 +146,7 @@ const ProductDetails = ({ product }: Props) => {
           {/* 3------------ */}
           <Grid md={8} item>
             <Typography component="h1" variant="h2">
-              {product.name}
+              {product.title}
             </Typography>
 
             <Box className="prod-price" sx={{ display: 'flex', gap: 4, pt: 3 }}>
