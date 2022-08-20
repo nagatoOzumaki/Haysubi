@@ -43,6 +43,8 @@ export type UserInfo= {
 } | null
 export interface State{ 
   products:Products;
+  dataFetchingState:string,
+
   currentProduct:Product,
   isDrawerOpen:boolean;
   darkMode:boolean;

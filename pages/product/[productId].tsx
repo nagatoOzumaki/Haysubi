@@ -29,8 +29,8 @@ import { ButtonColors } from '../../common/config/colors';
 type Props = { product: Product };
 
 const ProductDetails = ({ product }: Props) => {
-  const [inWishList, setInWishList] = useState(false);
-  const [itemInCart, setItemInCart] = useState(false);
+  const [isProductInWishList, setInWishList] = useState(false);
+  const [isItemInCart, setItemInCart] = useState(false);
   const { cartItems } = useCartState();
   const wishList = useWishList();
   // missing typing for currentMainImage
@@ -174,7 +174,7 @@ const ProductDetails = ({ product }: Props) => {
                 color="primary"
                 aria-label="outlined primary button group"
               >
-                {itemInCart ? (
+                {isItemInCart ? (
                   <NextLink href="/cart">
                     <Button variant="contained">GO TO CART BAG</Button>
                   </NextLink>
@@ -184,7 +184,7 @@ const ProductDetails = ({ product }: Props) => {
                   </Button>
                 )}
 
-                {!inWishList ? (
+                {!isProductInWishList && !isItemInCart ? (
                   <Button
                     variant="contained"
                     onClick={() => handleAddProductToWishlist(product)}

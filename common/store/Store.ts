@@ -19,7 +19,7 @@ export const useUserInfoState = () => useSelector((state: State) => state.userIn
 export const useWishList=()=>useSelector((state:State)=>state.wishList)
 export const useDrawerState=()=>useSelector((state:State)=>state.isDrawerOpen)
 export const useCurrentProduct=()=>useSelector((state:State)=>state.currentProduct)
-
+export const useDataFetchingState=()=>useSelector((state:State)=>state.dataFetchingState)
 
 // export const UpdateStore:Dispatch<Action>=(action)=>{
 //   // eslint-disable-next-line react-hooks/rules-of-hooks

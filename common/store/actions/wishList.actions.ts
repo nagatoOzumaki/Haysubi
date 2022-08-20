@@ -14,9 +14,15 @@ export const setProductsToWishList :AppThunk= (products:Products) => async (disp
     dispatch({ type: wishListActions.SET_PRODUCT_TO_WISHLIST, payload: products });
   };
 
-export const addProductToWishList:AppThunk = (product:Product) => async(dispatch: Dispatch<Action>) => {
+export const addProductToWishList:AppThunk = (product:Product) => async(dispatch: Dispatch<Action>,getState) => {
+  const {cart:{cartItems}}=getState();
+  const ids=cartItems.map(item=>item.id)
 
-    dispatch({ type: wishListActions.ADD_PRODUCT_TO_WISHLIST, payload: product });
+    if(!ids.includes(product.id)){
+       dispatch({ type: wishListActions.ADD_PRODUCT_TO_WISHLIST, payload: product });
+
+    }
+   
   };
 
 export const removeProductromWishList :AppThunk= (product) => (dispatch: Dispatch<Action>) => {
@@ -25,5 +31,5 @@ export const removeProductromWishList :AppThunk= (product) => (dispatch: Dispatc
 
 
 export default{
-  setProductsToWishList,addProductToWishList,removeProductromWishList
+  setProductsToWishList,addProductToWishList,removeProductromWishList,wishListActions
 }

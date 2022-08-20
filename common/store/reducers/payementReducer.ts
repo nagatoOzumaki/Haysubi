@@ -1,13 +1,15 @@
 export type PaymentInfoState = {
-  
   step: number;
   firstname: string;
   lastname: string;
   email: string;
-  address: { city: string; zipCode: number,street:string,country:string };
+  address: string;
+  city: string;
+  zipCode: number;
+  street: string;
+  country: string;
   paymentMethod: string;
-  isNextButtonEnabled:boolean
-
+  isNextButtonEnabled: boolean;
 };
 export type PaymentInfoAction = {
   type: string;
@@ -24,8 +26,8 @@ export const PaymentInfoActions = {
   SET_PAYMENT_METHOD: 'SET_PAYMENT_METHOD',
   NEXT_STEP: 'NEXT_STEP',
   PREVIOUS_STEP: 'PREVIOUS_STEP',
-  ENABLE_NEXT_BUTTON:'ENABLE_NEXT_BUTTON',
-  DISABLE_NEXT_BUTTON:'DISABLE_NEXT_BUTTON'
+  ENABLE_NEXT_BUTTON: 'ENABLE_NEXT_BUTTON',
+  DISABLE_NEXT_BUTTON: 'DISABLE_NEXT_BUTTON',
 };
 
 const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
@@ -34,18 +36,24 @@ const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
       return { ...state, firstname: action.payload };
     }
     case PaymentInfoActions.SET_LASTNAME: {
-        return { ...state, lastname: action.payload };
-      }
-      case PaymentInfoActions.SET_ZIP_CODE: {
-        return { ...state,address:{ ...state.address, zipCode: action.payload }};
-      }
-      case PaymentInfoActions.SET_EMAIL: {
-        return { ...state, email: action.payload };
-      }
-      case PaymentInfoActions.SET_STREET: {
-        return { ...state,address:{ ...state.address,street: action.payload} };
-      }
-  
+      return { ...state, lastname: action.payload };
+    }
+    case PaymentInfoActions.SET_ZIP_CODE: {
+      return {
+        ...state,
+        zipCode: action.payload 
+      };
+    }
+    case PaymentInfoActions.SET_EMAIL: {
+      return { ...state, email: action.payload };
+    }
+    case PaymentInfoActions.SET_STREET: {
+      return {
+        ...state,
+        street: action.payload 
+      };
+    }
+
     case PaymentInfoActions.SET_PAYMENT_METHOD: {
       return { ...state, paymentMethod: action.payload };
     }
@@ -66,9 +74,7 @@ const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
       return { ...state, isNextButtonEnabled: true };
     }
     case PaymentInfoActions.DISABLE_NEXT_BUTTON: {
-    
-        return { ...state, isNextButtonEnabled: false };
-      
+      return { ...state, isNextButtonEnabled: false };
     }
     default:
       return state;

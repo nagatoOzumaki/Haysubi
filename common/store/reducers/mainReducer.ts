@@ -4,6 +4,7 @@ import { appActions } from '../actions';
 
 const InitialState = {
   products: [],
+  dataFetchingState:'fail',
   currentProduct:{} as Product,
   isDrawerOpen:false,
   darkMode: false,
@@ -15,7 +16,7 @@ const InitialState = {
 
 const mainReducer = (state: State = InitialState, action: Action) => {
   switch (action.type) {
-    //
+    // -------------------------------------
     case appActions.ADD_PRODUCTS: {
       return { ...state, products: action.payload };
     }
@@ -29,8 +30,19 @@ const mainReducer = (state: State = InitialState, action: Action) => {
     case appActions.CLEAR_PRODUCTS: {
       return { ...state, products: [] };
     }
+    // ------------------------------------------------
+    case appActions.DATA_FETCHING_SUCCESS: {
+      return { ...state, dataFetchingState: 'success' };
+    }
 
-    //
+    case appActions.DATA_FETCHING_FAILD: {
+      return { ...state, dataFetchingState: 'fail' };
+    }
+    case appActions.DATA_IS_LOADING: {
+      return { ...state, dataFetchingState: 'loading' };
+    }
+
+    //----------------------------------------------------
     case appActions.DARK_MODE_ON:
       return { ...state, darkMode: true };
     case appActions.DARK_MODE_OFF:
@@ -43,6 +55,7 @@ const mainReducer = (state: State = InitialState, action: Action) => {
     }
     case appActions.ADD_ITEM_TO_CART: {
       const ids = state.cart.cartItems.map(item => item.id);
+      
       let newState = state;
       const { id } = action.payload;
 
@@ -181,7 +194,7 @@ const mainReducer = (state: State = InitialState, action: Action) => {
       {
         return {...state,currentProduct:{} as Product}
       }
-// ------------
+// -------------------------------------------------
 
     default:
       return state;
