@@ -6,6 +6,7 @@ const InitialState = {
   products: [],
   dataFetchingState:'fail',
   currentProduct:{} as Product,
+  isChatbotOpen:false,
   isDrawerOpen:false,
   darkMode: false,
   cart: { cartItems: [] },
@@ -195,6 +196,14 @@ const mainReducer = (state: State = InitialState, action: Action) => {
         return {...state,currentProduct:{} as Product}
       }
 // -------------------------------------------------
+case appActions.OPEN_CHATBOT:
+  {
+    return {...state,isChatbotOpen:true}
+  }
+  case appActions.CLOSE_CHATBOT:
+  {
+    return {...state,isChatbotOpen:false}
+  }
 
     default:
       return state;

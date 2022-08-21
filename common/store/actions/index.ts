@@ -7,13 +7,15 @@ import  {productsActions, addProductsToStore,removeProductsFromStore,clearProduc
 import {drawerActions,openDrawer,closeDrawer } from './drawer.actions'
 import { currentProductActions,setCurrentProduct,clearCurrentProduct } from './currentProduct.actions'
 import { fetchingFailed,fetchingSuccessed,dataFetchingActions,dataIsLoading } from './fetchingState.actions'
+import { chatbotActions, closeChatbot,openChatbot } from './chatbot.actions'
 
-export const appActions= {...dataFetchingActions,...currentProductActions,...drawerActions, ...cartActions,...filterActions,...userInfoActions,...darkModeActions,...wishListActions,...productsActions} 
+export const appActions= {...chatbotActions,...dataFetchingActions,...currentProductActions,...drawerActions, ...cartActions,...filterActions,...userInfoActions,...darkModeActions,...wishListActions,...productsActions} 
 
 export {
     addItemToCart,removeItemFromCart,setItemsToCart,setLogin,setLogout,setDarkMode,setLightMode,
     setProductsToWishList,addProductToWishList,addProductsToStore,removeProductsFromStore,clearProductsToStore,removeProductromWishList,
-    addFilter,removeFilter,clearFilter,closeDrawer,openDrawer,addReview,addRating,setCurrentProduct,clearCurrentProduct,fetchingFailed,fetchingSuccessed,dataIsLoading
+    addFilter,removeFilter,clearFilter,closeDrawer,openDrawer,addReview,addRating,setCurrentProduct,clearCurrentProduct,fetchingFailed,fetchingSuccessed,dataIsLoading,
+     closeChatbot,openChatbot
   
 
 }

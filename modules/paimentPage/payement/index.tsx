@@ -13,10 +13,15 @@ const PayementForm = () => {
     firstname: '',
     lastname: '',
     email: '',
-    address: { city: '', zipCode: 0, street: '', country: '' },
-    paymentMethod: '',
+    address: '',
+    city: '',
+    zipCode: 0,
+    street: '',
+    country: '',
+    deliveryMethod: '',
     isNextButtonEnabled: false,
   };
+
   const [paymentInfo, dispatch] = useReducer(paymentReducer, InitialState);
   const { step } = paymentInfo;
 

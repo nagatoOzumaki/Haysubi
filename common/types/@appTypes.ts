@@ -44,7 +44,7 @@ export type UserInfo= {
 export interface State{ 
   products:Products;
   dataFetchingState:string,
-
+  isChatbotOpen:boolean,
   currentProduct:Product,
   isDrawerOpen:boolean;
   darkMode:boolean;

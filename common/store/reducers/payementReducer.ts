@@ -8,7 +8,7 @@ export type PaymentInfoState = {
   zipCode: number;
   street: string;
   country: string;
-  paymentMethod: string;
+  deliveryMethod: 'withdrawal'|'delivery';
   isNextButtonEnabled: boolean;
 };
 export type PaymentInfoAction = {
@@ -23,7 +23,7 @@ export const PaymentInfoActions = {
   SET_EMAIL: 'SET_EMAIL',
   SET_CITY: 'SET_CITY',
   SET_ZIP_CODE: 'SET_ZIP_CODE',
-  SET_PAYMENT_METHOD: 'SET_PAYMENT_METHOD',
+  SET_DELIVERY_METHOD: 'SET_DELIVERY_METHOD',
   NEXT_STEP: 'NEXT_STEP',
   PREVIOUS_STEP: 'PREVIOUS_STEP',
   ENABLE_NEXT_BUTTON: 'ENABLE_NEXT_BUTTON',
@@ -53,9 +53,16 @@ const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
         street: action.payload 
       };
     }
+    case PaymentInfoActions.SET_CITY: {
+      return {
+        ...state,
+        city: action.payload 
+      };
+    }
+    
 
-    case PaymentInfoActions.SET_PAYMENT_METHOD: {
-      return { ...state, paymentMethod: action.payload };
+    case PaymentInfoActions.SET_DELIVERY_METHOD: {
+      return { ...state, deliveryMethod: action.payload };
     }
     // -------------
     case PaymentInfoActions.NEXT_STEP: {

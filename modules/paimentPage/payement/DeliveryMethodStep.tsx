@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { FC, useCallback, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -11,14 +11,19 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import * as Yup from 'yup';
 
-import { Grid, Typography, Button, Box, Link } from '@mui/material';
-import { HelpCenterOutlined } from '@mui/icons-material';
-import { Form, Formik } from 'formik';
+import { Grid, Typography, Button, Box, Radio } from '@mui/material';
+import { Field, Form, Formik } from 'formik';
 import {
   PaymentInfoActions,
   PaymentInfoState,
 } from '../../../common/store/reducers/payementReducer';
 import WithdrawalPointsMap from './components/WithdrawalPointsMap';
+import {
+  disableNext,
+  enableNext,
+  nextStep,
+  previousStep,
+} from './utils/nextButtonControl';
 
 type PropsType = {
   dispatch: any;
@@ -50,40 +55,25 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
   const [city, setCity] = useState('');
 
   const { isNextButtonEnabled } = paymentInfo;
-  const disableNext = useCallback(() => {
-    dispatch({ type: PaymentInfoActions.DISABLE_NEXT_BUTTON });
-  }, [dispatch]);
-  const enableNext = () => {
-    dispatch({ type: PaymentInfoActions.ENABLE_NEXT_BUTTON });
-  };
-  const nextStep = () => {
-    if (isNextButtonEnabled) {
-      // dispatch({ type: PaymentInfoActions.ENABLE_NEXT_BUTTON });
-      dispatch({ type: PaymentInfoActions.NEXT_STEP });
-    }
-  };
-  const previousStep = () => {
-    dispatch({ type: PaymentInfoActions.PREVIOUS_STEP });
-  };
 
   const testSchema = Yup.object().shape({
     method: Yup.string().required('select a method'),
   });
 
   const initialValues = {
-    method: 'Delivery',
+    method: paymentInfo.deliveryMethod,
     withdrawalPoint: '',
   };
 
   const handleOnChange = (values: any) => {
     if (!values.method) {
-      disableNext();
+      disableNext(dispatch);
     } else {
       // eslint-disable-next-line no-lonely-if
       if (values.method === 'withdrawal' && !values.withdrawalPoint) {
-        disableNext();
+        disableNext(dispatch);
       } else {
-        enableNext();
+        enableNext(dispatch);
       }
     }
   };
@@ -91,86 +81,113 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
     setCity(_city);
   };
   useEffect(() => {
-    disableNext();
-  }, [disableNext]);
+    disableNext(dispatch);
+  }, [dispatch]);
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography variant="h6">Delivery information</Typography>
       </Grid>
-      <Grid item>
-        <Typography sx={{ fontSize: 23, color: '#0f0' }}>
-          How do you like to get the product ?
-        </Typography>
-
+      <Grid sx={{ display: 'flex', alignItems: 'center' }} item>
         <Formik
-          onSubmit={(values, { setSubmitting }) => {
-            nextStep();
-            setSubmitting(false);
+          onSubmit={values => {
+            dispatch({
+              type: PaymentInfoActions.SET_DELIVERY_METHOD,
+              payload: values.method,
+            });
+            nextStep(dispatch);
           }}
           validationSchema={testSchema}
           initialValues={initialValues}
           validateOnChange
         >
-          {({ values, errors }) => (
+          {({ values }) => (
             <Form>
-              <FormControl sx={{ mt: 2, minWidth: 120, ml: 50 }}>
-                <InputLabel htmlFor="delivery-method">
-                  Delivery Method
-                </InputLabel>
-                <Select
-                  sx={{ width: 200 }}
-                  autoFocus
-                  value={values.method}
-                  onChange={(e: any) => {
-                    values.method = e.target.value;
-                    handleOnChange(values);
-                  }}
-                  label="Delivery Method"
-                  inputProps={{
-                    name: 'method',
-                    id: 'method',
+              <Box
+                sx={{
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 4,
+                }}
+              >
+                <Typography sx={{ fontSize: 23, color: '#0f0', mr: 5 }}>
+                  How do you like to get the product ?
+                </Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    position: 'relative',
                   }}
                 >
-                  <MenuItem value="withdrawal">Withdrawal Point</MenuItem>
-                  <MenuItem value="delivery">Home Delivery</MenuItem>
-                </Select>
-              </FormControl>
-              {errors.method}
+                  <InputLabel>Home Delivery</InputLabel>
+                  <Field
+                    type="radio"
+                    value="delivery"
+                    name="method"
+                    as={Radio}
+                  />
+                </Box>
+                <Box>
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: -7,
+                    }}
+                  >
+                    <WithdrawalPointsInfo />
+                  </Box>
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <InputLabel>Withdrawal Point</InputLabel>
+                    <Field
+                      type="radio"
+                      value="withdrawal"
+                      name="method"
+                      as={Radio}
+                    />
+                  </Box>
+                </Box>
+              </Box>
               {/* --------------------------------------------------------- */}
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 {values.method === 'withdrawal' ? (
                   <>
-                    {' '}
-                    <FormControl sx={{ mt: 2, minWidth: 120, ml: 50 }}>
-                      <InputLabel htmlFor="withdrawal-point">Points</InputLabel>
-                      <Select
-                        sx={{ width: 200 }}
-                        autoFocus
-                        value={values.withdrawalPoint}
-                        onChange={(e: any) => {
-                          values.withdrawalPoint = e.target.value;
-                          handleOnChange(values);
-                          handleWithdrawalPointChange(e.target.value);
-                        }}
-                        label="Withdrawal Points"
-                        inputProps={{
-                          name: 'points',
-                          id: 'points',
-                        }}
-                      >
-                        {withdrawalPoints.map(point => (
-                          <MenuItem
-                            key={point.coordonates}
-                            value={point.address}
-                          >
-                            {point.address}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                    {city ? <MapDialog city={city} /> : null}
+                    <Box>
+                      <FormControl sx={{ mt: 10, minWidth: 120, ml: 50 }}>
+                        <InputLabel htmlFor="withdrawal-point">
+                          Points
+                        </InputLabel>
+                        <Select
+                          sx={{ width: 200 }}
+                          autoFocus
+                          value={values.withdrawalPoint}
+                          onChange={(e: any) => {
+                            values.withdrawalPoint = e.target.value;
+                            handleOnChange(values);
+                            handleWithdrawalPointChange(e.target.value);
+                          }}
+                          label="Withdrawal Points"
+                          inputProps={{
+                            name: 'points',
+                            id: 'points',
+                          }}
+                        >
+                          {withdrawalPoints.map(point => (
+                            <MenuItem
+                              key={point.coordonates}
+                              value={point.address}
+                            >
+                              {point.address}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Box>
+                    <Box sx={{ mt: 10 }}>
+                      {city ? <MapDialog city={city} /> : null}
+                    </Box>
                   </>
                 ) : null}
               </Box>
@@ -187,7 +204,7 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
                 <Button
                   sx={{ mr: 2 }}
                   variant="outlined"
-                  onClick={previousStep}
+                  onClick={() => previousStep(dispatch)}
                 >
                   Back
                 </Button>
@@ -203,8 +220,6 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
             </Form>
           )}
         </Formik>
-
-        <ScrollDialog />
       </Grid>
     </Grid>
   );
@@ -212,7 +227,7 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
 
 export default DeliveryMethodStep;
 
-function ScrollDialog() {
+function WithdrawalPointsInfo() {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState<DialogProps['scroll']>('paper');
 
@@ -237,11 +252,20 @@ function ScrollDialog() {
 
   return (
     <div>
-      <Box sx={{ mt: 12, display: 'flex', gap: 1 }}>
-        <HelpCenterOutlined />
-        <Link onClick={handleClickOpen('paper')} sx={{ cursor: 'pointer' }}>
-          What Is Withdrawal Point ?
-        </Link>
+      <Box sx={{}}>
+        <span
+          onClick={handleClickOpen('paper')}
+          style={{
+            color: 'blue',
+            cursor: 'pointer',
+            fontSize: 15,
+            fontWeight: 'bold',
+            textDecoration: 'underline',
+            padding: 2,
+          }}
+        >
+          ?
+        </span>
       </Box>
 
       <Dialog
@@ -309,8 +333,8 @@ const MapDialog = ({ city }: { city: string }) => {
   }, [open]);
 
   return (
-    <>
-      <Button onClick={handleClickOpen('paper')} sx={{ mt: 1, color: 'red' }}>
+    <div>
+      <Button onClick={handleClickOpen('paper')} sx={{ color: 'red' }}>
         See Our Points In {city}
       </Button>
       <Dialog
@@ -328,6 +352,6 @@ const MapDialog = ({ city }: { city: string }) => {
           <Button onClick={handleClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
-    </>
+    </div>
   );
 };
