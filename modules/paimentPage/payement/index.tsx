@@ -31,7 +31,7 @@ const PayementForm = () => {
         border: '1px solid #000',
         p: 7,
         mt: 5,
-        mb: 220,
+
         position: 'relative',
         height: 600,
       }}
