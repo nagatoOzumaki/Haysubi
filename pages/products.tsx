@@ -1,7 +1,6 @@
-import type { NextPage } from 'next';
 import { Container } from '@mui/material';
 import { NextSeo } from 'next-seo';
-import { useEffect } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Products } from '../common/types/@appTypes';
@@ -13,12 +12,14 @@ import {
   addProductsToStore,
   clearProductsToStore,
 } from '../common/store/actions';
+import FooterLayout from '../common/layouts/footerLayout/FooterLayout';
+import { NextPageWithLayout } from './_app';
 
 type Props = {
   products: Products;
 };
 
-const Home: NextPage<Props> = ({ products }) => {
+const Home: NextPageWithLayout<Props> = ({ products }) => {
   const productsStore = useProductsState();
   const dispatch = useDispatch<any>();
   const router = useRouter();
@@ -53,7 +54,6 @@ const Home: NextPage<Props> = ({ products }) => {
     </>
   );
 };
-export default Home;
 
 export const getStaticProps = async () => {
   let returnObject;
@@ -71,4 +71,9 @@ export const getStaticProps = async () => {
     returnObject = { notFound: true };
   }
   return returnObject;
+};
+
+export default Home;
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <FooterLayout>{page}</FooterLayout>;
 };

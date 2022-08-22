@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { GetServerSidePropsContext } from 'next';
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
@@ -25,6 +25,7 @@ import HoverRating from '../../modules/productPage/Rating';
 import Reviews from '../../modules/productPage/reviews';
 import SuggestionsSilder from '../../modules/productPage/slider/suggestionsSlider';
 import { ButtonColors } from '../../common/config/colors';
+import FooterLayout from '../../common/layouts/footerLayout/FooterLayout';
 
 type Props = { product: Product };
 
@@ -143,7 +144,7 @@ const ProductDetails = ({ product }: Props) => {
               alt="image"
             />
           </Grid>
-          {/* 3------------ */}
+          {/* 3--------------- */}
           <Grid md={8} item>
             <Typography component="h1" variant="h2">
               {product.title}
@@ -257,8 +258,6 @@ const ProductDetails = ({ product }: Props) => {
   );
 };
 
-export default ProductDetails;
-
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
@@ -270,3 +269,7 @@ export const getServerSideProps = async (
     },
   };
 };
+ProductDetails.getLayout = function getLayout(page: ReactElement) {
+  return <FooterLayout>{page}</FooterLayout>;
+};
+export default ProductDetails;

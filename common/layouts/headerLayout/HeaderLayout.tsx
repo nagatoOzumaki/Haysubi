@@ -5,7 +5,6 @@ import { ArrowCircleRightOutlined } from '@mui/icons-material';
 import Image from 'next/image';
 import { ChildrenProps } from '../../types/@appTypes';
 import ResponsiveAppBar from '../../components/appBar/AppBar';
-import Footer from '../../components/footer';
 import LeftDrawer from '../../components/drawer/LeftDrawer';
 import { closeChatbot, openChatbot, openDrawer } from '../../store/actions';
 import { useIsChatbotOpen } from '../../store/Store';
@@ -48,9 +47,6 @@ const HeaderLayout: FC<ChildrenProps> = ({ children }) => {
         <Grid item component="div">
           {children}
         </Grid>
-        <Grid item>
-          <Footer />
-        </Grid>
         {/* next section is for chatbot and chatbot toogle */}
         {isChatbotOpen ? (
           <Box
@@ -69,7 +65,6 @@ const HeaderLayout: FC<ChildrenProps> = ({ children }) => {
           onClick={handleOpenChatBot}
           sx={{
             position: 'fixed',
-            // backgroundColor: 'rgb(0,120,255)',
             backgroundColor: '#fff',
             bottom: 60,
             right: 60,
