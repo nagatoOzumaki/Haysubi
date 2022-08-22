@@ -5,6 +5,7 @@ export type PaymentInfoState = {
   email: string;
   address: string;
   city: string;
+  // isHomeDeliveryInfoStep:boolean,
   zipCode: number;
   street: string;
   country: string;
@@ -28,6 +29,8 @@ export const PaymentInfoActions = {
   PREVIOUS_STEP: 'PREVIOUS_STEP',
   ENABLE_NEXT_BUTTON: 'ENABLE_NEXT_BUTTON',
   DISABLE_NEXT_BUTTON: 'DISABLE_NEXT_BUTTON',
+  // OPEN_HOME_DELIVERY_STERP:'OPEN_HOME_DELIVERY_STEP',
+  // CLOSE_HOME_DELIVERY_STERP:'CLOSE_HOME_DELIVERY_STEP'
 };
 
 const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {

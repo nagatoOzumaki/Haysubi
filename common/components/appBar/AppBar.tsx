@@ -1,102 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-// import AppBar from '@mui/material/AppBar';
-// import Box from '@mui/material/Box';
-// import Toolbar from '@mui/material/Toolbar';
-// import Typography from '@mui/material/Typography';
-// import Container from '@mui/material/Container';
-// import React, { FC } from 'react';
-// import {
-//   FavoriteBorder,
-//   LaptopChromebook,
-
-//   ShoppingCartOutlined,
-//   StoreOutlined,
-// } from '@mui/icons-material';
-// import { useDispatch } from 'react-redux';
-// import SearchBar from './SearchBar';
-// import LoginModalToggle from './LoginModalToggle';
-// import { useCartState, useUserInfoState, useWishList } from '../../store/Store';
-// import UserMenu from './UserMenu';
-// import { setLogout } from '../../store/actions/mainAction';
-
-// const ResponsiveAppBar: FC = () => {
-
-// const cart=useCartState();
-// const wishList=useWishList();
-// const userInfo=useUserInfoState();
-// const dispatch=useDispatch()<any>;
-// const handleLogout=()=>{
-//   dispatch(setLogout());
-// }
-
-//   return (
-//     <AppBar position="static">
-//       <Container maxWidth="xl">
-//         <Toolbar disableGutters sx={{ display: 'flex', gap: 8 }}>
-//           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-//             <LaptopChromebook
-//               sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }}
-//             />
-//             <Typography
-//               variant="h6"
-//               noWrap
-//               component="a"
-//               href="/"
-//               sx={{
-//                 mr: 2,
-//                 display: { xs: 'none', md: 'flex' },
-//                 fontFamily: 'monospace',
-//                 fontWeight: 700,
-//                 letterSpacing: '.3rem',
-//                 color: 'inherit',
-//                 textDecoration: 'none',
-//               }}
-//             >
-//               Haysubi
-//             </Typography>
-//           </Box>
-//           {/* Search bar */}
-//           <Box
-//             sx={{
-//               flexGrow: 1,
-//               mr: 12,
-//               border: 'none',
-//               bgcolor: 'red',
-//               borderRadius: 40,
-//               width: { md: '40%' },
-//             }}
-//           >
-//             <SearchBar />
-//           </Box>
-
-//           {/* Tools bar */}
-//           <Box
-//             sx={{
-//               flexGrow: 1,
-//               display: { xs: 'none', md: 'flex' },
-//               justifyContent: 'center',
-//               alignItems: 'center',
-//               gap: 9,
-//               pt:2,pb:1
-
-//             }}
-//           >
-
-//            <Box sx={{cursor:'pointer'}}><StoreOutlined/></Box>
-//            <Box sx={{cursor:'pointer',position:'relative',p:1}}><ShoppingCartOutlined /><Typography sx={{fontSize:12,position:'absolute',top:0,right:0}}>{cart.cartItems.length}</Typography></Box>
-//            <Box sx={{cursor:'pointer',position:'relative',p:1}}><FavoriteBorder /><Typography sx={{fontSize:12,position:'absolute',top:0,right:0}}>{wishList.length}</Typography></Box>
-//            <Box sx={{cursor:'pointer',position:'relative'}}>{userInfo?<Box>
-//             <UserMenu userInfo={userInfo} handleLogout={handleLogout}/></Box>:<LoginModalToggle />}</Box>
-//             {/* <PersonOutlineOutlined /><Typography sx={{fontSize:12,mt:-1}}>{userInfo.name}</Typography> */}
-
-//           </Box>
-//         </Toolbar>
-//       </Container>
-//     </AppBar>
-//   );
-// };
-// export default ResponsiveAppBar;
-
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -111,17 +12,18 @@ import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Container, Link } from '@mui/material';
+import { Link } from '@mui/material';
 import NextLink from 'next/link';
 import { useDispatch } from 'react-redux';
 import {
   FavoriteBorder,
   LaptopOutlined,
   LogoutOutlined,
+  MenuOutlined,
   ShoppingCartOutlined,
 } from '@mui/icons-material';
 import { useCartState, useUserInfoState, useWishList } from '../../store/Store';
-import { setLogout } from '../../store/actions';
+import { openDrawer, setLogout } from '../../store/actions';
 import LoginModalToggle from './LoginModalToggle';
 
 // ------------------
@@ -175,15 +77,11 @@ export default function ResponsiveAppBar() {
   };
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  // const [leftAnchorEl, setLeftAnchorEl] = React.useState<null | HTMLElement>(
-  //   null
-  // );
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
 
   const isMenuOpen = Boolean(anchorEl);
-  // const isLeftMenuOpen = Boolean(leftAnchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -202,13 +100,9 @@ export default function ResponsiveAppBar() {
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-  // -----------
-  // const handleLeftMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-  //   setLeftAnchorEl(event.currentTarget);
-  // };
-  // const handleLeftMenuClose = () => {
-  //   setLeftAnchorEl(null);
-  // };
+  const handleOpenDrawer = () => {
+    dispatch(openDrawer());
+  };
 
   // ------------------------------
   const menuId = 'primary-search-account-menu';
@@ -241,36 +135,7 @@ export default function ResponsiveAppBar() {
     </Menu>
   );
   // -----------------------------------------
-  // const leftMenuId = 'left-mobile-menu';
-  // const leftRenderMenu = (
-  //   <Menu
-  //     anchorEl={leftAnchorEl}
-  //     anchorOrigin={{
-  //       vertical: 'bottom',
-  //       horizontal: 'left',
-  //     }}
-  //     id={leftMenuId}
-  //     keepMounted
-  //     transformOrigin={{
-  //       vertical: 'top',
-  //       horizontal: 'left',
-  //     }}
-  //     open={isLeftMenuOpen}
-  //     onClose={handleLeftMenuClose}
-  //   >
-  //     <MenuItem onClick={handleLeftMenuClose}>
-  //       <NextLink href="/content">
-  //         <a>Content</a>
-  //       </NextLink>
-  //     </MenuItem>
-  //     <MenuItem onClick={handleLeftMenuClose}>
-  //       <NextLink href="/contactUs">
-  //         <a>Contact Us</a>
-  //       </NextLink>
-  //     </MenuItem>
-  //   </Menu>
-  // );
-  // ----------------------------
+
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -352,38 +217,32 @@ export default function ResponsiveAppBar() {
   );
   // -----------------------------------
   return (
-    <Container
-      maxWidth="xl"
-      sx={
-        {
-          // flexGrow: 1,
-          // zIndex: 12333,
-        }
-      }
-    >
-      <AppBar position="static">
+    <>
+      <AppBar
+        position="static"
+        sx={{
+          height: 100,
+          display: 'flex',
+          justifyContent: 'center',
+          position: 'relative',
+        }}
+      >
         <Toolbar>
-          {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="open-drawer"
-              aria-controls={leftMenuId}
-              aria-haspopup="true"
-              onClick={handleLeftMenuOpen}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-          </Box> */}
-
           {/* --------- */}
-
+          <IconButton
+            onClick={handleOpenDrawer}
+            sx={{ ml: -3, position: 'absolute', bottom: -19, left: 50 }}
+          >
+            <MenuOutlined color="secondary" />
+          </IconButton>
+          {/*  */}
           <NextLink href="/">
             <a
               style={{
                 display: 'flex',
-
+                marginLeft: 3,
                 alignItems: 'center',
+                marginBottom: 5,
               }}
             >
               <LaptopOutlined />
@@ -391,12 +250,13 @@ export default function ResponsiveAppBar() {
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ cursor: 'pointer', mr: 1, ml: 1.3 }}
+                sx={{ cursor: 'pointer', mr: 1, ml: 1 }}
               >
                 Hysubi
               </Typography>
             </a>
           </NextLink>
+
           {/* -------------- */}
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' }, ml: 5 }}>
             <NextLink href="/content" passHref>
@@ -534,6 +394,6 @@ export default function ResponsiveAppBar() {
 
       {renderMobileMenu}
       {renderMenu}
-    </Container>
+    </>
   );
 }

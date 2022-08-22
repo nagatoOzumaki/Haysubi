@@ -58,7 +58,7 @@ const LeftDrawer: FC = () => {
                 <span>login</span> <LoginModalToggle />
               </Box>
             )}
-            <Box sx={{ pl: 4, pt: 5, width: 500 }}>
+            <Box sx={{ pl: 4, pt: 5, width: 300 }}>
               {' '}
               <DrawerList />
             </Box>

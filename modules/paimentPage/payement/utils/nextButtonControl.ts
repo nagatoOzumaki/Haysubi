@@ -10,5 +10,7 @@ import { PaymentInfoActions } from "../../../../common/store/reducers/payementRe
     dispatch({ type: PaymentInfoActions.NEXT_STEP });
   };
 
-  export const previousStep = (dispatch:any) =>
-    dispatch({ type: PaymentInfoActions.PREVIOUS_STEP });
+  export const previousStep = (dispatch:any) =>{dispatch({ type: PaymentInfoActions.PREVIOUS_STEP });
+  enableNext(dispatch)
+}
+    

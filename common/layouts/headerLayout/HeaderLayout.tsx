@@ -1,12 +1,11 @@
 import { Box, Fab, Grid } from '@mui/material';
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { ArrowCircleRightOutlined } from '@mui/icons-material';
 import Image from 'next/image';
 import { ChildrenProps } from '../../types/@appTypes';
 import ResponsiveAppBar from '../../components/appBar/AppBar';
 import LeftDrawer from '../../components/drawer/LeftDrawer';
-import { closeChatbot, openChatbot, openDrawer } from '../../store/actions';
+import { closeChatbot, openChatbot } from '../../store/actions';
 import { useIsChatbotOpen } from '../../store/Store';
 import ChatBot from '../../../modules/chatbot';
 import CallCenter from '../../../public/images/icons/callCenter.png';
@@ -19,31 +18,12 @@ const HeaderLayout: FC<ChildrenProps> = ({ children }) => {
   const handleOpenChatBot = () =>
     isChatbotOpen ? dispatch(closeChatbot()) : dispatch(openChatbot());
 
-  const handleOpenDrawer = () => {
-    dispatch(openDrawer());
-  };
-
   return (
     <div>
-      <Fab
-        onClick={handleOpenDrawer}
-        sx={{
-          position: 'fixed',
-          ml: 4,
-          mt: 40,
-        }}
-        size="medium"
-        color="primary"
-        aria-label="add"
-      >
-        <ArrowCircleRightOutlined />
-      </Fab>
-
       <Grid container direction="column" spacing={1}>
         <LeftDrawer />
-        <Grid item component="div">
-          <ResponsiveAppBar />
-        </Grid>
+        <ResponsiveAppBar />
+
         <Grid item component="div">
           {children}
         </Grid>

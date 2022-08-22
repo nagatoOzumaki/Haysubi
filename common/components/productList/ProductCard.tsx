@@ -19,14 +19,15 @@ const ProductCard: FC<Props> = ({ product }) => {
             backgroundColor: 'rgba(255,255,255,1)',
             p: 2,
             pb: 0,
-            height: 500,
+            height: 520,
             cursor: 'pointer',
-            '&:hover': {
-              backgroundColor: '#eee',
-              padding: 1,
+            border: '1px solid rgba(0,0,0,0.4)',
+            // '&:hover': {
+            //   backgroundColor: '#BBB',
+            //   padding: 1,
 
-              p: 2,
-            },
+            //   p: 2,
+            // },
           }}
         >
           <CardMedia

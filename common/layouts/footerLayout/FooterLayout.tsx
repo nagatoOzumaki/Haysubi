@@ -8,7 +8,7 @@ type PropsType = {
 const FooterLayout: FC<PropsType> = ({ children }) => (
   <div>
     <div>{children}</div>
-    sd kdasd
+
     <Footer />
   </div>
 );

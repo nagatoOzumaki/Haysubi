@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -37,9 +37,6 @@ const PersonalInfoStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
     }
   };
 
-  useEffect(() => {
-    dispatch({ type: PaymentInfoActions.DISABLE_NEXT_BUTTON });
-  }, [dispatch]);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>

@@ -24,6 +24,7 @@ import {
   nextStep,
   previousStep,
 } from './utils/nextButtonControl';
+import HomeDeliveryInfoStep from './HomeDeliveryInfoStep';
 
 type PropsType = {
   dispatch: any;
@@ -66,23 +67,21 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
   };
 
   const handleOnChange = (values: any) => {
-    if (!values.method) {
-      disableNext(dispatch);
+    if (
+      (values.method === 'withdrawal' && values.withdrawalPoint) ||
+      values.method === 'delivery'
+    ) {
+      enableNext(dispatch);
     } else {
-      // eslint-disable-next-line no-lonely-if
-      if (values.method === 'withdrawal' && !values.withdrawalPoint) {
-        disableNext(dispatch);
-      } else {
-        enableNext(dispatch);
-      }
+      disableNext(dispatch);
     }
   };
   const handleWithdrawalPointChange = (_city: string) => {
     setCity(_city);
   };
-  useEffect(() => {
-    disableNext(dispatch);
-  }, [dispatch]);
+  // useEffect(() => {
+  //   disableNext(dispatch);
+  // }, [dispatch]);
 
   return (
     <Grid container spacing={2}>
@@ -127,7 +126,15 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
                     type="radio"
                     value="delivery"
                     name="method"
-                    as={Radio}
+                    as={() => (
+                      <Radio
+                        checked={values.method === 'delivery'}
+                        onChange={() => {
+                          values.method = 'delivery';
+                          handleOnChange(values);
+                        }}
+                      />
+                    )}
                   />
                 </Box>
                 <Box>
@@ -145,13 +152,30 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
                       type="radio"
                       value="withdrawal"
                       name="method"
-                      as={Radio}
+                      as={() => (
+                        <Radio
+                          checked={values.method === 'withdrawal'}
+                          onChange={() => {
+                            values.method = 'withdrawal';
+                            handleOnChange(values);
+                          }}
+                        />
+                      )}
                     />
                   </Box>
                 </Box>
               </Box>
               {/* --------------------------------------------------------- */}
+
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                {/* Home Delivery info */}
+                {values.method === 'delivery' ? (
+                  <HomeDeliveryInfoStep
+                    dispatch={dispatch}
+                    paymentInfo={paymentInfo}
+                  />
+                ) : null}
+                {/* Withdrawal point info */}
                 {values.method === 'withdrawal' ? (
                   <>
                     <Box>
@@ -169,10 +193,7 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
                             handleWithdrawalPointChange(e.target.value);
                           }}
                           label="Withdrawal Points"
-                          inputProps={{
-                            name: 'points',
-                            id: 'points',
-                          }}
+                          name="withdrawalPoint"
                         >
                           {withdrawalPoints.map(point => (
                             <MenuItem
@@ -191,6 +212,7 @@ const DeliveryMethodStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
                   </>
                 ) : null}
               </Box>
+
               {/* --------------------------------------------------- */}
               <Box
                 sx={{

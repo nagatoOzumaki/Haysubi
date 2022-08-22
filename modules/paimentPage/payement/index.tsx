@@ -51,6 +51,7 @@ const PayementForm = () => {
         {step === 2 ? (
           <DeliveryMethodStep dispatch={dispatch} paymentInfo={paymentInfo} />
         ) : null}
+
         {step === 3 ? (
           <PayementStep dispatch={dispatch} paymentInfo={paymentInfo} />
         ) : null}

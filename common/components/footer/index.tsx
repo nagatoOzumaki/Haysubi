@@ -1,8 +1,64 @@
-import { Grid, Container, Typography } from '@mui/material';
+import {
+  Copyright,
+  Email,
+  Facebook,
+  Instagram,
+  Twitter,
+  WhatsApp,
+} from '@mui/icons-material';
+import { Grid, Container, Typography, Box, Fab } from '@mui/material';
+import Link from 'next/link';
 import { FC } from 'react';
 
 const Footer: FC = () => (
-  <Container maxWidth="xl" sx={{ backgroundColor: 'rgba(0, 0,0, 0.7)', p: 12 }}>
+  <Container
+    maxWidth="xl"
+    sx={{
+      backgroundColor: 'rgba(0, 0,0, 1)',
+      p: 10,
+      color: '#fff',
+    }}
+  >
+    <Box
+      sx={{
+        display: 'flex',
+        gap: 3,
+        pl: 5,
+        alignItems: 'center',
+      }}
+    >
+      <Typography>Reach Hysubi In social media</Typography>
+      <span style={{ fontSize: 24 }}>|</span>
+      <Box
+        sx={{
+          display: 'flex',
+          gap: 9,
+          backgroundColor: 'rgba(0, 0,0, 0.5)',
+          alignItems: 'center',
+        }}
+      >
+        <Fab color="primary">
+          <Facebook />
+          facebook
+        </Fab>
+        <Fab color="primary">
+          <Instagram />
+          instagram
+        </Fab>
+        <Fab color="primary">
+          <WhatsApp />
+          WhatsApp
+        </Fab>
+        <Fab color="primary">
+          <Twitter />
+          Twitter
+        </Fab>
+        <Fab color="primary">
+          <Email /> GMAIL
+        </Fab>
+      </Box>
+    </Box>
+
     <Grid spacing={2} sx={{ mt: 5 }} container>
       <Grid item md={3}>
         <Typography variant="h6">Pour mieux nous connaître</Typography> À propos
@@ -32,6 +88,24 @@ const Footer: FC = () => (
         Accessibilité
       </Grid>
     </Grid>
+    <Box sx={{ display: 'flex', gap: 4, mt: 10, ml: 20 }}>
+      <Typography
+        variant="body1"
+        sx={{
+          display: 'flex',
+        }}
+      >
+        <Copyright /> 2022 All rights reserved
+      </Typography>
+      <Box sx={{ display: 'flex', gap: 4 }}>
+        <Link href="/enterprise">
+          <a>Enterprise</a>
+        </Link>
+        <Link href="/polices">
+          <a>Terms and polices</a>
+        </Link>
+      </Box>
+    </Box>
   </Container>
 );
 
