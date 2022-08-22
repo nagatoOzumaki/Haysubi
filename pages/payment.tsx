@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import PayementForm from '../modules/paimentPage/payement';
 
 const payment: NextPage = () => (
-  <Container sx={{ mb: 10 }}>
+  <Container>
     <PayementForm />
   </Container>
 );
