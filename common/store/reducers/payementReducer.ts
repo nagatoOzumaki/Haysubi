@@ -5,7 +5,11 @@ export type PaymentInfoState = {
   email: string;
   address: string;
   city: string;
-  // isHomeDeliveryInfoStep:boolean,
+  // 
+  paymentCardOwner:string,
+  paymentCardCode:string,
+  paymentCardInfo3:string,
+  // 
   zipCode: number;
   street: string;
   country: string;
@@ -26,11 +30,14 @@ export const PaymentInfoActions = {
   SET_ZIP_CODE: 'SET_ZIP_CODE',
   SET_DELIVERY_METHOD: 'SET_DELIVERY_METHOD',
   NEXT_STEP: 'NEXT_STEP',
+  SET_STEP:'SET_STEP',
   PREVIOUS_STEP: 'PREVIOUS_STEP',
   ENABLE_NEXT_BUTTON: 'ENABLE_NEXT_BUTTON',
   DISABLE_NEXT_BUTTON: 'DISABLE_NEXT_BUTTON',
-  // OPEN_HOME_DELIVERY_STERP:'OPEN_HOME_DELIVERY_STEP',
-  // CLOSE_HOME_DELIVERY_STERP:'CLOSE_HOME_DELIVERY_STEP'
+  SET_PAYMENT_CARD_CODE:'SET_PAYMENT_CARD_CODE',
+  SET_CARD_OWNER_NAME:'SET_CARD_OWNER_NAME',
+  SET_PAYMENT_INFO3:'SET_PAYMENT_INFO3'
+
 };
 
 const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
@@ -67,6 +74,21 @@ const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
     case PaymentInfoActions.SET_DELIVERY_METHOD: {
       return { ...state, deliveryMethod: action.payload };
     }
+    // 
+    case PaymentInfoActions.SET_CARD_OWNER_NAME: {
+      return {
+        ...state,
+        cardOwnerName: action.payload 
+      };
+    }
+    
+
+    case PaymentInfoActions.SET_PAYMENT_CARD_CODE: {
+      return { ...state, paymentCardCode: action.payload };
+    }
+    case PaymentInfoActions.SET_PAYMENT_INFO3: {
+      return { ...state, paymentInfo3: action.payload };
+    }
     // -------------
     case PaymentInfoActions.NEXT_STEP: {
       if (state.step < 4) {
@@ -85,6 +107,9 @@ const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
     }
     case PaymentInfoActions.DISABLE_NEXT_BUTTON: {
       return { ...state, isNextButtonEnabled: false };
+    }
+    case PaymentInfoActions.SET_STEP: {
+      return { ...state, step:action.payload };
     }
     default:
       return state;
