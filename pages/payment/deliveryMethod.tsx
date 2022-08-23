@@ -19,14 +19,15 @@ import {
   PaymentInfoActions,
   PaymentInfoState,
 } from '../../common/store/reducers/payementReducer';
+
+import WithdrawalPointsMap from '../../modules/paymentPage/components/WithdrawalPointsMap';
+import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 import {
   disableNext,
   enableNext,
   nextStep,
-} from '../../modules/paimentPage/payement/utils/nextButtonControl';
-import HomeDeliveryInfoStep from '../../modules/paimentPage/payement/HomeDeliveryInfoStep';
-import WithdrawalPointsMap from '../../modules/paimentPage/payement/components/WithdrawalPointsMap';
-import PaymentLayout from '../../modules/paimentPage/payement/components/paymentLayout';
+} from '../../modules/paymentPage/utils/nextButtonControl';
+import HomeDeliveryInfoStep from '../../modules/paymentPage/components/HomeDeliveryInfoStep';
 
 type PropsType = {
   dispatch: any;

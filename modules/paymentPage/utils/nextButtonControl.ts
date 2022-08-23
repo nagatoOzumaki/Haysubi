@@ -1,4 +1,4 @@
-import { PaymentInfoActions } from "../../../../common/store/reducers/payementReducer";
+import { PaymentInfoActions } from "../../../common/store/reducers/payementReducer";
 
   export const disableNext = (dispatch:any) => {
     dispatch({ type: PaymentInfoActions.DISABLE_NEXT_BUTTON });

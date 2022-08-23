@@ -11,7 +11,7 @@ import {
   useState,
 } from 'react';
 import { useCurrentProduct } from '../../common/store/Store';
-import PaymentLayout from '../../modules/paimentPage/payement/components/paymentLayout';
+import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 import {
   PaymentInfoActions,
   PaymentInfoState,

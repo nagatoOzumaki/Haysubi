@@ -16,7 +16,7 @@ import {
   PaymentInfoState,
 } from '../../common/store/reducers/payementReducer';
 import { MyTextInput } from '../../common/components/Inputs';
-import PaymentLayout from '../../modules/paimentPage/payement/components/paymentLayout';
+import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 
 type PropsType = {
   dispatch: any;
