@@ -33,8 +33,90 @@ type PropsType = {
   dispatch: any;
   paymentInfo: PaymentInfoState;
 };
+const withdrawalPoint = {
+  taza: [
+    {
+      address: 'taza1',
+      coordonates: 1,
+    },
+    {
+      address: 'taza2',
+      coordonates: 2,
+    },
 
-const withdrawalPoints = [
+    {
+      address: 'taza3',
+      coordonates: 3,
+    },
+
+    {
+      address: 'taza4',
+      coordonates: 4,
+    },
+  ],
+  fes: [
+    {
+      address: 'fes1',
+      coordonates: 1,
+    },
+    {
+      address: 'fes2',
+      coordonates: 2,
+    },
+
+    {
+      address: 'fes3',
+      coordonates: 3,
+    },
+
+    {
+      address: 'fes4',
+      coordonates: 4,
+    },
+  ],
+  meknes: [
+    {
+      address: 'meknes1',
+      coordonates: 1,
+    },
+    {
+      address: 'meknes2',
+      coordonates: 2,
+    },
+
+    {
+      address: 'meknes3',
+      coordonates: 3,
+    },
+
+    {
+      address: 'meknes4',
+      coordonates: 4,
+    },
+  ],
+  casa: [
+    {
+      address: 'casa1',
+      coordonates: 1,
+    },
+    {
+      address: 'casa2',
+      coordonates: 2,
+    },
+
+    {
+      address: 'casa3',
+      coordonates: 3,
+    },
+
+    {
+      address: 'casa4',
+      coordonates: 4,
+    },
+  ],
+};
+
+const cities = [
   {
     address: 'taza',
     coordonates: 1,
@@ -66,7 +148,8 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
 
   const initialValues = {
     method: paymentInfo.deliveryMethod,
-    withdrawalPoint: '',
+    city: paymentInfo.city,
+    withdrawalPoint: paymentInfo.withdrawalPoint,
   };
 
   const handleOnChange = (values: any) => {
@@ -98,6 +181,19 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
               type: PaymentInfoActions.SET_DELIVERY_METHOD,
               payload: values.method,
             });
+            if (values.withdrawalPoint) {
+              dispatch({
+                type: PaymentInfoActions.SET_WITHDRAWAL_POINT,
+                payload: values.withdrawalPoint,
+              });
+            }
+            if (values.city) {
+              dispatch({
+                type: PaymentInfoActions.SET_CITY,
+                payload: values.city,
+              });
+            }
+
             nextStep(dispatch);
             router.push('/payment/paymentMethod');
           }}
@@ -171,7 +267,7 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
               </Box>
               {/* --------------------------------------------------------- */}
 
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 {/* Home Delivery info */}
                 {values.method === 'delivery' ? (
                   <HomeDeliveryInfoStep
@@ -183,23 +279,21 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
                 {values.method === 'withdrawal' ? (
                   <>
                     <Box>
-                      <FormControl sx={{ mt: 10, minWidth: 120, ml: 50 }}>
-                        <InputLabel htmlFor="withdrawal-point">
-                          Points
-                        </InputLabel>
+                      <FormControl sx={{ mt: 10 }}>
+                        <InputLabel htmlFor="city">Cities</InputLabel>
                         <Select
                           sx={{ width: 200 }}
                           autoFocus
-                          value={values.withdrawalPoint}
+                          value={values.city}
                           onChange={(e: any) => {
-                            values.withdrawalPoint = e.target.value;
+                            values.city = e.target.value;
                             handleOnChange(values);
                             handleWithdrawalPointChange(e.target.value);
                           }}
-                          label="Withdrawal Points"
-                          name="withdrawalPoint"
+                          label="city"
+                          name="city"
                         >
-                          {withdrawalPoints.map(point => (
+                          {cities.map(point => (
                             <MenuItem
                               key={point.coordonates}
                               value={point.address}
@@ -210,13 +304,42 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
                         </Select>
                       </FormControl>
                     </Box>
-                    <Box sx={{ mt: 10 }}>
-                      {city ? <MapDialog city={city} /> : null}
-                    </Box>
                   </>
                 ) : null}
+                {/* Points */}
+                {values.city !== '' && values.method === 'withdrawal' ? (
+                  <>
+                    <FormControl sx={{ mt: 10 }}>
+                      <InputLabel htmlFor="withdrawal-point">Points</InputLabel>
+                      <Select
+                        sx={{ width: 200 }}
+                        autoFocus
+                        value={values.withdrawalPoint}
+                        onChange={(e: any) => {
+                          values.withdrawalPoint = e.target.value;
+                          handleOnChange(values);
+                          handleWithdrawalPointChange(e.target.value);
+                        }}
+                        label="Withdrawal Points"
+                        name="withdrawalPoint"
+                      >
+                        {/* @ts-ignore */}
+                        {withdrawalPoint[values.city].map(point => (
+                          <MenuItem
+                            key={point.coordonates}
+                            value={point.address}
+                          >
+                            {point.address}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </>
+                ) : null}{' '}
               </Box>
-
+              <Box sx={{ mt: 10 }}>
+                {city ? <MapDialog point={values.withdrawalPoint} /> : null}
+              </Box>
               {/* --------------------------------------------------- */}
               <Box
                 sx={{
@@ -340,7 +463,7 @@ function WithdrawalPointsInfo() {
   );
 }
 
-const MapDialog = ({ city }: { city: string }) => {
+const MapDialog = ({ point }: { point: string }) => {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState<DialogProps['scroll']>('paper');
 
@@ -365,9 +488,14 @@ const MapDialog = ({ city }: { city: string }) => {
 
   return (
     <div>
-      <Button onClick={handleClickOpen('paper')} sx={{ color: 'red' }}>
-        See Our Points In {city}
-      </Button>
+      {point !== '' ? (
+        <Button
+          onClick={handleClickOpen('paper')}
+          sx={{ color: 'red', mt: -14 }}
+        >
+          See {point} In maps
+        </Button>
+      ) : null}
       <Dialog
         open={open}
         onClose={handleClose}

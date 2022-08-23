@@ -14,6 +14,7 @@ export type PaymentInfoState = {
   street: string;
   country: string;
   deliveryMethod: 'withdrawal'|'delivery';
+  withdrawalPoint:string,
   isNextButtonEnabled: boolean;
 };
 export type PaymentInfoAction = {
@@ -29,14 +30,16 @@ export const PaymentInfoActions = {
   SET_CITY: 'SET_CITY',
   SET_ZIP_CODE: 'SET_ZIP_CODE',
   SET_DELIVERY_METHOD: 'SET_DELIVERY_METHOD',
+  SET_WITHDRAWAL_POINT:'SET_WITHDRAWAL_POINT',
   NEXT_STEP: 'NEXT_STEP',
   SET_STEP:'SET_STEP',
+
   PREVIOUS_STEP: 'PREVIOUS_STEP',
   ENABLE_NEXT_BUTTON: 'ENABLE_NEXT_BUTTON',
   DISABLE_NEXT_BUTTON: 'DISABLE_NEXT_BUTTON',
   SET_PAYMENT_CARD_CODE:'SET_PAYMENT_CARD_CODE',
-  SET_CARD_OWNER_NAME:'SET_CARD_OWNER_NAME',
-  SET_PAYMENT_INFO3:'SET_PAYMENT_INFO3'
+  SET_CARD_OWNER:'SET_CARD_OWNER',
+  SET_PAYMENT_CARD_INFO3:'SET_PAYMENT_CARD_INFO3'
 
 };
 
@@ -74,11 +77,17 @@ const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
     case PaymentInfoActions.SET_DELIVERY_METHOD: {
       return { ...state, deliveryMethod: action.payload };
     }
-    // 
-    case PaymentInfoActions.SET_CARD_OWNER_NAME: {
+    case PaymentInfoActions.SET_WITHDRAWAL_POINT: {
       return {
         ...state,
-        cardOwnerName: action.payload 
+        withdrawalPoint: action.payload 
+      };
+    }
+    // 
+    case PaymentInfoActions.SET_CARD_OWNER: {
+      return {
+        ...state,
+        paymentCardOwner: action.payload 
       };
     }
     
@@ -86,8 +95,8 @@ const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
     case PaymentInfoActions.SET_PAYMENT_CARD_CODE: {
       return { ...state, paymentCardCode: action.payload };
     }
-    case PaymentInfoActions.SET_PAYMENT_INFO3: {
-      return { ...state, paymentInfo3: action.payload };
+    case PaymentInfoActions.SET_PAYMENT_CARD_INFO3: {
+      return { ...state, paymentCardInfo3: action.payload };
     }
     // -------------
     case PaymentInfoActions.NEXT_STEP: {

@@ -20,6 +20,7 @@ const PaymentLayout: FC<PropTypes> = ({ children }) => {
     street: '',
     country: '',
     deliveryMethod: '',
+    withdrawalPoint: '',
     isNextButtonEnabled: false,
     //
     paymentCardOwner: '',

@@ -67,10 +67,8 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
           paymentCardInfo3: Yup.string().required('Required'),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          setIsProgressOpen(true);
-          setTimeout(() => router.push('/payment/finalStep'), 4000);
           dispatch({
-            type: PaymentInfoActions.SET_CARD_OWNER_NAME,
+            type: PaymentInfoActions.SET_CARD_OWNER,
             payload: values.paymentCardOwner,
           });
           dispatch({
@@ -79,10 +77,11 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
           });
 
           dispatch({
-            type: PaymentInfoActions.SET_PAYMENT_INFO3,
+            type: PaymentInfoActions.SET_PAYMENT_CARD_INFO3,
             payload: values.paymentCardInfo3,
           });
-
+          setIsProgressOpen(true);
+          setTimeout(() => router.push('/payment/finalStep'), 4000);
           setSubmitting(false);
           router.push('/payment/finalStep');
         }}
@@ -96,6 +95,7 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                   label="card owner"
                   name="paymentCardOwner"
                   type="text"
+                  value={values.paymentCardOwner}
                   onChange={(e: any) => {
                     values.paymentCardOwner = e.target.value;
                     handleOnChange(values);
@@ -120,6 +120,7 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                   label="paymentCardInfo3"
                   name="paymentCardInfo3"
                   type="text"
+                  value={values.paymentCardInfo3}
                   onChange={(e: any) => {
                     values.paymentCardInfo3 = e.target.value;
                     handleOnChange(values);

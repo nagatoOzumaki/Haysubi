@@ -8,7 +8,7 @@ import {
   PaymentInfoActions,
 } from '../../../common/store/reducers/payementReducer';
 import { MyTextInput } from '../../../common/components/Inputs';
-import { disableNext, enableNext, nextStep } from './nextButtonControl';
+import { disableNext, enableNext, nextStep } from '../utils/nextButtonControl';
 
 type PropsType = {
   dispatch: any;

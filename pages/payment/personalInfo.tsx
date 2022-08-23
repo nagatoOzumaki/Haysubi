@@ -11,7 +11,6 @@ import {
 import {
   disableNext,
   enableNext,
-  nextStep,
 } from '../../modules/paymentPage/utils/nextButtonControl';
 import { MyTextInput } from '../../common/components/Inputs';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
@@ -24,13 +23,12 @@ type PropsType = {
 const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
   const { isNextButtonEnabled } = paymentInfo;
   const router = useRouter();
-  useEffect(() => {}, []);
+
   const handleOnChange = (values: any) => {
     if (
       !values.email ||
       !values.firstname ||
       !values.lastname ||
-      !values.city ||
       !values.street
     ) {
       disableNext(dispatch);
@@ -61,7 +59,7 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
             .required('Required'),
           firstname: Yup.string().required('Required'),
           lastname: Yup.string().required('Required'),
-          city: Yup.string().required('Required'),
+
           street: Yup.string().required('Required'),
         })}
         onSubmit={values => {
@@ -80,21 +78,15 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
           });
 
           dispatch({
-            type: PaymentInfoActions.SET_CITY,
-            payload: values.city,
-          });
-          dispatch({
             type: PaymentInfoActions.SET_STREET,
             payload: values.street,
           });
-          nextStep(dispatch);
-          // setSubmitting(false);
           router.push('/payment/deliveryMethod');
         }}
         validateOnChange
       >
-        {({ values, handleSubmit }) => (
-          <Form onSubmit={handleSubmit}>
+        {({ values }) => (
+          <Form>
             <Grid spacing={3} container>
               <Grid item>
                 <MyTextInput
@@ -138,18 +130,6 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
                   type="text"
                   onChange={(e: any) => {
                     values.street = e.target.value;
-                    handleOnChange(values);
-                  }}
-                />
-              </Grid>
-              <Grid item>
-                {' '}
-                <MyTextInput
-                  label="City"
-                  name="city"
-                  type="text"
-                  onChange={(e: any) => {
-                    values.city = e.target.value;
                     handleOnChange(values);
                   }}
                 />
