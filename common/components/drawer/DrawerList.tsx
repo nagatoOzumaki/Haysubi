@@ -28,8 +28,9 @@ const ListContent: ListType = [
   {
     title: 'services',
     subTitles: [
-      ['/', 'maintenance'],
-      ['/', 'upgrade'],
+      ['/', 'upgrade and repair'],
+      ['/', 'consulting'],
+      ['/', 'simulator'],
     ],
   },
   {

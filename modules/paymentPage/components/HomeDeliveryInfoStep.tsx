@@ -1,14 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { FC } from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
 import {
   PaymentInfoState,
   PaymentInfoActions,
 } from '../../../common/store/reducers/payementReducer';
 import { MyTextInput } from '../../../common/components/Inputs';
-import { disableNext, enableNext, nextStep } from '../utils/nextButtonControl';
+import { disableNext, enableNext } from '../utils/nextButtonControl';
 
 type PropsType = {
   dispatch: any;
@@ -16,8 +17,6 @@ type PropsType = {
 };
 
 const HomeDeliveryInfoStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
-  //   const { isNextButtonEnabled } = paymentInfo;
-
   const handleOnChange = (values: any) => {
     if (!values.zipCode || !values.street || !values.city) {
       disableNext(dispatch);
@@ -25,7 +24,7 @@ const HomeDeliveryInfoStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
       enableNext(dispatch);
     }
   };
-
+  const router = useRouter();
   return (
     <Grid container spacing={2} mt={4}>
       <Grid item xs={12}>
@@ -47,7 +46,7 @@ const HomeDeliveryInfoStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
           // setSubmitting(true);
 
           dispatch({
-            type: PaymentInfoActions.SET_STREET,
+            type: PaymentInfoActions.SET_ZIP_CODE,
             payload: values.zipCode,
           });
 
@@ -59,7 +58,7 @@ const HomeDeliveryInfoStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
             type: PaymentInfoActions.SET_STREET,
             payload: values.street,
           });
-          nextStep(dispatch);
+          router.push('/payment/verification');
           // setSubmitting(false);
         }}
         validateOnChange
@@ -96,6 +95,7 @@ const HomeDeliveryInfoStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
                   label="City"
                   name="city"
                   type="text"
+                  value={values.city}
                   onChange={(e: any) => {
                     values.city = e.target.value;
                     handleOnChange(values);
@@ -103,6 +103,33 @@ const HomeDeliveryInfoStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
                 />
               </Grid>
             </Grid>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                position: 'absolute',
+                bottom: 53,
+                right: 50,
+              }}
+            >
+              <Button
+                sx={{ mr: 2 }}
+                variant="outlined"
+                onClick={() => {
+                  router.back();
+                }}
+              >
+                Back
+              </Button>
+              <Button
+                type="submit"
+                onClick={() => router.push('/payment/verification')}
+                variant="contained"
+                sx={{ backgroundColor: 'green' }}
+              >
+                Nextss
+              </Button>
+            </Box>
           </Form>
         )}
       </Formik>

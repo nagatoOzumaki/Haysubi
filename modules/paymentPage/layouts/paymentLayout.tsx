@@ -55,7 +55,7 @@ const PaymentLayout: FC<PropTypes> = ({ children }) => {
       <Typography variant="h6" sx={{ position: 'absolute', top: 3, p: 1 }}>
         Paiment
       </Typography>
-      {step !== 4 ? (
+      {step === 1 || step === 2 || step === 3 ? (
         <Box>
           <PaimentStepper step={step} />
         </Box>

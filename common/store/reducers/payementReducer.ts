@@ -28,6 +28,7 @@ export const PaymentInfoActions = {
   SET_STREET: 'SET_STREET',
   SET_EMAIL: 'SET_EMAIL',
   SET_CITY: 'SET_CITY',
+   SET_ADDRESS: 'SET_ADDRESS',
   SET_ZIP_CODE: 'SET_ZIP_CODE',
   SET_DELIVERY_METHOD: 'SET_DELIVERY_METHOD',
   SET_WITHDRAWAL_POINT:'SET_WITHDRAWAL_POINT',
@@ -70,6 +71,12 @@ const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
       return {
         ...state,
         city: action.payload 
+      };
+    }
+     case PaymentInfoActions.SET_ADDRESS: {
+      return {
+        ...state,
+        address: action.payload 
       };
     }
     

@@ -21,16 +21,11 @@ type PropsType = {
 };
 
 const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
-  const { isNextButtonEnabled } = paymentInfo;
+  // const { isNextButtonEnabled } = paymentInfo;
   const router = useRouter();
 
   const handleOnChange = (values: any) => {
-    if (
-      !values.email ||
-      !values.firstname ||
-      !values.lastname ||
-      !values.street
-    ) {
+    if (!values.email || !values.firstname || !values.lastname) {
       disableNext(dispatch);
     } else {
       enableNext(dispatch);
@@ -50,8 +45,6 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
           email: paymentInfo.email,
           firstname: paymentInfo.firstname,
           lastname: paymentInfo.lastname,
-          city: paymentInfo.city,
-          street: paymentInfo.street,
         }}
         validationSchema={Yup.object({
           email: Yup.string()
@@ -59,8 +52,6 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
             .required('Required'),
           firstname: Yup.string().required('Required'),
           lastname: Yup.string().required('Required'),
-
-          street: Yup.string().required('Required'),
         })}
         onSubmit={values => {
           // setSubmitting(true);
@@ -77,10 +68,6 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
             payload: values.email,
           });
 
-          dispatch({
-            type: PaymentInfoActions.SET_STREET,
-            payload: values.street,
-          });
           router.push('/payment/deliveryMethod');
         }}
         validateOnChange
@@ -122,18 +109,6 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
                   }}
                 />
               </Grid>
-
-              <Grid item>
-                <MyTextInput
-                  label="Street Address"
-                  name="street"
-                  type="text"
-                  onChange={(e: any) => {
-                    values.street = e.target.value;
-                    handleOnChange(values);
-                  }}
-                />
-              </Grid>
             </Grid>
             <Box
               sx={{
@@ -155,7 +130,7 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
               </Button>
               <Button
                 type="submit"
-                disabled={!isNextButtonEnabled}
+                // disabled={!isNextButtonEnabled}
                 variant="contained"
                 sx={{ backgroundColor: 'green' }}
               >

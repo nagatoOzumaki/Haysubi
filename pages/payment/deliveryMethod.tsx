@@ -25,7 +25,6 @@ import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 import {
   disableNext,
   enableNext,
-  nextStep,
 } from '../../modules/paymentPage/utils/nextButtonControl';
 import HomeDeliveryInfoStep from '../../modules/paymentPage/components/HomeDeliveryInfoStep';
 
@@ -140,10 +139,18 @@ const cities = [
 const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
   const [city, setCity] = useState('');
 
-  const { isNextButtonEnabled } = paymentInfo;
+  // const { isNextButtonEnabled } = paymentInfo;
   const router = useRouter();
   const testSchema = Yup.object().shape({
     method: Yup.string().required('select a method'),
+    city:
+      paymentInfo.deliveryMethod === 'withdrawal'
+        ? Yup.string().required('required')
+        : Yup.string().required('select a method'),
+    withdrawalPoint:
+      city !== ''
+        ? Yup.string().required('required')
+        : Yup.string().notRequired(),
   });
 
   const initialValues = {
@@ -181,21 +188,18 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
               type: PaymentInfoActions.SET_DELIVERY_METHOD,
               payload: values.method,
             });
-            if (values.withdrawalPoint) {
-              dispatch({
-                type: PaymentInfoActions.SET_WITHDRAWAL_POINT,
-                payload: values.withdrawalPoint,
-              });
-            }
-            if (values.city) {
-              dispatch({
-                type: PaymentInfoActions.SET_CITY,
-                payload: values.city,
-              });
-            }
 
-            nextStep(dispatch);
-            router.push('/payment/paymentMethod');
+            dispatch({
+              type: PaymentInfoActions.SET_WITHDRAWAL_POINT,
+              payload: values.withdrawalPoint,
+            });
+
+            dispatch({
+              type: PaymentInfoActions.SET_CITY,
+              payload: values.city,
+            });
+
+            router.push('/payment/verification');
           }}
           validationSchema={testSchema}
           initialValues={initialValues}
@@ -284,14 +288,15 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
                         <Select
                           sx={{ width: 200 }}
                           autoFocus
-                          value={values.city}
                           onChange={(e: any) => {
                             values.city = e.target.value;
                             handleOnChange(values);
                             handleWithdrawalPointChange(e.target.value);
                           }}
+                          value={values.city}
                           label="city"
                           name="city"
+                          defaultValue="casa"
                         >
                           {cities.map(point => (
                             <MenuItem
@@ -313,8 +318,9 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
                       <InputLabel htmlFor="withdrawal-point">Points</InputLabel>
                       <Select
                         sx={{ width: 200 }}
-                        autoFocus
                         value={values.withdrawalPoint}
+                        autoFocus
+                        defaultValue="casa1"
                         onChange={(e: any) => {
                           values.withdrawalPoint = e.target.value;
                           handleOnChange(values);
@@ -341,33 +347,35 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
                 {city ? <MapDialog point={values.withdrawalPoint} /> : null}
               </Box>
               {/* --------------------------------------------------- */}
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  position: 'absolute',
-                  bottom: 53,
-                  right: 50,
-                }}
-              >
-                <Button
-                  sx={{ mr: 2 }}
-                  variant="outlined"
-                  onClick={() => {
-                    router.back();
+              {values.method === 'withdrawal' ? (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    position: 'absolute',
+                    bottom: 53,
+                    right: 50,
                   }}
                 >
-                  Back
-                </Button>
-                <Button
-                  type="submit"
-                  disabled={!isNextButtonEnabled}
-                  variant="contained"
-                  sx={{ backgroundColor: 'green' }}
-                >
-                  Next
-                </Button>
-              </Box>
+                  <Button
+                    sx={{ mr: 2 }}
+                    variant="outlined"
+                    onClick={() => {
+                      router.back();
+                    }}
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    type="submit"
+                    // disabled={!isNextButtonEnabled}
+                    variant="contained"
+                    sx={{ backgroundColor: 'green' }}
+                  >
+                    Next
+                  </Button>
+                </Box>
+              ) : null}
             </Form>
           )}
         </Formik>

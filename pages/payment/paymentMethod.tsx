@@ -24,7 +24,7 @@ type PropsType = {
 };
 
 const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
-  const { isNextButtonEnabled } = paymentInfo;
+  // const { isNextButtonEnabled } = paymentInfo;
   const [isProgressOpen, setIsProgressOpen] = useState(false);
   const router = useRouter();
   const disableNext = () => {
@@ -148,7 +148,7 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
               </Button>
               <Button
                 type="submit"
-                disabled={!isNextButtonEnabled}
+                // disabled={!isNextButtonEnabled}
                 variant="contained"
                 sx={{ backgroundColor: 'green' }}
               >
