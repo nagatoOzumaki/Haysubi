@@ -16,7 +16,7 @@ const PaymentLayout: FC<PropTypes> = ({ children }) => {
     email: '',
     address: '',
     city: '',
-    zipCode: 0,
+    zipCode: '',
     street: '',
     country: '',
     deliveryMethod: '',
