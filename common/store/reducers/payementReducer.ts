@@ -10,7 +10,7 @@ export type PaymentInfoState = {
   paymentCardCode:string,
   paymentCardInfo3:string,
   // 
-  zipCode: number;
+  zipCode: string;
   street: string;
   country: string;
   deliveryMethod: 'withdrawal'|'delivery';

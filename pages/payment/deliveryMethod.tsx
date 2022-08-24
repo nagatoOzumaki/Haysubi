@@ -5,10 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
 import * as Yup from 'yup';
 
 import { Grid, Typography, Button, Box, Radio } from '@mui/material';
@@ -20,137 +17,21 @@ import {
   PaymentInfoState,
 } from '../../common/store/reducers/payementReducer';
 
-import WithdrawalPointsMap from '../../modules/paymentPage/components/WithdrawalPointsMap';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 import {
   disableNext,
   enableNext,
 } from '../../modules/paymentPage/utils/nextButtonControl';
-import HomeDeliveryInfoStep from '../../modules/paymentPage/components/HomeDeliveryInfoStep';
 
 type PropsType = {
   dispatch: any;
   paymentInfo: PaymentInfoState;
 };
-const withdrawalPoint = {
-  taza: [
-    {
-      address: 'taza1',
-      coordonates: 1,
-    },
-    {
-      address: 'taza2',
-      coordonates: 2,
-    },
-
-    {
-      address: 'taza3',
-      coordonates: 3,
-    },
-
-    {
-      address: 'taza4',
-      coordonates: 4,
-    },
-  ],
-  fes: [
-    {
-      address: 'fes1',
-      coordonates: 1,
-    },
-    {
-      address: 'fes2',
-      coordonates: 2,
-    },
-
-    {
-      address: 'fes3',
-      coordonates: 3,
-    },
-
-    {
-      address: 'fes4',
-      coordonates: 4,
-    },
-  ],
-  meknes: [
-    {
-      address: 'meknes1',
-      coordonates: 1,
-    },
-    {
-      address: 'meknes2',
-      coordonates: 2,
-    },
-
-    {
-      address: 'meknes3',
-      coordonates: 3,
-    },
-
-    {
-      address: 'meknes4',
-      coordonates: 4,
-    },
-  ],
-  casa: [
-    {
-      address: 'casa1',
-      coordonates: 1,
-    },
-    {
-      address: 'casa2',
-      coordonates: 2,
-    },
-
-    {
-      address: 'casa3',
-      coordonates: 3,
-    },
-
-    {
-      address: 'casa4',
-      coordonates: 4,
-    },
-  ],
-};
-
-const cities = [
-  {
-    address: 'taza',
-    coordonates: 1,
-  },
-  {
-    address: 'fes',
-    coordonates: 2,
-  },
-
-  {
-    address: 'meknes',
-    coordonates: 3,
-  },
-
-  {
-    address: 'casa',
-    coordonates: 4,
-  },
-];
 
 const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
-  const [city, setCity] = useState('');
-
-  // const { isNextButtonEnabled } = paymentInfo;
   const router = useRouter();
   const testSchema = Yup.object().shape({
     method: Yup.string().required('select a method'),
-    city:
-      paymentInfo.deliveryMethod === 'withdrawal'
-        ? Yup.string().required('required')
-        : Yup.string().required('select a method'),
-    withdrawalPoint:
-      city !== ''
-        ? Yup.string().required('required')
-        : Yup.string().notRequired(),
   });
 
   const initialValues = {
@@ -160,18 +41,13 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
   };
 
   const handleOnChange = (values: any) => {
-    if (
-      (values.method === 'withdrawal' && values.withdrawalPoint) ||
-      values.method === 'delivery'
-    ) {
+    if (values.method) {
       enableNext(dispatch);
     } else {
       disableNext(dispatch);
     }
   };
-  const handleWithdrawalPointChange = (_city: string) => {
-    setCity(_city);
-  };
+
   useEffect(() => {
     dispatch({ type: PaymentInfoActions.SET_STEP, payload: 2 });
   }, [dispatch]);
@@ -179,7 +55,7 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Typography variant="h6">Delivery information</Typography>
+        <Typography variant="h6">Home information</Typography>
       </Grid>
       <Grid sx={{ display: 'flex', alignItems: 'center' }} item>
         <Formik
@@ -198,8 +74,11 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
               type: PaymentInfoActions.SET_CITY,
               payload: values.city,
             });
-
-            router.push('/payment/verification');
+            if (values.method === 'delivery') {
+              router.push('/payment/homeDeliveryInfo');
+            } else {
+              router.push('/payment/withdrawalPointInfo');
+            }
           }}
           validationSchema={testSchema}
           initialValues={initialValues}
@@ -271,111 +150,34 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
               </Box>
               {/* --------------------------------------------------------- */}
 
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                {/* Home Delivery info */}
-                {values.method === 'delivery' ? (
-                  <HomeDeliveryInfoStep
-                    dispatch={dispatch}
-                    paymentInfo={paymentInfo}
-                  />
-                ) : null}
-                {/* Withdrawal point info */}
-                {values.method === 'withdrawal' ? (
-                  <>
-                    <Box>
-                      <FormControl sx={{ mt: 10 }}>
-                        <InputLabel htmlFor="city">Cities</InputLabel>
-                        <Select
-                          sx={{ width: 200 }}
-                          autoFocus
-                          onChange={(e: any) => {
-                            values.city = e.target.value;
-                            handleOnChange(values);
-                            handleWithdrawalPointChange(e.target.value);
-                          }}
-                          value={values.city}
-                          label="city"
-                          name="city"
-                          defaultValue="casa"
-                        >
-                          {cities.map(point => (
-                            <MenuItem
-                              key={point.coordonates}
-                              value={point.address}
-                            >
-                              {point.address}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-                    </Box>
-                  </>
-                ) : null}
-                {/* Points */}
-                {values.city !== '' && values.method === 'withdrawal' ? (
-                  <>
-                    <FormControl sx={{ mt: 10 }}>
-                      <InputLabel htmlFor="withdrawal-point">Points</InputLabel>
-                      <Select
-                        sx={{ width: 200 }}
-                        value={values.withdrawalPoint}
-                        autoFocus
-                        defaultValue="casa1"
-                        onChange={(e: any) => {
-                          values.withdrawalPoint = e.target.value;
-                          handleOnChange(values);
-                          handleWithdrawalPointChange(e.target.value);
-                        }}
-                        label="Withdrawal Points"
-                        name="withdrawalPoint"
-                      >
-                        {/* @ts-ignore */}
-                        {withdrawalPoint[values.city].map(point => (
-                          <MenuItem
-                            key={point.coordonates}
-                            value={point.address}
-                          >
-                            {point.address}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </>
-                ) : null}{' '}
-              </Box>
-              <Box sx={{ mt: 10 }}>
-                {city ? <MapDialog point={values.withdrawalPoint} /> : null}
-              </Box>
               {/* --------------------------------------------------- */}
-              {values.method === 'withdrawal' ? (
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                    position: 'absolute',
-                    bottom: 53,
-                    right: 50,
+
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  position: 'absolute',
+                  bottom: 53,
+                  right: 50,
+                }}
+              >
+                <Button
+                  sx={{ mr: 2 }}
+                  variant="outlined"
+                  onClick={() => {
+                    router.back();
                   }}
                 >
-                  <Button
-                    sx={{ mr: 2 }}
-                    variant="outlined"
-                    onClick={() => {
-                      router.back();
-                    }}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    type="submit"
-                    // disabled={!isNextButtonEnabled}
-                    variant="contained"
-                    sx={{ backgroundColor: 'green' }}
-                  >
-                    Next
-                  </Button>
-                </Box>
-              ) : null}
+                  Back
+                </Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{ backgroundColor: 'green' }}
+                >
+                  Next
+                </Button>
+              </Box>
             </Form>
           )}
         </Formik>
@@ -470,55 +272,3 @@ function WithdrawalPointsInfo() {
     </div>
   );
 }
-
-const MapDialog = ({ point }: { point: string }) => {
-  const [open, setOpen] = useState(false);
-  const [scroll, setScroll] = useState<DialogProps['scroll']>('paper');
-
-  const handleClickOpen = (scrollType: DialogProps['scroll']) => () => {
-    setOpen(true);
-    setScroll(scrollType);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const descriptionElementRef = useRef<HTMLElement>(null);
-  useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [open]);
-
-  return (
-    <div>
-      {point !== '' ? (
-        <Button
-          onClick={handleClickOpen('paper')}
-          sx={{ color: 'red', mt: -14 }}
-        >
-          See {point} In maps
-        </Button>
-      ) : null}
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-      >
-        <DialogTitle id="scroll-dialog-title">Points</DialogTitle>
-        <DialogContent dividers={scroll === 'paper'}>
-          <WithdrawalPointsMap />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
-};

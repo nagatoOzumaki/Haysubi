@@ -31,9 +31,8 @@ const Verification = ({ dispatch, paymentInfo }: PropsType) => {
 
         {paymentInfo.deliveryMethod === 'delivery' ? (
           <>
-            <Typography>address:{paymentInfo.address}</Typography>
+            <Typography>address:{paymentInfo.street}</Typography>
             <Typography>zip code:{paymentInfo.zipCode}</Typography>
-            <Typography>street:{paymentInfo.street}</Typography>
           </>
         ) : null}
         {paymentInfo.deliveryMethod === 'withdrawal' ? (
