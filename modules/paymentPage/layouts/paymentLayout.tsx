@@ -1,5 +1,5 @@
 import { Container, Box, Typography } from '@mui/material';
-import { Children, cloneElement, FC, isValidElement, useReducer } from 'react';
+import { Children, cloneElement, isValidElement, useReducer } from 'react';
 import paymentReducer from '../../../common/store/reducers/payementReducer';
 import PaimentStepper from '../components/Stepper';
 
@@ -8,7 +8,7 @@ type PropTypes = {
   children: JSX.Element | JSX.Element[];
 };
 
-const PaymentLayout: FC<PropTypes> = ({ children }) => {
+const PaymentLayout = ({ children }: PropTypes) => {
   const InitialState = {
     step: 1,
     firstname: '',

@@ -211,7 +211,7 @@ const ProductDetails = ({ product }: Props) => {
                   variant="contained"
                   onClick={handleBuyProduct}
                 >
-                  <NextLink href="/payment">
+                  <NextLink href="/payment/personalInfo">
                     <a> Buy It</a>
                   </NextLink>
                 </Button>
