@@ -205,15 +205,14 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
                       <Select
                         sx={{ width: 200 }}
                         autoFocus
+                        defaultValue={paymentInfo.city}
                         onChange={(e: any) => {
                           values.city = e.target.value;
                           handleOnChange(values);
                           handleWithdrawalPointChange(e.target.value);
                         }}
-                        value={values.city}
                         label="city"
                         name="city"
-                        defaultValue="casa"
                       >
                         {cities.map(point => (
                           <MenuItem
@@ -236,15 +235,14 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
                       <InputLabel htmlFor="withdrawal-point">Points</InputLabel>
                       <Select
                         sx={{ width: 200 }}
-                        value={values.withdrawalPoint}
                         autoFocus
-                        defaultValue="casa1"
                         onChange={(e: any) => {
                           values.withdrawalPoint = e.target.value;
                           handleOnChange(values);
                           handleWithdrawalPointChange(e.target.value);
                         }}
                         label="Withdrawal Points"
+                        defaultValue={paymentInfo.withdrawalPoint}
                         name="withdrawalPoint"
                       >
                         {/* @ts-ignore */}

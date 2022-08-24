@@ -128,11 +128,10 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
               </Button>
               <Button
                 type="submit"
-                onClick={() => router.push('/payment/verification')}
                 variant="contained"
                 sx={{ backgroundColor: 'green' }}
               >
-                Nextss
+                Next
               </Button>
             </Box>
           </Form>

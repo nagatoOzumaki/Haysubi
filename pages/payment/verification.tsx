@@ -25,7 +25,11 @@ const Verification = ({ dispatch, paymentInfo }: PropsType) => {
         <Typography>lastname:{paymentInfo.lastname}</Typography>
         <Typography>email:{paymentInfo.email}</Typography>
         <Typography variant="h5">Delivery Information</Typography>
-        <Typography>delivery method: {paymentInfo.deliveryMethod}</Typography>
+        <Typography>
+          delivery method:{' '}
+          {paymentInfo.deliveryMethod === 'delivery' ? 'home ' : null}
+          {paymentInfo.deliveryMethod}
+        </Typography>
 
         <Typography>city:{paymentInfo.city}</Typography>
 
