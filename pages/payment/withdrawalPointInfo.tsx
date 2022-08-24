@@ -167,7 +167,7 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Typography variant="h6">Delivery information</Typography>
+        <Typography variant="h6">Withdrawal point information</Typography>
       </Grid>
       <Grid sx={{ display: 'flex', alignItems: 'center' }} item>
         <Formik

@@ -1,4 +1,4 @@
-import { Box, Button, Container, Typography } from '@mui/material';
+import { Box, Button, Container, Divider, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { ReactElement, useEffect } from 'react';
 import {
@@ -15,35 +15,49 @@ const Verification = ({ dispatch, paymentInfo }: PropsType) => {
   const router = useRouter();
   useEffect(() => {
     /// i give a random value to step to hide stepper from this page
-    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 65 });
+    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 2 });
   }, [dispatch]);
   return (
     <Container>
-      <Box>
+      <Typography variant="h3">Verification</Typography>
+      <Divider />{' '}
+      <Box sx={{ ml: 12, mt: 4 }}>
         <Typography variant="h5">Personal Information</Typography>
-        <Typography>firstname: {paymentInfo.firstname}</Typography>
-        <Typography>lastname:{paymentInfo.lastname}</Typography>
-        <Typography>email:{paymentInfo.email}</Typography>
-        <Typography variant="h5">Delivery Information</Typography>
-        <Typography>
-          delivery method:{' '}
-          {paymentInfo.deliveryMethod === 'delivery' ? 'home ' : null}
-          {paymentInfo.deliveryMethod}
-        </Typography>
-
-        <Typography>city:{paymentInfo.city}</Typography>
-
-        {paymentInfo.deliveryMethod === 'delivery' ? (
-          <>
-            <Typography>address:{paymentInfo.street}</Typography>
-            <Typography>zip code:{paymentInfo.zipCode}</Typography>
-          </>
-        ) : null}
-        {paymentInfo.deliveryMethod === 'withdrawal' ? (
-          <Typography>
-            withdrawal point:{paymentInfo.withdrawalPoint}
+        <Box sx={{ ml: 4 }}>
+          <Typography fontWeight="bold">
+            firstname: {paymentInfo.firstname}
           </Typography>
-        ) : null}
+          <Typography fontWeight="bold">
+            lastname:{paymentInfo.lastname}
+          </Typography>
+          <Typography fontWeight="bold">email:{paymentInfo.email}</Typography>
+        </Box>
+        <Typography variant="h5">Delivery Information</Typography>
+        <Box sx={{ ml: 4 }}>
+          <Typography fontWeight="bold">
+            delivery method:{' '}
+            {paymentInfo.deliveryMethod === 'delivery' ? 'home ' : null}
+            {paymentInfo.deliveryMethod}
+          </Typography>
+
+          <Typography fontWeight="bold">city:{paymentInfo.city}</Typography>
+
+          {paymentInfo.deliveryMethod === 'delivery' ? (
+            <>
+              <Typography fontWeight="bold">
+                address:{paymentInfo.street}
+              </Typography>
+              <Typography fontWeight="bold">
+                zip code:{paymentInfo.zipCode}
+              </Typography>
+            </>
+          ) : null}
+          {paymentInfo.deliveryMethod === 'withdrawal' ? (
+            <Typography fontWeight="bold">
+              withdrawal point:{paymentInfo.withdrawalPoint}
+            </Typography>
+          ) : null}
+        </Box>
       </Box>
       <Box
         sx={{
