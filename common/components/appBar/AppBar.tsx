@@ -154,7 +154,7 @@ export default function ResponsiveAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <NextLink href="/content">
+        <NextLink href="/blog">
           <a>Content</a>
         </NextLink>
       </MenuItem>
@@ -259,7 +259,7 @@ export default function ResponsiveAppBar() {
 
           {/* -------------- */}
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' }, ml: 5 }}>
-            <NextLink href="/content" passHref>
+            <NextLink href="/blog" passHref>
               <Link
                 sx={{
                   ml: 5,
