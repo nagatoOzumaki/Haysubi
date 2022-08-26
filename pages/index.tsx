@@ -73,7 +73,7 @@ const Index: NextPageWithLayout<null> = () => (
                   },
                 }}
               >
-                <a> As a {profil}</a>
+                <a> As {profil}</a>
               </Paper>
             </NextLink>
           </Grid>
