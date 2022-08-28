@@ -3,6 +3,7 @@ title: 'article5'
 description: 'Well... MDX is more or less like the markdown files we always see in ...'
 date: 'August 25/2022'
 author: 'anas'
+cover_image: 'https://iharsh234.github.io/WebApp/images/demo/web_app_face.JPG'
 ---
 
 <!-- # ![WebApp](https://iharsh234.github.io/WebApp/images/demo/demo_landing.JPG) -->

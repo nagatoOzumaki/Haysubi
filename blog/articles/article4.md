@@ -3,6 +3,7 @@ title: 'article4'
 description: 'Well... MDX is more or less like the markdown files we always see in ...'
 date: 'August 25/2022'
 author: 'ali'
+cover_image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrlj8luiqhZA-PyP4Chvs2mMp3LabcOLWjSp27RKti&s'
 ---
 
 <h1 align="center">

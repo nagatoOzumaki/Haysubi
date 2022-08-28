@@ -3,6 +3,7 @@ title: 'article3'
 description: 'Well... MDX is more or less like the markdown files we always see in ...'
 date: 'August 25/2022'
 author: 'adil'
+cover_image: 'https://ai.github.io/size-limit/logo.svg'
 ---
 
 # Size Limit [![Cult Of Martians][cult-img]][cult]
