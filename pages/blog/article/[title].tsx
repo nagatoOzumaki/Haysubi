@@ -52,9 +52,11 @@ const Article: NextPage<any> = ({ frontmatter, content }) => (
     </Box>
     <Divider />
 
-    <Typography sx={{ mt: 2 }} variant="h2">
-      {frontmatter.title}
-    </Typography>
+    {!frontmatter.noTitle ? (
+      <Typography sx={{ mt: 2 }} variant="h2">
+        {frontmatter.title}
+      </Typography>
+    ) : null}
 
     <Container
       dangerouslySetInnerHTML={{ __html: marked(content) }}
