@@ -34,7 +34,7 @@ const Index: NextPage<PropTypes> = ({ articles }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ direction: 'rtl' }}>
         <Typography variant="h4" sx={{ p: 4, pl: 0 }}>
           Welcome in Hysubi{`'`}s Blog
         </Typography>

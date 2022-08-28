@@ -140,7 +140,7 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
       <Box sx={{ position: 'fixed', bottom: 150, right: 42 }}>
         <ArticleActions />
       </Box>
-      <Box sx={{}}>
+      <Box sx={{ direction: 'rtl' }}>
         <Typography>Bibliographie:</Typography>
         <List>
           <ListItem>
@@ -157,7 +157,7 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
       </Box>
 
       <Divider />
-      <Box sx={{ m: 3 }}>
+      <Box sx={{ m: 3, direction: 'rtl' }}>
         <Typography sx={{ mb: 1 }}>related articles</Typography>
         <Grid spacing={2} container>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(article => (
