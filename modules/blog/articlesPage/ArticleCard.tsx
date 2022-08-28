@@ -8,6 +8,9 @@ function ArticleCard({ article }: { article: any }) {
       elevation={3}
       sx={{
         p: 2,
+        height: 460,
+        direction: 'rtl',
+
         '&:hover': {
           backgroundColor: '#111',
           color: '#fff',
@@ -16,7 +19,7 @@ function ArticleCard({ article }: { article: any }) {
         },
       }}
     >
-      <Typography variant="h6">{article.frontmatter.title}</Typography>
+      <Typography variant="h4">{article.frontmatter.title}</Typography>
       <Image
         loader={() => article.frontmatter.cover_image}
         alt={article.frontmatter.title}

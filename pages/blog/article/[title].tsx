@@ -128,12 +128,13 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
       <Divider />
 
       {!frontmatter.noTitle ? (
-        <Typography sx={{ mt: 2 }} variant="h2">
+        <Typography sx={{ mt: 2, direction: 'rtl' }} variant="h2">
           {frontmatter.title}
         </Typography>
       ) : null}
 
       <Container
+        sx={{ direction: 'rtl' }}
         dangerouslySetInnerHTML={{ __html: marked(content) }}
       ></Container>
       <Box sx={{ position: 'fixed', bottom: 150, right: 42 }}>
