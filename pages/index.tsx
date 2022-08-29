@@ -57,14 +57,21 @@ const Index: NextPageWithLayout<null> = () => (
         ))}
       </Grid>
 
-      <Grid spacing={4} xs={12} pr={2} container item>
+      <Grid
+        spacing={4}
+        xs={12}
+        sx={{ pl: { lg: 14 }, pr: { lg: 14 } }}
+        container
+        item
+      >
         {profils.map(profil => (
-          <Grid key={profil} item xs={6} md={2} lg={4}>
+          <Grid key={profil} item xs={6} md={4} lg={4}>
             <NextLink href={`/products?profil=${profil}`}>
               <Paper
                 elevation={3}
                 sx={{
                   p: { xs: 10, md: 11 },
+                  height: { md: 300 },
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
