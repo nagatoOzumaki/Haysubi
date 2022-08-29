@@ -20,11 +20,10 @@ const Index: NextPageWithLayout<null> = () => (
     <Grid container p={3}>
       <Grid container item xs={12} columnSpacing={1}>
         {categories.map(category => (
-          <Grid key={category} item xs={3}>
+          <Grid key={category} item xs={12} md={3}>
             <Paper
               elevation={2}
               sx={{
-                p: 0,
                 bgcolor: '#bbb',
                 '&:hover': {
                   boxShadow: '1px solid #000',
@@ -34,7 +33,6 @@ const Index: NextPageWithLayout<null> = () => (
               <NextLink href={`/products?category=${category}`}>
                 <Link
                   sx={{
-                    cursor: 'pointer',
                     p: 2,
                     display: 'flex',
                     justifyContent: 'center',
@@ -42,7 +40,7 @@ const Index: NextPageWithLayout<null> = () => (
                     textDecoration: 'none',
                   }}
                 >
-                  Categorie {category}
+                  Category {category}
                 </Link>
               </NextLink>
             </Paper>

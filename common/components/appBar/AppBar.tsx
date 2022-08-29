@@ -61,8 +61,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '70ch',
+
+    [theme.breakpoints.up('xs')]: {
+      width: '10ch',
     },
   },
 }));
@@ -209,30 +210,28 @@ export default function ResponsiveAppBar() {
             >
               <AccountCircle />
             </IconButton>
-            <p>Profile</p>
+            <p>Profil</p>
           </a>
         </NextLink>
       </MenuItem>
     </Menu>
   );
   // -----------------------------------
+
   return (
     <>
       <AppBar
         position="static"
         sx={{
+          // width: '100%',
           height: 100,
           display: 'flex',
           justifyContent: 'center',
-          position: 'relative',
         }}
       >
         <Toolbar>
           {/* --------- */}
-          <IconButton
-            onClick={handleOpenDrawer}
-            sx={{ ml: -3, position: 'absolute', bottom: -19, left: 50 }}
-          >
+          <IconButton onClick={handleOpenDrawer} sx={{ pr: 3 }}>
             <MenuOutlined color="secondary" />
           </IconButton>
           {/*  */}
@@ -240,9 +239,8 @@ export default function ResponsiveAppBar() {
             <a
               style={{
                 display: 'flex',
-                marginLeft: 3,
+                paddingLeft: '2px',
                 alignItems: 'center',
-                marginBottom: 5,
               }}
             >
               <LaptopOutlined />
@@ -250,7 +248,7 @@ export default function ResponsiveAppBar() {
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ cursor: 'pointer', mr: 1, ml: 1 }}
+                sx={{ cursor: 'pointer', pr: 1, pl: 1 }}
               >
                 Hysubi
               </Typography>
@@ -258,15 +256,15 @@ export default function ResponsiveAppBar() {
           </NextLink>
 
           {/* -------------- */}
-          <MenuItem sx={{ display: { xs: 'none', md: 'flex' }, ml: 5 }}>
+          <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
             <NextLink href="/blog" passHref>
               <Link
                 sx={{
-                  ml: 5,
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
-                  mr: 2,
+                  pr: 2,
+                  pl: 2,
                 }}
               >
                 CONTENT
@@ -280,6 +278,8 @@ export default function ResponsiveAppBar() {
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
+                  pr: 2,
+                  pl: 2,
                 }}
               >
                 ABOUT US
@@ -293,6 +293,8 @@ export default function ResponsiveAppBar() {
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
+                  pr: 2,
+                  pl: 2,
                 }}
               >
                 CONTACT US
@@ -300,7 +302,7 @@ export default function ResponsiveAppBar() {
             </NextLink>
           </MenuItem>
           {/*  */}
-          <div style={{ flexGrow: 1 }} />
+          <div style={{ flexGrow: 2 }} />
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -310,20 +312,10 @@ export default function ResponsiveAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Box sx={{ flexGrow: 2 }} />
+          <Box sx={{ flexGrow: 5 }} />
 
           {/* 
-
-
-
-
-
                     right navBar
-
-
-
-
-
 
 */}
           <Box
@@ -331,7 +323,7 @@ export default function ResponsiveAppBar() {
               display: { xs: 'none', md: 'flex' },
               justifyContent: 'space-around',
               gap: 5,
-              mr: 5,
+              pr: 6,
             }}
           >
             <NextLink href="/cart">

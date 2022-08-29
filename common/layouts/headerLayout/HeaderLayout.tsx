@@ -1,4 +1,4 @@
-import { Box, Fab, Grid } from '@mui/material';
+import { Box, Fab } from '@mui/material';
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
@@ -20,45 +20,45 @@ const HeaderLayout: FC<ChildrenProps> = ({ children }) => {
 
   return (
     <div>
-      <Grid container direction="column" spacing={1}>
-        <LeftDrawer />
-        <ResponsiveAppBar />
+      {/* <Grid container direction="column" spacing={1}> */}
+      <LeftDrawer />
+      <ResponsiveAppBar />
 
-        <Grid item component="div">
-          {children}
-        </Grid>
-        {/* next section is for chatbot and chatbot toogle */}
-        {isChatbotOpen ? (
-          <Box
-            sx={{
-              position: 'fixed',
-              right: 20,
-              bottom: 110,
-              border: '2px solid #bbb',
-              borderRadius: 2,
-            }}
-          >
-            <ChatBot />
-          </Box>
-        ) : null}
-        <Fab
-          onClick={handleOpenChatBot}
+      {/* <Container maxWidth="xl"> */}
+      {children}
+      {/* next section is for chatbot and chatbot toogle */}
+      {isChatbotOpen ? (
+        <Box
           sx={{
             position: 'fixed',
-            backgroundColor: '#fff',
-            bottom: 60,
-            right: 60,
-            p: 1,
+            right: 20,
+            bottom: 110,
+            border: '2px solid #bbb',
+            borderRadius: 2,
           }}
-          size="medium"
-          aria-label="add"
         >
-          <Image src={CallCenter} alt="contact" />
-          {/* <Call color="secondary" /> */}
-        </Fab>
+          <ChatBot />
+        </Box>
+      ) : null}
+      <Fab
+        onClick={handleOpenChatBot}
+        sx={{
+          position: 'fixed',
+          backgroundColor: '#fff',
+          bottom: 60,
+          right: 60,
+          p: 1,
+        }}
+        size="medium"
+        aria-label="add"
+      >
+        <Image src={CallCenter} alt="contact" />
+        {/* <Call color="secondary" /> */}
+      </Fab>
 
-        {/* --------------------- */}
-      </Grid>
+      {/* --------------------- */}
+      {/* </Grid> */}
+      {/* </Container> */}
     </div>
   );
 };
