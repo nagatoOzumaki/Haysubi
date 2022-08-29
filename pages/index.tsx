@@ -1,4 +1,4 @@
-import { Grid, Paper, Container, Fab, Link } from '@mui/material';
+import { Grid, Paper, Fab, Link, Box } from '@mui/material';
 import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined';
 import NextLink from 'next/link';
 import { ReactElement } from 'react';
@@ -6,7 +6,7 @@ import FooterLayout from '../common/layouts/footerLayout/FooterLayout';
 import { NextPageWithLayout } from './_app';
 import ChatbotLayout from '../common/layouts/chatbotLayout';
 
-const categories = [1, 2, 3, 4];
+const categories = [1, 2, 3, 4, 5, 6];
 const profils = [
   'designer',
   'photographer',
@@ -17,11 +17,19 @@ const profils = [
 ];
 
 const Index: NextPageWithLayout<null> = () => (
-  <Container maxWidth="xl">
+  <Box sx={{}}>
     <Grid container p={3}>
-      <Grid xs={12} spacing={3} container item>
+      <Grid
+        xs={12}
+        columnSpacing={3}
+        rowSpacing={1}
+        mb={5}
+        justifyContent="center"
+        container
+        item
+      >
         {categories.map(category => (
-          <Grid key={category} item xs={12} md={4} mb={4}>
+          <Grid key={category} item xs={6} md={3.5}>
             <Paper
               elevation={2}
               sx={{
@@ -34,7 +42,7 @@ const Index: NextPageWithLayout<null> = () => (
               <NextLink href={`/products?category=${category}`}>
                 <Link
                   sx={{
-                    p: 2,
+                    p: 1,
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
@@ -49,16 +57,14 @@ const Index: NextPageWithLayout<null> = () => (
         ))}
       </Grid>
 
-      <Grid spacing={3} xs={12} container item>
+      <Grid spacing={4} xs={12} pr={2} container item>
         {profils.map(profil => (
-          <Grid key={profil} item sx={{ p: 1 }} md={4}>
+          <Grid key={profil} item xs={6} md={2} lg={4}>
             <NextLink href={`/products?profil=${profil}`}>
               <Paper
                 elevation={3}
                 sx={{
-                  width: 300,
-                  height: 240,
-                  p: 11,
+                  p: { xs: 10, md: 11 },
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -66,9 +72,9 @@ const Index: NextPageWithLayout<null> = () => (
                   color: '#fff',
                   fontSize: 20,
                   '&:hover': {
-                    m: -1,
-                    p: 11,
                     cursor: 'pointer',
+                    backgroundColor: '#fff',
+                    color: '#000',
                   },
                 }}
               >
@@ -114,7 +120,7 @@ const Index: NextPageWithLayout<null> = () => (
         </NextLink>
       </Grid>
     </Grid>
-  </Container>
+  </Box>
 );
 
 export default Index;

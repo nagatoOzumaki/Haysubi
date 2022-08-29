@@ -59,8 +59,8 @@ const Footer: FC = () => (
             <a>
               <IconButton color="secondary">
                 <Facebook />
-                facebook
               </IconButton>
+              Facebook
             </a>
           </NextLink>
         </Grid>
@@ -69,18 +69,18 @@ const Footer: FC = () => (
             <a>
               <IconButton color="secondary">
                 <Instagram />
-                instagram
               </IconButton>
+              Instagram
             </a>
           </NextLink>
-        </Grid>{' '}
+        </Grid>
         <Grid xs={6} md={2} item>
           <NextLink href="www.facebook.com">
             <a>
               <IconButton color="secondary">
                 <WhatsApp />
-                WhatsApp
               </IconButton>
+              WhatsApp
             </a>
           </NextLink>
         </Grid>
@@ -89,8 +89,8 @@ const Footer: FC = () => (
             <a>
               <IconButton color="secondary">
                 <Twitter />
-                Twitter
               </IconButton>
+              Twitter
             </a>
           </NextLink>
         </Grid>
@@ -98,8 +98,9 @@ const Footer: FC = () => (
           <NextLink href="www.facebook.com">
             <a>
               <IconButton color="secondary">
-                <Email /> GMAIL
+                <Email />
               </IconButton>
+              Gmail
             </a>
           </NextLink>
         </Grid>

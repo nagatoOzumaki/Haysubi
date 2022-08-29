@@ -2,9 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   Avatar,
   Box,
   CardHeader,
@@ -23,7 +20,6 @@ import {
   BookmarkAddedOutlined,
   BookmarkAddOutlined,
 } from '@mui/icons-material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
 import ArticleCard from '../../../modules/blog/articlesPage/ArticleCard';
 import ArticleActions from '../../../modules/blog/articlesPage/ArticleActions';
@@ -67,62 +63,36 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
             right: 100,
           }}
         >
-          <Accordion
-            // expanded={expanded === 'panel1'}
-            // onChange={handleChange('panel1')}
-            sx={{ background: 'transparent' }}
-          >
-            <AccordionSummary
-              // expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              sx={{
-                m: -2,
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
-              <Box>
-                <CardHeader
-                  avatar={
-                    <Avatar
-                      sx={{
-                        bgcolor: '#000',
-                        color: '#fff',
-                        border: '1px solid #000',
-                      }}
-                      aria-label="auhtor"
-                    >
-                      <Typography>
-                        {frontmatter.author[0].toUpperCase()}
-                      </Typography>
-                    </Avatar>
-                  }
-                  title={
-                    <Typography sx={{ fontSize: 15, color: '#03f' }}>
-                      {frontmatter.author.toUpperCase()}
-                    </Typography>
-                  }
-                  subheader={
-                    <Typography
-                      sx={{
-                        fontWeight: 'bold',
-                        fontSize: 12,
-                        backgroundColor: '#bbb',
-                      }}
-                    >
-                      {frontmatter.date}
-                    </Typography>
-                  }
-                />
-              </Box>
-              <Box>
-                <ExpandMoreIcon />
-              </Box>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>some details about publisher</Typography>
-            </AccordionDetails>
-          </Accordion>
+          <CardHeader
+            avatar={
+              <Avatar
+                sx={{
+                  bgcolor: '#000',
+                  color: '#fff',
+                  border: '1px solid #000',
+                }}
+                aria-label="auhtor"
+              >
+                <Typography>{frontmatter.author[0].toUpperCase()}</Typography>
+              </Avatar>
+            }
+            title={
+              <Typography sx={{ fontSize: 15, color: '#03f' }}>
+                {frontmatter.author.toUpperCase()}
+              </Typography>
+            }
+            subheader={
+              <Typography
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: 12,
+                  backgroundColor: '#bbb',
+                }}
+              >
+                {frontmatter.date}
+              </Typography>
+            }
+          />
         </Box>
       </Box>
       <Divider />
@@ -159,9 +129,9 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
       <Divider />
       <Box sx={{ m: 3, direction: 'rtl' }}>
         <Typography sx={{ mb: 1 }}>related articles</Typography>
-        <Grid spacing={2} container>
+        <Grid spacing={2} pb={3} container>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(article => (
-            <Grid md={2} key={article} item>
+            <Grid key={article} md={2.4} item>
               <ArticleCard
                 article={{
                   frontmatter: {

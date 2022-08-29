@@ -35,7 +35,7 @@ const Index: NextPage<PropTypes> = ({ articles }) => {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl" sx={{ direction: 'rtl' }}>
-        <Typography variant="h4" sx={{ p: 4, pl: 0 }}>
+        <Typography variant="h4" sx={{ p: 3, pl: 0, fontSize: { xs: 20 } }}>
           Welcome in Hysubi{`'`}s Blog
         </Typography>
         <Tabs
@@ -56,9 +56,9 @@ const Index: NextPage<PropTypes> = ({ articles }) => {
           <Tab label="category Six" />
           <Tab label="category Seven" />
         </Tabs>
-        <Grid container>
+        <Grid spacing={2} pb={3} container>
           {articles.map((article: any) => (
-            <Grid key={article.slug} md={2} m={2} item>
+            <Grid key={article.slug} md={2.4} item>
               <ArticleCard article={article} />
             </Grid>
           ))}
