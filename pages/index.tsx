@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 import { ReactElement } from 'react';
 import FooterLayout from '../common/layouts/footerLayout/FooterLayout';
 import { NextPageWithLayout } from './_app';
+import ChatbotLayout from '../common/layouts/chatbotLayout';
 
 const categories = [1, 2, 3, 4];
 const profils = [
@@ -18,9 +19,9 @@ const profils = [
 const Index: NextPageWithLayout<null> = () => (
   <Container maxWidth="xl">
     <Grid container p={3}>
-      <Grid container item xs={12} columnSpacing={1}>
+      <Grid xs={12} spacing={3} container item>
         {categories.map(category => (
-          <Grid key={category} item xs={12} md={3}>
+          <Grid key={category} item xs={12} md={4} mb={4}>
             <Paper
               elevation={2}
               sx={{
@@ -48,7 +49,7 @@ const Index: NextPageWithLayout<null> = () => (
         ))}
       </Grid>
 
-      <Grid container item spacing={3} xs={12} p={12}>
+      <Grid spacing={3} xs={12} container item>
         {profils.map(profil => (
           <Grid key={profil} item sx={{ p: 1 }} md={4}>
             <NextLink href={`/products?profil=${profil}`}>
@@ -92,13 +93,14 @@ const Index: NextPageWithLayout<null> = () => (
             <Fab
               variant="extended"
               sx={{
-                p: 9,
+                p: { xs: 2, md: 4 },
                 pt: 4,
                 pb: 4,
+                mt: 4,
                 backgroundColor: '#000',
                 color: '#fff',
                 fontWeight: 'bold',
-                fontSize: 16,
+                fontSize: { xs: 13, md: 16 },
                 '&:hover': {
                   backgroundColor: '#fff',
                   color: '#000',
@@ -117,5 +119,9 @@ const Index: NextPageWithLayout<null> = () => (
 
 export default Index;
 Index.getLayout = function getLayout(page: ReactElement) {
-  return <FooterLayout>{page}</FooterLayout>;
+  return (
+    <FooterLayout>
+      <ChatbotLayout>{page}</ChatbotLayout>
+    </FooterLayout>
+  );
 };

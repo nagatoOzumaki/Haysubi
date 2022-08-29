@@ -26,6 +26,7 @@ import Reviews from '../../modules/productPage/reviews';
 import SuggestionsSilder from '../../modules/productPage/slider/suggestionsSlider';
 import { ButtonColors } from '../../common/config/colors';
 import FooterLayout from '../../common/layouts/footerLayout/FooterLayout';
+import ChatbotLayout from '../../common/layouts/chatbotLayout';
 
 type Props = { product: Product };
 
@@ -270,6 +271,10 @@ export const getServerSideProps = async (
   };
 };
 ProductDetails.getLayout = function getLayout(page: ReactElement) {
-  return <FooterLayout>{page}</FooterLayout>;
+  return (
+    <FooterLayout>
+      <ChatbotLayout>{page}</ChatbotLayout>
+    </FooterLayout>
+  );
 };
 export default ProductDetails;

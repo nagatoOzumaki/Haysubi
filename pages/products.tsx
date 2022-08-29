@@ -14,6 +14,7 @@ import {
 } from '../common/store/actions';
 import FooterLayout from '../common/layouts/footerLayout/FooterLayout';
 import { NextPageWithLayout } from './_app';
+import ChatbotLayout from '../common/layouts/chatbotLayout';
 
 type Props = {
   products: Products;
@@ -75,5 +76,9 @@ export const getStaticProps = async () => {
 
 export default Home;
 Home.getLayout = function getLayout(page: ReactElement) {
-  return <FooterLayout>{page}</FooterLayout>;
+  return (
+    <FooterLayout>
+      <ChatbotLayout>{page}</ChatbotLayout>
+    </FooterLayout>
+  );
 };

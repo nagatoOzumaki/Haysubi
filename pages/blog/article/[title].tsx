@@ -137,7 +137,7 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
         sx={{ direction: 'rtl' }}
         dangerouslySetInnerHTML={{ __html: marked(content) }}
       ></Container>
-      <Box sx={{ position: 'fixed', bottom: 150, right: 42 }}>
+      <Box sx={{ position: 'fixed', bottom: 0, right: 0 }}>
         <ArticleActions />
       </Box>
       <Box sx={{ direction: 'rtl' }}>
