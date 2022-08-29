@@ -26,10 +26,13 @@ const ChatbotLayout: FC<PropTypes> = ({ children }) => {
         <Box
           sx={{
             position: 'fixed',
-            right: 20,
-            bottom: 110,
+            right: 100,
+            bottom: 0,
             border: '2px solid #bbb',
             borderRadius: 2,
+            zIndex: 33312,
+            overflow: 'scroll',
+            height: 480,
           }}
         >
           <ChatBot />

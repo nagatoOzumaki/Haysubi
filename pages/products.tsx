@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Grid } from '@mui/material';
 import { NextSeo } from 'next-seo';
 import { ReactElement, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -47,11 +47,14 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
       {/* ---------------- */}
       <NextSeo title="pc portable" description="dell,hp,asus,mac" />
       {/* ---------------- */}
-      <Container maxWidth="xl" sx={{ backgroundColor: 'secondary.main' }}>
-        <FilterBar />
-
-        <ProductsList products={productsStore} />
-      </Container>
+      <Grid sx={{ backgroundColor: 'secondary.main' }} container>
+        <Grid md={1} xs={3} item>
+          <FilterBar />
+        </Grid>
+        <Grid md={11} xs={9} overflow="scroll" item>
+          <ProductsList products={productsStore} />
+        </Grid>
+      </Grid>
     </>
   );
 };

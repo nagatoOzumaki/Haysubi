@@ -36,7 +36,7 @@ export default function FilterBar() {
     }
   };
   return (
-    <Grid sx={{ mt: 1, mb: 1, pr: 12 }} justifyContent="space-around" container>
+    <Grid sx={{ mt: 4 }} justifyContent="space-around" container>
       <Grid item>
         <BrandInput />
       </Grid>

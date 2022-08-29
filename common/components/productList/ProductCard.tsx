@@ -17,9 +17,12 @@ const ProductCard: FC<Props> = ({ product }) => {
         <Card
           sx={{
             backgroundColor: 'rgba(255,255,255,1)',
-            p: 2,
-            pb: 0,
-            height: 520,
+            p: { xs: 1, md: 2 },
+            width: {
+              xs: 190,
+              md: 'auto',
+            },
+            height: { xs: 320, md: 400 },
             cursor: 'pointer',
             border: '1px solid rgba(0,0,0,0.4)',
             // '&:hover': {
@@ -37,10 +40,32 @@ const ProductCard: FC<Props> = ({ product }) => {
             alt="Paella dish"
           />
 
-          <Typography variant="h6" color="text.secondary">
+          <Typography
+            variant="h6"
+            color="text.secondary"
+            sx={{
+              color: '#000',
+              lineHeight: 1.3,
+              fontSize: { xs: 14, md: 17 },
+              height: { md: 50, xs: 34 },
+              whiteSpace: 'wrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
             {product.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              // width: '290px',
+              height: { md: 48, xs: 19 },
+              whiteSpace: 'wrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
             {product?.description}
           </Typography>
 

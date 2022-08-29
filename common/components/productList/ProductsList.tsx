@@ -5,9 +5,9 @@ import ProductCard from './ProductCard';
 
 type Props = { products: Products };
 const ProductsList: FC<Props> = ({ products }) => (
-  <Grid container spacing={0.5} pb={1}>
+  <Grid container sx={{ width: { xs: 1000, md: 'auto' } }} spacing={0.5}>
     {products.map(product => (
-      <Grid key={product.id} xs={12} sm={6} md={2} item>
+      <Grid key={product.id} xs={3} md={2} item>
         <ProductCard product={product} />
       </Grid>
     ))}
