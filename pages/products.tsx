@@ -6,8 +6,8 @@ import { useRouter } from 'next/router';
 import { Products } from '../common/types/@appTypes';
 import fetchData from '../common/utils/hooks/fetchData';
 import ProductsList from '../common/components/productList/ProductsList';
-import FilterBar from '../modules/homePage/filterBar';
-import { useProductsState } from '../common/store/Store';
+import FilterBar from '../modules/productsPage/filterBar';
+// import { useProductsState } from '../common/store/Store';
 import {
   addProductsToStore,
   clearProductsToStore,

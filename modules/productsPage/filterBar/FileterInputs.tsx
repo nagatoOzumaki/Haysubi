@@ -1,18 +1,18 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+  OutlinedInput,
+  SelectChangeEvent,
+} from '@mui/material';
+
+import { InputLabel, MenuItem, Radio, Select } from '@mui/material';
+import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFilter } from '../../../common/store/actions';
 import { useFilter } from '../../../common/store/Store';
-
-// const ITEM_HEIGHT = 48;
-// const ITEM_PADDING_TOP = 8;
-// // const MenuProps = {
-//   PaperProps: {
-//     style: {
-//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-//       width: 250,
-//     },
-//   },
-// };
 
 const brands = ['DELL', 'HP', 'ASUS', 'SAMSUNG', 'HUAWEI', 'TOCHIBA', 'MAC'];
 const ramValues = ['4', '8', '16', '32', '64'];
@@ -28,6 +28,114 @@ const gpuValues = [12, 3, 4, 23, 1232];
 // RAM
 // STORAGE
 // SCREEN
+
+// import { ChangeEvent, FC, useState } from 'react';
+// import { useTheme } from '@emotion/react';
+
+// type PropTypes = {
+//   filter: string;
+// };
+
+// export interface MapInterface {
+//   [key: string]: string;
+// }
+//  export const CheckBoxFilter: FC<PropTypes> = ({ filter }) => {
+
+//   const [filterValue, setFilterValue] = useState<MapInterface>();
+
+//   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+//     setFilterValue(
+//       ...filterValue,
+//       [event.target.name]: event.target.value,
+// })};
+//   };
+
+//   return (
+//     <FormControl
+//       // required
+//       // error={true}
+//       component="fieldset"
+//       sx={{ m: 3 }}
+//       variant="standard"
+//     >
+//       <FormLabel component="legend">{filter}</FormLabel>
+//       <FormGroup sx={{ ml: 1 }}>
+//         {brands.map(value => (
+//           <FormControlLabel
+//             key={value}
+//             control={
+//               <Checkbox
+//                 checked={filterValue[filter].includes(value)}
+//                 onChange={handleChange}
+//                 name={value}
+//               />
+//             }
+//             label={value}
+//           />
+//         ))}
+//       </FormGroup>
+//     </FormControl>
+//   );
+// };
+
+export const FilterCheckBox: FC<any> = props => (
+  <>
+    <FormControlLabel control={<Checkbox {...props} />} label={props.label} />
+  </>
+);
+
+export const RamFilter = () => {
+  const [selectedValues, setSelectedValues] = useState<string[]>([]);
+  const handleFilter = (checked: boolean, value: string) => {
+    // setTimeout(value => {
+    if (checked) {
+      setSelectedValues([...selectedValues, value]);
+      console.log(selectedValues);
+    } else {
+      setSelectedValues(
+        selectedValues.filter(selectedValue => value !== selectedValue)
+      );
+      console.log(selectedValues);
+    }
+
+    // });
+  };
+  return (
+    <FormControl
+      onChange={e => handleFilter(e.target.checked, e.target.value)}
+      component="fieldset"
+      sx={{ m: 3 }}
+      variant="filled"
+    >
+      <FormLabel component="legend">Ram</FormLabel>
+      <FormGroup sx={{ ml: 1 }}>
+        {ramValues.map(value => (
+          <FilterCheckBox
+            key={value}
+            name={value}
+            value={value}
+            label={`${value} ram`}
+          />
+        ))}
+      </FormGroup>
+    </FormControl>
+  );
+};
+export const BrandFilter = () => {
+  console.log(2);
+  return (
+    <FormControl component="fieldset" sx={{ m: 3 }} variant="filled">
+      <FormLabel component="legend">Brand</FormLabel>
+      <FormGroup sx={{ ml: 1 }}>
+        {brands.map(value => (
+          <FilterCheckBox key={value} name={value} label={`${value}`} />
+        ))}
+      </FormGroup>
+    </FormControl>
+  );
+};
+
+// ------------------------------------------------------
 
 export const RamInput = () => {
   const dispatch = useDispatch<any>();
@@ -90,6 +198,7 @@ export const BrandInput = () => {
           ))}
         </Select>
       </FormControl>
+      +
     </div>
   );
 };
@@ -256,14 +365,14 @@ export const GpuInput = () => {
   );
 };
 
-// function getStyles(name: string, personName: readonly string[], theme: Theme) {
-//   return {
-//     fontWeight:
-//       personName.indexOf(name) === -1
-//         ? theme.typography.fontWeightRegular
-//         : theme.typography.fontWeightMedium,
-//   };
-// }
+function getStyles(name: string, personName: readonly string[], theme: Theme) {
+  return {
+    fontWeight:
+      personName.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
 
 // export const Brand = () => {
 //   const theme = useTheme();
@@ -312,20 +421,20 @@ export const GpuInput = () => {
 //   );
 // };
 
-// const GroupingInput = () => (
-//   <FormControl sx={{ m: 1, minWidth: 120 }}>
-//     <InputLabel htmlFor="grouped-native-select">Processeur</InputLabel>
-//     <Select native defaultValue="" id="grouped-native-select" label="Type">
-//       <option aria-label="None" value="" />
-//       <optgroup label="Portable">
-//         <option value={1}>Intel</option>
-//         <option value={2}>Raizen</option>
-//       </optgroup>
-//       <optgroup label="Burreau">
-//         <option value={3}>Intel</option>
-//         <option value={4}>Raizen</option>
-//       </optgroup>
-//     </Select>
-//   </FormControl>
-// );
-// export default GroupingInput;
+const GroupingInput = () => (
+  <FormControl sx={{ m: 1, minWidth: 120 }}>
+    <InputLabel htmlFor="grouped-native-select">Processeur</InputLabel>
+    <Select native defaultValue="" id="grouped-native-select" label="Type">
+      <option aria-label="None" value="" />
+      <optgroup label="Portable">
+        <option value={1}>Intel</option>
+        <option value={2}>Raizen</option>
+      </optgroup>
+      <optgroup label="Burreau">
+        <option value={3}>Intel</option>
+        <option value={4}>Raizen</option>
+      </optgroup>
+    </Select>
+  </FormControl>
+);
+export default GroupingInput;

@@ -55,32 +55,20 @@ export interface State{
 };
 // the following interface is used for allowing indexing by string for example in utils/constructQueryString
 export interface MapInterface{
-  [key:string]:string
+  [key:string]:string[]
 }
 export interface Filter extends MapInterface{
-  ram:string,
-  cpu:string,
-  storage:string,
-  screen:string,
-  gpu:string,
-  brand:string,
-  model:string,
+  ram:string[],
+  cpu:string[],
+  storage:string[],
+  screen:string[],
+  gpu:string[],
+  brand:string[],
+  model:string[],
 }
 
 
 export type FilterElement='cpu'|'ram'|'brand'|'model'|'gpu'|'storage'|'screen'
-
-
-
-
-
 export type AppThunk = ActionCreator<ThunkAction<void, State, null, Action>>;
-
-
-
-
-
-
 export interface Action{type:string,payload?:any}
-
 export type ThemeContextType ={}
