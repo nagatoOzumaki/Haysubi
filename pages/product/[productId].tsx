@@ -31,8 +31,8 @@ import ChatbotLayout from '../../common/layouts/chatbotLayout';
 type Props = { product: Product };
 
 const ProductDetails = ({ product }: Props) => {
-  const [isProductInWishList, setInWishList] = useState(false);
-  const [isItemInCart, setItemInCart] = useState(false);
+  const [isProductInWishList, setInWishList] = useState<boolean | null>(null);
+  const [isItemInCart, setItemInCart] = useState<boolean | null>(null);
   const { cartItems } = useCartState();
   const wishList = useWishList();
   // missing typing for currentMainImage
@@ -175,6 +175,7 @@ const ProductDetails = ({ product }: Props) => {
                 sx={{ pt: 2, pb: 2, gap: 4 }}
                 color="primary"
                 aria-label="outlined primary button group"
+                disabled={isItemInCart === null}
               >
                 {isItemInCart ? (
                   <NextLink href="/cart">

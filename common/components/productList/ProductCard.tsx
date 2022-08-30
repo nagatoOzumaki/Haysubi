@@ -3,7 +3,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { FC } from 'react';
 import { StarOutlineOutlined } from '@mui/icons-material';
-import { Grid } from '@mui/material';
+import { Grid, Skeleton } from '@mui/material';
 import NextLink from 'next/link';
 import { Product } from '../../types/@appTypes';
 
@@ -11,7 +11,7 @@ type Props = { product: Product };
 const ProductCard: FC<Props> = ({ product }) => {
   const { image } = product || { image: ['', '', ''] };
 
-  return (
+  return product ? (
     <NextLink href={`/product/${product.id}`} passHref>
       <a>
         <Card
@@ -47,7 +47,7 @@ const ProductCard: FC<Props> = ({ product }) => {
               color: '#000',
               lineHeight: 1.3,
               fontSize: { xs: 14, md: 17 },
-              height: { md: 50, xs: 34 },
+              height: { md: 46, xs: 34 },
               whiteSpace: 'wrap',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
@@ -89,6 +89,8 @@ const ProductCard: FC<Props> = ({ product }) => {
         </Card>
       </a>
     </NextLink>
+  ) : (
+    <Skeleton variant="rectangular" />
   );
 };
 

@@ -17,12 +17,13 @@ import { NextPageWithLayout } from './_app';
 import ChatbotLayout from '../common/layouts/chatbotLayout';
 
 type Props = {
-  products: Products;
+  products: Products | null;
 };
 
 const Home: NextPageWithLayout<Props> = ({ products }) => {
-  const productsStore = useProductsState();
+  // const productsStore = useProductsState();
   const dispatch = useDispatch<any>();
+  // const dataFetchingState = useDataFetchingState();
   const router = useRouter();
   const { profil } = router.query;
 
@@ -47,12 +48,12 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
       {/* ---------------- */}
       <NextSeo title="pc portable" description="dell,hp,asus,mac" />
       {/* ---------------- */}
-      <Grid sx={{ backgroundColor: 'secondary.main' }} container>
+      <Grid sx={{ backgroundColor: 'secondary.main', mt: 1 }} container>
         <Grid md={1} xs={3} item>
           <FilterBar />
         </Grid>
         <Grid md={11} xs={9} overflow="scroll" item>
-          <ProductsList products={productsStore} />
+          <ProductsList products={null} />
         </Grid>
       </Grid>
     </>
@@ -60,21 +61,23 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
 };
 
 export const getStaticProps = async () => {
-  let returnObject;
-
   try {
     const products: Products = await fetchData<Products>('/products');
-
-    returnObject = {
+    const returnObject = {
       props: {
         products,
       },
       revalidate: 20,
     };
-  } catch (e) {
-    returnObject = { notFound: true };
+
+    return returnObject;
+  } catch {
+    return {
+      props: {
+        products: null,
+      },
+    };
   }
-  return returnObject;
 };
 
 export default Home;

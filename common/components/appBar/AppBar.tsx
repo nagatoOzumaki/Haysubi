@@ -12,14 +12,18 @@ import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Link } from '@mui/material';
+import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
+import { Divider, Link } from '@mui/material';
 import NextLink from 'next/link';
 import { useDispatch } from 'react-redux';
 import {
+  AutoStoriesOutlined,
   FavoriteBorder,
+  LaptopChromebook,
   LaptopOutlined,
   LogoutOutlined,
   MenuOutlined,
+  PersonOutline,
   ShoppingCartOutlined,
 } from '@mui/icons-material';
 import { useCartState, useUserInfoState, useWishList } from '../../store/Store';
@@ -123,14 +127,20 @@ export default function ResponsiveAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <IconButton sx={{ color: '#000', fontSize: 14 }}>
+          <PersonOutline /> Profil
+        </IconButton>
+      </MenuItem>
+      <Divider />
       {userInfo ? (
         <MenuItem onClick={handleMenuClose}>
-          <IconButton onClick={handleLogout}>
-            <LogoutOutlined />
-          </IconButton>{' '}
-          <p>Log Out</p>
+          <IconButton
+            onClick={handleLogout}
+            sx={{ p: 0.3, color: '#000', fontSize: 14 }}
+          >
+            <LogoutOutlined /> Log Out
+          </IconButton>
         </MenuItem>
       ) : null}
     </Menu>
@@ -155,16 +165,19 @@ export default function ResponsiveAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <NextLink href="/blog">
-          <a>Content</a>
+        <NextLink href="/products">
+          <a>
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+              <LaptopChromebook />
+            </IconButton>
+            Products
+          </a>
         </NextLink>
       </MenuItem>
-      <MenuItem>
-        <NextLink href="/contactUs">
-          <a>Contact Us</a>
-        </NextLink>
-      </MenuItem>
-
       <MenuItem>
         <NextLink href="/cart">
           <a>
@@ -177,7 +190,7 @@ export default function ResponsiveAppBar() {
                 <ShoppingCartOutlined />
               </Badge>
             </IconButton>
-            <p>Basket</p>
+            Basket
           </a>
         </NextLink>
       </MenuItem>
@@ -193,7 +206,7 @@ export default function ResponsiveAppBar() {
                 <FavoriteBorder />
               </Badge>
             </IconButton>
-            <p>Wish List</p>
+            Wish List
           </a>
         </NextLink>
       </MenuItem>
@@ -210,7 +223,39 @@ export default function ResponsiveAppBar() {
             >
               <AccountCircle />
             </IconButton>
-            <p>Profil</p>
+            Profil
+          </a>
+        </NextLink>
+      </MenuItem>
+      <MenuItem>
+        <NextLink href="/blog">
+          <a>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <AutoStoriesOutlined />
+            </IconButton>
+            Content
+          </a>
+        </NextLink>
+      </MenuItem>
+      <MenuItem>
+        <NextLink href="/contactUs">
+          <a>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <PermPhoneMsgIcon />
+            </IconButton>
+            Contact Us
           </a>
         </NextLink>
       </MenuItem>
@@ -256,6 +301,21 @@ export default function ResponsiveAppBar() {
           </NextLink>
 
           {/* -------------- */}
+          <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <NextLink href="/products" passHref>
+              <Link
+                sx={{
+                  color: '#fff',
+                  fontSize: 13,
+                  fontWeight: 'bold',
+                  pr: 2,
+                  pl: 2,
+                }}
+              >
+                PRODUCTS
+              </Link>
+            </NextLink>
+          </MenuItem>
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
             <NextLink href="/blog" passHref>
               <Link

@@ -36,17 +36,15 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
       sx={{
         borderLeft: '1px solid #bbb',
         borderRight: '1px solid #bbb',
-        minHeight: 1000,
-        position: 'relative',
       }}
     >
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
-          pt: 4,
-          ml: 10,
-          mb: 5,
+          pl: {
+            md: 9,
+          },
         }}
       >
         <IconButton onClick={handleToggleAddBookMark}>
@@ -57,12 +55,7 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
           )}
         </IconButton>
 
-        <Box
-          sx={{
-            position: 'absolute',
-            right: 100,
-          }}
-        >
+        <Box sx={{}}>
           <CardHeader
             avatar={
               <Avatar
@@ -98,7 +91,7 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
       <Divider />
 
       {!frontmatter.noTitle ? (
-        <Typography sx={{ mt: 2, direction: 'rtl' }} variant="h2">
+        <Typography sx={{ direction: 'rtl' }} variant="h2">
           {frontmatter.title}
         </Typography>
       ) : null}
@@ -131,14 +124,15 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
         <Typography sx={{ mb: 1 }}>related articles</Typography>
         <Grid spacing={2} pb={3} container>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(article => (
-            <Grid key={article} md={2.4} item>
+            <Grid key={article} xs={12} md={2.4} item>
               <ArticleCard
                 article={{
                   frontmatter: {
-                    title: 'related article',
+                    title:
+                      'relatemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmd article',
                     date: '28 August 2022',
                     description:
-                      'this another article related to the one above',
+                      'this another article relkljjjjjjjjjjjjj lklkbl kl jk kjjk, km.k;jmn k;hj;kkkkkkkkkhbjhbhjbmn jhbnbkjbk;jbjkmn ated to the one above',
                   },
                 }}
               />

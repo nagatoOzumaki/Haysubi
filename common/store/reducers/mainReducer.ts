@@ -4,7 +4,7 @@ import { appActions } from '../actions';
 
 const InitialState = {
   products: [],
-  dataFetchingState:'fail',
+  dataFetchingState:'loading',
   currentProduct:{} as Product,
   isChatbotOpen:false,
   isDrawerOpen:false,

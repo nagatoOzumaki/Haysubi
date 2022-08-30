@@ -58,7 +58,7 @@ const Index: NextPage<PropTypes> = ({ articles }) => {
         </Tabs>
         <Grid spacing={2} pb={3} container>
           {articles.map((article: any) => (
-            <Grid key={article.slug} md={2.4} item>
+            <Grid key={article.slug} xs={12} md={2.4} item>
               <ArticleCard article={article} />
             </Grid>
           ))}
