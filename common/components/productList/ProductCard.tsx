@@ -2,8 +2,11 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { FC } from 'react';
-import { StarOutlineOutlined } from '@mui/icons-material';
-import { Grid, Skeleton } from '@mui/material';
+import {
+  AddShoppingCartOutlined,
+  StarOutlineOutlined,
+} from '@mui/icons-material';
+import { Button, Grid, Skeleton } from '@mui/material';
 import NextLink from 'next/link';
 import { Product } from '../../types/@appTypes';
 
@@ -79,26 +82,26 @@ const ProductCard: FC<Props> = ({ product }) => {
           <Grid
             sx={{
               alignItems: 'center',
-              gap: 2,
-
-              height: 23,
-              mb: -1.2,
             }}
             container
           >
-            <Grid item>
-              <Typography paragraph>{product?.price}</Typography>
+            <Grid xs={4.6} item>
+              <Typography color="rgb(250,200,0)">
+                {product?.price} DH
+              </Typography>
+            </Grid>
+            <Grid xs={3.3} sx={{ display: 'flex', alignItems: 'center' }} item>
+              <Typography>{product?.rating}</Typography>
+
+              <StarOutlineOutlined />
             </Grid>
             <Grid item>
-              <Grid container>
-                <Grid item>
-                  <Typography paragraph>{product?.rating}</Typography>
-                </Grid>
-
-                <Grid item>
-                  <StarOutlineOutlined />
-                </Grid>
-              </Grid>
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: 'rgb(10,13,90)' }}
+              >
+                <AddShoppingCartOutlined />
+              </Button>
             </Grid>
           </Grid>
         </Card>
