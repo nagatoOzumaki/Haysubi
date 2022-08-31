@@ -11,19 +11,21 @@ import FilterBar from '../modules/productsPage/filterBar';
 import {
   addProductsToStore,
   clearProductsToStore,
+  fetchingSuccessed,
 } from '../common/store/actions';
 import FooterLayout from '../common/layouts/footerLayout/FooterLayout';
 import { NextPageWithLayout } from './_app';
 import ChatbotLayout from '../common/layouts/chatbotLayout';
+import { useDataFetchingState, useProductsState } from '../common/store/Store';
 
 type Props = {
   products: Products | null;
 };
 
 const Home: NextPageWithLayout<Props> = ({ products }) => {
-  // const productsStore = useProductsState();
+  const productsStore = useProductsState();
   const dispatch = useDispatch<any>();
-  // const dataFetchingState = useDataFetchingState();
+  const dataFetchingState = useDataFetchingState();
   const router = useRouter();
   const { profil } = router.query;
 
@@ -42,6 +44,10 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
 
     return () => dispatch(clearProductsToStore());
   }, [profil, dispatch, products]);
+  useEffect(() => {
+    dispatch(addProductsToStore(products));
+    dispatch(fetchingSuccessed());
+  }, [dispatch, products]);
 
   return (
     <>
@@ -49,11 +55,14 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
       <NextSeo title="pc portable" description="dell,hp,asus,mac" />
       {/* ---------------- */}
       <Grid sx={{ backgroundColor: 'secondary.main', mt: 1 }} container>
-        <Grid md={1} xs={3} item>
+        <Grid md={1.2} xs={3} item>
           <FilterBar />
         </Grid>
-        <Grid md={11} xs={9} overflow="scroll" item>
-          <ProductsList products={null} />
+        <Grid md={10} xs={9} item>
+          {/* overflow="scroll" */}
+          <ProductsList
+            products={dataFetchingState === 'loading' ? null : productsStore}
+          />
         </Grid>
       </Grid>
     </>
