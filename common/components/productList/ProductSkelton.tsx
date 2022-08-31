@@ -9,10 +9,10 @@ function ProductSkelton() {
         color="secondary"
         sx={{
           p: { xs: 1, md: 2 },
-          width: {
-            xs: 200,
-            md: 'auto',
-          },
+          // width: {
+          //   xs: 200,
+          //   md: 'auto',
+          // },
           mb: 0.5,
           height: { xs: 200, md: 244 },
           cursor: 'pointer',

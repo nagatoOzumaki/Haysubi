@@ -15,9 +15,10 @@ const ProductCard: FC<Props> = ({ product }) => {
     <NextLink href={`/product/${product.id}`} passHref>
       <a>
         <Card
+          // elevation={2}
           sx={{
             backgroundColor: 'rgba(255,255,255,1)',
-            p: { xs: 1, md: 2 },
+            p: { xs: 1.2, md: 2 },
 
             // width: {
             //   xs: 190,
@@ -25,7 +26,8 @@ const ProductCard: FC<Props> = ({ product }) => {
             // },
             // height: { xs: 320, md: 370 },
             cursor: 'pointer',
-            border: '1px solid rgba(0,0,0,0.4)',
+            border: '1px solid rgba(0,0,0,0.3)',
+
             overflow: 'hidden',
             // '&:hover': {
             //   backgroundColor: '#BBB',

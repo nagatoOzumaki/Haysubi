@@ -56,15 +56,14 @@ export default function FilterBar() {
         gap: 1,
       }}
     >
-      <Divider />
       <BrandFilter />
-      <Divider />
-      <ModelFilter /> <Divider />
-      <CpuFilter /> <Divider />
-      <RamFilter /> <Divider />
-      <GpuFilter /> <Divider />
-      <StorageFilter /> <Divider />
-      <ScreenFilter /> <Divider />
+
+      <ModelFilter />
+      <CpuFilter />
+      <RamFilter />
+      <GpuFilter />
+      <StorageFilter />
+      <ScreenFilter />
     </Box>
   );
 }
