@@ -66,7 +66,7 @@ export const RamFilter = () => {
     <FormControl
       onChange={(event: any) => handleFilter(event)}
       component="fieldset"
-      sx={{ m: 1 }}
+      sx={{ m: 3 }}
       variant="filled"
     >
       <FormLabel component="legend">Ram</FormLabel>
