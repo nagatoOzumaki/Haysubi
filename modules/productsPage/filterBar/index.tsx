@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -41,20 +41,30 @@ export default function FilterBar() {
         dispatch(addProductsToStore(products.reverse()));
         dispatch(fetchingSuccessed());
       }
-    }, 6000);
+    }, 2000);
   };
   useEffect(() => {
     handleFilter();
   }, [dispatch, filter]);
   return (
-    <Box>
+    <Box
+      sx={{
+        ml: 1.3,
+
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 1,
+      }}
+    >
+      <Divider />
       <BrandFilter />
-      <ModelFilter />
-      <CpuFilter />
-      <RamFilter />
-      <GpuFilter />
-      <StorageFilter />
-      <ScreenFilter />
+      <Divider />
+      <ModelFilter /> <Divider />
+      <CpuFilter /> <Divider />
+      <RamFilter /> <Divider />
+      <GpuFilter /> <Divider />
+      <StorageFilter /> <Divider />
+      <ScreenFilter /> <Divider />
     </Box>
   );
 }

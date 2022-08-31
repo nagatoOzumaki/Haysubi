@@ -18,13 +18,15 @@ const ProductCard: FC<Props> = ({ product }) => {
           sx={{
             backgroundColor: 'rgba(255,255,255,1)',
             p: { xs: 1, md: 2 },
-            width: {
-              xs: 190,
-              md: 'auto',
-            },
-            height: { xs: 320, md: 400 },
+
+            // width: {
+            //   xs: 190,
+            //   md: 'auto',
+            // },
+            // height: { xs: 320, md: 370 },
             cursor: 'pointer',
             border: '1px solid rgba(0,0,0,0.4)',
+            overflow: 'hidden',
             // '&:hover': {
             //   backgroundColor: '#BBB',
             //   padding: 1,
@@ -57,10 +59,10 @@ const ProductCard: FC<Props> = ({ product }) => {
           </Typography>
           <Typography
             variant="body2"
-            color="text.secondary"
+            color="rgba(0,0,0)"
             sx={{
               // width: '290px',
-              height: { md: 48, xs: 19 },
+              height: { md: 48, xs: 50 },
               whiteSpace: 'wrap',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
@@ -69,8 +71,19 @@ const ProductCard: FC<Props> = ({ product }) => {
             {product?.description}
           </Typography>
 
-          <Typography paragraph>{product?.categories}</Typography>
-          <Grid sx={{ alignItems: 'center', gap: 5 }} container>
+          <Typography variant="body2" color="rgba(2,0,75)" fontWeight="bold">
+            {product?.categories}
+          </Typography>
+          <Grid
+            sx={{
+              alignItems: 'center',
+              gap: 2,
+
+              height: 23,
+              mb: -1.2,
+            }}
+            container
+          >
             <Grid item>
               <Typography paragraph>{product?.price}</Typography>
             </Grid>

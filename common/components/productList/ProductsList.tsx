@@ -9,7 +9,7 @@ const ProductsList: FC<Props> = ({ products }) => (
   <Grid container sx={{ width: { xs: 1000, md: 'auto' } }} spacing={0.5}>
     {products
       ? products.map(product => (
-          <Grid key={product.id} xs={3} md={2} item>
+          <Grid key={product.id} xs={2.2} md={3.4} lg={2} item>
             <ProductCard product={product} />
           </Grid>
         ))

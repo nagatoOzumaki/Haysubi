@@ -10,11 +10,11 @@ function ProductSkelton() {
         sx={{
           p: { xs: 1, md: 2 },
           width: {
-            xs: 190,
+            xs: 200,
             md: 'auto',
           },
           mb: 0.5,
-          height: { xs: 300, md: 244 },
+          height: { xs: 200, md: 244 },
           cursor: 'pointer',
         }}
       />
@@ -24,18 +24,24 @@ function ProductSkelton() {
         sx={{
           color: '#000',
           fontSize: { xs: 14, md: 17 },
-          height: { md: 25, xs: 34 },
-          mt: -0.4,
+          width: '70%',
+          height: { md: 25, xs: 22 },
+
+          mt: { md: -0.4, xs: -0.5 },
         }}
       />{' '}
       <Skeleton
         variant="text"
         animation="wave"
         sx={{
-          mt: -2,
+          mt: { md: -2, xs: -1.3 },
           color: '#000',
           fontSize: { xs: 14, md: 17 },
-          height: { md: 70, xs: 34 },
+          height: { md: 70, xs: 44 },
+          width: {
+            xs: 200,
+            md: 'auto',
+          },
         }}
       />
       <Grid sx={{ pb: 2, gap: 3, pl: 1 }} container>
@@ -45,6 +51,10 @@ function ProductSkelton() {
             animation="wave"
             color="secondary"
             sx={{
+              width: {
+                xs: 50,
+                md: 'auto',
+              },
               height: { md: 20, xs: 19 },
             }}
           />
@@ -55,6 +65,10 @@ function ProductSkelton() {
             animation="wave"
             color="secondary"
             sx={{
+              width: {
+                xs: 50,
+                md: 'auto',
+              },
               height: { md: 20, xs: 19 },
             }}
           />

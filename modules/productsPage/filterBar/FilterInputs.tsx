@@ -25,9 +25,11 @@ export const FilterCheckBox: FC<any> = props => (
     <FormControlLabel
       control={
         <Checkbox
+          size="small"
           sx={{
             p: { xs: 0, md: 'auto' },
-            // fontSize: { xs: 9, md: 'auto' },
+            ml: 1,
+            fontSize: { xs: 9, md: 'auto' },
             label: { fontSize: { xs: 2, md: 'auto' } },
           }}
           {...props}
@@ -66,7 +68,6 @@ export const RamFilter = () => {
     <FormControl
       onChange={(event: any) => handleFilter(event)}
       component="fieldset"
-      sx={{ m: 3 }}
       variant="filled"
     >
       <FormLabel component="legend">Ram</FormLabel>
@@ -74,7 +75,7 @@ export const RamFilter = () => {
         {ramValues.map(value => (
           <FilterCheckBox
             key={value}
-            name={value}
+            name={value.toString()}
             value={value}
             label={`${value} GB`}
           />
@@ -90,7 +91,6 @@ export const ModelFilter = () => {
     <FormControl
       onChange={(event: any) => handleFilter(event)}
       component="fieldset"
-      sx={{ m: 3 }}
       variant="filled"
     >
       <FormLabel component="legend">Model</FormLabel>
@@ -98,7 +98,7 @@ export const ModelFilter = () => {
         {models.map(value => (
           <FilterCheckBox
             key={value}
-            name={value}
+            name={value.toString()}
             value={value}
             label={`${value}`}
           />
@@ -113,7 +113,6 @@ export const ScreenFilter = () => {
     <FormControl
       onChange={(event: any) => handleFilter(event)}
       component="fieldset"
-      sx={{ m: 3 }}
       variant="filled"
     >
       <FormLabel component="legend">Screen</FormLabel>
@@ -121,7 +120,7 @@ export const ScreenFilter = () => {
         {screens.map(value => (
           <FilterCheckBox
             key={value}
-            name={value}
+            name={value.toString()}
             value={value}
             label={`${value}`}
           />
@@ -136,7 +135,6 @@ export const StorageFilter = () => {
     <FormControl
       onChange={(event: any) => handleFilter(event)}
       component="fieldset"
-      sx={{ m: 3 }}
       variant="filled"
     >
       <FormLabel component="legend">Storage</FormLabel>
@@ -144,7 +142,7 @@ export const StorageFilter = () => {
         {storages.map(value => (
           <FilterCheckBox
             key={value}
-            name={value}
+            name={value.toString()}
             value={value}
             label={`${value} GB`}
           />
@@ -159,7 +157,6 @@ export const CpuFilter = () => {
     <FormControl
       onChange={(event: any) => handleFilter(event)}
       component="fieldset"
-      sx={{ m: 3 }}
       variant="filled"
     >
       <FormLabel component="legend">Cpu</FormLabel>
@@ -167,9 +164,9 @@ export const CpuFilter = () => {
         {cpuGenerations.map(value => (
           <FilterCheckBox
             key={value}
-            name={value}
+            name={value.toString()}
             value={value}
-            label={`${value} generation`}
+            label={`gen ${value}`}
           />
         ))}
       </FormGroup>
@@ -182,7 +179,6 @@ export const GpuFilter = () => {
     <FormControl
       onChange={(event: any) => handleFilter(event)}
       component="fieldset"
-      sx={{ m: 3 }}
       variant="filled"
     >
       <FormLabel component="legend">Gpu</FormLabel>
@@ -190,7 +186,7 @@ export const GpuFilter = () => {
         {gpuValues.map(value => (
           <FilterCheckBox
             key={value}
-            name={value}
+            name={value.toString()}
             value={value}
             label={`${value}`}
           />
@@ -206,7 +202,6 @@ export const BrandFilter = () => {
     <FormControl
       onChange={(event: any) => handleFilter(event)}
       component="fieldset"
-      sx={{ m: 3 }}
       variant="filled"
     >
       <FormLabel component="legend">Brand</FormLabel>
@@ -214,7 +209,7 @@ export const BrandFilter = () => {
         {brands.map(value => (
           <FilterCheckBox
             key={value}
-            name={value}
+            name={value.toString()}
             value={value}
             label={`${value}`}
           />
