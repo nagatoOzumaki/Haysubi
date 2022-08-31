@@ -22,7 +22,19 @@ const gpuValues = [12, 3, 4, 23, 1232];
 
 export const FilterCheckBox: FC<any> = props => (
   <>
-    <FormControlLabel control={<Checkbox {...props} />} label={props.label} />
+    <FormControlLabel
+      control={
+        <Checkbox
+          sx={{
+            p: { xs: 0, md: 'auto' },
+            // fontSize: { xs: 9, md: 'auto' },
+            label: { fontSize: { xs: 2, md: 'auto' } },
+          }}
+          {...props}
+        />
+      }
+      label={props.label}
+    />
   </>
 );
 export const useStater = (filter: FilterElement) => {
@@ -54,7 +66,7 @@ export const RamFilter = () => {
     <FormControl
       onChange={(event: any) => handleFilter(event)}
       component="fieldset"
-      sx={{ m: 3 }}
+      sx={{ m: 1 }}
       variant="filled"
     >
       <FormLabel component="legend">Ram</FormLabel>

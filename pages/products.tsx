@@ -55,11 +55,10 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
       <NextSeo title="pc portable" description="dell,hp,asus,mac" />
       {/* ---------------- */}
       <Grid sx={{ backgroundColor: 'secondary.main', mt: 1 }} container>
-        <Grid md={1.2} xs={3} item>
+        <Grid md={1.2} xs={4} item>
           <FilterBar />
         </Grid>
-        <Grid md={10} xs={9} item>
-          {/* overflow="scroll" */}
+        <Grid md={10} xs={7} sx={{ overflow: { xs: 'scroll' } }} item>
           <ProductsList
             products={dataFetchingState === 'loading' ? null : productsStore}
           />
