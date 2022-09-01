@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useCallback, useRef } from "react";
+import React, {  useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addFilter, dataIsLoading } from "../../../../common/store/actions";
 import { useFilter } from "../../../../common/store/Store";

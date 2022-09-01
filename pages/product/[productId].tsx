@@ -107,8 +107,8 @@ const ProductDetails = ({ product }: Props) => {
   return (
     <>
       <ProductMetaData />
-      <Container
-        maxWidth="xl"
+      <Box
+        // maxWidth="xl"
         sx={{ bgcolor: '#fff', boxShadow: 3, mt: { md: 10, xs: 5 } }}
       >
         <Grid container spacing={5} p={1}>
@@ -239,7 +239,6 @@ const ProductDetails = ({ product }: Props) => {
         </Grid>
         {/* reviews */}
         <Divider sx={{ mb: 2 }} />
-
         <Grid container sx={{ mt: 2, display: 'flex', gap: 18 }}>
           <Grid item md={12}>
             <Typography variant="h5" sx={{ mb: 2 }}>
@@ -248,14 +247,14 @@ const ProductDetails = ({ product }: Props) => {
             <Reviews reviews={product.review} />
           </Grid>
           <a href="#reviews" />
-          <Grid item md={12} mb={4}>
-            <Typography variant="h5" sx={{ mb: 2 }}>
-              You May Also Like ?
-            </Typography>
-            <SuggestionsSilder />
-          </Grid>
         </Grid>
-      </Container>
+        <Box mb={4}>
+          <Typography variant="h5" sx={{ mb: 2 }}>
+            You May Also Like ?
+          </Typography>
+          <SuggestionsSilder />
+        </Box>
+      </Box>
     </>
   );
 };

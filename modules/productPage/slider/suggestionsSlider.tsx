@@ -5,7 +5,7 @@ import ProductCard from '../../../common/components/productList/ProductCard';
 import products from '../../../data/Data';
 
 const breakPoints = [
-  { width: 1, itemsToShow: 1 },
+  { width: 1, itemsToShow: 1, itemsToScroll: 1 },
   { width: 550, itemsToShow: 3, itemsToScroll: 2 },
   { width: 768, itemsToShow: 4 },
   { width: 1200, itemsToShow: 6 },
