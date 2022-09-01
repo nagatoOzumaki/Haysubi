@@ -12,7 +12,7 @@ const fetchData = async <T>(endpoint: string) => {
   const res = await axios.get(`https://haysubi-api.vercel.app/api${endpoint}`);
   const data: T = await res.data;
   return data;
-
+ 
 };
 
 export default fetchData;

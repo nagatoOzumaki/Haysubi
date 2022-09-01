@@ -24,7 +24,7 @@ export default function FilterBar() {
       undefined,
       { shallow: true }
     );
-  }, [filter, router]);
+  }, [filter]);
   return (
     <Box
       sx={{

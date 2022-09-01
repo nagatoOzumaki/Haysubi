@@ -20,9 +20,13 @@ import {productsActions}from "./products.actions";
       const queryString = constructQueryString(filter);
       setTimeout(async () => {
         if (queryString) {
+          try{
           const products = await fetchData<Products>(`/products`);
           dispatch({type:productsActions.ADD_PRODUCTS,payload: products.reverse()});
           dispatch(fetchingSuccessed());
+          }catch(e){
+            console.log('network issus')
+          }
         }
       }, 2000)
     }
