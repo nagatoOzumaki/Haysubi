@@ -22,8 +22,3 @@ export const useCurrentProduct=()=>useSelector((state:State)=>state.currentProdu
 export const useDataFetchingState=()=>useSelector((state:State)=>state.dataFetchingState)
 export const useIsChatbotOpen=()=>useSelector((state:State)=>state.isChatbotOpen)
 
-// export const UpdateStore:Dispatch<Action>=(action)=>{
-//   // eslint-disable-next-line react-hooks/rules-of-hooks
-//   if(typeof window!=='undefined') useDispatch()(action)
-
-// }

@@ -11,6 +11,7 @@ import FilterBar from '../modules/productsPage/filterBar';
 import {
   addProductsToStore,
   clearProductsToStore,
+  dataIsLoading,
   fetchingSuccessed,
 } from '../common/store/actions';
 import FooterLayout from '../common/layouts/footerLayout/FooterLayout';
@@ -30,26 +31,23 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
   const { profil } = router.query;
 
   useEffect(() => {
-    const fetchProductsForProfile = async (_profil: string | string[]) => {
+    const fetchProductsForProfil = async (_profil: string | string[]) => {
+      dispatch(dataIsLoading());
       const prdcts: Products = await fetchData<Products>(
         `/products?profil=${_profil}`
       );
       dispatch(addProductsToStore(prdcts));
+      dispatch(fetchingSuccessed());
     };
     if (profil) {
-      fetchProductsForProfile(profil);
-      dispatch(fetchingSuccessed());
+      fetchProductsForProfil(profil);
     } else {
       dispatch(addProductsToStore(products));
       dispatch(fetchingSuccessed());
     }
 
     return () => dispatch(clearProductsToStore());
-  }, [profil, dispatch, products]);
-  // useEffect(() => {
-  //   dispatch(addProductsToStore(products));
-  //   dispatch(fetchingSuccessed());
-  // }, [dispatch, products]);
+  }, []);
 
   return (
     <>

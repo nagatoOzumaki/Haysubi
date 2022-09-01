@@ -9,10 +9,10 @@ import axios from 'axios';
 const fetchData = async <T>(endpoint: string) => {
   // https://haysubi-api.vercel.app
  
-  const res = await axios.get(`https://haysubi-api.vercel.app/api${endpoint}`);
+  const res = await axios.get(`http://localhost:3001/api${endpoint}`);
   const data: T = await res.data;
   return data;
- 
+
 };
 
 export default fetchData;

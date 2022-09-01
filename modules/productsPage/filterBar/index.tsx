@@ -1,7 +1,5 @@
 import { Box } from '@mui/material';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { useFilter } from '../../../common/store/Store';
+
 import {
   BrandFilter,
   CpuFilter,
@@ -13,18 +11,20 @@ import {
 } from './FilterInputs';
 
 export default function FilterBar() {
-  const router = useRouter();
-  const filter = useFilter();
-  useEffect(() => {
-    router.push(
-      {
-        pathname: `/products`,
-        query: { ...filter },
-      },
-      undefined,
-      { shallow: true }
-    );
-  }, [filter]);
+  // const router = useRouter();
+  // const filter = useFilter();
+  // useEffect(() => {
+  //   if (filter !== ({} as Filter)) {
+  //     router.push(
+  //       {
+  //         pathname: `/products`,
+  //         query: { ...filter },
+  //       },
+  //       undefined,
+  //       { shallow: true }
+  //     );
+  //   }
+  // }, [filter]);
   return (
     <Box
       sx={{
