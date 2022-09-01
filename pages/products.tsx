@@ -47,7 +47,7 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
     }
 
     return () => dispatch(clearProductsToStore());
-  }, []);
+  }, [profil, dispatch, products]);
 
   return (
     <>

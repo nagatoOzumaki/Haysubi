@@ -10,7 +10,7 @@ const useFilterStateHandler = (filter: FilterElement) => {
     const selectedValues = useRef([] as string[]);
     const router = useRouter();
     const currentFilter = useFilter();
-    const handleFilter = useCallback(
+    const handleFilter = 
       (event: React.FormEvent<HTMLInputElement>) => {
         dispatch(dataIsLoading())
         const { checked, value } :any= event.target;
@@ -30,15 +30,14 @@ const useFilterStateHandler = (filter: FilterElement) => {
         router.push(
           {
             pathname: `/products`,
-            query: { ...currentFilter },
+            query: { ...currentFilter ,[filter]: selectedValues.current },
           },
           undefined,
           { shallow: true }
         );
         
-      },
-      [dispatch, filter]
-    );
+      }
+    
     return handleFilter;
   };
 
