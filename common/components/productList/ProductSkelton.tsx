@@ -44,8 +44,8 @@ function ProductSkelton() {
           },
         }}
       />
-      <Grid sx={{ pb: 2, gap: 3, pl: 1 }} container>
-        <Grid md={3} item>
+      <Grid sx={{ alignItems: 'center', pb: 2, gap: 3, pl: 1 }} container>
+        <Grid md={4.5} item>
           <Skeleton
             variant="rectangular"
             animation="wave"
@@ -59,7 +59,7 @@ function ProductSkelton() {
             }}
           />
         </Grid>
-        <Grid md={3} item>
+        <Grid md={3.2} item>
           <Skeleton
             variant="rectangular"
             animation="wave"
@@ -72,6 +72,9 @@ function ProductSkelton() {
               height: { md: 20, xs: 19 },
             }}
           />
+        </Grid>
+        <Grid item>
+          <Skeleton variant="rectangular" animation="wave" color="secondary" />
         </Grid>
       </Grid>
     </Box>

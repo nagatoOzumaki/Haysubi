@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import { useState } from 'react';
 import ReactElasticCarousel from 'react-elastic-carousel';
 import ProductCard from '../../../common/components/productList/ProductCard';
@@ -5,9 +6,9 @@ import products from '../../../data/Data';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
-  { width: 550, itemsToShow: 2, itemsToScroll: 2 },
-  { width: 768, itemsToShow: 3 },
-  { width: 1200, itemsToShow: 4 },
+  { width: 550, itemsToShow: 3, itemsToScroll: 2 },
+  { width: 768, itemsToShow: 4 },
+  { width: 1200, itemsToShow: 6 },
 ];
 
 const SuggestionsSilder = () => {
@@ -16,13 +17,16 @@ const SuggestionsSilder = () => {
   return (
     // @ts-ignore
     <ReactElasticCarousel
-      isRTL
+      isRTL={false}
       enableAutoPlay
+      pagination={false}
       autoPlaySpeed={3500}
       breakPoints={breakPoints}
     >
       {items.map(product => (
-        <ProductCard key={product.id} product={product} />
+        <Box ml={0.5} key={product.id}>
+          <ProductCard product={product} />
+        </Box>
       ))}
     </ReactElasticCarousel>
   );

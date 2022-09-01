@@ -38,16 +38,18 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
     };
     if (profil) {
       fetchProductsForProfile(profil);
+      dispatch(fetchingSuccessed());
     } else {
       dispatch(addProductsToStore(products));
+      dispatch(fetchingSuccessed());
     }
 
     return () => dispatch(clearProductsToStore());
   }, [profil, dispatch, products]);
-  useEffect(() => {
-    dispatch(addProductsToStore(products));
-    dispatch(fetchingSuccessed());
-  }, [dispatch, products]);
+  // useEffect(() => {
+  //   dispatch(addProductsToStore(products));
+  //   dispatch(fetchingSuccessed());
+  // }, [dispatch, products]);
 
   return (
     <>
@@ -58,7 +60,7 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
         <Grid md={1.2} xs={4} item>
           <FilterBar />
         </Grid>
-        <Grid md={10} xs={7} sx={{ overflow: { xs: 'scroll' } }} item>
+        <Grid md={10} xs={7} item>
           <ProductsList
             products={dataFetchingState === 'loading' ? null : productsStore}
           />

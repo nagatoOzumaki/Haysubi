@@ -111,7 +111,7 @@ export const ScreenFilter = () => {
   const handleFilter = useFilterStateHandler('screen');
   return (
     <FormControl
-      onChange={(event: any) => handleFilter(event)}
+      onChange={async (event: any) => handleFilter(event)}
       component="fieldset"
       variant="filled"
     >

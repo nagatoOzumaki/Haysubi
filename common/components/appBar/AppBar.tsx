@@ -392,6 +392,7 @@ export default function ResponsiveAppBar() {
                   size="large"
                   aria-label="show 4 new mails"
                   color="inherit"
+                  sx={{ pl: 1, pr: 1 }}
                 >
                   <Badge badgeContent={cart.cartItems.length} color="error">
                     <ShoppingCartOutlined />
@@ -405,6 +406,7 @@ export default function ResponsiveAppBar() {
                   size="large"
                   aria-label="show 17 new notifications"
                   color="inherit"
+                  sx={{ pl: 1, pr: 1 }}
                 >
                   <Badge badgeContent={wishList.length} color="error">
                     <FavoriteBorder />
@@ -422,11 +424,14 @@ export default function ResponsiveAppBar() {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="inherit"
+                sx={{ pl: 1, pr: 1 }}
               >
                 <AccountCircle />
               </IconButton>
             ) : (
-              <LoginModalToggle />
+              <Box pt={0.4}>
+                <LoginModalToggle />
+              </Box>
             )}
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -437,6 +442,7 @@ export default function ResponsiveAppBar() {
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
+              sx={{ pl: 1, pr: 1 }}
             >
               <MoreIcon />
             </IconButton>
