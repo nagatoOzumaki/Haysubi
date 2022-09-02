@@ -27,6 +27,10 @@ import SuggestionsSilder from '../../modules/productPage/slider/suggestionsSlide
 import { ButtonColors } from '../../common/config/colors';
 import FooterLayout from '../../common/layouts/footerLayout/FooterLayout';
 import ChatbotLayout from '../../common/layouts/chatbotLayout';
+import {
+  AddShoppingCartOutlined,
+  FavoriteBorderOutlined,
+} from '@mui/icons-material';
 
 type Props = { product: Product };
 
@@ -109,31 +113,47 @@ const ProductDetails = ({ product }: Props) => {
       <ProductMetaData />
       <Container
         maxWidth="xl"
-        sx={{ bgcolor: '#fff', boxShadow: 3, mt: { md: 10, xs: 5 } }}
+        sx={{ bgcolor: '#fff', pt: 1, boxShadow: 3, mt: { md: 5, xs: 5 } }}
       >
-        <Grid container spacing={5} p={1}>
-          {/* 1----------- */}
-          <Grid md={0.8} item container direction={{ md: 'column', xs: 'row' }}>
-            {product.image.map((imageSrc: string) => (
-              <Grid
-                key={imageSrc}
-                sx={{ border: '2px solid #bbb', mb: 4, cursor: 'pointer' }}
-                item
-              >
-                <Image
-                  onClick={() => setCurrentMainImage(imageSrc)}
-                  loader={() => imageLoader(imageSrc)}
-                  width="100%"
-                  height="100%"
-                  src={imageSrc}
-                  alt="image"
-                />
-              </Grid>
-            ))}
+        <Grid container>
+          <Grid
+            xs={12}
+            md={1}
+            item
+            // alignItems="center"
+            direction={{ md: 'column', xs: 'row' }}
+            container
+          >
+            {/* 1----------- */}
+            <Grid>
+              {product.image.map((imageSrc: string) => (
+                <Grid
+                  key={imageSrc}
+                  sx={{
+                    border: '2px solid #bbb',
+                    mb: { md: 4 },
+                    ml: { xs: 1, md: 0 },
+                    cursor: 'pointer',
+                  }}
+                  xs={2}
+                  md={5}
+                  item
+                >
+                  <Image
+                    onClick={() => setCurrentMainImage(imageSrc)}
+                    loader={() => imageLoader(imageSrc)}
+                    width="100%"
+                    height="100%"
+                    src={imageSrc}
+                    alt="image"
+                  />
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
           {/* 2----------------------- */}
           <Grid
-            md={3.2}
+            md={3}
             sx={{ display: 'flex', pb: 2, justifyContent: 'center', p: 4 }}
             item
           >
@@ -146,8 +166,12 @@ const ProductDetails = ({ product }: Props) => {
             />
           </Grid>
           {/* 3--------------- */}
-          <Grid md={8} item>
-            <Typography component="h1" variant="h2">
+          <Grid md={8} sx={{ pt: { md: 10 } }} item>
+            <Typography
+              sx={{ fontSize: { xs: 25, md: 50 } }}
+              component="h1"
+              variant="h2"
+            >
               {product.title}
             </Typography>
 
@@ -170,55 +194,58 @@ const ProductDetails = ({ product }: Props) => {
               inclusive of all taxes
             </Typography>
 
-            <div className="prodButtons">
-              <ButtonGroup
-                sx={{ pt: 2, pb: 2, gap: 4 }}
-                color="primary"
-                aria-label="outlined primary button group"
-                disabled={isItemInCart === null}
-              >
-                {isItemInCart ? (
-                  <NextLink href="/cart">
-                    <Button variant="contained">GO TO CART BAG</Button>
-                  </NextLink>
-                ) : (
-                  <Button variant="contained" onClick={handleAddItemToCart}>
-                    ADD TO BAG
-                  </Button>
-                )}
-
-                {!isProductInWishList && !isItemInCart ? (
-                  <Button
-                    variant="contained"
-                    onClick={() => handleAddProductToWishlist(product)}
-                  >
-                    WISHLIST
-                  </Button>
-                ) : (
-                  <Button variant="contained">Already In Wishlist</Button>
-                )}
-                <Button
-                  sx={{
-                    ml: 20,
-                    color: '#000',
-                    backgroundColor: ButtonColors.buyProductButton,
-                    p: 1,
-                    pl: 7,
-                    pr: 7,
-                    fontWeight: 'bold',
-                    fontSize: 15,
-                    '&:hover': { color: '#000', backgroundColor: 'green' },
-                    borderRadius: 0,
-                  }}
-                  variant="contained"
-                  onClick={handleBuyProduct}
-                >
-                  <NextLink href="/payment/personalInfo">
-                    <a> Buy It</a>
-                  </NextLink>
+            <ButtonGroup
+              sx={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                gap: 2,
+                mt: 3,
+                mb: 3,
+              }}
+              color="primary"
+              aria-label="outlined primary button group"
+              disabled={isItemInCart === null}
+            >
+              {isItemInCart ? (
+                <NextLink href="/cart">
+                  <Button variant="contained">GO TO CART BAG</Button>
+                </NextLink>
+              ) : (
+                <Button variant="contained" onClick={handleAddItemToCart}>
+                  <AddShoppingCartOutlined />
                 </Button>
-              </ButtonGroup>
-            </div>
+              )}
+
+              {!isProductInWishList && !isItemInCart ? (
+                <Button
+                  variant="contained"
+                  onClick={() => handleAddProductToWishlist(product)}
+                >
+                  <FavoriteBorderOutlined />
+                </Button>
+              ) : (
+                <Button variant="contained">Already In Wishlist</Button>
+              )}
+              <Button
+                sx={{
+                  ml: 20,
+                  color: '#000',
+                  backgroundColor: ButtonColors.buyProductButton,
+
+                  fontWeight: 'bold',
+                  fontSize: { xs: 13, md: 'auto' },
+                  '&:hover': { color: '#000', backgroundColor: 'green' },
+                  borderRadius: 0,
+                }}
+                variant="contained"
+                onClick={handleBuyProduct}
+              >
+                <NextLink href="/payment/personalInfo">
+                  <a> Buy</a>
+                </NextLink>
+              </Button>
+            </ButtonGroup>
+
             <Divider />
 
             <Box sx={{ pt: 3, mb: 3 }}>
