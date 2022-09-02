@@ -4,11 +4,11 @@ import Divider from '@mui/material/Divider';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { UserInfo } from '../../../common/types/@appTypes';
+import { UserInfo } from '../../../../common/types/@appTypes';
 import Post from './Post';
-import HoverRating from '../Rating';
-import { useCurrentProduct } from '../../../common/store/Store';
-import { addReview } from '../../../common/store/actions';
+import HoverRating from '../rating';
+import { useCurrentProduct } from '../../../../common/store/Store';
+import { addReview } from '../../../../common/store/actions';
 
 type Props = { reviews: string[] };
 

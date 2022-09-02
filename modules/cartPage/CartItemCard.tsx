@@ -27,6 +27,7 @@ const CartItemCard: FC<PropTypes> = ({ item, remove }) => (
         </Typography>
       </a>
     </NextLink>
+    {item.quantity}
     <IconButton
       sx={{ position: 'absolute', bottom: 10 }}
       onClick={() => remove(item)}

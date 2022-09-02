@@ -50,22 +50,33 @@ const mainReducer = (state: State = InitialState, action: Action) => {
       return { ...state, darkMode: false };
 
     // ----------------------------------------------------
-    case appActions.SET_ITEMS_TO_CART: {
-      const storedItems = action.payload;
-      return { ...state, cart: { ...state.cart, cartItems: storedItems } };
-    }
+    // case appActions.SET_ITEMS_TO_CART: {
+    //   const storedItems = action.payload;
+    //   return { ...state, cart: { ...state.cart, cartItems: storedItems } };
+    // }
     case appActions.ADD_ITEM_TO_CART: {
-      const ids = state.cart.cartItems.map(item => item.id);
-      
+      const { id,quantity } = action.payload;  
+      const productIfExist = state.cart.cartItems.filter(item => item.id===id)[0];
+      const items=state.cart.cartItems.filter(item => item.id!==id);
       let newState = state;
-      const { id } = action.payload;
-
-      if (!ids.includes(id)) {
+      if (productIfExist) {
+        const newProduct={...productIfExist,quantity:(productIfExist.quantity as unknown as number)+quantity }
+        const newItems=[...items,newProduct]
+        
         newState = {
           ...state,
           cart: {
             ...state.cart,
-            cartItems: [...state.cart.cartItems, action.payload],
+            cartItems: newItems,
+          },
+        };
+      }
+      else{
+        newState = {
+          ...state,
+          cart: {
+            ...state.cart,
+            cartItems: [...items,action.payload],
           },
         };
       }
@@ -75,7 +86,7 @@ const mainReducer = (state: State = InitialState, action: Action) => {
     }
     case appActions.REMOVE_ITEM_FROM_CART: {
       const cartItems = state.cart.cartItems.filter(
-        item => item.id !== action.payload.id
+        (item) => item.id !== action.payload.id
       );
       const removeItemState = {
         ...state,

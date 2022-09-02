@@ -21,7 +21,7 @@ const ProductCard: FC<Props> = ({ product }) => {
 
   const { image } = product || { image: ['', '', ''] };
   const handleAddToCart = () => {
-    dispatch(addItemToCart(product));
+    dispatch(addItemToCart({ ...product, quantity: 1 }));
     setIsAddedToCart(true);
     setTimeout(() => setIsAddedToCart(false), 3500);
   };

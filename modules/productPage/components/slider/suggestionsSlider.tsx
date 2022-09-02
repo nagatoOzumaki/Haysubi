@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
 import { useState } from 'react';
 import ReactElasticCarousel from 'react-elastic-carousel';
-import ProductCard from '../../../common/components/productList/ProductCard';
-import products from '../../../data/Data';
+import ProductCard from '../../../../common/components/productList/ProductCard';
+import products from '../../../../data/Data';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1, itemsToScroll: 1 },

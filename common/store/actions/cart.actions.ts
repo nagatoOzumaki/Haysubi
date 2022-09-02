@@ -22,7 +22,6 @@ export const addItemToCart: AppThunk =
       type: wishListActions.REMOVE_PRODUCT_FROM_WISHLIST,
       payload: item,
     });
-
     dispatch({ type: cartActions.ADD_ITEM_TO_CART, payload: item });
   };
 

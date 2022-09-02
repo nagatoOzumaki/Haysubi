@@ -13,6 +13,10 @@ import NextLink from 'next/link';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
+import {
+  AddShoppingCartOutlined,
+  FavoriteBorderOutlined,
+} from '@mui/icons-material';
 import { Product } from '../../common/types/@appTypes';
 import {
   addItemToCart,
@@ -21,16 +25,13 @@ import {
 } from '../../common/store/actions';
 import { useCartState, useWishList } from '../../common/store/Store';
 import fetchData from '../../common/utils/hooks/fetchData';
-import HoverRating from '../../modules/productPage/Rating';
-import Reviews from '../../modules/productPage/reviews';
-import SuggestionsSilder from '../../modules/productPage/slider/suggestionsSlider';
+import HoverRating from '../../modules/productPage/components/rating';
+import Reviews from '../../modules/productPage/components/reviews';
 import { ButtonColors } from '../../common/config/colors';
 import FooterLayout from '../../common/layouts/footerLayout/FooterLayout';
 import ChatbotLayout from '../../common/layouts/chatbotLayout';
-import {
-  AddShoppingCartOutlined,
-  FavoriteBorderOutlined,
-} from '@mui/icons-material';
+import SuggestionsSilder from '../../modules/productPage/components/slider/suggestionsSlider';
+import QuantityInput from '../../modules/productPage/components/QuantityInput';
 
 type Props = { product: Product };
 
@@ -193,59 +194,8 @@ const ProductDetails = ({ product }: Props) => {
             >
               inclusive of all taxes
             </Typography>
-
-            <ButtonGroup
-              sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                gap: 2,
-                mt: 3,
-                mb: 3,
-              }}
-              color="primary"
-              aria-label="outlined primary button group"
-              disabled={isItemInCart === null}
-            >
-              {isItemInCart ? (
-                <NextLink href="/cart">
-                  <Button variant="contained">GO TO CART BAG</Button>
-                </NextLink>
-              ) : (
-                <Button variant="contained" onClick={handleAddItemToCart}>
-                  <AddShoppingCartOutlined />
-                </Button>
-              )}
-
-              {!isProductInWishList && !isItemInCart ? (
-                <Button
-                  variant="contained"
-                  onClick={() => handleAddProductToWishlist(product)}
-                >
-                  <FavoriteBorderOutlined />
-                </Button>
-              ) : (
-                <Button variant="contained">Already In Wishlist</Button>
-              )}
-              <Button
-                sx={{
-                  ml: 20,
-                  color: '#000',
-                  backgroundColor: ButtonColors.buyProductButton,
-
-                  fontWeight: 'bold',
-                  fontSize: { xs: 13, md: 'auto' },
-                  '&:hover': { color: '#000', backgroundColor: 'green' },
-                  borderRadius: 0,
-                }}
-                variant="contained"
-                onClick={handleBuyProduct}
-              >
-                <NextLink href="/payment/personalInfo">
-                  <a> Buy</a>
-                </NextLink>
-              </Button>
-            </ButtonGroup>
-
+            <QuantityInput product={product} />
+            {/* ----------------------------------- */}
             <Divider />
 
             <Box sx={{ pt: 3, mb: 3 }}>
