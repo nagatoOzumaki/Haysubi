@@ -107,8 +107,8 @@ const ProductDetails = ({ product }: Props) => {
   return (
     <>
       <ProductMetaData />
-      <Box
-        // maxWidth="xl"
+      <Container
+        maxWidth="xl"
         sx={{ bgcolor: '#fff', boxShadow: 3, mt: { md: 10, xs: 5 } }}
       >
         <Grid container spacing={5} p={1}>
@@ -254,7 +254,7 @@ const ProductDetails = ({ product }: Props) => {
           </Typography>
           <SuggestionsSilder />
         </Box>
-      </Box>
+      </Container>
     </>
   );
 };
