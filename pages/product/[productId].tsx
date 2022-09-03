@@ -100,11 +100,10 @@ const ProductDetails = ({ product }: Props) => {
         <Grid container>
           <Grid
             xs={12}
-            md={1}
+            md={0.4}
             item
             // alignItems="center"
             direction={{ md: 'column', xs: 'row' }}
-            container
           >
             {/* 1----------- */}
             <Grid container>
@@ -113,16 +112,16 @@ const ProductDetails = ({ product }: Props) => {
                   key={imageSrc}
                   sx={{
                     border: '2px solid #bbb',
-                    mb: { md: 4 },
+                    mb: { md: 1 },
                     ml: { xs: 1, md: 0 },
                     cursor: 'pointer',
                   }}
                   xs={2}
-                  md={5}
+                  md={12}
                   item
                 >
                   <Image
-                    onClick={() => setCurrentMainImage(imageSrc)}
+                    onMouseOver={() => setCurrentMainImage(imageSrc)}
                     loader={() => imageLoader(imageSrc)}
                     width="100%"
                     height="100%"

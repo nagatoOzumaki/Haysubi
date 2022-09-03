@@ -118,7 +118,7 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
               sx={{
                 display: 'flex',
                 justifyContent: 'flex-end',
-                // position: 'absolute',
+                position: 'absolute',
                 mt: 3,
                 bottom: 53,
                 right: 50,

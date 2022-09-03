@@ -83,20 +83,8 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
       >
         {({ values, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
-            <Grid spacing={3} container ml={1}>
-              <Grid md={6} item>
-                <MyTextInput
-                  label="card owner"
-                  name="paymentCardOwner"
-                  type="text"
-                  value={values.paymentCardOwner}
-                  onChange={(e: any) => {
-                    values.paymentCardOwner = e.target.value;
-                    handleOnChange(values);
-                  }}
-                />
-              </Grid>
-              <Grid md={12} item>
+            <Grid container>
+              <Grid md={9} xs={12} item>
                 <MyTextInput
                   label="code"
                   name="paymentCardCode"
@@ -108,7 +96,30 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                   value={values.paymentCardCode}
                 />
               </Grid>
-
+              <Grid md={4} item>
+                <MyTextInput
+                  label="paymentCardInfo3"
+                  name="paymentCardInfo3"
+                  type="text"
+                  value={values.paymentCardInfo3}
+                  onChange={(e: any) => {
+                    values.paymentCardInfo3 = e.target.value;
+                    handleOnChange(values);
+                  }}
+                />
+              </Grid>{' '}
+              <Grid md={4} item>
+                <MyTextInput
+                  label="paymentCardInfo3"
+                  name="paymentCardInfo3"
+                  type="text"
+                  value={values.paymentCardInfo3}
+                  onChange={(e: any) => {
+                    values.paymentCardInfo3 = e.target.value;
+                    handleOnChange(values);
+                  }}
+                />
+              </Grid>{' '}
               <Grid md={6} item>
                 <MyTextInput
                   label="paymentCardInfo3"
@@ -120,6 +131,20 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                     handleOnChange(values);
                   }}
                 />
+              </Grid>
+              <Grid spacing={3} container>
+                <Grid md={6} item>
+                  <MyTextInput
+                    label="card owner"
+                    name="paymentCardOwner"
+                    type="text"
+                    value={values.paymentCardOwner}
+                    onChange={(e: any) => {
+                      values.paymentCardOwner = e.target.value;
+                      handleOnChange(values);
+                    }}
+                  />
+                </Grid>
               </Grid>
             </Grid>
             <Box

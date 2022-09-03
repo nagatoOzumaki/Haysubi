@@ -43,14 +43,15 @@ const PaymentLayout = ({ children }: PropTypes) => {
   });
   return (
     <Container
-    // sx={{
-    //   border: '1px solid #000',
-    //   p: { xs: 1, md: 7 },
-    //   mt: { xs: 2, md: 5 },
-    //   mb: 2,
-    //   position: 'relative',
-    //   height: 600,
-    // }}
+      maxWidth="xl"
+      // sx={{
+      //   border: '1px solid #000',
+      //   p: { xs: 1, md: 7 },
+      //   mt: { xs: 2, md: 5 },
+      //   mb: 2,
+      //   position: 'relative',
+      //   height: 600,
+      // }}
     >
       <Paper
         elevation={8}
@@ -60,7 +61,7 @@ const PaymentLayout = ({ children }: PropTypes) => {
           mt: { xs: 2, md: 5 },
           mb: 2,
           position: 'relative',
-          height: 640,
+          // height: 640,
         }}
       >
         <Typography variant="h6" sx={{ p: 1 }}>
@@ -71,7 +72,12 @@ const PaymentLayout = ({ children }: PropTypes) => {
             <PaimentStepper step={step} />
           </Box>
         ) : null}
-        <Container maxWidth="xl">{childrenWithProps}</Container>
+        <Container
+          sx={{ display: 'flex', justifyContent: 'center', ml: 10 }}
+          maxWidth="xl"
+        >
+          {childrenWithProps}
+        </Container>
       </Paper>
     </Container>
   );

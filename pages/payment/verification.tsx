@@ -1,4 +1,4 @@
-import { Box, Button, Container, Divider, Typography } from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { ReactElement, useEffect } from 'react';
 import {
@@ -21,10 +21,10 @@ const Verification = ({ dispatch, paymentInfo }: PropsType) => {
   return (
     <Container>
       <PaymentHeader title="Verification" />
-      <Divider />
+
       <Box sx={{}}>
         <Typography variant="h5">Personal Information</Typography>
-        <Box sx={{ ml: 1 }}>
+        <Box sx={{ ml: 1, mt: 1.2 }}>
           <Typography fontWeight="bold">
             firstname: {paymentInfo.firstname}
           </Typography>
@@ -33,8 +33,10 @@ const Verification = ({ dispatch, paymentInfo }: PropsType) => {
           </Typography>
           <Typography fontWeight="bold">email:{paymentInfo.email}</Typography>
         </Box>
-        <Typography variant="h5">Delivery Information</Typography>
-        <Box sx={{ ml: 1 }}>
+        <Typography mt={2} variant="h5">
+          Delivery Information
+        </Typography>
+        <Box sx={{ ml: 1, mt: 1.2 }}>
           <Typography fontWeight="bold">
             delivery method:{' '}
             {paymentInfo.deliveryMethod === 'delivery' ? 'home ' : null}

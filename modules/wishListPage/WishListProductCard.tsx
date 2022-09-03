@@ -30,8 +30,8 @@ const WishListProductCard: FC<PropTypes> = ({ item, remove }) => (
             whiteSpace: 'wrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
-            height: { md: 48, xs: 50 },
-            width: { md: 48, xs: 300 },
+            height: { md: 80, xs: 50 },
+            width: { md: 240, xs: 300 },
           }}
         >
           {item.title}
