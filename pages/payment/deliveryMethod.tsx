@@ -22,6 +22,7 @@ import {
   disableNext,
   enableNext,
 } from '../../modules/paymentPage/utils/nextButtonControl';
+import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
 
 type PropsType = {
   dispatch: any;
@@ -55,7 +56,7 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Typography variant="h6">Delivery information</Typography>
+        <PaymentHeader title="Delivery information" />
       </Grid>
       <Grid sx={{ display: 'flex', alignItems: 'center' }} item>
         <Formik
@@ -89,19 +90,15 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
               <Box
                 sx={{
                   position: 'relative',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 4,
                 }}
               >
-                <Typography sx={{ fontSize: 23, color: '#0f0', mr: 5 }}>
+                <Typography sx={{ fontSize: { xs: 17, md: 23 }, mb: 8 }}>
                   How do you like to get the product ?
                 </Typography>
                 <Box
                   sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    position: 'relative',
                   }}
                 >
                   <InputLabel>Home Delivery</InputLabel>
@@ -118,17 +115,9 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
                         }}
                       />
                     )}
-                  />
+                  />{' '}
                 </Box>
                 <Box>
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      top: -7,
-                    }}
-                  >
-                    <WithdrawalPointsInfo />
-                  </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <InputLabel>Withdrawal Point</InputLabel>
                     <Field
@@ -145,6 +134,8 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
                         />
                       )}
                     />
+
+                    <WithdrawalPointsInfo />
                   </Box>
                 </Box>
               </Box>
@@ -215,22 +206,19 @@ function WithdrawalPointsInfo() {
   }, [open]);
 
   return (
-    <div>
-      <Box sx={{}}>
-        <span
-          onClick={handleClickOpen('paper')}
-          style={{
-            color: 'blue',
-            cursor: 'pointer',
-            fontSize: 15,
-            fontWeight: 'bold',
-            textDecoration: 'underline',
-            padding: 2,
-          }}
-        >
-          ?
-        </span>
-      </Box>
+    <>
+      <span
+        onClick={handleClickOpen('paper')}
+        style={{
+          color: 'blue',
+          cursor: 'pointer',
+          fontSize: 15,
+          fontWeight: 'bold',
+          textDecoration: 'underline',
+        }}
+      >
+        ?
+      </span>
 
       <Dialog
         open={open}
@@ -269,6 +257,6 @@ function WithdrawalPointsInfo() {
           <Button onClick={handleClose}>Close</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </>
   );
 }

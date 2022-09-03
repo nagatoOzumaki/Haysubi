@@ -5,6 +5,7 @@ import {
   PaymentInfoActions,
   PaymentInfoState,
 } from '../../common/store/reducers/payementReducer';
+import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 
 type PropsType = {
@@ -19,11 +20,11 @@ const Verification = ({ dispatch, paymentInfo }: PropsType) => {
   }, [dispatch]);
   return (
     <Container>
-      <Typography variant="h3">Verification</Typography>
-      <Divider />{' '}
-      <Box sx={{ ml: 12, mt: 4 }}>
+      <PaymentHeader title="Verification" />
+      <Divider />
+      <Box sx={{}}>
         <Typography variant="h5">Personal Information</Typography>
-        <Box sx={{ ml: 4 }}>
+        <Box sx={{ ml: 1 }}>
           <Typography fontWeight="bold">
             firstname: {paymentInfo.firstname}
           </Typography>
@@ -33,7 +34,7 @@ const Verification = ({ dispatch, paymentInfo }: PropsType) => {
           <Typography fontWeight="bold">email:{paymentInfo.email}</Typography>
         </Box>
         <Typography variant="h5">Delivery Information</Typography>
-        <Box sx={{ ml: 4 }}>
+        <Box sx={{ ml: 1 }}>
           <Typography fontWeight="bold">
             delivery method:{' '}
             {paymentInfo.deliveryMethod === 'delivery' ? 'home ' : null}

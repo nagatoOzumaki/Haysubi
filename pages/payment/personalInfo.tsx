@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { ReactElement, useEffect } from 'react';
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
@@ -14,6 +14,7 @@ import {
 } from '../../modules/paymentPage/utils/nextButtonControl';
 import { MyTextInput } from '../../common/components/Inputs';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
+import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
 
 type PropsType = {
   dispatch: any;
@@ -37,7 +38,7 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Typography variant="h6">Contact information</Typography>
+        <PaymentHeader title="Contact information" />
       </Grid>
 
       <Formik
@@ -74,7 +75,7 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
       >
         {({ values }) => (
           <Form>
-            <Grid spacing={3} container>
+            <Grid spacing={3} container ml={1}>
               <Grid item>
                 <MyTextInput
                   label="First Name"

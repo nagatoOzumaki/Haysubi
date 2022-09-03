@@ -26,10 +26,12 @@ const WishListProductCard: FC<PropTypes> = ({ item, remove }) => (
           variant="h6"
           sx={{
             mb: 5,
-            height: { md: 53, xs: 50 },
+
             whiteSpace: 'wrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
+            height: { md: 48, xs: 50 },
+            width: { md: 48, xs: 300 },
           }}
         >
           {item.title}

@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import * as Yup from 'yup';
 
-import { Grid, Typography, Button, Box } from '@mui/material';
+import { Grid, Button, Box } from '@mui/material';
 import { Form, Formik } from 'formik';
 
 import { useRouter } from 'next/router';
@@ -22,6 +22,7 @@ import {
   disableNext,
   enableNext,
 } from '../../modules/paymentPage/utils/nextButtonControl';
+import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
 
 type PropsType = {
   dispatch: any;
@@ -167,7 +168,7 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Typography variant="h6">Withdrawal point information</Typography>
+        <PaymentHeader title="Withdrawal point information" />
       </Grid>
       <Grid sx={{ display: 'flex', alignItems: 'center' }} item>
         <Formik
@@ -196,70 +197,66 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
           {({ values }) => (
             <Form>
               {/* --------------------------------------------------------- */}
-
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                <>
-                  <Box>
-                    <FormControl sx={{ mt: 10 }}>
-                      <InputLabel htmlFor="city">Cities</InputLabel>
-                      <Select
-                        sx={{ width: 200 }}
-                        autoFocus
-                        defaultValue={paymentInfo.city}
-                        onChange={(e: any) => {
-                          values.city = e.target.value;
-                          handleOnChange(values);
-                          handleWithdrawalPointChange(e.target.value);
-                        }}
-                        label="city"
-                        name="city"
-                      >
-                        {cities.map(point => (
-                          <MenuItem
-                            key={point.coordonates}
-                            value={point.address}
-                          >
-                            {point.address}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </Box>
-                </>
+              <Grid container spacing={5}>
+                <Grid item>
+                  <FormControl sx={{ mt: 5 }}>
+                    <InputLabel htmlFor="city">Cities</InputLabel>
+                    <Select
+                      sx={{ width: 200 }}
+                      autoFocus
+                      defaultValue={paymentInfo.city}
+                      onChange={(e: any) => {
+                        values.city = e.target.value;
+                        handleOnChange(values);
+                        handleWithdrawalPointChange(e.target.value);
+                      }}
+                      label="city"
+                      name="city"
+                    >
+                      {cities.map(point => (
+                        <MenuItem key={point.coordonates} value={point.address}>
+                          {point.address}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Grid>
 
                 {/* Points */}
-
-                {city ? (
-                  <>
-                    <FormControl sx={{ mt: 10 }}>
-                      <InputLabel htmlFor="withdrawal-point">Points</InputLabel>
-                      <Select
-                        sx={{ width: 200 }}
-                        autoFocus
-                        onChange={(e: any) => {
-                          values.withdrawalPoint = e.target.value;
-                          handleOnChange(values);
-                          handleWithdrawalPointChange(e.target.value);
-                        }}
-                        label="Withdrawal Points"
-                        defaultValue={paymentInfo.withdrawalPoint}
-                        name="withdrawalPoint"
-                      >
-                        {/* @ts-ignore */}
-                        {withdrawalPoint[values.city].map(point => (
-                          <MenuItem
-                            key={point.coordonates}
-                            value={point.address}
-                          >
-                            {point.address}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </>
-                ) : null}
-              </Box>
-
+                <Grid item>
+                  {city ? (
+                    <>
+                      <FormControl>
+                        <InputLabel htmlFor="withdrawal-point">
+                          Points
+                        </InputLabel>
+                        <Select
+                          sx={{ width: 200 }}
+                          autoFocus
+                          onChange={(e: any) => {
+                            values.withdrawalPoint = e.target.value;
+                            handleOnChange(values);
+                            handleWithdrawalPointChange(e.target.value);
+                          }}
+                          label="Withdrawal Points"
+                          defaultValue={paymentInfo.withdrawalPoint}
+                          name="withdrawalPoint"
+                        >
+                          {/* @ts-ignore */}
+                          {withdrawalPoint[values.city].map(point => (
+                            <MenuItem
+                              key={point.coordonates}
+                              value={point.address}
+                            >
+                              {point.address}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </>
+                  ) : null}
+                </Grid>
+              </Grid>
               {/* --------------------------------------------------- */}
 
               <Box

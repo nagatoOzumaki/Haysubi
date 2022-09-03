@@ -1,13 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { ReactElement, useEffect, useState } from 'react';
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Grid,
-  Modal,
-  Typography,
-} from '@mui/material';
+import { Box, Button, CircularProgress, Grid, Modal } from '@mui/material';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
@@ -17,6 +10,7 @@ import {
 } from '../../common/store/reducers/payementReducer';
 import { MyTextInput } from '../../common/components/Inputs';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
+import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
 
 type PropsType = {
   dispatch: any;
@@ -52,7 +46,7 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Typography variant="h6">Paiement information</Typography>
+        <PaymentHeader title="Payment information" />
       </Grid>
 
       <Formik
@@ -89,7 +83,7 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
       >
         {({ values, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
-            <Grid spacing={3} container>
+            <Grid spacing={3} container ml={1}>
               <Grid md={6} item>
                 <MyTextInput
                   label="card owner"

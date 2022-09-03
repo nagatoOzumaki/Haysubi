@@ -107,7 +107,7 @@ const ProductDetails = ({ product }: Props) => {
             container
           >
             {/* 1----------- */}
-            <Grid>
+            <Grid container>
               {product.image.map((imageSrc: string) => (
                 <Grid
                   key={imageSrc}
@@ -210,7 +210,7 @@ const ProductDetails = ({ product }: Props) => {
           </Grid>
           <a href="#reviews" />
         </Grid>
-        <Box mb={4}>
+        <Box pb={4}>
           <Typography variant="h5" sx={{ mb: 2 }}>
             You May Also Like ?
           </Typography>

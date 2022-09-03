@@ -14,6 +14,7 @@ import {
   Person,
   VerifiedOutlined,
 } from '@mui/icons-material';
+import { Typography } from '@mui/material';
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -68,6 +69,7 @@ function ColorlibStepIcon(props: StepIconProps) {
   const { active, completed, className } = props;
 
   const icons: { [index: string]: React.ReactElement } = {
+    // , sx={{ width: { xs: 12, md: 'auto' } }}
     1: <Person />,
     2: <DeliveryDining />,
     3: <MarkunreadMailboxOutlined />,
@@ -79,6 +81,7 @@ function ColorlibStepIcon(props: StepIconProps) {
     <ColorlibStepIconRoot
       ownerState={{ completed, active }}
       className={className}
+      sx={{ width: { xs: 40, md: 60 }, height: { xs: 40, md: 60 } }}
     >
       {icons[String(props.icon)]}
     </ColorlibStepIconRoot>
@@ -97,8 +100,16 @@ function PaimentStepper({ step }: { step: number }) {
   return (
     <Stepper alternativeLabel connector={<ColorlibConnector />}>
       {steps.map((label, index) => (
-        <Step key={label} active={index === step - 1}>
-          <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+        <Step
+          key={label}
+          active={index === step - 1}
+          sx={{ width: { xs: 11, md: 23 } }}
+        >
+          <StepLabel StepIconComponent={ColorlibStepIcon}>
+            <Typography sx={{ display: { xs: 'none', md: 'block' } }}>
+              {label}
+            </Typography>
+          </StepLabel>
         </Step>
       ))}
     </Stepper>

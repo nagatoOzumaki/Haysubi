@@ -27,6 +27,7 @@ const CartItemCard: FC<PropTypes> = ({ item, remove }) => (
           sx={{
             mb: 5,
             height: { md: 48, xs: 50 },
+            width: { md: 48, xs: 300 },
             whiteSpace: 'wrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',

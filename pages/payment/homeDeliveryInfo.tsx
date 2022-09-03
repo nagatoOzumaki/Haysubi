@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { ReactElement, useEffect } from 'react';
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
@@ -15,6 +15,7 @@ import {
   enableNext,
 } from '../../modules/paymentPage/utils/nextButtonControl';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
+import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
 
 type PropsType = {
   dispatch: any;
@@ -38,7 +39,7 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
   return (
     <Grid container spacing={2} mt={4}>
       <Grid item xs={12}>
-        <Typography variant="h6">Home information</Typography>
+        <PaymentHeader title="Home information" />
       </Grid>
 
       <Formik
@@ -75,7 +76,7 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
       >
         {({ values }) => (
           <Form>
-            <Grid spacing={3} container>
+            <Grid spacing={3} container ml={1}>
               <Grid item>
                 <MyTextInput
                   label="zip code"
@@ -117,7 +118,8 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
               sx={{
                 display: 'flex',
                 justifyContent: 'flex-end',
-                position: 'absolute',
+                // position: 'absolute',
+                mt: 3,
                 bottom: 53,
                 right: 50,
               }}

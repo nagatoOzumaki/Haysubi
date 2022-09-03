@@ -1,4 +1,4 @@
-import { Container, Box, Typography } from '@mui/material';
+import { Container, Box, Typography, Paper } from '@mui/material';
 import { Children, cloneElement, isValidElement, useReducer } from 'react';
 import paymentReducer from '../../../common/store/reducers/payementReducer';
 import PaimentStepper from '../components/Stepper';
@@ -43,24 +43,36 @@ const PaymentLayout = ({ children }: PropTypes) => {
   });
   return (
     <Container
-      sx={{
-        border: '1px solid #000',
-        p: 7,
-        mt: 5,
-
-        position: 'relative',
-        height: 600,
-      }}
+    // sx={{
+    //   border: '1px solid #000',
+    //   p: { xs: 1, md: 7 },
+    //   mt: { xs: 2, md: 5 },
+    //   mb: 2,
+    //   position: 'relative',
+    //   height: 600,
+    // }}
     >
-      <Typography variant="h6" sx={{ position: 'absolute', top: 3, p: 1 }}>
-        Paiment
-      </Typography>
-      {step === 1 || step === 2 || step === 3 || step === 4 || step === 5 ? (
-        <Box>
-          <PaimentStepper step={step} />
-        </Box>
-      ) : null}
-      <Box sx={{ p: 12, height: 400, pb: 30 }}>{childrenWithProps}</Box>
+      <Paper
+        elevation={8}
+        sx={{
+          border: '1px solid #000',
+          p: { xs: 1, md: 7 },
+          mt: { xs: 2, md: 5 },
+          mb: 2,
+          position: 'relative',
+          height: 640,
+        }}
+      >
+        <Typography variant="h6" sx={{ p: 1 }}>
+          Payment
+        </Typography>
+        {step === 1 || step === 2 || step === 3 || step === 4 || step === 5 ? (
+          <Box>
+            <PaimentStepper step={step} />
+          </Box>
+        ) : null}
+        <Container maxWidth="xl">{childrenWithProps}</Container>
+      </Paper>
     </Container>
   );
 };
