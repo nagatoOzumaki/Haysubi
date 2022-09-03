@@ -83,7 +83,7 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
       >
         {({ values, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
-            <Grid container>
+            <Grid spacing={1} container>
               <Grid md={9} xs={12} item>
                 <MyTextInput
                   label="code"
@@ -152,7 +152,7 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                 display: 'flex',
                 justifyContent: 'flex-end',
                 position: 'absolute',
-                bottom: 53,
+                bottom: 40,
                 right: 50,
               }}
             >

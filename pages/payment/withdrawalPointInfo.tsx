@@ -197,7 +197,7 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
           {({ values }) => (
             <Form>
               {/* --------------------------------------------------------- */}
-              <Grid container spacing={5}>
+              <Grid container spacing={5} alignItems="center">
                 <Grid item>
                   <FormControl sx={{ mt: 5 }}>
                     <InputLabel htmlFor="city">Cities</InputLabel>
@@ -225,7 +225,7 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
                 {/* Points */}
                 <Grid item>
                   {city ? (
-                    <>
+                    <div>
                       <FormControl>
                         <InputLabel htmlFor="withdrawal-point">
                           Points
@@ -253,7 +253,7 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
                           ))}
                         </Select>
                       </FormControl>
-                    </>
+                    </div>
                   ) : null}
                 </Grid>
               </Grid>

@@ -53,7 +53,7 @@ const CartItemCard: FC<PropTypes> = ({ item, remove }) => (
           <RemoveShoppingCart color="primary" />
         </Button>
         <Button>
-          <NextLink href="/payment">
+          <NextLink href="/payment/personalInfo">
             <a>Buy</a>
           </NextLink>
         </Button>

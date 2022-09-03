@@ -55,7 +55,7 @@ const WishListProductCard: FC<PropTypes> = ({ item, remove }) => (
           <Delete color="primary" />
         </Button>
         <Button>
-          <NextLink href="/payment">
+          <NextLink href="/payment/personalInfo">
             <a>Buy</a>
           </NextLink>
         </Button>
