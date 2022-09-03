@@ -6,6 +6,7 @@ import {
   Twitter,
   WhatsApp,
 } from '@mui/icons-material';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Grid, Typography, Box, IconButton } from '@mui/material';
 import { FC } from 'react';
 import NextLink from 'next/link';
@@ -29,13 +30,11 @@ const Footer: FC = () => (
       <Grid item md={4}>
         <Typography variant="h6"> Moyens de paiement Haysubi </Typography>
         Carte Haysubi Business Amex Cartes de paiement Paiement en plusieurs tes
-        cadeaux Recharge en ligne Recharge en point de vente
       </Grid>
 
       <Grid item md={4}>
         <Typography variant="h6">Besoin d &rsquo;aide ? </Typography>Haysubi et
         COVID-19 Voir ou suivre vos commandes Tarifs et options de livraison
-        Haysubi Prime Retours et remplacements
       </Grid>
     </Grid>
     {/* ---------social media--------- */}
@@ -45,16 +44,23 @@ const Footer: FC = () => (
         display: { xs: 'block', md: 'flex' },
         gap: 10,
         alignItems: 'center',
-        mt: 5,
-        mb: 7,
+        mt: 3,
+        mb: 2,
       }}
     >
-      <Typography>
-        Reach Hysubi In social media <span style={{ fontSize: 24 }}>|</span>
-      </Typography>
+      <Grid
+        sx={{
+          mt: 3,
+          mb: 4,
+        }}
+        alignItems="center"
+        container
+      >
+        <Typography>
+          Reach Hysubi In social media <span style={{ fontSize: 24 }}>|</span>
+        </Typography>
 
-      <Grid alignItems="center" container>
-        <Grid xs={6} md={2} item>
+        <Grid xs={6} md={1} item>
           <NextLink href="www.facebook.com">
             <a>
               <IconButton color="secondary">
@@ -64,7 +70,7 @@ const Footer: FC = () => (
             </a>
           </NextLink>
         </Grid>
-        <Grid xs={6} md={2} item>
+        <Grid xs={6} md={1} item>
           <NextLink href="www.facebook.com">
             <a>
               <IconButton color="secondary">
@@ -74,7 +80,7 @@ const Footer: FC = () => (
             </a>
           </NextLink>
         </Grid>
-        <Grid xs={6} md={2} item>
+        <Grid xs={6} md={1} item>
           <NextLink href="www.facebook.com">
             <a>
               <IconButton color="secondary">
@@ -84,7 +90,7 @@ const Footer: FC = () => (
             </a>
           </NextLink>
         </Grid>
-        <Grid xs={3} md={2} item>
+        <Grid xs={6} md={1} item>
           <NextLink href="www.facebook.com">
             <a>
               <IconButton color="secondary">
@@ -94,7 +100,17 @@ const Footer: FC = () => (
             </a>
           </NextLink>
         </Grid>
-        <Grid xs={6} md={2} item>
+        <Grid xs={6} md={1} item>
+          <NextLink href="www.facebook.com">
+            <a>
+              <IconButton color="secondary">
+                <LinkedInIcon />
+              </IconButton>
+              LinkedIn
+            </a>
+          </NextLink>
+        </Grid>
+        <Grid xs={6} md={1} item>
           <NextLink href="www.facebook.com">
             <a>
               <IconButton color="secondary">
@@ -107,7 +123,7 @@ const Footer: FC = () => (
       </Grid>
     </Box>
     {/* ---------------------- */}
-    <Box sx={{ display: 'flex', gap: 4 }}>
+    <Box sx={{ display: 'flex', gap: 4, justifyContent: 'center' }}>
       <Typography
         variant="body1"
         sx={{
