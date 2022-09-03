@@ -27,7 +27,7 @@ type PropsType = {
 const FinalStep = ({ dispatch }: PropsType) => {
   const { id } = useCurrentProduct();
   useEffect(() => {
-    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 4 });
+    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 6 });
   }, [dispatch]);
   return (
     <Box sx={{ p: 10, mb: 20 }}>

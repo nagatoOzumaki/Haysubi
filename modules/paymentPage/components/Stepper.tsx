@@ -8,8 +8,8 @@ import StepConnector, {
 } from '@mui/material/StepConnector';
 import { StepIconProps } from '@mui/material/StepIcon';
 import {
-  DeleteOutlineTwoTone,
   DeliveryDining,
+  MarkunreadMailboxOutlined,
   Payment,
   Person,
   VerifiedOutlined,
@@ -70,7 +70,7 @@ function ColorlibStepIcon(props: StepIconProps) {
   const icons: { [index: string]: React.ReactElement } = {
     1: <Person />,
     2: <DeliveryDining />,
-    3: <DeleteOutlineTwoTone />,
+    3: <MarkunreadMailboxOutlined />,
     4: <VerifiedOutlined />,
     5: <Payment />,
   };
