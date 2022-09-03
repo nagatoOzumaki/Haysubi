@@ -55,7 +55,7 @@ const PaymentLayout = ({ children }: PropTypes) => {
       <Typography variant="h6" sx={{ position: 'absolute', top: 3, p: 1 }}>
         Paiment
       </Typography>
-      {step === 1 || step === 2 || step === 3 ? (
+      {step === 1 || step === 2 || step === 3 || step === 4 || step === 5 ? (
         <Box>
           <PaimentStepper step={step} />
         </Box>

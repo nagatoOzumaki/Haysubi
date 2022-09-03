@@ -5,7 +5,7 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material';
-import { UserInfo } from '../../../common/types/@appTypes';
+import { UserInfo } from '../../../../common/types/@appTypes';
 
 const Post = ({ user, review }: { user: UserInfo; review: string }) => (
   <ListItem alignItems="flex-start">

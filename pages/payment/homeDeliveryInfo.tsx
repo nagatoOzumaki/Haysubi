@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -22,6 +22,7 @@ type PropsType = {
 };
 
 const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
+  const router = useRouter();
   const handleOnChange = (values: any) => {
     if (!values.zipCode || !values.street || !values.city) {
       disableNext(dispatch);
@@ -29,7 +30,11 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
       enableNext(dispatch);
     }
   };
-  const router = useRouter();
+
+  useEffect(() => {
+    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 3 });
+  }, [dispatch]);
+
   return (
     <Grid container spacing={2} mt={4}>
       <Grid item xs={12}>

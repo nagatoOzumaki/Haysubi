@@ -15,7 +15,7 @@ const Verification = ({ dispatch, paymentInfo }: PropsType) => {
   const router = useRouter();
   useEffect(() => {
     /// i give a random value to step to hide stepper from this page
-    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 2 });
+    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 4 });
   }, [dispatch]);
   return (
     <Container>

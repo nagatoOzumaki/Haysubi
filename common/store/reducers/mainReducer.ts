@@ -99,14 +99,36 @@ const mainReducer = (state: State = InitialState, action: Action) => {
     //  ----------------------------------------
 
     case appActions.ADD_PRODUCT_TO_WISHLIST: {
-      const ids = state.wishList.map(product => product.id);
-      let newState: State = state;
-      const { id } = action.payload;
+      // const ids = state.wishList.map(product => product.id);
+      // let newState: State = state;
+      // const { id } = action.payload;
 
-      if (!ids.includes(id)) {
+      // if (!ids.includes(id)) {
+      //   newState = {
+      //     ...state,
+      //     wishList: [...state.wishList, action.payload],
+      //   };
+      // }
+      
+      const { id,quantity } = action.payload;  
+      const productIfExist = state.wishList.filter((item) => item.id===id)[0];
+      const items=state.wishList.filter((item) => item.id!==id);
+      let newState = state;
+      if (productIfExist) {
+        const newProduct={...productIfExist,quantity:(productIfExist.quantity as unknown as number)+quantity }
+        const newItems=[...items,newProduct]
+        
         newState = {
           ...state,
-          wishList: [...state.wishList, action.payload],
+            wishList: newItems,
+          }
+        
+      }
+      else{
+        newState = {
+          ...state,
+            wishList: [...items,action.payload],
+          
         };
       }
       storeDataInLocalStorage('wishList', newState.wishList);

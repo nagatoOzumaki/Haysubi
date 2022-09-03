@@ -1,38 +1,64 @@
 import { Delete } from '@mui/icons-material';
-import { IconButton, Paper, Typography } from '@mui/material';
+import { Box, Button, ButtonGroup, Paper, Typography } from '@mui/material';
 import Image from 'next/image';
 import { FC } from 'react';
 import NextLink from 'next/link';
-import { Product } from '../../common/types/@appTypes';
+import { CartItem } from '../../common/types/@appTypes';
 
 type PropTypes = {
-  product: Product;
+  item: CartItem;
   // eslint-disable-next-line no-unused-vars
-  remove: (product: Product) => void;
+  remove: (item: CartItem) => void;
 };
 
-const WishListProductCard: FC<PropTypes> = ({ product, remove }) => (
+const WishListProductCard: FC<PropTypes> = ({ item, remove }) => (
   <Paper elevation={3} sx={{ p: 2, height: '100%', position: 'relative' }}>
-    <NextLink href={`product/${product.id}`}>
+    <NextLink href={`product/${item.id}`}>
       <a>
         <Image
-          src={`${product.image[0]}`}
-          loader={() => product.image[0]}
+          src={`${item.image[0]}`}
+          loader={() => item.image[0]}
           width="100%"
           height="100%"
-          alt={product.title}
+          alt={item.title}
         />
-        <Typography variant="h6" sx={{ mb: 5 }}>
-          {product.title}
+        <Typography
+          variant="h6"
+          sx={{
+            mb: 5,
+            height: { md: 53, xs: 50 },
+            whiteSpace: 'wrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
+          {item.title}
         </Typography>
       </a>
     </NextLink>
-    <IconButton
-      sx={{ position: 'absolute', bottom: 10 }}
-      onClick={() => remove(product)}
-    >
-      <Delete color="primary" />
-    </IconButton>
+
+    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Typography
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          color: 'red',
+          fontWeight: 'bold',
+        }}
+      >
+        {item.quantity} units
+      </Typography>
+      <ButtonGroup>
+        <Button onClick={() => remove(item)}>
+          <Delete color="primary" />
+        </Button>
+        <Button>
+          <NextLink href="/payment">
+            <a>Buy</a>
+          </NextLink>
+        </Button>
+      </ButtonGroup>
+    </Box>
   </Paper>
 );
 

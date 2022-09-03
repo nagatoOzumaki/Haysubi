@@ -7,7 +7,13 @@ import StepConnector, {
   stepConnectorClasses,
 } from '@mui/material/StepConnector';
 import { StepIconProps } from '@mui/material/StepIcon';
-import { DeliveryDining, Payment, Person } from '@mui/icons-material';
+import {
+  DeleteOutlineTwoTone,
+  DeliveryDining,
+  Payment,
+  Person,
+  VerifiedOutlined,
+} from '@mui/icons-material';
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -64,7 +70,9 @@ function ColorlibStepIcon(props: StepIconProps) {
   const icons: { [index: string]: React.ReactElement } = {
     1: <Person />,
     2: <DeliveryDining />,
-    3: <Payment />,
+    3: <DeleteOutlineTwoTone />,
+    4: <VerifiedOutlined />,
+    5: <Payment />,
   };
 
   return (
@@ -77,7 +85,13 @@ function ColorlibStepIcon(props: StepIconProps) {
   );
 }
 
-const steps = ['Personal Information', 'Delivery Method', 'Paiement'];
+const steps = [
+  'Personal Information',
+  'Delivery Method',
+  'Delivery Method Details',
+  'Verification',
+  'Payment',
+];
 
 function PaimentStepper({ step }: { step: number }) {
   return (

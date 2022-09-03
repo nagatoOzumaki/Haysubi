@@ -49,7 +49,7 @@ export interface State{
   isDrawerOpen:boolean;
   darkMode:boolean;
   cart: Cart;
-  wishList:Products
+  wishList:CartItem[]
   userInfo: UserInfo;
   filter:Filter
 };

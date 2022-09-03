@@ -47,7 +47,7 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
   };
 
   useEffect(() => {
-    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 3 });
+    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 5 });
   }, [dispatch]);
   return (
     <Grid container spacing={2}>

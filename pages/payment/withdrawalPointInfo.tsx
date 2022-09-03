@@ -161,7 +161,7 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
     setCity(_city);
   };
   useEffect(() => {
-    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 2 });
+    dispatch({ type: PaymentInfoActions.SET_STEP, payload: 3 });
   }, [dispatch]);
 
   return (

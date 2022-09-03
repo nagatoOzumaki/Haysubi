@@ -15,7 +15,7 @@ const WishListProductsList = () => {
     <Grid p={2} spacing={3} rowSpacing={5} mb={15} container>
       {wishList.map(product => (
         <Grid item key={product.id} md={3}>
-          <WishListProductCard product={product} remove={remove} />
+          <WishListProductCard item={product} remove={remove} />
         </Grid>
       ))}
     </Grid>

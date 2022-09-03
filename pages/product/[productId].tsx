@@ -1,33 +1,14 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Container,
-  Divider,
-  Grid,
-  Typography,
-} from '@mui/material';
+import { Box, Container, Divider, Grid, Typography } from '@mui/material';
 import { GetServerSidePropsContext } from 'next';
 import { ReactElement, useEffect, useState } from 'react';
-import NextLink from 'next/link';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
-import {
-  AddShoppingCartOutlined,
-  FavoriteBorderOutlined,
-} from '@mui/icons-material';
 import { Product } from '../../common/types/@appTypes';
-import {
-  addItemToCart,
-  addProductToWishList,
-  setCurrentProduct,
-} from '../../common/store/actions';
-import { useCartState, useWishList } from '../../common/store/Store';
+import { setCurrentProduct } from '../../common/store/actions';
 import fetchData from '../../common/utils/hooks/fetchData';
 import HoverRating from '../../modules/productPage/components/rating';
 import Reviews from '../../modules/productPage/components/reviews';
-import { ButtonColors } from '../../common/config/colors';
 import FooterLayout from '../../common/layouts/footerLayout/FooterLayout';
 import ChatbotLayout from '../../common/layouts/chatbotLayout';
 import SuggestionsSilder from '../../modules/productPage/components/slider/suggestionsSlider';
@@ -36,52 +17,52 @@ import QuantityInput from '../../modules/productPage/components/QuantityInput';
 type Props = { product: Product };
 
 const ProductDetails = ({ product }: Props) => {
-  const [isProductInWishList, setInWishList] = useState<boolean | null>(null);
-  const [isItemInCart, setItemInCart] = useState<boolean | null>(null);
-  const { cartItems } = useCartState();
-  const wishList = useWishList();
+  // const [isProductInWishList, setInWishList] = useState<boolean | null>(null);
+  // const [isItemInCart, setItemInCart] = useState<boolean | null>(null);
+  // const { cartItems } = useCartState();
+  // const wishList = useWishList();
   // missing typing for currentMainImage
   const [currentMainImage, setCurrentMainImage] = useState(product.image[0]);
 
   const dispatch = useDispatch()<any>;
 
-  const handleBuyProduct = () => null;
+  // const handleBuyProduct = () => null;
 
-  const handleAddItemToCart = () => {
-    dispatch(addItemToCart({ ...product, quantity: 1 }));
-    setItemInCart(true);
-  };
+  // const handleAddItemToCart = () => {
+  //   dispatch(addItemToCart({ ...product, quantity: 1 }));
+  //   setItemInCart(true);
+  // };
 
   const increasedPrice = (price: string) => {
     const oldPrice = price.slice(1);
     return parseInt(oldPrice, 10) - 23;
   };
 
-  const handleAddProductToWishlist = (myproduct: Product) => {
-    dispatch(addProductToWishList(myproduct));
-    setInWishList(true);
-  };
+  // const handleAddProductToWishlist = (myproduct: Product) => {
+  //   dispatch(addProductToWishList(myproduct));
+  //   setInWishList(true);
+  // };
   const imageLoader = (src: string) => src;
   useEffect(() => {
     dispatch(setCurrentProduct(product));
   }, [dispatch, product]);
-  useEffect(() => {
-    let isExistInCart = false;
-    // eslint-disable-next-line array-callback-return
-    cartItems.map(item => {
-      if (item.id === product.id) isExistInCart = true;
-    });
-    setItemInCart(isExistInCart);
-  }, [cartItems, product.id]);
+  // useEffect(() => {
+  //   let isExistInCart = false;
+  //   // eslint-disable-next-line array-callback-return
+  //   cartItems.map(item => {
+  //     if (item.id === product.id) isExistInCart = true;
+  //   });
+  //   setItemInCart(isExistInCart);
+  // }, [cartItems, product.id]);
 
-  useEffect(() => {
-    let isExistInWishList = false;
-    // eslint-disable-next-line array-callback-return
-    wishList.map(myProduct => {
-      if (myProduct.id === product.id) isExistInWishList = true;
-    });
-    setInWishList(isExistInWishList);
-  }, [product.id, wishList]);
+  // useEffect(() => {
+  //   let isExistInWishList = false;
+  //   // eslint-disable-next-line array-callback-return
+  //   wishList.map(myProduct => {
+  //     if (myProduct.id === product.id) isExistInWishList = true;
+  //   });
+  //   setInWishList(isExistInWishList);
+  // }, [product.id, wishList]);
 
   const ProductMetaData = () => (
     <NextSeo
@@ -194,9 +175,12 @@ const ProductDetails = ({ product }: Props) => {
             >
               inclusive of all taxes
             </Typography>
-            <QuantityInput product={product} />
-            {/* ----------------------------------- */}
-            <Divider />
+            {/* ---------- */}
+            <Box sx={{ display: 'flex', justifyContent: 'center', ml: 10 }}>
+              <QuantityInput product={product} />
+            </Box>
+
+            {/* ----------------------------- */}
 
             <Box sx={{ pt: 3, mb: 3 }}>
               <Typography variant="h5">Product details</Typography>
@@ -214,6 +198,7 @@ const ProductDetails = ({ product }: Props) => {
             <HoverRating />
           </Grid>
         </Grid>
+
         {/* reviews */}
         <Divider sx={{ mb: 2 }} />
         <Grid container sx={{ mt: 2, display: 'flex', gap: 18 }}>

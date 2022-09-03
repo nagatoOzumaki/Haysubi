@@ -1,5 +1,5 @@
 import { RemoveShoppingCart } from '@mui/icons-material';
-import { IconButton, Paper, Typography } from '@mui/material';
+import { Box, Button, ButtonGroup, Paper, Typography } from '@mui/material';
 import Image from 'next/image';
 import { FC } from 'react';
 import NextLink from 'next/link';
@@ -22,18 +22,42 @@ const CartItemCard: FC<PropTypes> = ({ item, remove }) => (
           height="100%"
           alt={item.title}
         />
-        <Typography variant="h6" sx={{ mb: 5 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            mb: 5,
+            height: { md: 48, xs: 50 },
+            whiteSpace: 'wrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
           {item.title}
         </Typography>
       </a>
     </NextLink>
-    {item.quantity}
-    <IconButton
-      sx={{ position: 'absolute', bottom: 10 }}
-      onClick={() => remove(item)}
-    >
-      <RemoveShoppingCart color="primary" />
-    </IconButton>
+    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Typography
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          color: 'red',
+          fontWeight: 'bold',
+        }}
+      >
+        {item.quantity} units
+      </Typography>
+      <ButtonGroup>
+        <Button onClick={() => remove(item)}>
+          <RemoveShoppingCart color="primary" />
+        </Button>
+        <Button>
+          <NextLink href="/payment">
+            <a>Buy</a>
+          </NextLink>
+        </Button>
+      </ButtonGroup>
+    </Box>
   </Paper>
 );
 
