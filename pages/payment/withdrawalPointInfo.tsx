@@ -14,7 +14,7 @@ import { ReactElement, useEffect, useState } from 'react';
 import {
   PaymentInfoActions,
   PaymentInfoState,
-} from '../../common/store/reducers/payementReducer';
+} from '../../common/store/reducers/paymentReducer';
 
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 
@@ -170,7 +170,14 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
       <Grid item xs={12}>
         <PaymentHeader title="Withdrawal point information" />
       </Grid>
-      <Grid sx={{ display: 'flex', alignItems: 'center' }} item>
+      <Grid
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          height: { xs: 400, md: 200 },
+        }}
+        item
+      >
         <Formik
           onSubmit={values => {
             dispatch({
@@ -198,7 +205,7 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
             <Form>
               {/* --------------------------------------------------------- */}
               <Grid container spacing={5} alignItems="center">
-                <Grid item>
+                <Grid xs={12} item>
                   <FormControl sx={{ mt: 5 }}>
                     <InputLabel htmlFor="city">Cities</InputLabel>
                     <Select
@@ -264,8 +271,8 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
                   display: 'flex',
                   justifyContent: 'flex-end',
                   position: 'absolute',
-                  bottom: 53,
-                  right: 50,
+                  bottom: 30,
+                  right: 30,
                 }}
               >
                 <Button

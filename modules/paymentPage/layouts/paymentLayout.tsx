@@ -1,6 +1,6 @@
 import { Container, Box, Typography, Paper } from '@mui/material';
 import { Children, cloneElement, isValidElement, useReducer } from 'react';
-import paymentReducer from '../../../common/store/reducers/payementReducer';
+import paymentReducer from '../../../common/store/reducers/paymentReducer';
 import PaimentStepper from '../components/Stepper';
 
 type PropTypes = {
@@ -24,8 +24,9 @@ const PaymentLayout = ({ children }: PropTypes) => {
     isNextButtonEnabled: false,
     //
     paymentCardOwner: '',
-    paymentCardCode: '',
-    paymentCardInfo3: '',
+    paymentCardSecurityCode: '',
+    paymentCardExpDate: {} as { year: string; day: string },
+    paymentCardId: '',
     //
   };
 
@@ -61,7 +62,6 @@ const PaymentLayout = ({ children }: PropTypes) => {
           mt: { xs: 2, md: 5 },
           mb: 2,
           position: 'relative',
-          // height: 640,
         }}
       >
         <Typography variant="h6" sx={{ p: 1 }}>
@@ -73,7 +73,11 @@ const PaymentLayout = ({ children }: PropTypes) => {
           </Box>
         ) : null}
         <Container
-          sx={{ display: 'flex', justifyContent: 'center', ml: 10 }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            ml: { xs: 2, md: 10 },
+          }}
           maxWidth="xl"
         >
           {childrenWithProps}

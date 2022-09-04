@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import {
   PaymentInfoState,
   PaymentInfoActions,
-} from '../../../common/store/reducers/payementReducer';
+} from '../../../common/store/reducers/paymentReducer';
 import { MyTextInput } from '../../../common/components/Inputs';
 import { disableNext, enableNext } from '../utils/nextButtonControl';
 
@@ -26,7 +26,7 @@ const HomeDeliveryInfoStep: FC<PropsType> = ({ dispatch, paymentInfo }) => {
   };
   const router = useRouter();
   return (
-    <Grid container spacing={2} mt={4}>
+    <Grid container spacing={2} sx={{ mt: { md: 4 } }}>
       <Grid item xs={12}>
         <Typography variant="h6">Home information</Typography>
       </Grid>

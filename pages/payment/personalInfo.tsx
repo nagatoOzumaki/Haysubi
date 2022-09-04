@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import {
   PaymentInfoActions,
   PaymentInfoState,
-} from '../../common/store/reducers/payementReducer';
+} from '../../common/store/reducers/paymentReducer';
 import {
   disableNext,
   enableNext,
@@ -36,8 +36,8 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
     dispatch({ type: PaymentInfoActions.SET_STEP, payload: 1 });
   }, [dispatch]);
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
+    <Grid container spacing={2} sx={{ height: { xs: 600, md: 350 } }}>
+      <Grid item xs={12} height={0}>
         <PaymentHeader title="Contact information" />
       </Grid>
 

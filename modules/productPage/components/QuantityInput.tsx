@@ -70,12 +70,12 @@ const QuantityInput: FC<PropTypes> = ({ product }) => {
         {product.price}
         {' DH'}
         <Divider />
-      </Typography>{' '}
+      </Typography>
       <ButtonGroup sx={{ display: 'block', mb: 1 }}>
         <Button variant="contained" onClick={handleDecrement}>
           -
         </Button>
-        <Button>{quantity}</Button>
+        <Button type="button">{quantity}</Button>
         <Button variant="contained" onClick={handleIncrement}>
           +
         </Button>

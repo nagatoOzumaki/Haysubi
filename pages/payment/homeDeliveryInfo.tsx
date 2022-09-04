@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import {
   PaymentInfoState,
   PaymentInfoActions,
-} from '../../common/store/reducers/payementReducer';
+} from '../../common/store/reducers/paymentReducer';
 
 import { MyTextInput } from '../../common/components/Inputs';
 import {
@@ -37,8 +37,12 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
   }, [dispatch]);
 
   return (
-    <Grid container spacing={2} mt={4}>
-      <Grid item xs={12}>
+    <Grid
+      container
+      spacing={2}
+      sx={{ mt: { xs: 4, md: 4 }, height: { xs: 570, md: 340 } }}
+    >
+      <Grid xs={12} item>
         <PaymentHeader title="Home information" />
       </Grid>
 
@@ -77,7 +81,7 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
         {({ values }) => (
           <Form>
             <Grid spacing={3} container ml={1}>
-              <Grid item>
+              <Grid md={4} item>
                 <MyTextInput
                   label="zip code"
                   name="zipCode"
@@ -89,7 +93,7 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
                 />
               </Grid>
 
-              <Grid item>
+              <Grid md={8} item>
                 <MyTextInput
                   label="Street Address"
                   name="street"
@@ -120,8 +124,8 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
                 justifyContent: 'flex-end',
                 position: 'absolute',
                 mt: 3,
-                bottom: 53,
-                right: 50,
+                bottom: 30,
+                right: 30,
               }}
             >
               <Button

@@ -7,8 +7,9 @@ export type PaymentInfoState = {
   city: string;
   // 
   paymentCardOwner:string,
-  paymentCardCode:string,
-  paymentCardInfo3:string,
+  paymentCardSecurityCode:string,
+  paymentCardId:string,
+  paymentCardExpDate:{year:string,day:string},
   // 
   zipCode: string;
   street: string;
@@ -21,14 +22,13 @@ export type PaymentInfoAction = {
   type: string;
   payload?: any;
 };
-
 export const PaymentInfoActions = {
   SET_FIRSTNAME: 'SET_FIRSTNAME',
   SET_LASTNAME: 'SET_LASTNAME',
   SET_STREET: 'SET_STREET',
   SET_EMAIL: 'SET_EMAIL',
   SET_CITY: 'SET_CITY',
-   SET_ADDRESS: 'SET_ADDRESS',
+  SET_ADDRESS: 'SET_ADDRESS',
   SET_ZIP_CODE: 'SET_ZIP_CODE',
   SET_DELIVERY_METHOD: 'SET_DELIVERY_METHOD',
   SET_WITHDRAWAL_POINT:'SET_WITHDRAWAL_POINT',
@@ -40,7 +40,9 @@ export const PaymentInfoActions = {
   DISABLE_NEXT_BUTTON: 'DISABLE_NEXT_BUTTON',
   SET_PAYMENT_CARD_CODE:'SET_PAYMENT_CARD_CODE',
   SET_CARD_OWNER:'SET_CARD_OWNER',
-  SET_PAYMENT_CARD_INFO3:'SET_PAYMENT_CARD_INFO3'
+  SET_PAYMENT_CARD_SECURITY_CODE:'SET_PAYMENT_CARD_SECURITY_CODE',
+  SET_PAYMENT_CARD_EXP_DATE:'SET_PAYMENT_CARD_EXP_DATE',
+  SET_PAYMENT_CARD_ID:'SET_PAYMENT_CARD_ID'
 
 };
 
@@ -99,12 +101,16 @@ const paymentReducer = (state: PaymentInfoState, action: PaymentInfoAction) => {
     }
     
 
+    case PaymentInfoActions.SET_PAYMENT_CARD_ID: {
+      return { ...state, paymentCardId: action.payload };
+    }
     case PaymentInfoActions.SET_PAYMENT_CARD_CODE: {
-      return { ...state, paymentCardCode: action.payload };
+      return { ...state, paymentCardSecurityCode: action.payload };
     }
-    case PaymentInfoActions.SET_PAYMENT_CARD_INFO3: {
-      return { ...state, paymentCardInfo3: action.payload };
+    case PaymentInfoActions.SET_PAYMENT_CARD_EXP_DATE: {
+      return { ...state, paymentCardExpDate: {...state.paymentCardExpDate,...action.payload }};
     }
+    
     // -------------
     case PaymentInfoActions.NEXT_STEP: {
       if (state.step < 4) {

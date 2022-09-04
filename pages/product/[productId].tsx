@@ -98,25 +98,18 @@ const ProductDetails = ({ product }: Props) => {
         sx={{ bgcolor: '#fff', pt: 1, boxShadow: 3, mt: { md: 5, xs: 5 } }}
       >
         <Grid container>
-          <Grid
-            xs={12}
-            md={0.4}
-            item
-            // alignItems="center"
-            direction={{ md: 'column', xs: 'row' }}
-          >
-            {/* 1----------- */}
-            <Grid container>
+          <Grid xs={12} md={0.4} item>
+            <Grid direction={{ md: 'column', xs: 'row' }} container>
               {product.image.map((imageSrc: string) => (
                 <Grid
                   key={imageSrc}
                   sx={{
-                    border: '2px solid #bbb',
+                    border: '2px solid #000',
                     mb: { md: 1 },
                     ml: { xs: 1, md: 0 },
                     cursor: 'pointer',
                   }}
-                  xs={2}
+                  xs={1.5}
                   md={12}
                   item
                 >
@@ -135,7 +128,7 @@ const ProductDetails = ({ product }: Props) => {
           {/* 2----------------------- */}
           <Grid
             md={3}
-            sx={{ display: 'flex', pb: 2, justifyContent: 'center', p: 4 }}
+            sx={{ display: 'flex', justifyContent: 'center', p: 2 }}
             item
           >
             <Image

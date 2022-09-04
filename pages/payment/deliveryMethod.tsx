@@ -15,7 +15,7 @@ import { useRouter } from 'next/router';
 import {
   PaymentInfoActions,
   PaymentInfoState,
-} from '../../common/store/reducers/payementReducer';
+} from '../../common/store/reducers/paymentReducer';
 
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 import {
@@ -54,11 +54,15 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
   }, [dispatch]);
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
+    <Grid
+      container
+      spacing={2}
+      sx={{ height: { xs: 420, md: 300 }, position: 'relative' }}
+    >
+      <Grid item xs={12} height={0}>
         <PaymentHeader title="Delivery information" />
       </Grid>
-      <Grid sx={{ display: 'flex', alignItems: 'center' }} item>
+      <Grid xs={12} sx={{ display: 'flex', alignItems: 'center' }} item>
         <Formik
           onSubmit={values => {
             dispatch({
@@ -87,21 +91,24 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
         >
           {({ values }) => (
             <Form>
+              {' '}
+              <Typography
+                sx={{ fontSize: { xs: 17, md: 23 }, mb: { xs: 2, md: 8 } }}
+              >
+                How do you like to get the product ?
+              </Typography>
               <Box
                 sx={{
-                  position: 'relative',
+                  // position: 'relative',
+                  ml: 5,
                 }}
               >
-                <Typography sx={{ fontSize: { xs: 17, md: 23 }, mb: 8 }}>
-                  How do you like to get the product ?
-                </Typography>
                 <Box
                   sx={{
                     display: 'flex',
                     alignItems: 'center',
                   }}
                 >
-                  <InputLabel>Home Delivery</InputLabel>
                   <Field
                     type="radio"
                     value="delivery"
@@ -116,10 +123,10 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
                       />
                     )}
                   />{' '}
+                  <InputLabel>Home Delivery</InputLabel>{' '}
                 </Box>
                 <Box>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <InputLabel>Withdrawal Point</InputLabel>
                     <Field
                       type="radio"
                       value="withdrawal"
@@ -133,23 +140,21 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
                           }}
                         />
                       )}
-                    />
-
+                    />{' '}
+                    <InputLabel>Withdrawal Point</InputLabel>
                     <WithdrawalPointsInfo />
                   </Box>
                 </Box>
               </Box>
               {/* --------------------------------------------------------- */}
-
               {/* --------------------------------------------------- */}
-
               <Box
                 sx={{
                   display: 'flex',
                   justifyContent: 'flex-end',
                   position: 'absolute',
-                  bottom: 53,
-                  right: 50,
+                  bottom: 20,
+                  right: 40,
                 }}
               >
                 <Button

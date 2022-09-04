@@ -4,7 +4,7 @@ import React, { ReactElement, useEffect } from 'react';
 import {
   PaymentInfoActions,
   PaymentInfoState,
-} from '../../common/store/reducers/payementReducer';
+} from '../../common/store/reducers/paymentReducer';
 import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 
@@ -22,7 +22,7 @@ const Verification = ({ dispatch, paymentInfo }: PropsType) => {
     <Container>
       <PaymentHeader title="Verification" />
 
-      <Box sx={{}}>
+      <Box sx={{ height: { xs: 370, md: 300 } }}>
         <Typography variant="h5">Personal Information</Typography>
         <Box sx={{ ml: 1, mt: 1.2 }}>
           <Typography fontWeight="bold">

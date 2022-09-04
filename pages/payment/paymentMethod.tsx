@@ -1,16 +1,22 @@
 /* eslint-disable no-param-reassign */
 import { ReactElement, useEffect, useState } from 'react';
 import { Box, Button, CircularProgress, Grid, Modal } from '@mui/material';
-import { Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
+import dayjs, { Dayjs } from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
+import { DatePicker } from 'formik-mui-x-date-pickers';
+import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import {
   PaymentInfoActions,
   PaymentInfoState,
-} from '../../common/store/reducers/payementReducer';
+} from '../../common/store/reducers/paymentReducer';
 import { MyTextInput } from '../../common/components/Inputs';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
+import { TextField } from 'formik-mui';
 
 type PropsType = {
   dispatch: any;
@@ -30,9 +36,11 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
 
   const handleOnChange = (values: any) => {
     if (
-      !values.paymentCardCode ||
-      !values.paymentCardInfo3 ||
-      !values.paymentCardOwner
+      !values.paymentCardId ||
+      !values.paymentCardSecurityCode ||
+      !values.paymentCardOwner ||
+      !values.paymentCardExpDay ||
+      !values.paymentCardExpYear
     ) {
       disableNext();
     } else {
@@ -44,36 +52,48 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
     dispatch({ type: PaymentInfoActions.SET_STEP, payload: 5 });
   }, [dispatch]);
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ height: { xs: 770, md: 640 } }}>
       <Grid item xs={12}>
         <PaymentHeader title="Payment information" />
       </Grid>
 
       <Formik
         initialValues={{
-          paymentCardInfo3: paymentInfo.paymentCardInfo3,
+          paymentCardSecurityCode: paymentInfo.paymentCardSecurityCode,
           paymentCardOwner: paymentInfo.paymentCardOwner,
-          paymentCardCode: paymentInfo.paymentCardCode,
+          paymentCardId: paymentInfo.paymentCardId,
+          paymentCardExpDay: paymentInfo.paymentCardExpDate.day,
+          paymentCardExpYear: paymentInfo.paymentCardExpDate.year,
         }}
         validationSchema={Yup.object({
           paymentCardOwner: Yup.string().required('Required'),
-          paymentCardCode: Yup.string().required('Required'),
-          paymentCardInfo3: Yup.string().required('Required'),
+          paymentCardId: Yup.string().required('Required'),
+          paymentCardSecurityCode: Yup.string().required('Required'),
+          paymentCardExpDay: Yup.string().required('Required'),
+          paymentCardExpYear: Yup.string().required('Required'),
         })}
         onSubmit={(values, { setSubmitting }) => {
           dispatch({
             type: PaymentInfoActions.SET_CARD_OWNER,
-            payload: values.paymentCardOwner,
+            payload: values.paymentCardId,
           });
           dispatch({
-            type: PaymentInfoActions.SET_PAYMENT_CARD_CODE,
-            payload: values.paymentCardCode,
+            type: PaymentInfoActions.SET_PAYMENT_CARD_ID,
+            payload: values.paymentCardSecurityCode,
           });
 
           dispatch({
-            type: PaymentInfoActions.SET_PAYMENT_CARD_INFO3,
-            payload: values.paymentCardInfo3,
+            type: PaymentInfoActions.SET_PAYMENT_CARD_SECURITY_CODE,
+            payload: values.paymentCardSecurityCode,
           });
+          dispatch({
+            type: PaymentInfoActions.SET_PAYMENT_CARD_EXP_DATE,
+            payload: {
+              year: values.paymentCardExpYear,
+              day: values.paymentCardExpDay,
+            },
+          });
+
           setIsProgressOpen(true);
           setTimeout(() => router.push('/payment/finalStep'), 4000);
           setSubmitting(false);
@@ -84,55 +104,105 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
         {({ values, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <Grid spacing={1} container>
-              <Grid md={9} xs={12} item>
+              <Grid xs={12} md={9} item>
                 <MyTextInput
-                  label="code"
-                  name="paymentCardCode"
+                  label="card id "
+                  name="paymentCardId"
                   type="text"
                   onChange={(e: any) => {
-                    values.paymentCardCode = e.target.value;
+                    values.paymentCardId = e.target.value;
                     handleOnChange(values);
                   }}
-                  value={values.paymentCardCode}
+                  value={values.paymentCardId}
                 />
               </Grid>
-              <Grid md={4} item>
-                <MyTextInput
-                  label="paymentCardInfo3"
-                  name="paymentCardInfo3"
-                  type="text"
-                  value={values.paymentCardInfo3}
-                  onChange={(e: any) => {
-                    values.paymentCardInfo3 = e.target.value;
-                    handleOnChange(values);
-                  }}
-                />
-              </Grid>{' '}
-              <Grid md={4} item>
-                <MyTextInput
-                  label="paymentCardInfo3"
-                  name="paymentCardInfo3"
-                  type="text"
-                  value={values.paymentCardInfo3}
-                  onChange={(e: any) => {
-                    values.paymentCardInfo3 = e.target.value;
-                    handleOnChange(values);
-                  }}
-                />
-              </Grid>{' '}
+              <Grid xs={12} sx={{ display: 'flex' }} item>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <Box>
+                    {/* <MyTextInput
+                    label="expiration date"
+                    name="paymentCardExpYear"
+                    type="text"
+                    value={values.paymentCardExpYear}
+                    onChange={(e: any) => {
+                      values.paymentCardExpYear = e.target.value;
+                      handleOnChange(values);
+                    }}
+                     <DatePicker
+                      name="paymentCardExpYear"
+                      views={['year']}
+                      label="Year only"
+                      value={values.paymentCardExpYear}
+                      onChange={(e: any) => {
+                        values.paymentCardExpYear = e.target.value;
+                        handleOnChange(values);
+                      } }
+                      renderInput={(params: any) => (
+                        <TextField {...params} helperText={null} />
+                      )} field={undefined} form={undefined} meta={undefined}                    />
+                  </Box>
+                  /> */}
+                    {/* <DatePicker
+                      name="paymentCardExpYear"
+                      views={['year']}
+                      label="Year only"
+                      renderInput={(params: any, field, form, meta) => (
+                        <TextField
+                          onChange={(e: any) => {
+                            values.paymentCardExpYear = e.target.value;
+                            handleOnChange(values);
+                          }}
+                          field={field}
+                          form={form}
+                          meta={meta}
+                          {...params}
+                          value={values.paymentCardExpYear}
+                          helperText={null}
+                        />
+                      )}
+                    /> */}
+                  </Box>
+                  <Box>
+                    {/* @ts-ignore */}
+                    <DateTimePicker
+                      views={['month']}
+                      label="Month only"
+                      value={values.paymentCardExpDay}
+                      onChange={(e: any) => {
+                        values.paymentCardExpDay = e.target.value;
+                        handleOnChange(values);
+                      }}
+                      name="paymentCardExpDay"
+                      renderInput={(params: any) => (
+                        <TextField {...params} helperText={null} />
+                      )}
+                    />
+                    {/* <MyTextInput
+                    label={<Typography sx={{ p: 1.3 }}></Typography>}
+                    name="paymentCardExpDay"
+                    type="text"
+                    value={values.paymentCardExpDay}
+                    onChange={(e: any) => {
+                      values.paymentCardExpDay = e.target.value;
+                      handleOnChange(values);
+                    }}
+                  /> */}
+                  </Box>{' '}
+                </LocalizationProvider>
+              </Grid>
               <Grid md={6} item>
                 <MyTextInput
-                  label="paymentCardInfo3"
-                  name="paymentCardInfo3"
+                  label="security code"
+                  name="paymentCardSecurityCode"
                   type="text"
-                  value={values.paymentCardInfo3}
+                  value={values.paymentCardSecurityCode}
                   onChange={(e: any) => {
-                    values.paymentCardInfo3 = e.target.value;
+                    values.paymentCardSecurityCode = e.target.value;
                     handleOnChange(values);
                   }}
                 />
               </Grid>
-              <Grid spacing={3} container>
+              <Grid xs={12} item>
                 <Grid md={6} item>
                   <MyTextInput
                     label="card owner"
@@ -152,8 +222,8 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                 display: 'flex',
                 justifyContent: 'flex-end',
                 position: 'absolute',
-                bottom: 40,
-                right: 50,
+                bottom: 30,
+                right: 30,
               }}
             >
               <Button
