@@ -1,14 +1,21 @@
 /* eslint-disable no-param-reassign */
 import { ReactElement, useEffect, useState } from 'react';
-import { Box, Button, CircularProgress, Grid, Modal } from '@mui/material';
-import { Field, Form, Formik } from 'formik';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Grid,
+  Modal,
+  Typography,
+} from '@mui/material';
+import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
-import dayjs, { Dayjs } from 'dayjs';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+//
 
-import { DatePicker } from 'formik-mui-x-date-pickers';
-import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
+// import { DatePicker, LocalizationProvider } from '@mui/lab';
+// import AdapterDayjs from '@mui/lab/AdapterDateFns';
+//
 import {
   PaymentInfoActions,
   PaymentInfoState,
@@ -16,7 +23,6 @@ import {
 import { MyTextInput } from '../../common/components/Inputs';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
-import { TextField } from 'formik-mui';
 
 type PropsType = {
   dispatch: any;
@@ -117,9 +123,8 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                 />
               </Grid>
               <Grid xs={12} sx={{ display: 'flex' }} item>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <Box>
-                    {/* <MyTextInput
+                <Box>
+                  <MyTextInput
                     label="expiration date"
                     name="paymentCardExpYear"
                     type="text"
@@ -128,56 +133,10 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                       values.paymentCardExpYear = e.target.value;
                       handleOnChange(values);
                     }}
-                     <DatePicker
-                      name="paymentCardExpYear"
-                      views={['year']}
-                      label="Year only"
-                      value={values.paymentCardExpYear}
-                      onChange={(e: any) => {
-                        values.paymentCardExpYear = e.target.value;
-                        handleOnChange(values);
-                      } }
-                      renderInput={(params: any) => (
-                        <TextField {...params} helperText={null} />
-                      )} field={undefined} form={undefined} meta={undefined}                    />
-                  </Box>
-                  /> */}
-                    {/* <DatePicker
-                      name="paymentCardExpYear"
-                      views={['year']}
-                      label="Year only"
-                      renderInput={(params: any, field, form, meta) => (
-                        <TextField
-                          onChange={(e: any) => {
-                            values.paymentCardExpYear = e.target.value;
-                            handleOnChange(values);
-                          }}
-                          field={field}
-                          form={form}
-                          meta={meta}
-                          {...params}
-                          value={values.paymentCardExpYear}
-                          helperText={null}
-                        />
-                      )}
-                    /> */}
-                  </Box>
-                  <Box>
-                    {/* @ts-ignore */}
-                    <DateTimePicker
-                      views={['month']}
-                      label="Month only"
-                      value={values.paymentCardExpDay}
-                      onChange={(e: any) => {
-                        values.paymentCardExpDay = e.target.value;
-                        handleOnChange(values);
-                      }}
-                      name="paymentCardExpDay"
-                      renderInput={(params: any) => (
-                        <TextField {...params} helperText={null} />
-                      )}
-                    />
-                    {/* <MyTextInput
+                  />
+                </Box>
+                <Box>
+                  <MyTextInput
                     label={<Typography sx={{ p: 1.3 }}></Typography>}
                     name="paymentCardExpDay"
                     type="text"
@@ -186,9 +145,8 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                       values.paymentCardExpDay = e.target.value;
                       handleOnChange(values);
                     }}
-                  /> */}
-                  </Box>{' '}
-                </LocalizationProvider>
+                  />
+                </Box>
               </Grid>
               <Grid md={6} item>
                 <MyTextInput
@@ -261,3 +219,77 @@ PayementStep.getLayout = function getLayout(page: ReactElement) {
   return <PaymentLayout>{page}</PaymentLayout>;
 };
 export default PayementStep;
+
+// eslint-disable-next-line no-lone-blocks
+{
+  /* <MyTextInput
+                    label="expiration date"
+                    name="paymentCardExpYear"
+                    type="text"
+                    value={values.paymentCardExpYear}
+                    onChange={(e: any) => {
+                      values.paymentCardExpYear = e.target.value;
+                      handleOnChange(values);
+                    }}
+                     <DatePicker
+                      name="paymentCardExpYear"
+                      views={['year']}
+                      label="Year only"
+                      value={values.paymentCardExpYear}
+                      onChange={(e: any) => {
+                        values.paymentCardExpYear = e.target.value;
+                        handleOnChange(values);
+                      } }
+                      renderInput={(params: any) => (
+                        <TextField {...params} helperText={null} />
+                      )} field={undefined} form={undefined} meta={undefined}                    />
+                  </Box>
+                  /> */
+}
+// eslint-disable-next-line no-lone-blocks
+{
+  /* <DatePicker
+                      name="paymentCardExpYear"
+                      views={['year']}
+                      label="Year only"
+                      renderInput={(params: any, field, form, meta) => (
+                        <TextField
+                          onChange={(e: any) => {
+                            values.paymentCardExpYear = e.target.value;
+                            handleOnChange(values);
+                          }}
+                          field={field}
+                          form={form}
+                          meta={meta}
+                          {...params}
+                          value={values.paymentCardExpYear}
+                          helperText={null}
+                        />
+                      )}
+                    /> */
+}
+// eslint-disable-next-line no-lone-blocks
+{
+  /* @tss-ignore */
+}
+// eslint-disable-next-line no-lone-blocks
+{
+  /* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      views={['month']}
+                      label="Month only"
+                      value={values.paymentCardExpDay}
+                      onChange={(e: any) => {
+                        values.paymentCardExpDay = e.target.value;
+                        handleOnChange(values);
+                      }}
+                      renderInput={(params: any) => (
+                        <TextField
+                          {...params}
+                          name="paymentCardExpDay"
+                          helperText={null}
+                        />
+                      )}
+                    />
+                  </LocalizationProvider> */
+}
