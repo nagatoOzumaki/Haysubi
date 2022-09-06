@@ -1,4 +1,5 @@
 import {
+  Box,
   createTheme,
   Grid,
   Tab,
@@ -6,7 +7,6 @@ import {
   ThemeProvider,
   Typography,
 } from '@mui/material';
-import { Container } from '@mui/system';
 import { NextPage } from 'next';
 import fs from 'fs';
 import matter from 'gray-matter';
@@ -34,7 +34,7 @@ const Index: NextPage<PropTypes> = ({ articles }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="xl" sx={{ direction: 'rtl' }}>
+      <Box sx={{ direction: 'rtl', pl: 4, pr: 4 }}>
         <Typography variant="h4" sx={{ p: 3, pl: 0, fontSize: { xs: 20 } }}>
           Welcome in Hysubi{`'`}s Blog
         </Typography>
@@ -58,12 +58,12 @@ const Index: NextPage<PropTypes> = ({ articles }) => {
         </Tabs>
         <Grid spacing={2} pb={3} container>
           {articles.map((article: any) => (
-            <Grid key={article.slug} xs={12} md={2.4} item>
+            <Grid key={article.slug} xs={12} sm={6} md={3.8} xl={2.4} item>
               <ArticleCard article={article} />
             </Grid>
           ))}
         </Grid>
-      </Container>
+      </Box>
     </ThemeProvider>
   );
 };
