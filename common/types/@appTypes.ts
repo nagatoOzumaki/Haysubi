@@ -20,6 +20,7 @@ export interface Product  {
   price: string;
   image: string[];
   review: string[];
+  inStock:boolean
 };
 
 

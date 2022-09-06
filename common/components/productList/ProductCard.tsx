@@ -110,6 +110,7 @@ const ProductCard: FC<Props> = ({ product }) => {
             variant="contained"
             sx={{ backgroundColor: 'rgb(10,13,90)' }}
             onClick={handleAddToCart}
+            disabled={!product.inStock}
           >
             {' '}
             {isAddedToCart ? (
@@ -122,7 +123,9 @@ const ProductCard: FC<Props> = ({ product }) => {
           </Button>
         </Grid>
       </Grid>
-      <span style={{ color: 'red' }}>{'out of stock'}</span>
+      <span style={{ color: product.inStock ? 'green' : 'red' }}>
+        {product.inStock ? 'avaible In stock' : 'out of stock'}
+      </span>
     </Card>
   ) : (
     <Skeleton variant="rectangular" />
