@@ -40,6 +40,7 @@ const Search = styled('div')(({ theme }) => ({
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
+
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
@@ -67,7 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     width: '100%',
 
     [theme.breakpoints.up('xs')]: {
-      width: '370px',
+      width: '100%',
     },
   },
 }));
