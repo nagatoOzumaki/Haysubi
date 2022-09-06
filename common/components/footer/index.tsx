@@ -7,7 +7,7 @@ import {
   WhatsApp,
 } from '@mui/icons-material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { Grid, Typography, Box, IconButton } from '@mui/material';
+import { Grid, Typography, Box, IconButton, Divider } from '@mui/material';
 import { FC } from 'react';
 import NextLink from 'next/link';
 
@@ -39,89 +39,101 @@ const Footer: FC = () => (
     </Grid>
     {/* ---------social media--------- */}
 
-    <Box
-      sx={{
-        display: { xs: 'block', md: 'flex' },
-        gap: 10,
-        alignItems: 'center',
-        mt: 3,
-        mb: 2,
-      }}
-    >
-      <Grid
+    {/* <Box
+      sx={
+        {
+          // display: { xs: 'block', md: 'flex' },
+          // gap: 10,
+          // alignItems: 'center',
+          // mt: 3,
+          // mb: 2,
+        }
+      }
+    > */}
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      {' '}
+      <Divider
         sx={{
           mt: 3,
-          mb: 4,
+          width: '30%',
+          backgroundColor: '#fff',
         }}
-        alignItems="center"
-        container
-      >
-        <Typography>
-          Reach Hysubi In social media <span style={{ fontSize: 24 }}>|</span>
-        </Typography>
-
-        <Grid xs={6} md={1} item>
-          <NextLink href="www.facebook.com">
-            <a>
-              <IconButton color="secondary">
-                <Facebook />
-              </IconButton>
-              Facebook
-            </a>
-          </NextLink>
-        </Grid>
-        <Grid xs={6} md={1} item>
-          <NextLink href="www.facebook.com">
-            <a>
-              <IconButton color="secondary">
-                <Instagram />
-              </IconButton>
-              Instagram
-            </a>
-          </NextLink>
-        </Grid>
-        <Grid xs={6} md={1} item>
-          <NextLink href="www.facebook.com">
-            <a>
-              <IconButton color="secondary">
-                <WhatsApp />
-              </IconButton>
-              WhatsApp
-            </a>
-          </NextLink>
-        </Grid>
-        <Grid xs={6} md={1} item>
-          <NextLink href="www.twitter.com">
-            <a>
-              <IconButton color="secondary">
-                <Twitter />
-              </IconButton>
-              Twitter
-            </a>
-          </NextLink>
-        </Grid>
-        <Grid xs={6} md={1} item>
-          <NextLink href="www.facebook.com">
-            <a>
-              <IconButton color="secondary">
-                <LinkedInIcon />
-              </IconButton>
-              LinkedIn
-            </a>
-          </NextLink>
-        </Grid>
-        <Grid xs={6} md={1} item>
-          <NextLink href="www.facebook.com">
-            <a>
-              <IconButton color="secondary">
-                <Email />
-              </IconButton>
-              Gmail
-            </a>
-          </NextLink>
-        </Grid>
-      </Grid>
+      />
     </Box>
+
+    <Grid
+      sx={{
+        mt: 3,
+        mb: 4,
+      }}
+      alignItems="center"
+      justifyContent="space"
+      container
+      // spacing={-90}
+    >
+      <Grid xs={12} md="auto" item>
+        {' '}
+        <Typography>
+          Reach Hysubi In social media :{' '}
+          {/* <span style={{ fontSize: 24 }}>|</span>  */}
+        </Typography>
+      </Grid>
+      <Grid sx={{ ml: { xs: 10, sm: 1, md: 0 } }} item>
+        <NextLink href="www.facebook.com">
+          <a>
+            <IconButton color="secondary">
+              <Facebook />
+            </IconButton>
+          </a>
+        </NextLink>
+      </Grid>
+      <Grid item>
+        <NextLink href="www.facebook.com">
+          <a>
+            <IconButton color="secondary">
+              <Instagram />
+            </IconButton>
+          </a>
+        </NextLink>
+      </Grid>
+      <Grid item>
+        <NextLink href="www.facebook.com">
+          <a>
+            <IconButton color="secondary">
+              <WhatsApp />
+            </IconButton>
+          </a>
+        </NextLink>
+      </Grid>
+      <Grid item>
+        <NextLink href="www.twitter.com">
+          <a>
+            <IconButton color="secondary">
+              <Twitter />
+            </IconButton>
+          </a>
+        </NextLink>
+      </Grid>
+      <Grid item>
+        <NextLink href="www.facebook.com">
+          <a>
+            <IconButton color="secondary">
+              <LinkedInIcon />
+            </IconButton>
+          </a>
+        </NextLink>
+      </Grid>
+      <Grid item>
+        <NextLink href="www.facebook.com">
+          <a>
+            <IconButton color="secondary">
+              <Email />
+            </IconButton>
+          </a>
+        </NextLink>
+      </Grid>
+    </Grid>
+    {/* </Box> */}
     {/* ---------------------- */}
     <Box sx={{ display: 'flex', gap: 4, justifyContent: 'center' }}>
       <Typography
@@ -132,7 +144,7 @@ const Footer: FC = () => (
       >
         <Copyright /> 2022 All rights reserved
       </Typography>
-      <Box sx={{ display: 'flex', gap: 4 }}>
+      <Box sx={{ display: 'flex', gap: 3 }}>
         <NextLink href="/enterprise">
           <a>Enterprise</a>
         </NextLink>
