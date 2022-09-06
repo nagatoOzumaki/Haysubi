@@ -43,7 +43,7 @@ const Search = styled('div')(({ theme }) => ({
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
-    width: 'auto',
+    width: '450px',
   },
 }));
 // -----------------------------
@@ -67,7 +67,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     width: '100%',
 
     [theme.breakpoints.up('xs')]: {
-      width: '10ch',
+      width: '370px',
     },
   },
 }));
@@ -362,7 +362,7 @@ export default function ResponsiveAppBar() {
             </NextLink>
           </MenuItem>
           {/*  */}
-          <div style={{ flexGrow: 2 }} />
+          <div style={{ flexGrow: 0 }} />
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -372,7 +372,7 @@ export default function ResponsiveAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Box sx={{ flexGrow: 5 }} />
+          <Box sx={{ flexGrow: 4 }} />
 
           {/* 
                     right navBar
@@ -381,8 +381,8 @@ export default function ResponsiveAppBar() {
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
-              justifyContent: 'space-around',
-              gap: 5,
+              // justifyContent: 'space-around',
+              // gap: 3,
               pr: 6,
             }}
           >
@@ -392,7 +392,7 @@ export default function ResponsiveAppBar() {
                   size="large"
                   aria-label="show 4 new mails"
                   color="inherit"
-                  sx={{ pl: 1, pr: 1 }}
+                  sx={{ pl: 3, pr: 3 }}
                 >
                   <Badge badgeContent={cart.cartItems.length} color="error">
                     <ShoppingCartOutlined />
@@ -406,7 +406,7 @@ export default function ResponsiveAppBar() {
                   size="large"
                   aria-label="show 17 new notifications"
                   color="inherit"
-                  sx={{ pl: 1, pr: 1 }}
+                  sx={{ pl: 3, pr: 3 }}
                 >
                   <Badge badgeContent={wishList.length} color="error">
                     <FavoriteBorder />
@@ -424,7 +424,7 @@ export default function ResponsiveAppBar() {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="inherit"
-                sx={{ pl: 1, pr: 1 }}
+                sx={{ pl: 3, pr: 3 }}
               >
                 <AccountCircle />
               </IconButton>
