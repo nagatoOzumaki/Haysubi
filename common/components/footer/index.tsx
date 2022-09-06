@@ -91,7 +91,7 @@ const Footer: FC = () => (
           </NextLink>
         </Grid>
         <Grid xs={6} md={1} item>
-          <NextLink href="www.facebook.com">
+          <NextLink href="www.twitter.com">
             <a>
               <IconButton color="secondary">
                 <Twitter />

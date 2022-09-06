@@ -15,11 +15,13 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/k0flmkw0/printer/h/d/h/epson-ecotank-l3100-l3100-original-imafk4ubg8pbxeyp.jpeg?q=70',
     ],
 
-    review: [
+   inStock:true,
+   review:[
       'Printer Is Nice.* Quality Is Awesome. * High Quality Printing Is Very Slow. ',
       "You Can't Find This Printer's Driver On Internet. So Please Install Only DVD Drivers. * Use Photoshop For Photo Printing For Accurate Quality.* Printer Has Very Light Weight.",
       'Fpr Its Proper Care You Have To Cover It With Any Cloth On Its Idle Time. * Print Atleast One Color Print High Or Normal Dail...',
     ],
+
   },
   
   {
@@ -40,7 +42,8 @@ const products = [
       'https://m.media-amazon.com/images/I/31BTgZh0YuL._AC_US40_.jpg',
       ' https://m.media-amazon.com/images/I/51vGw0IfBPL._AC_SX679_.jpg',
     ],
-    review: [
+   inStock:false,
+   review:[
       'Simply super and value for money deal. Fits well as well and the cut in the sides look very nice. Loved it. Ordering more in other colors. 5 star rating. ',
       'Good quality polo from allen solly....got it for 449 rupees....i read so many reviews which says fake product...but this one is original...comfort is also good...i really liked it.... ',
       'Allen solly is always my fav brand because of fabic fitting n all ',
@@ -62,7 +65,8 @@ const products = [
       'https://m.media-amazon.com/images/I/4197in2AAKL._AC_US40_.jpg',
       'https://m.media-amazon.com/images/I/31JH2ic3gzL._AC_US40_.jpg',
     ],
-    review: [
+   inStock:true,
+   review:[
       'Simply super and value for money deal. Fits well as well and the cut in the sides look very nice. Loved it. Ordering more in other colors. 5 star rating. ',
       'Good quality polo from allen solly....got it for 449 rupees....i read so many reviews which says fake product...but this one is original...comfort is also good...i really liked it.... ',
       'Allen solly is always my fav brand because of fabic fitting n all ',
@@ -86,7 +90,8 @@ const products = [
       'https://m.media-amazon.com/images/I/51SMMRYkTZL._AC_US40_.jpg',
       'https://m.media-amazon.com/images/I/41fV3UBf8-L._AC_US40_.jpg',
     ],
-    review: [
+   inStock:false,
+   review:[
       'Simply super and value for money deal. Fits well as well and the cut in the sides look very nice. Loved it. Ordering more in other colors. 5 star rating. ',
       'Good quality polo from allen solly....got it for 449 rupees....i read so many reviews which says fake product...but this one is original...comfort is also good...i really liked it.... ',
       'Allen solly is always my fav brand because of fabic fitting n all ',
@@ -109,7 +114,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kg8avm80/mobile/s/9/w/apple-iphone-12-pro-dummyapplefsn-original-imafwgbrgcctfysm.jpeg?q=70',
       'https://rukminim1.flixcart.com/image/416/416/kg8avm80/mobile/s/9/w/apple-iphone-12-pro-dummyapplefsn-original-imafwgbrqwsxbmuh.jpeg?q=70',
     ],
-    review: [
+   inStock:true,
+   review:[
       "Performance was blazing quick too. Even with all its bells and whistles, FunTouch OS ran smoothly and was easy to master. I also found the biometrics to be very reliable, be it the fingerprint sensor or face recognition. Videos looked great on the phone's display, especially HDR content.",
       'One of the best looking phone in the market right now with a decent performance jump from 11 pro. Camera is excellent and the display is quite responsive and sharp. Only issue is it does not have a higher refresh rate and the battery life is average.',
       'I have upgraded from Android to iOS for the first time with the IPhone 12 Pro. And the experience is very much satisfactory. The new A14 bionic processor is very fast. The boxy design is what I liked the most. The camera and display are top notch. Night mode photography is excellent. Worth upgrading from Android to iOS .',
@@ -132,7 +138,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kq18n0w0/mobile/j/s/o/narzo-30-5g-rmx3242-realme-original-imag45yjnhhqy4gv.jpeg?q=70',
       'https://rukminim1.flixcart.com/image/416/416/kq18n0w0/mobile/o/l/w/narzo-30-5g-rmx3242-realme-original-imag45yjxqhvfzjn.jpeg?q=70',
     ],
-    review: [
+   inStock:true,
+   review:[
       `First the phone design is awesome. And in this price it is the best 6gb ram 5G phone.
         Pros:
         1. Good battery life
@@ -170,7 +177,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kklhbbk0/mobile/w/k/2/m3-mzb0879in-poco-original-imafzxf65mefhdrr.jpeg?q=70',
       'https://rukminim1.flixcart.com/image/416/416/kklhbbk0/mobile/e/e/d/m3-mzb0879in-poco-original-imafzxf6e5mvhqpm.jpeg?q=70',
     ],
-    review: [
+   inStock:false,
+   review:[
       `Good mobile poco m3
         Pros:
         Fullhd display,
@@ -213,7 +221,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/knoxnrk0/mobile/h/c/a/g60-panb0000in-panb0016in-panb0012in-panb0014in-motorola-original-imag2aq9j5czsghh.jpeg?q=70',
       'https://rukminim1.flixcart.com/image/416/416/knoxnrk0/mobile/i/5/z/g60-panb0000in-panb0016in-panb0012in-panb0014in-motorola-original-imag2aq9zhcmnnym.jpeg?q=70',
     ],
-    review: [
+   inStock:true,
+   review:[
       `1.Very Smooth user interface.
         2. Gives you easily Two Days of battery backup with average use.
         3. Hepatic feedback too good.
@@ -246,7 +255,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kod858w0/mobile/0/m/5/11x-pro-11x-pro-mi-original-imag2tzmhwzmf66y.jpeg?q=70',
       'https://rukminim1.flixcart.com/image/416/416/ko8xtow0/mobile/o/4/b/m2012k11ai-11x-redmi-original-imag2qsbpbk6vyg3.jpeg?q=70',
     ],
-    review: [
+   inStock:false,
+   review:[
       "Performance was blazing quick too. Even with all its bells and whistles, FunTouch OS ran smoothly and was easy to master. I also found the biometrics to be very reliable, be it the fingerprint sensor or face recognition. Videos looked great on the phone's display, especially HDR content. ",
       "I say about this mobile only wow wow and wow it's performing god level performance and this mobile look so cool very slim and light weight mobile display quality is 10/10 battery life is so better it's battery perform like 6000 mah of ips display mobile amoled is very good working Iblove it❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️😍😍😍😍",
       "Good phone...But not a good camera..Usually redmi phones not good in camera quality but it's ok...120 heartz refresh rate with AMO LED display give perfect display and best batter backup",
@@ -266,7 +276,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kr2e3680/mobile/i/c/l/reno6-pro-5g-cph2249-oppo-original-imag4xpchmrsqdru.jpeg?q=70',
       'https://rukminim1.flixcart.com/image/416/416/kr2e3680/mobile/r/h/1/reno6-pro-5g-cph2249-oppo-original-imag4xpcbhkmzecp.jpeg?q=70',
     ],
-    review: [
+   inStock:false,
+   review:[
       "Performance was blazing quick too. Even with all its bells and whistles, FunTouch OS ran smoothly and was easy to master. I also found the biometrics to be very reliable, be it the fingerprint sensor or face recognition. Videos looked great on the phone's display, especially HDR content.",
       `It's a marvel from Oppo.. Stellar black one is just superb and the device is an all-rounder. Stunning looks and superb performance.
       Pros:
@@ -295,7 +306,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kmmcrrk0/mobile/e/z/b/8-pro-rmx3081-realme-original-imagfgpgvnmggnzd.jpeg?q=70',
       'https://rukminim1.flixcart.com/image/416/416/kmmcrrk0/mobile/u/z/r/8-pro-rmx3081-realme-original-imagfgpgedksupyf.jpeg?q=70',
     ],
-    review: [
+   inStock:true,
+   review:[
       'Old concept... realme 7 pro has same 720 g processor .yes 720g is very capable but using it again and again is not good but yes camera is very good even in 20x zoom images are super good and one thing more narzo 30 pro has 5g connectivity but this hadnt so ya 5g should be there',
       'Not a worth buy considering the competetions. A 90hz refresh rate and 732g processor would have given a better competetion and decent buy!!',
       "Super Mobile. I like so much. RAM is good. Camera is amazing. Battery charging speed excellent. Within 45min it will be full from 10% of battery. Only thing, the battery came down little fastly. It's not coming one day with Internet. With internet it's coming around 12 to 15 hrs. Totally very super mobile.",
@@ -315,7 +327,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kflftzk0/mobile/h/q/u/google-pixel-4a-ga02099-in-original-imafwyzn6c2yfgcb.jpeg?q=70',
       'https://rukminim1.flixcart.com/image/416/416/kflftzk0/mobile/h/q/u/google-pixel-4a-ga02099-in-original-imafwyznjqayzp2f.jpeg?q=70',
     ],
-    review: [
+   inStock:true,
+   review:[
       'if you are a classic compaq size phone lover this is definatly for you..i use it on daily basis social media, netflix, prime.. not for heavy game users. battery is upto mark for my use purpose.. camera is Worth the wait.. sharpness of every image is amazing.. night sight is a great feature.. i love the size and light weight. no bloating, heating issue yet faced',
       "Compact size, butter smooth performance, timely updates, a day long battery life with 6-7 hours of SOT and awesome camera. The night sight and astrophotography mode is killer. It's complete value for money package. Love it.",
       `One of the best smartphones of 2020 with reasonable price
@@ -343,7 +356,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kmf7ki80/mobile/s/d/i/galaxy-a52-sm-a525fzbgins-samsung-original-imagfb4xyymq9gjw.jpeg?q=70',
       'https://rukminim1.flixcart.com/image/416/416/kmf7ki80/mobile/t/0/n/galaxy-a52-sm-a525fzbgins-samsung-original-imagfb4xczdhwwjn.jpeg?q=70',
     ],
-    review: [
+   inStock:true,
+   review:[
       'Good one. Nice camera. battery will last for a day. Good network reception. Update after 7 days of usage: Absolutely great phone. The camera great.',
       'Loved the design, quality, performance, feels rich while handling, and really appreciate that samsung had improved a lot for the user experience. E.g. performance, battery management has been improved a lot. Feels premium device. Easy and Smooth interface. I loved 😍it and would recommend to my friends and family!',
       "Finally Samsung brings an updated version of Galaxy A series which was one of the most selling mobile last year. As of now performance wise it's very much impressive. A52 feels good in hand and looks premium. No lag,display & camera quality is very good on this price category. Forget about Pixel and One plus here is the 8 GB varient which is definitely a value for money product 💯🤘",
@@ -363,7 +377,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kn22m4w0/mobile/l/y/w/galaxy-f12-sm-f127gzkgins-samsung-original-imagftmhwjx38zzs.jpeg?q=70',
       'https://rukminim1.flixcart.com/image/416/416/kn22m4w0/mobile/h/y/s/galaxy-f12-sm-f127gzkgins-samsung-original-imagftmhhvhmeqyb.jpeg?q=70',
     ],
-    review: [
+   inStock:true,
+   review:[
       "Performance was blazing quick too. Even with all its bells and whistles, FunTouch OS ran smoothly and was easy to master. I also found the biometrics to be very reliable, be it the fingerprint sensor or face recognition. Videos looked great on the phone's display, especially HDR content. ",
       'Best Samsung phone in this price range.Good battery back up.Decent Display.Fast fingerprint sensor.Rear camera quality is good.front camera is not up to the mark.90 Hz refresh rate is good.Good user interface.updated to one ui 3.1.there are some pre installed apps which can only be disabled.sound quality is low comparing with other smartphones in same price segment.using in low screen bightness noticed screen flickering.',
       'First I would like to thank you Flipkart for fastest delivery and yah the delivery guy is so cooperative and helpful. Samsung phones are always best in performance and this one is also affordable and awesome phone',
@@ -385,7 +400,8 @@ const products = [
       'https://m.media-amazon.com/images/I/61ublRRxJeL._SL1080_.jpg',
     ],
 
-    review: [
+   inStock:false,
+   review:[
       "Performance was blazing quick too. Even with all its bells and whistles, FunTouch OS ran smoothly and was easy to master. I also found the biometrics to be very reliable, be it the fingerprint sensor or face recognition. Videos looked great on the phone's display, especially HDR content. ",
       'amazing..product nice fast delivery..thankyou flipkart',
       'Great picture quality, easy to setup. Simply Mindblowing',
@@ -409,7 +425,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/jfbfde80/camera/n/r/n/canon-eos-3000d-original-imaf3t5hjrz6zzzc.jpeg?q=70',
     ],
 
-    review: [
+   inStock:true,
+   review:[
       "product really great . I am totally sctified this product .really good camera for beggner .but flash button was missing that is not good .and capture is 18 mp wasn't good I was hopeed it will be 24 mp . it is also missing .n everything is good ",
       'amazing..product nice fast Satisfied with the product.. Its a really good for all who wants to learn photography its a gem and love.... Go for itt....10/10..thankyou flipkart',
       'Worth more than the amount. Best DSLR for a good beginner. Friendly camera. Love it. ❤️ Extremely good with canon 50mm f1.8 STM lens.',
@@ -433,7 +450,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kbcjpu80/monitor/a/s/e/27m-3wl49aa-hp-original-imafsputt73tfvxj.jpeg?q=70',
     ],
 
-    review: [
+   inStock:false,
+   review:[
       'I simply loved it. I bought this product for my office work and if you are planning to use for WFH then it is one of the best product available. ',
       'Love this monitor!',
       "Been using this monitor from a month. It's huge screen helps, especially for people who are working from home. Great clarity and good looks.",
@@ -457,7 +475,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kkbh8cw0/audioplayer/s/d/7/deep-bass-wireless-portable-bluetooth-mp3-headphone-worricow-original-imafzzwgahnqxax2.jpeg?q=70',
     ],
 
-    review: [
+   inStock:true,
+   review:[
       'PROS: best in budget, with a good bass most loved thing is 🔋 backup. 1hour charge gives minimum 10 ✌️🎧 enjoyment Magnetic attaching helps more to improve battery life more😍 ',
       'nice very beautiful Realme bud Very good sound',
       'bass quality very nice battery backup good',
@@ -479,7 +498,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/k2arbm80/headphone/c/v/m/realme-buds-original-imafhzf2bfzajtgw.jpeg?q=70',
     ],
 
-    review: [
+   inStock:true,
+   review:[
       'in love with this the auto turn off when magnet sticks is very handy and saves battery audio quality good...balances between the highs and the lows good mids also ',
       'i have used skullcandy inkd as well as boat rockerz 225 as a comparison, skullcandy handles every frequencies without any distortion, gives a great quality and feel to the audio boat adds bass to the normal audio which makes it distorted at large volumes and long usage times coming to realme, it is far beyond boat in terms of audio...',
       "I would like to thank Flipkart for delivered this product with in time ... It's really amazing .. nice battery backup and inbuilt quality... But you need to improve bass quality .. thankyou ..",
@@ -501,7 +521,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/880/1056/kkfrjww0/watch/k/g/u/anlg-450-blue-brwn-dd-analogue-original-imafzsknpjt7q8aw.jpeg?q=50',
     ],
 
-    review: [
+   inStock:true,
+   review:[
       "Very nice and elegant watch. Really very osm. Jst loved it. It's quality is also great ",
       'Nice product good quality and nice packing You must buy this I loved this product Delivery was one day late to the given time',
       "Thank you filpkart it's fast delivery this watch also like beautiful and look is very impressive thank you...😘😘",
@@ -523,7 +544,8 @@ const products = [
       'https://rukminim1.flixcart.com/image/416/416/kb1470w0/projector/f/n/9/s13-office-home-full-hd-projector-4000-lumens-1920x1080-180-original-imafshygv8gjy2jv.jpeg?q=70',
     ],
 
-    review: [
+   inStock:false,
+   review:[
       'Very nice and elegant Projector ',
       'Nice projector loved it ',
       'Best product ',
@@ -549,7 +571,8 @@ const products = [
       'https://m.media-amazon.com/images/I/515UJcRXhxS._AC_US40_.jpg'
     ],
       
-    review: [
+   inStock:true,
+   review:[
       'Simply super and value for money deal. Fits well as well and the cut in the sides look very nice. Loved it. Ordering more in other colors. 5 star rating. ',
       'Good quality polo from allen solly....got it for 449 rupees....i read so many reviews which says fake product...but this one is original...comfort is also good...i really liked it.... ',
       'Allen solly is always my fav brand because of fabic fitting n all ',
@@ -569,7 +592,8 @@ const products = [
       'https://m.media-amazon.com/images/I/61TnX0PmqES._AC_SS450_.jpg',
       'https://cdn.pocket-lint.com/r/s/1200x/assets/images/157747-phones-review-hands-on-oneplus-nord-2-review-image11-8sxrpujdtq.jpg',
     ],
-    review: [
+   inStock:true,
+   review:[
       `
         Pros:
         1. Very ultra premium features at this price range of 30k and pretty much matching features with higer range one plus models.
@@ -601,7 +625,8 @@ const products = [
       'data:image/jpeg;base64,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',
       'https://static.toiimg.com/thumb/resizemode-4,msid-71182339,imgsize-200,width-640/71182339.jpg',
     ],
-    review: [
+   inStock:true,
+   review:[
       `
         Pros:
        - Android 10! Beautiful looks! Finally I can delete SMS from notification now!!
