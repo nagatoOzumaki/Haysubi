@@ -114,7 +114,7 @@ const ProductCard: FC<Props> = ({ product }) => {
             {' '}
             {isAddedToCart ? (
               <Badge color="primary" badgeContent={2} showZero>
-                <ShoppingBasketOutlined />{' '}
+                <ShoppingBasketOutlined />
               </Badge>
             ) : (
               <AddShoppingCartOutlined />

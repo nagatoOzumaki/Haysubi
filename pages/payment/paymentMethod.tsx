@@ -1,13 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { ReactElement, useEffect, useState } from 'react';
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Grid,
-  Modal,
-  Typography,
-} from '@mui/material';
+import { Box, Button, CircularProgress, Grid, Modal } from '@mui/material';
+import { Dayjs } from 'dayjs';
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
@@ -23,6 +20,7 @@ import {
 import { MyTextInput } from '../../common/components/Inputs';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
+import { DatePicker } from '@mui/x-date-pickers';
 
 type PropsType = {
   dispatch: any;
@@ -121,10 +119,41 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                   }}
                   value={values.paymentCardId}
                 />
-              </Grid>
+              </Grid>{' '}
               <Grid xs={12} sx={{ display: 'flex' }} item>
-                <Box>
-                  <MyTextInput
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    label="expiration year"
+                    views={['year']}
+                    value={values.paymentCardExpYear}
+                    onChange={value => {
+                      // @ts-ignore
+                      // eslint-disable-next-line no-bitwise
+                      values.paymentCardExpYear = value | 'ddsd';
+                      handleOnChange(values);
+                    }}
+                    renderInput={params => (
+                      <TextField name="paymentCardExpYear" {...params} />
+                    )}
+                  />
+                  <DatePicker
+                    label="expiration month"
+                    views={['month']}
+                    value={values.paymentCardExpDay}
+                    onChange={value => {
+                      // @ts-ignore
+                      // eslint-disable-next-line no-bitwise
+                      values.paymentCardExpDay = value | 'dd';
+                      handleOnChange(values);
+                    }}
+                    renderInput={params => (
+                      <TextField name="paymentCardExpDay" {...params} />
+                    )}
+                  />
+                </LocalizationProvider>
+
+                {/* <Box> */}
+                {/* <MyTextInput
                     label="expiration date"
                     name="paymentCardExpYear"
                     type="text"
@@ -146,7 +175,7 @@ const PayementStep = ({ dispatch, paymentInfo }: PropsType) => {
                       handleOnChange(values);
                     }}
                   />
-                </Box>
+                </Box> */}
               </Grid>
               <Grid md={6} item>
                 <MyTextInput
@@ -220,7 +249,9 @@ PayementStep.getLayout = function getLayout(page: ReactElement) {
 };
 export default PayementStep;
 
-// eslint-disable-next-line no-lone-blocks
+{
+  /* // eslint-disable-next-line no-lone-blocks */
+}
 {
   /* <MyTextInput
                     label="expiration date"
