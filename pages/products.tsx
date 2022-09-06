@@ -54,7 +54,7 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
       {/* ---------------- */}
       <NextSeo title="pc portable" description="dell,hp,asus,mac" />
       {/* ---------------- */}
-      <Grid sx={{ backgroundColor: 'secondary.main', mt: 3, mb: 2 }} container>
+      <Grid sx={{ backgroundColor: 'secondary.main', p: 2, mt: 3 }} container>
         <Grid md={1.2} xs={4} item>
           <FilterBar />
         </Grid>

@@ -122,6 +122,7 @@ const ProductCard: FC<Props> = ({ product }) => {
           </Button>
         </Grid>
       </Grid>
+      <span style={{ color: 'red' }}>{'out of stock'}</span>
     </Card>
   ) : (
     <Skeleton variant="rectangular" />
