@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { ReactElement, useEffect, useState } from 'react';
 import { Box, Button, CircularProgress, Grid, Modal } from '@mui/material';
-import { Dayjs } from 'dayjs';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -13,6 +12,7 @@ import { useRouter } from 'next/router';
 // import { DatePicker, LocalizationProvider } from '@mui/lab';
 // import AdapterDayjs from '@mui/lab/AdapterDateFns';
 //
+import { DatePicker } from '@mui/x-date-pickers';
 import {
   PaymentInfoActions,
   PaymentInfoState,
@@ -20,7 +20,6 @@ import {
 import { MyTextInput } from '../../common/components/Inputs';
 import PaymentLayout from '../../modules/paymentPage/layouts/paymentLayout';
 import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
-import { DatePicker } from '@mui/x-date-pickers';
 
 type PropsType = {
   dispatch: any;
@@ -249,11 +248,9 @@ PayementStep.getLayout = function getLayout(page: ReactElement) {
 };
 export default PayementStep;
 
-{
-  /* // eslint-disable-next-line no-lone-blocks */
-}
-{
-  /* <MyTextInput
+/* // eslint-disable-next-line no-lone-blocks */
+
+/* <MyTextInput
                     label="expiration date"
                     name="paymentCardExpYear"
                     type="text"
@@ -276,7 +273,7 @@ export default PayementStep;
                       )} field={undefined} form={undefined} meta={undefined}                    />
                   </Box>
                   /> */
-}
+
 // eslint-disable-next-line no-lone-blocks
 {
   /* <DatePicker
