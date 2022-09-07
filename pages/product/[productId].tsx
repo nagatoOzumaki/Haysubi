@@ -137,11 +137,24 @@ const ProductDetails = ({ product }: Props) => {
                 ? `${product.quantity} units availble`
                 : 'out of stock'}
             </Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                p: 0.2,
+                borderRadius: 20,
+                backgroundColor: '#fe0',
+                width: 70,
+              }}
+            >
+              <Typography>{product.rating}</Typography> <StarBorderOutlined />
+            </Box>
             {/* ---------- */}
             <Box
               sx={{
                 display: 'flex',
-                mt: -8,
+                mt: -10,
 
                 justifyContent: 'center',
                 ml: 16,
@@ -166,19 +179,6 @@ const ProductDetails = ({ product }: Props) => {
           </Grid>
         </Grid>
 
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            p: 1,
-            borderRadius: 20,
-            backgroundColor: '#fe0',
-            width: 70,
-          }}
-        >
-          <Typography>{product.rating}</Typography> <StarBorderOutlined />
-        </Box>
         {/* reviews */}
         <Divider sx={{ mb: 1, mt: 1 }} />
         <Grid container sx={{ mt: 2, display: 'flex', gap: 18 }}>
