@@ -20,7 +20,7 @@ const ProductDetails = ({ product }: Props) => {
   const [currentMainImage, setCurrentMainImage] = useState(product.image[0]);
 
   const dispatch = useDispatch()<any>;
-
+  const isProductInStock = product.quantity !== 0;
   const increasedPrice = (price: string) => {
     const oldPrice = price.slice(1);
     return parseInt(oldPrice, 10) - 23;
@@ -132,16 +132,19 @@ const ProductDetails = ({ product }: Props) => {
             >
               inclusive of all taxes
             </Typography>
-            <Typography variant="h6" color={product.inStock ? 'green' : 'red'}>
-              {product.inStock ? 'availble' : 'out of stock'}
+            <Typography variant="h6" color={isProductInStock ? 'green' : 'red'}>
+              {isProductInStock
+                ? `${product.quantity} units availble`
+                : 'out of stock'}
             </Typography>
             {/* ---------- */}
             <Box
               sx={{
                 display: 'flex',
+                mt: -8,
 
                 justifyContent: 'center',
-                ml: 10,
+                ml: 16,
               }}
             >
               <QuantityInput product={product} />

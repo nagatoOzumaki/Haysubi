@@ -24,7 +24,7 @@ const QuantityInput: FC<PropTypes> = ({ product }) => {
   const wishList = useWishList();
 
   const dispatch = useDispatch<any>();
-
+  const isProductInStock = product.quantity !== 0;
   const handleBuyProduct = () => null;
 
   const handleAddItemToCart = () => {
@@ -33,7 +33,7 @@ const QuantityInput: FC<PropTypes> = ({ product }) => {
   };
 
   const handleIncrement = () => {
-    setQuantity(quantity + 1);
+    if (quantity < product.quantity) setQuantity(quantity + 1);
   };
 
   const handleDecrement = () => {
@@ -71,7 +71,10 @@ const QuantityInput: FC<PropTypes> = ({ product }) => {
         {' DH'}
         <Divider />
       </Typography>
-      <ButtonGroup sx={{ display: 'block', mb: 1 }} disabled={!product.inStock}>
+      <ButtonGroup
+        sx={{ display: 'block', mb: 1 }}
+        disabled={!isProductInStock}
+      >
         <Button variant="contained" onClick={handleDecrement}>
           -
         </Button>
@@ -89,7 +92,7 @@ const QuantityInput: FC<PropTypes> = ({ product }) => {
           mb: 3,
         }}
         color="primary"
-        disabled={isItemInCart === null || !product.inStock}
+        disabled={isItemInCart === null || !isProductInStock}
       >
         <Button variant="contained" onClick={handleAddItemToCart}>
           <AddShoppingCartOutlined />

@@ -18,7 +18,7 @@ type Props = { product: Product };
 const ProductCard: FC<Props> = ({ product }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const dispatch = useDispatch<any>();
-
+  const isProductInStock = product.quantity !== 0;
   const { image } = product || { image: ['', '', ''] };
   const handleAddToCart = () => {
     dispatch(addItemToCart({ ...product, quantity: 1 }));
@@ -110,7 +110,7 @@ const ProductCard: FC<Props> = ({ product }) => {
             variant="contained"
             sx={{ backgroundColor: 'rgb(10,13,90)' }}
             onClick={handleAddToCart}
-            disabled={!product.inStock}
+            disabled={!isProductInStock}
           >
             {' '}
             {isAddedToCart ? (
@@ -123,8 +123,8 @@ const ProductCard: FC<Props> = ({ product }) => {
           </Button>
         </Grid>
       </Grid>
-      <span style={{ color: product.inStock ? 'green' : 'red' }}>
-        {product.inStock ? 'avaible In stock' : 'out of stock'}
+      <span style={{ color: isProductInStock ? 'green' : 'red' }}>
+        {isProductInStock ? 'avaible In stock' : 'out of stock'}
       </span>
     </Card>
   ) : (

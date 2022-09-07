@@ -21,6 +21,7 @@ export interface Product  {
   image: string[];
   review: string[];
   inStock:boolean
+  quantity:number
 };
 
 
