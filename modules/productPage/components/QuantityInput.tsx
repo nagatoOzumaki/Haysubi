@@ -71,7 +71,7 @@ const QuantityInput: FC<PropTypes> = ({ product }) => {
         {' DH'}
         <Divider />
       </Typography>
-      <ButtonGroup sx={{ display: 'block', mb: 1 }}>
+      <ButtonGroup sx={{ display: 'block', mb: 1 }} disabled={!product.inStock}>
         <Button variant="contained" onClick={handleDecrement}>
           -
         </Button>
@@ -89,7 +89,7 @@ const QuantityInput: FC<PropTypes> = ({ product }) => {
           mb: 3,
         }}
         color="primary"
-        disabled={isItemInCart === null}
+        disabled={isItemInCart === null || !product.inStock}
       >
         <Button variant="contained" onClick={handleAddItemToCart}>
           <AddShoppingCartOutlined />

@@ -39,23 +39,13 @@ const Footer: FC = () => (
     </Grid>
     {/* ---------social media--------- */}
 
-    {/* <Box
-      sx={
-        {
-          // display: { xs: 'block', md: 'flex' },
-          // gap: 10,
-          // alignItems: 'center',
-          // mt: 3,
-          // mb: 2,
-        }
-      }
-    > */}
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       {' '}
       <Divider
         sx={{
           mt: 3,
-          width: '30%',
+          width: '20%',
+          opacity: 0.4,
           backgroundColor: '#fff',
         }}
       />
@@ -64,19 +54,14 @@ const Footer: FC = () => (
     <Grid
       sx={{
         mt: 3,
-        mb: 4,
       }}
       alignItems="center"
       justifyContent="space"
       container
-      // spacing={-90}
     >
       <Grid xs={12} md="auto" item>
         {' '}
-        <Typography>
-          Reach Hysubi In social media :{' '}
-          {/* <span style={{ fontSize: 24 }}>|</span>  */}
-        </Typography>
+        <Typography>Reach Hysubi In social media :</Typography>
       </Grid>
       <Grid sx={{ ml: { xs: 10, sm: 1, md: 0 } }} item>
         <NextLink href="www.facebook.com">
@@ -133,7 +118,17 @@ const Footer: FC = () => (
         </NextLink>
       </Grid>
     </Grid>
-    {/* </Box> */}
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Divider
+        sx={{
+          mt: 3,
+          mb: 3,
+          width: '20%',
+          opacity: 0.4,
+          backgroundColor: '#fff',
+        }}
+      />
+    </Box>
     {/* ---------------------- */}
     <Box sx={{ display: 'flex', gap: 4, justifyContent: 'center' }}>
       <Typography
