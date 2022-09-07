@@ -1,5 +1,4 @@
 import { Grid } from '@mui/material';
-import NextLink from 'next/link';
 import React, { FC } from 'react';
 import { Products } from '../../types/@appTypes';
 import ProductCard from './ProductCard';
@@ -16,12 +15,7 @@ const ProductsList: FC<Props> = ({ products }) => (
     {products
       ? products.map(product => (
           <Grid key={product.id} xs={12} sm={5.9} md={3} lg={2.9} xl={2} item>
-            <NextLink href={`product/${product.id}`}>
-              <a>
-                {/* xs={2.2} */}
-                <ProductCard product={product} />
-              </a>
-            </NextLink>
+            <ProductCard product={product} />
           </Grid>
         ))
       : [
