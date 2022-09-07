@@ -4,7 +4,7 @@ import { Products } from '../../types/@appTypes';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const baseUrl = 'https://fakestoreapi.com';
+const baseUrl = 'https://haysubi-api.vercel.app/api';
 
 const useGetProducts = (path: string) => {
   if (!path) {

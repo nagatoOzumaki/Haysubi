@@ -56,7 +56,7 @@ const Footer: FC = () => (
         mt: 3,
       }}
       alignItems="center"
-      justifyContent="space"
+      justifyContent="center"
       container
     >
       <Grid xs={12} md="auto" item>
