@@ -2,15 +2,14 @@ import { Grid } from '@mui/material';
 import { NextSeo } from 'next-seo';
 import { ReactElement, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
 import { Products } from '../common/types/@appTypes';
 import fetchData from '../common/utils/hooks/fetchData';
 import ProductsList from '../common/components/productList/ProductsList';
 import FilterBar from '../modules/productsPage/filterBar';
-// import { useProductsState } from '../common/store/Store';
 import {
   addProductsToStore,
+  clearFilter,
   clearProductsToStore,
   dataIsLoading,
   fetchingSuccessed,
@@ -28,27 +27,16 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
   const productsStore = useProductsState();
   const dispatch = useDispatch<any>();
   const dataFetchingState = useDataFetchingState();
-  const router = useRouter();
-  const { profil } = router.query;
 
   useEffect(() => {
-    const fetchProductsForProfil = async (_profil: string | string[]) => {
-      dispatch(dataIsLoading());
-      const prdcts: Products = await fetchData<Products>(
-        `/products?profil=${_profil}`
-      );
-      dispatch(addProductsToStore(prdcts));
-      dispatch(fetchingSuccessed());
+    dispatch(dataIsLoading());
+    dispatch(addProductsToStore(products));
+    dispatch(fetchingSuccessed());
+    return () => {
+      dispatch(clearFilter());
+      dispatch(clearProductsToStore());
     };
-    if (profil) {
-      fetchProductsForProfil(profil);
-    } else {
-      dispatch(addProductsToStore(products));
-      dispatch(fetchingSuccessed());
-    }
-
-    return () => dispatch(clearProductsToStore());
-  }, [profil, dispatch, products]);
+  }, [dispatch, products]);
 
   return (
     <>
@@ -69,31 +57,13 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
   );
 };
 
-// export const getStaticProps = async () => {
-//   try {
-//     const products: Products = await fetchData<Products>('/products');
-//     const returnObject = {
-//       props: {
-//         products,
-//       },
-//       revalidate: 20,
-//     };
-
-//     return returnObject;
-//   } catch {
-//     return {
-//       props: {
-//         products: null,
-//       },
-//     };
-//   }
-// };
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   try {
     const products: Products = await fetchData<Products>('/products');
     if (context.query && Object.keys(context.query).length !== 0) {
+      // here we will use filter to fetch products
       return {
         props: {
           products: products.reverse(),
@@ -124,3 +94,23 @@ Home.getLayout = function getLayout(page: ReactElement) {
     </FooterLayout>
   );
 };
+
+// export const getStaticProps = async () => {
+//   try {
+//     const products: Products = await fetchData<Products>('/products');
+//     const returnObject = {
+//       props: {
+//         products,
+//       },
+//       revalidate: 20,
+//     };
+
+//     return returnObject;
+//   } catch {
+//     return {
+//       props: {
+//         products: null,
+//       },
+//     };
+//   }
+// };

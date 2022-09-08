@@ -17,7 +17,6 @@ const useFilterStateHandler = (filter: FilterElement) => {
         if (checked) {
           selectedValues.current = [...selectedValues.current, value];
           dispatch(addFilter({ [filter]: selectedValues.current }));
-          //  handleRequest()
         } else {
           selectedValues.current = [
             ...selectedValues.current.filter(
@@ -27,19 +26,13 @@ const useFilterStateHandler = (filter: FilterElement) => {
           dispatch(addFilter({ [filter]: selectedValues.current }));
           
         }
-        // router.replace( {
-        //   pathname: `/products`,
-        //   query: { ...currentFilter ,[filter]: selectedValues.current },
-        // },
-        // undefined,
-        // { shallow: true })
+        
         router.push(
           {
             pathname: `/products`,
             query: { ...currentFilter ,[filter]: selectedValues.current },
           },
           undefined,
-          // { shallow: true }
         );
         
       }

@@ -1,13 +1,8 @@
 import { Dispatch } from "react";
 import { Action, AppThunk, FilterElement} from "../../types/@appTypes";
-// import fetchData from "../../utils/hooks/fetchData";
-import constructQueryString from "../../utils/tools/constructQueryString";
-// import { fetchingSuccessed } from "./fetchingState.actions";
-// import {productsActions}from "./products.actions";
 
 
   export const filterActions={
-
 
     ADD_FILTER:'ADD_FILTER',
     REMOVE_FILTER:'REMOVE_FILTER',
@@ -17,18 +12,18 @@ import constructQueryString from "../../utils/tools/constructQueryString";
   }
    export const addFilter :AppThunk= (filter:any) =>async (dispatch: Dispatch<Action>) =>{ 
       dispatch({ type: filterActions.ADD_FILTER, payload: filter });
-      const queryString = constructQueryString(filter);
-      setTimeout(async () => {
-        if (queryString) {
-          try{
-          // const products = await fetchData<Products>(`/products`);
-          // dispatch({type:productsActions.ADD_PRODUCTS,payload: products.reverse()});
-          // dispatch(fetchingSuccessed());
-          }catch(e){
-            console.log('network issus')
-          }
-        }
-      }, 2000)
+      // const queryString = constructQueryString(filter);
+      // setTimeout(async () => {
+      //   if (queryString) {
+      //     try{
+      //     // const products = await fetchData<Products>(`/products`);
+      //     // dispatch({type:productsActions.ADD_PRODUCTS,payload: products.reverse()});
+      //     // dispatch(fetchingSuccessed());
+      //     }catch(e){
+      //       console.log('network issus')
+      //     }
+      //   }
+      // }, 2000)
     }
 
   

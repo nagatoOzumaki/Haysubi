@@ -57,7 +57,7 @@ export interface State{
 };
 // the following interface is used for allowing indexing by string for example in utils/constructQueryString
 export interface MapInterface{
-  [key:string]:string[]
+  [key:string]:string[]|string
 }
 export interface Filter extends MapInterface{
   ram:string[],
@@ -67,6 +67,7 @@ export interface Filter extends MapInterface{
   gpu:string[],
   brand:string[],
   model:string[],
+  searchQuery:string
 }
 
 
