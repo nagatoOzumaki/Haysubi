@@ -68,14 +68,32 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
   );
 };
 
-export const getStaticProps = async () => {
+// export const getStaticProps = async () => {
+//   try {
+//     const products: Products = await fetchData<Products>('/products');
+//     const returnObject = {
+//       props: {
+//         products,
+//       },
+//       revalidate: 20,
+//     };
+
+//     return returnObject;
+//   } catch {
+//     return {
+//       props: {
+//         products: null,
+//       },
+//     };
+//   }
+// };
+export const getServerSideProps = async () => {
   try {
     const products: Products = await fetchData<Products>('/products');
     const returnObject = {
       props: {
         products,
       },
-      revalidate: 20,
     };
 
     return returnObject;
