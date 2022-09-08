@@ -3,6 +3,7 @@ import { NextSeo } from 'next-seo';
 import { ReactElement, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
+import { GetServerSidePropsContext } from 'next';
 import { Products } from '../common/types/@appTypes';
 import fetchData from '../common/utils/hooks/fetchData';
 import ProductsList from '../common/components/productList/ProductsList';
@@ -87,9 +88,18 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
 //     };
 //   }
 // };
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
   try {
     const products: Products = await fetchData<Products>('/products');
+    if (context.query && Object.keys(context.query).length !== 0) {
+      return {
+        props: {
+          products: products.reverse(),
+        },
+      };
+    }
     const returnObject = {
       props: {
         products,

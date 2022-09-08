@@ -1,9 +1,9 @@
 import { Dispatch } from "react";
-import { Action, AppThunk, FilterElement, Products} from "../../types/@appTypes";
-import fetchData from "../../utils/hooks/fetchData";
+import { Action, AppThunk, FilterElement} from "../../types/@appTypes";
+// import fetchData from "../../utils/hooks/fetchData";
 import constructQueryString from "../../utils/tools/constructQueryString";
-import { fetchingSuccessed } from "./fetchingState.actions";
-import {productsActions}from "./products.actions";
+// import { fetchingSuccessed } from "./fetchingState.actions";
+// import {productsActions}from "./products.actions";
 
 
   export const filterActions={
@@ -21,9 +21,9 @@ import {productsActions}from "./products.actions";
       setTimeout(async () => {
         if (queryString) {
           try{
-          const products = await fetchData<Products>(`/products`);
-          dispatch({type:productsActions.ADD_PRODUCTS,payload: products.reverse()});
-          dispatch(fetchingSuccessed());
+          // const products = await fetchData<Products>(`/products`);
+          // dispatch({type:productsActions.ADD_PRODUCTS,payload: products.reverse()});
+          // dispatch(fetchingSuccessed());
           }catch(e){
             console.log('network issus')
           }
