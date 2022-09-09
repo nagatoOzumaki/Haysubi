@@ -1,4 +1,7 @@
 import { Box } from '@mui/material';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { clearFilter } from '../../../common/store/actions';
 
 import {
   BrandFilter,
@@ -11,20 +14,8 @@ import {
 } from './FilterInputs';
 
 export default function FilterBar() {
-  // const router = useRouter();
-  // const filter = useFilter();
-  // useEffect(() => {
-  //   if (filter !== ({} as Filter)) {
-  //     router.push(
-  //       {
-  //         pathname: `/products`,
-  //         query: { ...filter },
-  //       },
-  //       undefined,
-  //       { shallow: true }
-  //     );
-  //   }
-  // }, [filter]);
+  const dispatch = useDispatch<any>();
+  useEffect(() => dispatch(clearFilter()), [dispatch]);
   return (
     <Box
       sx={{
@@ -36,7 +27,6 @@ export default function FilterBar() {
       }}
     >
       <BrandFilter />
-
       <ModelFilter />
       <CpuFilter />
       <RamFilter />

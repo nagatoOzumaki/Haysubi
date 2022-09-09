@@ -99,6 +99,10 @@ const Index: NextPageWithLayout<null> = () => (
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          p: { xs: 2, md: 4 },
+          pt: 4,
+          pb: 4,
+          mt: 15,
         }}
       >
         <NextLink href="/products">
@@ -106,10 +110,6 @@ const Index: NextPageWithLayout<null> = () => (
             <Fab
               variant="extended"
               sx={{
-                p: { xs: 2, md: 4 },
-                pt: 4,
-                pb: 4,
-                mt: 4,
                 backgroundColor: '#000',
                 color: '#fff',
                 fontWeight: 'bold',

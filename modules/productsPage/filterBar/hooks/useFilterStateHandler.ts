@@ -27,12 +27,13 @@ const useFilterStateHandler = (filter: FilterElement) => {
           
         }
         
-        router.push(
+        router.replace(
           {
             pathname: `/products`,
             query: { ...currentFilter ,[filter]: selectedValues.current },
           },
-          undefined,
+          undefined
+         
         );
         
       }

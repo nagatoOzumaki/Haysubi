@@ -9,7 +9,6 @@ import ProductsList from '../common/components/productList/ProductsList';
 import FilterBar from '../modules/productsPage/filterBar';
 import {
   addProductsToStore,
-  clearFilter,
   clearProductsToStore,
   dataIsLoading,
   fetchingSuccessed,
@@ -33,7 +32,6 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
     dispatch(addProductsToStore(products));
     dispatch(fetchingSuccessed());
     return () => {
-      dispatch(clearFilter());
       dispatch(clearProductsToStore());
     };
   }, [dispatch, products]);

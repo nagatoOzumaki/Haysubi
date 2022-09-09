@@ -28,6 +28,7 @@ import { useCartState, useUserInfoState, useWishList } from '../../store/Store';
 import { openDrawer, setLogout } from '../../store/actions';
 import LoginModalToggle from './LoginModalToggle';
 import SearchBar from './SearchBar';
+import isSsr from '../../utils/isServerSideRendering';
 
 // ------------------
 
@@ -259,22 +260,40 @@ export default function ResponsiveAppBar() {
               </Typography>
             </a>
           </NextLink>
-
           {/* -------------- */}
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <NextLink href="/products" passHref>
-              <Link
-                sx={{
-                  color: '#fff',
-                  fontSize: 13,
-                  fontWeight: 'bold',
-                  pr: 2,
-                  pl: 2,
-                }}
-              >
-                PRODUCTS
-              </Link>
-            </NextLink>
+            {
+              // eslint-disable-next-line no-restricted-globals
+              !isSsr && location.pathname === '/products' ? (
+                <Link
+                  sx={{
+                    color: '#fff',
+                    fontSize: 13,
+                    fontWeight: 'bold',
+                    pr: 2,
+                    pl: 2,
+                  }}
+                  // eslint-disable-next-line no-restricted-globals
+                  onClick={() => location.reload()}
+                >
+                  PRODUCTS
+                </Link>
+              ) : (
+                <NextLink href="/products" passHref>
+                  <Link
+                    sx={{
+                      color: '#fff',
+                      fontSize: 13,
+                      fontWeight: 'bold',
+                      pr: 2,
+                      pl: 2,
+                    }}
+                  >
+                    PRODUCTS
+                  </Link>
+                </NextLink>
+              )
+            }
           </MenuItem>
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
             <NextLink href="/blog" passHref>

@@ -4,8 +4,18 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addFilter, dataIsLoading } from '../../store/actions';
-import { useFilter } from '../../store/Store';
+import Fuse from 'fuse.js';
+import {
+  addFilter,
+  addProductsToStore,
+  dataIsLoading,
+  fetchingSuccessed,
+} from '../../store/actions';
+import { useProductsState } from '../../store/Store';
+// import { useFilter, useProductsState } from '../../store/Store';
+// import fetchData from '../../utils/hooks/fetchData';
+// import { Products } from '../../types/@appTypes';
+// import { Products } from '../../types/@appTypes';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -53,18 +63,40 @@ const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch<any>();
   const router = useRouter();
-  const currentFilter = useFilter();
+  // const currentFilter = useFilter();
+  const products = useProductsState();
+
+  //
+  const handleSearch = async (query: string) => {
+    if (router.pathname === '/') {
+      router.push('/products');
+    }
+    const fuse = new Fuse(products, {
+      keys: ['title', 'description'],
+    });
+
+    const results = fuse.search(query);
+    const searchedProducts = results.map(pr => pr.item);
+    dispatch(addProductsToStore(searchedProducts));
+    dispatch(fetchingSuccessed());
+  };
+
+  //
   useEffect(() => {
     if (searchQuery) {
       dispatch(dataIsLoading());
       dispatch(addFilter({ searchQuery }));
-      router.push(
-        {
-          pathname: `/products`,
-          query: { ...currentFilter, searchQuery },
-        },
-        undefined
-      );
+
+      //
+      handleSearch(searchQuery);
+      //
+      // router.push(
+      //   {
+      //     pathname: `/products`,
+      //     query: { ...currentFilter, searchQuery },
+      //   },
+      //   undefined
+      // );
     }
   }, [dispatch, searchQuery]);
 
