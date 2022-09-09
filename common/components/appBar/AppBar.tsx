@@ -270,8 +270,8 @@ export default function ResponsiveAppBar() {
                     color: '#fff',
                     fontSize: 13,
                     fontWeight: 'bold',
-                    pr: 2,
-                    pl: 2,
+
+                    pl: 10,
                   }}
                   // eslint-disable-next-line no-restricted-globals
                   onClick={() => location.reload()}
@@ -285,8 +285,6 @@ export default function ResponsiveAppBar() {
                       color: '#fff',
                       fontSize: 13,
                       fontWeight: 'bold',
-                      pr: 2,
-                      pl: 2,
                     }}
                   >
                     PRODUCTS
@@ -302,8 +300,6 @@ export default function ResponsiveAppBar() {
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
-                  pr: 2,
-                  pl: 2,
                 }}
               >
                 CONTENT
@@ -317,8 +313,6 @@ export default function ResponsiveAppBar() {
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
-                  pr: 2,
-                  pl: 2,
                 }}
               >
                 ABOUT US
@@ -332,8 +326,6 @@ export default function ResponsiveAppBar() {
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
-                  pr: 2,
-                  pl: 2,
                 }}
               >
                 CONTACT US
@@ -341,9 +333,9 @@ export default function ResponsiveAppBar() {
             </NextLink>
           </MenuItem>
           {/*  */}
-          <div style={{ flexGrow: 0 }} />
+          <div style={{ flexGrow: 3 }} />
           <SearchBar />
-          <Box sx={{ flexGrow: 4 }} />
+          <Box sx={{ flexGrow: 3 }} />
 
           {/* 
                     right navBar
@@ -363,7 +355,7 @@ export default function ResponsiveAppBar() {
                   size="large"
                   aria-label="show 4 new mails"
                   color="inherit"
-                  sx={{ pl: 3, pr: 3 }}
+                  sx={{ pl: 2 }}
                 >
                   <Badge badgeContent={cart.cartItems.length} color="error">
                     <ShoppingCartOutlined />
@@ -377,7 +369,7 @@ export default function ResponsiveAppBar() {
                   size="large"
                   aria-label="show 17 new notifications"
                   color="inherit"
-                  sx={{ pl: 3, pr: 3 }}
+                  sx={{ pl: 2 }}
                 >
                   <Badge badgeContent={wishList.length} color="error">
                     <FavoriteBorder />
@@ -395,7 +387,7 @@ export default function ResponsiveAppBar() {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="inherit"
-                sx={{ pl: 3, pr: 3 }}
+                sx={{ pl: 2 }}
               >
                 <AccountCircle />
               </IconButton>

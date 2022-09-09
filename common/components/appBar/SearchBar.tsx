@@ -12,10 +12,6 @@ import {
   fetchingSuccessed,
 } from '../../store/actions';
 import { useProductsState } from '../../store/Store';
-// import { useFilter, useProductsState } from '../../store/Store';
-// import fetchData from '../../utils/hooks/fetchData';
-// import { Products } from '../../types/@appTypes';
-// import { Products } from '../../types/@appTypes';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -30,7 +26,7 @@ const Search = styled('div')(({ theme }) => ({
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
-    width: '450px',
+    width: '800px',
   },
 }));
 // -----------------------------
@@ -67,9 +63,15 @@ const SearchBar = () => {
   const products = useProductsState();
 
   //
-  const handleSearch = async (query: string) => {
+  const handleSearch = (query: string) => {
     if (router.pathname === '/') {
-      router.push('/products');
+      router.push(
+        {
+          pathname: `/products`,
+          query: { searchQuery },
+        },
+        undefined
+      );
     }
     const fuse = new Fuse(products, {
       keys: ['title', 'description'],

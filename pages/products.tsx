@@ -29,7 +29,9 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
 
   useEffect(() => {
     dispatch(dataIsLoading());
+
     dispatch(addProductsToStore(products));
+
     dispatch(fetchingSuccessed());
     return () => {
       dispatch(clearProductsToStore());
