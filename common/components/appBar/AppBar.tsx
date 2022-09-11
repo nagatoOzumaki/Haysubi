@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
@@ -18,7 +17,6 @@ import {
   AutoStoriesOutlined,
   FavoriteBorder,
   LaptopChromebook,
-  LaptopOutlined,
   LogoutOutlined,
   MenuOutlined,
   PersonOutline,
@@ -239,36 +237,43 @@ export default function ResponsiveAppBar() {
       >
         <Toolbar>
           {/* -----Logo---- */}
-          <Image
-            src={SangoLogo}
-            alt="sangotech logo"
-            width="100%"
-            height="100%"
-          />
+          <Box>
+            <NextLink href="/" passHref>
+              <Link
+                sx={{
+                  color: '#fff',
+                  fontSize: 13,
+                  fontWeight: 'bold',
+                }}
+              >
+                <Image
+                  src={SangoLogo}
+                  alt="sangotech logo"
+                  width="100%"
+                  height="100%"
+                />
+              </Link>
+            </NextLink>
+          </Box>
           {/*  */}
-          <IconButton onClick={handleOpenDrawer} sx={{ pr: 7 }}>
+          <IconButton onClick={handleOpenDrawer} sx={{ pr: { md: 3, xs: 2 } }}>
             <MenuOutlined color="secondary" />
           </IconButton>
           {/*  */}
-          <NextLink href="/">
-            <a
-              style={{
-                display: 'flex',
-                paddingLeft: '2px',
-                alignItems: 'center',
-              }}
-            >
-              <LaptopOutlined />
-              <Typography
-                variant="h6"
-                noWrap
-                component="div"
-                sx={{ cursor: 'pointer', pr: 1, pl: 1 }}
+
+          <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <NextLink href="/" passHref>
+              <Link
+                sx={{
+                  color: '#fff',
+                  fontSize: 13,
+                  fontWeight: 'bold',
+                }}
               >
-                Hysubi
-              </Typography>
-            </a>
-          </NextLink>
+                HOME
+              </Link>
+            </NextLink>
+          </MenuItem>
           {/* -------------- */}
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
             {

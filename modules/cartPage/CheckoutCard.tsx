@@ -26,7 +26,7 @@ const CheckoutCard = () => {
   );
   return (
     <ThemeProvider theme={theme}>
-      <Paper sx={{ width: 400, border: '1px solid #ddd', p: 4 }}>
+      <Paper sx={{ border: '1px solid #ddd', p: 4 }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 5 }}>
           <Typography>Total :</Typography>
           <Typography
@@ -41,13 +41,12 @@ const CheckoutCard = () => {
             {' DH'}
           </Typography>
         </Box>
-        <NextLink href="/payment/personalInfo">
-          <a>
-            <Button fullWidth variant="contained">
-              Proceed to checkout
-            </Button>
-          </a>
-        </NextLink>
+
+        <Button disabled={total === 0} fullWidth variant="contained">
+          <NextLink href="/payment/personalInfo">
+            <a> Proceed to checkout </a>
+          </NextLink>
+        </Button>
       </Paper>
     </ThemeProvider>
   );

@@ -72,10 +72,19 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
         display: 'flex',
         alignItems: 'center',
         border: '1px solid #bbb',
+        position: 'relative',
       }}
     >
       <Grid container>
-        <Grid md={6} sx={{ display: 'flex', alignItems: 'flex-end' }} item>
+        <Grid
+          lg={6}
+          sx={{
+            display: 'flex',
+            alignItems: { lg: 'flex-end', xs: 'flex-start' },
+            pb: { lg: 0, xs: 2 },
+          }}
+          item
+        >
           <Image
             src={`${product.image[0]}`}
             loader={() => product.image[0]}
@@ -88,13 +97,14 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
               <Typography
                 variant="body1"
                 sx={{
+                  mt: { xs: 4, lg: 0 },
                   ml: 1,
-                  mb: 4,
+                  mb: { lg: 4, xs: 0 },
                   fontWeight: 'bold',
                   display: 'flex',
-                  alignItems: 'flex-end',
-                  height: { md: 46 },
-                  width: { md: 240, xs: 300 },
+                  alignItems: { lg: 'flex-end', xs: 'flex-start' },
+                  height: { md: 46, xs: 44 },
+                  width: { md: 240, xs: 200 },
                   whiteSpace: 'wrap',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -108,10 +118,13 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
 
         <Grid
           item
-          md={2}
+          lg={2}
+          xs={3.5}
           sx={{
             display: 'flex',
             alignItems: 'center',
+            mt: { xs: 9, lg: 0 },
+            ml: { xs: -24, lg: 0 },
           }}
         >
           <Typography
@@ -128,10 +141,12 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
         </Grid>
         <Grid
           item
-          md={3}
+          lg={3}
+          xs={5}
           sx={{
             display: 'flex',
             alignItems: 'center',
+            mt: { xs: 9, lg: 0 },
           }}
         >
           <ButtonGroup
@@ -152,6 +167,10 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
           sx={{
             display: 'flex',
             alignItems: 'center',
+
+            position: 'absolute',
+            top: 3,
+            right: -9,
           }}
         >
           <Button onClick={() => remove(product)}>
