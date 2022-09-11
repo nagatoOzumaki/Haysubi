@@ -24,11 +24,13 @@ import {
   PersonOutline,
   ShoppingCartOutlined,
 } from '@mui/icons-material';
+import Image from 'next/image';
 import { useCartState, useUserInfoState, useWishList } from '../../store/Store';
 import { openDrawer, setLogout } from '../../store/actions';
 import LoginModalToggle from './LoginModalToggle';
 import SearchBar from './SearchBar';
 import isSsr from '../../utils/isServerSideRendering';
+import SangoLogo from '../../../public/images/icons/SangoLogo.jpeg';
 
 // ------------------
 
@@ -236,8 +238,15 @@ export default function ResponsiveAppBar() {
         }}
       >
         <Toolbar>
-          {/* --------- */}
-          <IconButton onClick={handleOpenDrawer} sx={{ pr: 3 }}>
+          {/* -----Logo---- */}
+          <Image
+            src={SangoLogo}
+            alt="sangotech logo"
+            width="100%"
+            height="100%"
+          />
+          {/*  */}
+          <IconButton onClick={handleOpenDrawer} sx={{ pr: 7 }}>
             <MenuOutlined color="secondary" />
           </IconButton>
           {/*  */}
@@ -271,7 +280,7 @@ export default function ResponsiveAppBar() {
                     fontSize: 13,
                     fontWeight: 'bold',
 
-                    pl: 10,
+                    // pl: 10,
                   }}
                   // eslint-disable-next-line no-restricted-globals
                   onClick={() => location.reload()}

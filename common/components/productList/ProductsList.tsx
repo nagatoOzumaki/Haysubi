@@ -10,7 +10,7 @@ const ProductsList: FC<Props> = ({ products }) => (
     container
     sx={{ width: { xs: 'auto', md: 'auto' } }}
     spacing={0.5}
-    p={0.2}
+    p={0}
   >
     {products
       ? products.map(product => (

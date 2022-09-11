@@ -75,7 +75,7 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
       }}
     >
       <Grid container>
-        <Grid md={5} sx={{ display: 'flex', alignItems: 'flex-end' }} item>
+        <Grid md={6} sx={{ display: 'flex', alignItems: 'flex-end' }} item>
           <Image
             src={`${product.image[0]}`}
             loader={() => product.image[0]}
@@ -128,7 +128,7 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
         </Grid>
         <Grid
           item
-          md={4}
+          md={3}
           sx={{
             display: 'flex',
             alignItems: 'center',

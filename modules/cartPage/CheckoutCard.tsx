@@ -1,6 +1,21 @@
-import { Box, Button, Paper, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  createTheme,
+  Paper,
+  ThemeProvider,
+  Typography,
+} from '@mui/material';
 import NextLink from 'next/link';
 import { useCartState } from '../../common/store/Store';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#fcba03',
+    },
+  },
+});
 
 const CheckoutCard = () => {
   const { cartItems } = useCartState();
@@ -10,27 +25,31 @@ const CheckoutCard = () => {
     0
   );
   return (
-    <Paper sx={{ width: 400, border: '1px solid #ddd', p: 4 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 5 }}>
-        <Typography>Total :</Typography>
-        <Typography
-          sx={{
-            color: '#fb0',
-            fontWeight: 'bold',
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
-          {total}
-          {' DH'}
-        </Typography>
-      </Box>
-      <NextLink href="/payment/personalInfo">
-        <a>
-          <Button variant="outlined">Checkout</Button>
-        </a>
-      </NextLink>
-    </Paper>
+    <ThemeProvider theme={theme}>
+      <Paper sx={{ width: 400, border: '1px solid #ddd', p: 4 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 5 }}>
+          <Typography>Total :</Typography>
+          <Typography
+            sx={{
+              color: '#fb0',
+              fontWeight: 'bold',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            {total}
+            {' DH'}
+          </Typography>
+        </Box>
+        <NextLink href="/payment/personalInfo">
+          <a>
+            <Button fullWidth variant="contained">
+              Proceed to checkout
+            </Button>
+          </a>
+        </NextLink>
+      </Paper>
+    </ThemeProvider>
   );
 };
 
