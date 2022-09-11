@@ -94,20 +94,24 @@ const ProductDetails = ({ product }: Props) => {
           </Grid>
           {/* 2----------------------- */}
           <Grid
-            md={3}
-            sx={{ display: 'flex', justifyContent: 'center', p: 2 }}
+            md={3.5}
+            sx={{
+              ml: 8,
+              height: { md: 750 },
+              p: 2,
+            }}
             item
           >
             <Image
               loader={() => imageLoader(currentMainImage)}
-              width={280}
-              height={500}
+              width={330}
+              height={700}
               src={currentMainImage}
               alt="image"
             />
           </Grid>
           {/* 3--------------- */}
-          <Grid md={8} sx={{ pt: { md: 10 } }} item>
+          <Grid md={6} sx={{ pt: { md: 10 } }} item>
             <Typography
               sx={{ fontSize: { xs: 25, md: 50 } }}
               component="h1"

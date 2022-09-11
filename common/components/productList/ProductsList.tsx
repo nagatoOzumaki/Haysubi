@@ -14,14 +14,14 @@ const ProductsList: FC<Props> = ({ products }) => (
   >
     {products
       ? products.map(product => (
-          <Grid key={product.id} xs={12} sm={5.9} md={3} lg={2.9} xl={2} item>
+          <Grid key={product.id} xs={12} sm={5.9} md={3} lg={2.9} xl={2.4} item>
             <ProductCard product={product} />
           </Grid>
         ))
       : [
           1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
         ].map(num => (
-          <Grid key={num} xs={12} sm={5.9} md={3} lg={2.9} xl={2} item>
+          <Grid key={num} xs={12} sm={5.9} md={3} lg={2.9} xl={2.4} item>
             <ProductSkelton />
           </Grid>
         ))}

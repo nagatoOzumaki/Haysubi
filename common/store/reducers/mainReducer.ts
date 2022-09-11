@@ -57,6 +57,39 @@ const mainReducer = (state: State = InitialState, action: Action) => {
     case appActions.ADD_ITEM_TO_CART: {
       const { id,quantity } = action.payload;  
       const productIfExist = state.cart.cartItems.filter(item => item.id===id)[0];
+      // const items=state.cart.cartItems.filter(item => item.id!==id);
+      const index=state.cart.cartItems.findIndex(item => item.id===id);
+      // const items=[...state.cart.cartItems.slice(0,index),productIfExist,...state.cart.cartItems.slice(index+1)];
+      let newState = state;
+      if (index!==-1) {
+        const newProduct={...productIfExist,quantity:(productIfExist.quantity as unknown as number)+quantity }
+        const newItems=[...state.cart.cartItems.slice(0,index),newProduct,...state.cart.cartItems.slice(index+1)]
+        
+        newState = {
+          ...state,
+          cart: {
+            ...state.cart,
+            cartItems: newItems,
+          },
+        };
+      }
+    
+      else{
+        newState = {
+          ...state,
+          cart: {
+            ...state.cart,
+            cartItems: [...state.cart.cartItems,action.payload],
+          },
+        };
+      }
+      storeDataInLocalStorage('cartItems', newState.cart.cartItems);
+
+      return newState;
+    }
+    case "appActions.ADD_ITEM_TO_CART": {
+      const { id,quantity } = action.payload;  
+      const productIfExist = state.cart.cartItems.filter(item => item.id===id)[0];
       const items=state.cart.cartItems.filter(item => item.id!==id);
       let newState = state;
       if (productIfExist) {
@@ -71,6 +104,7 @@ const mainReducer = (state: State = InitialState, action: Action) => {
           },
         };
       }
+      
       else{
         newState = {
           ...state,

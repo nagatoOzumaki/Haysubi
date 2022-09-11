@@ -54,6 +54,7 @@ const Login: FC = () => {
           <Grid direction="column" spacing={3} container>
             <Grid item>
               <MyTextInput
+                InputColor="#fff"
                 label="Email Address"
                 name="email"
                 type="email"
@@ -62,6 +63,7 @@ const Login: FC = () => {
             </Grid>
             <Grid item>
               <MyTextInput
+                InputColor="#fff"
                 label="Password"
                 name="password"
                 type="password"
@@ -69,11 +71,17 @@ const Login: FC = () => {
               />
             </Grid>
 
-            <Grid item sx={{ padding: 4 }}>
+            <Grid item sx={{ padding: 1 }}>
               <MyCheckbox name="remenberMe">Remember Me</MyCheckbox>
             </Grid>
             <Grid item>
-              <Button type="submit" variant="contained" fullWidth>
+              <Button
+                type="submit"
+                color="secondary"
+                variant="outlined"
+                sx={{ p: 1, borderWidth: 1 }}
+                fullWidth
+              >
                 Login
               </Button>
             </Grid>

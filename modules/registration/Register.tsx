@@ -44,6 +44,7 @@ const Register: FC = () => (
         <Grid direction="column" spacing={1} container>
           <Grid item>
             <MyTextInput
+              InputColor="#fff"
               label="Email Address"
               name="email"
               type="email"
@@ -52,6 +53,7 @@ const Register: FC = () => (
           </Grid>
           <Grid item>
             <MyTextInput
+              InputColor="#fff"
               label="Password"
               name="password"
               type="password"
@@ -60,6 +62,7 @@ const Register: FC = () => (
           </Grid>
           <Grid item>
             <MyTextInput
+              InputColor="#fff"
               label="Confirm Password"
               name="confirmPassword"
               type="password"
@@ -72,8 +75,14 @@ const Register: FC = () => (
               I accept the terms and conditions
             </MyCheckbox>
           </Grid>
-          <Grid item>
-            <Button type="submit" variant="contained" fullWidth>
+          <Grid xs={12} item>
+            <Button
+              type="submit"
+              color="secondary"
+              variant="outlined"
+              sx={{ p: 1, mt: 3, borderWidth: 1 }}
+              fullWidth
+            >
               Sign Up
             </Button>
           </Grid>

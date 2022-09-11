@@ -8,9 +8,9 @@ import axios from 'axios';
 // where endpoint'data for example fetchData<Product>('/products/1')
 
 const fetchData = async <T>(endpoint: string) => {
-  // https://haysubi-api.vercel.app
+  const server=['https://haysubi-api.vercel.app','http://localhost:3001']
  
-  const res = await axios.get(`https://haysubi-api.vercel.app/api${endpoint}`
+  const res = await axios.get(`${server[0]}/api${endpoint}`
 );
   const data: T = await res.data;
   return data;

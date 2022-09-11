@@ -18,15 +18,13 @@ const WishListProductCard: FC<PropTypes> = ({ item, remove }) => (
         <Image
           src={`${item.image[0]}`}
           loader={() => item.image[0]}
-          width="100%"
-          height="100%"
+          width={130}
+          height={250}
           alt={item.title}
         />
         <Typography
           variant="h6"
           sx={{
-            mb: 5,
-
             whiteSpace: 'wrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',

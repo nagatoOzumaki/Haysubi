@@ -64,7 +64,7 @@ const SearchBar = () => {
 
   //
   const handleSearch = (query: string) => {
-    if (router.pathname === '/') {
+    if (router.pathname !== '/products') {
       router.push(
         {
           pathname: `/products`,

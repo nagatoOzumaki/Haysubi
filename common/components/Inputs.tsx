@@ -2,7 +2,7 @@ import { Radio, Box, TextField, Typography } from '@mui/material';
 import { useField } from 'formik';
 import { FC } from 'react';
 
-export const MyTextInput: FC<any> = ({ label, ...props }) => {
+export const MyTextInput: FC<any> = ({ label, InputColor, ...props }) => {
   // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
   // which we can spread on <input>. We can use field meta to show an error
   // message if the field is invalid and it has been touched (i.e. visited)
@@ -21,7 +21,7 @@ export const MyTextInput: FC<any> = ({ label, ...props }) => {
           input: {
             borderWidth: 3,
             borderColor: 'blue',
-            color: '#000',
+            color: InputColor || '#000',
           },
           contan: {
             color: 'blue',
@@ -56,8 +56,12 @@ export const MyCheckbox = ({ children, ...props }: any) => {
       <div>
         <Radio
           sx={{
+            // color: '#fff',
+            // '&:checked': { color: '#fff' },
             color: '#fff',
-            '&:checked': { color: '#fff' },
+            '&.Mui-checked': {
+              color: '#fff',
+            },
           }}
           type="checkbox"
           {...field}
