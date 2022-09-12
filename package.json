@@ -30,7 +30,6 @@
     "formik": "^2.2.9",
     "formik-mui": "^5.0.0-alpha.0",
     "fuse.js": "^6.6.2",
-    "google-maps-react": "^2.0.6",
     "gray-matter": "^4.0.3",
     "marked": "^4.0.19",
     "moment": "^2.29.4",
