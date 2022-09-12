@@ -23,7 +23,7 @@ const Login: FC = () => {
   return (
     <Box
       sx={{
-        padding: 2,
+        padding: { xs: 1, md: 2 },
         color: '#ddd',
         pb: 0,
       }}
@@ -79,7 +79,12 @@ const Login: FC = () => {
                 type="submit"
                 color="secondary"
                 variant="outlined"
-                sx={{ p: 1, borderWidth: 1 }}
+                sx={{
+                  p: 1,
+
+                  color: '#000',
+                  backgroundColor: 'rgba(255,255,255,0.9)',
+                }}
                 fullWidth
               >
                 Login

@@ -1,21 +1,22 @@
-import { CloseRounded } from '@mui/icons-material';
+// import { CloseRounded } from '@mui/icons-material';
 import { Grid, Box } from '@mui/material';
 import { FC, useState } from 'react';
 import Login from './Login';
 import Register from './Register';
 
-type Props = { closeLoginModal: () => void };
-const Index: FC<Props> = ({ closeLoginModal }) => {
+type Props = { closeLoginModal?: () => void };
+// const Index: FC<Props> = ({ closeLoginModal }) => {
+const Index: FC<Props> = () => {
   const [isRegistred, setIsRegistred] = useState<boolean>(true);
   return (
     <Box
       sx={{
         p: { xs: 2, md: 8 },
-        borderWidth: 3,
-        borderColor: 'rgba(255,255,255,0.4)',
+        borderWidth: 1,
+        borderColor: 'rgba(255,255,255)',
         borderStyle: 'solid',
-        width: { md: 550, xs: 300 },
-        backgroundColor: '#000',
+        width: { md: 550, xs: 325 },
+        backgroundColor: 'rgba(0,0,0,0.8)',
         color: '#ddd',
         pb: 0,
         overflow: 'hidden',
@@ -38,11 +39,11 @@ const Index: FC<Props> = ({ closeLoginModal }) => {
           backgroundColor: '#fff',
         }}
       >
-        <CloseRounded
+        {/* <CloseRounded
           onClick={closeLoginModal}
           sx={{ width: 34, height: 34 }}
           color="primary"
-        />
+        /> */}
       </Box>
       {/* close */}
       {isRegistred ? <Login /> : <Register />}

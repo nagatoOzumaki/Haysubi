@@ -9,6 +9,7 @@ const Register: FC = () => (
   <Box
     sx={{
       padding: 2,
+      pt: { xs: 0, md: 2 },
       color: '#ddd',
       pb: 0,
     }}
@@ -80,7 +81,13 @@ const Register: FC = () => (
               type="submit"
               color="secondary"
               variant="outlined"
-              sx={{ p: 1, mt: 3, borderWidth: 1 }}
+              sx={{
+                p: 1,
+                mt: 3,
+
+                color: '#000',
+                backgroundColor: 'rgba(255,255,255,0.9)',
+              }}
               fullWidth
             >
               Sign Up

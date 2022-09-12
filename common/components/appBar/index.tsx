@@ -10,16 +10,16 @@ import Menu from '@mui/material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
-import { Divider, Link } from '@mui/material';
+import { Link } from '@mui/material';
 import NextLink from 'next/link';
 import { useDispatch } from 'react-redux';
 import {
   AutoStoriesOutlined,
   FavoriteBorder,
   LaptopChromebook,
+  LoginOutlined,
   LogoutOutlined,
   MenuOutlined,
-  PersonOutline,
   ShoppingCartOutlined,
 } from '@mui/icons-material';
 import Image from 'next/image';
@@ -31,7 +31,7 @@ import isSsr from '../../utils/isServerSideRendering';
 import SangoLogo from '../../../public/images/icons/SangoLogo.jpeg';
 
 // ---------------------------
-export default function ResponsiveAppBar() {
+const AppHeaderBar = () => {
   const cart = useCartState();
   const wishList = useWishList();
   const userInfo = useUserInfoState();
@@ -40,12 +40,12 @@ export default function ResponsiveAppBar() {
     dispatch(setLogout());
   };
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
 
-  const isMenuOpen = Boolean(anchorEl);
+  // const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -56,10 +56,10 @@ export default function ResponsiveAppBar() {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
+  // const handleMenuClose = () => {
+  //   setAnchorEl(null);
+  //   handleMobileMenuClose();
+  // };
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
@@ -70,40 +70,40 @@ export default function ResponsiveAppBar() {
 
   // ------------------------------
   const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'right',
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'left',
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>
-        <IconButton sx={{ color: '#000', fontSize: 14 }}>
-          <PersonOutline /> Profil
-        </IconButton>
-      </MenuItem>
-      <Divider />
-      {userInfo ? (
-        <MenuItem onClick={handleMenuClose}>
-          <IconButton
-            onClick={handleLogout}
-            sx={{ p: 0.3, color: '#000', fontSize: 14 }}
-          >
-            <LogoutOutlined /> Log Out
-          </IconButton>
-        </MenuItem>
-      ) : null}
-    </Menu>
-  );
+  // const renderMenu = (
+  //   <Menu
+  //     anchorEl={anchorEl}
+  //     anchorOrigin={{
+  //       vertical: 'bottom',
+  //       horizontal: 'right',
+  //     }}
+  //     id={menuId}
+  //     keepMounted
+  //     transformOrigin={{
+  //       vertical: 'top',
+  //       horizontal: 'left',
+  //     }}
+  //     open={isMenuOpen}
+  //     onClose={handleMenuClose}
+  //   >
+  //     <MenuItem onClick={handleMenuClose}>
+  //       <IconButton sx={{ color: '#000', fontSize: 14 }}>
+  //         <PersonOutline /> Profil
+  //       </IconButton>
+  //     </MenuItem>
+  //     <Divider />
+  //     {userInfo ? (
+  //       <MenuItem onClick={handleMenuClose}>
+  //         <IconButton
+  //           onClick={handleLogout}
+  //           sx={{ p: 0.3, color: '#000', fontSize: 14 }}
+  //         >
+  //           <LogoutOutlined /> Log Out
+  //         </IconButton>
+  //       </MenuItem>
+  //     ) : null}
+  //   </Menu>
+  // );
   // -----------------------------------------
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -111,7 +111,7 @@ export default function ResponsiveAppBar() {
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
-        vertical: 'top',
+        vertical: 'bottom',
         horizontal: 'right',
       }}
       id={mobileMenuId}
@@ -122,6 +122,7 @@ export default function ResponsiveAppBar() {
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      onClick={handleMobileMenuClose}
     >
       <MenuItem>
         <NextLink href="/products">
@@ -170,22 +171,6 @@ export default function ResponsiveAppBar() {
         </NextLink>
       </MenuItem>
 
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <NextLink href="/profile">
-          <a>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-            Profil
-          </a>
-        </NextLink>
-      </MenuItem>
       <MenuItem>
         <NextLink href="/blog">
           <a>
@@ -218,6 +203,53 @@ export default function ResponsiveAppBar() {
           </a>
         </NextLink>
       </MenuItem>
+
+      {userInfo ? (
+        <>
+          <MenuItem>
+            <NextLink href="/profil">
+              <a>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                Profil
+              </a>
+            </NextLink>
+          </MenuItem>
+
+          <MenuItem onClick={handleLogout}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <LogoutOutlined />
+            </IconButton>
+            Logout
+          </MenuItem>
+        </>
+      ) : (
+        <MenuItem onClick={handleLogout}>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <LoginOutlined />
+          </IconButton>
+          Log In
+        </MenuItem>
+      )}
     </Menu>
   );
   // -----------------------------------
@@ -426,7 +458,9 @@ export default function ResponsiveAppBar() {
       </AppBar>
 
       {renderMobileMenu}
-      {renderMenu}
+      {/* {renderMenu} */}
     </>
   );
-}
+};
+
+export default AppHeaderBar;
