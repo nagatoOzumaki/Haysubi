@@ -47,7 +47,7 @@ const CartItemsList = () => {
   //
   return (
     <>
-      <Box>
+      <Box sx={{}}>
         {cartItems.length !== 0 ? (
           <Table
             component={Paper}
