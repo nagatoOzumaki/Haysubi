@@ -76,7 +76,7 @@ const CartItemsList = () => {
           </Table>
         ) : (
           <Typography variant="h6" sx={{ p: 12, mb: 60 }}>
-            Cart Is Empty
+            Cart Is empty.
           </Typography>
         )}
       </Box>
