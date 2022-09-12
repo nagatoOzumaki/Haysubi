@@ -30,8 +30,6 @@ import SearchBar from './SearchBar';
 import isSsr from '../../utils/isServerSideRendering';
 import SangoLogo from '../../../public/images/icons/SangoLogo.jpeg';
 
-// ------------------
-
 // ---------------------------
 export default function ResponsiveAppBar() {
   const cart = useCartState();
