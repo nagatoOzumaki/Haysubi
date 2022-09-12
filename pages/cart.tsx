@@ -18,7 +18,7 @@ const cart: NextPage = () => (
       <Typography variant="body2">
         The price and availability of items at Hysubi are subject to change. The
         Cart is a temporary place to store a list of your items and reflects
-        each item{"'"}s most recent price.
+        each i tem{"'"}s most recent price.
       </Typography>
     </Grid>
   </Container>
