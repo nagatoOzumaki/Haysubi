@@ -6,10 +6,8 @@ import {
   FormLabel,
 } from '@mui/material';
 
-import React, { FC, useCallback, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { addFilter } from '../../../common/store/actions';
-import { FilterElement } from '../../../common/types/@appTypes';
+import React, { FC } from 'react';
+
 import useFilterStateHandler from './hooks/useFilterStateHandler';
 
 const brands = ['DELL', 'HP', 'ASUS', 'SAMSUNG', 'HUAWEI', 'TOCHIBA', 'MAC'];
@@ -39,29 +37,29 @@ export const FilterCheckBox: FC<any> = props => (
     />
   </>
 );
-export const useStater = (filter: FilterElement) => {
-  const dispatch = useDispatch<any>();
-  const selectedValues = useRef([] as string[]);
+// export const useStater = (filter: FilterElement) => {
+//   const dispatch = useDispatch<any>();
+//   const selectedValues = useRef([] as string[]);
 
-  const handleFilter = useCallback(
-    (event: any) => {
-      const { checked, value } = event.target;
-      if (checked) {
-        selectedValues.current = [...selectedValues.current, value];
-        dispatch(addFilter({ [filter]: selectedValues.current }));
-      } else {
-        selectedValues.current = [
-          ...selectedValues.current.filter(
-            selectedValue => value !== selectedValue
-          ),
-        ];
-        dispatch(addFilter({ [filter]: selectedValues.current }));
-      }
-    },
-    [dispatch, filter]
-  );
-  return handleFilter;
-};
+//   const handleFilter = useCallback(
+//     (event: any) => {
+//       const { checked, value } = event.target;
+//       if (checked) {
+//         selectedValues.current = [...selectedValues.current, value];
+//         dispatch(addFilter({ [filter]: selectedValues.current }));
+//       } else {
+//         selectedValues.current = [
+//           ...selectedValues.current.filter(
+//             selectedValue => value !== selectedValue
+//           ),
+//         ];
+//         dispatch(addFilter({ [filter]: selectedValues.current }));
+//       }
+//     },
+//     [dispatch, filter]
+//   );
+//   return handleFilter;
+// };
 export const RamFilter = () => {
   const handleFilter = useFilterStateHandler('ram');
   return (

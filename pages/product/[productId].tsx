@@ -13,6 +13,7 @@ import FooterLayout from '../../common/layouts/footerLayout/FooterLayout';
 import ChatbotLayout from '../../common/layouts/chatbotLayout';
 import SuggestionsSilder from '../../modules/productPage/components/slider/suggestionsSlider';
 import QuantityInput from '../../modules/productPage/components/QuantityInput';
+import ProductZoomer from '../../modules/productPage/components/ProductZoomer';
 
 type Props = { product: Product };
 
@@ -97,18 +98,24 @@ const ProductDetails = ({ product }: Props) => {
             md={3.5}
             sx={{
               ml: 8,
-              height: { md: 750 },
+              maxHeight: { md: 950 },
+              minHeight: { md: 500 },
               p: 2,
             }}
             item
           >
-            <Image
-              loader={() => imageLoader(currentMainImage)}
-              width={330}
-              height={700}
-              src={currentMainImage}
-              alt="image"
-            />
+            {/* <Box sx={{ display: { md: 'none' } }}> */}
+            {/* <Image
+                loader={() => imageLoader(currentMainImage)}
+                width={330}
+                height={700}
+                src={currentMainImage}
+                alt="image"
+              /> */}
+            {/* </Box> */}
+            <Box sx={{}}>
+              <ProductZoomer productImage={currentMainImage} />
+            </Box>
           </Grid>
           {/* 3--------------- */}
           <Grid md={6} sx={{ pt: { md: 10 } }} item>
@@ -159,7 +166,7 @@ const ProductDetails = ({ product }: Props) => {
               sx={{
                 display: 'flex',
                 mt: { xs: -3, md: -10 },
-
+                zIndex: -2,
                 justifyContent: 'center',
                 ml: 16,
               }}
