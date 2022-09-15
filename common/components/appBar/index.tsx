@@ -10,7 +10,6 @@ import Menu from '@mui/material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
-import { Link } from '@mui/material';
 import NextLink from 'next/link';
 import { useDispatch } from 'react-redux';
 import {
@@ -269,8 +268,8 @@ const AppHeaderBar = () => {
           {/* -----Logo---- */}
           <Box>
             <NextLink href="/" passHref>
-              <Link
-                sx={{
+              <a
+                style={{
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
@@ -282,7 +281,7 @@ const AppHeaderBar = () => {
                   width="100%"
                   height="100%"
                 />
-              </Link>
+              </a>
             </NextLink>
           </Box>
           {/*  */}
@@ -293,15 +292,15 @@ const AppHeaderBar = () => {
 
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
             <NextLink href="/" passHref>
-              <Link
-                sx={{
+              <a
+                style={{
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
                 }}
               >
                 HOME
-              </Link>
+              </a>
             </NextLink>
           </MenuItem>
           {/* -------------- */}
@@ -309,71 +308,69 @@ const AppHeaderBar = () => {
             {
               // eslint-disable-next-line no-restricted-globals
               !isSsr && location.pathname === '/products' ? (
-                <Link
-                  sx={{
+                <a
+                  style={{
                     color: '#fff',
                     fontSize: 13,
                     fontWeight: 'bold',
-
-                    // pl: 10,
                   }}
                   // eslint-disable-next-line no-restricted-globals
                   onClick={() => location.reload()}
                 >
                   PRODUCTS
-                </Link>
+                </a>
               ) : (
-                <NextLink href="/products" passHref>
-                  <Link
-                    sx={{
+                <NextLink href="/products" shallow={true} passHref>
+                  <a
+                    style={{
                       color: '#fff',
                       fontSize: 13,
                       fontWeight: 'bold',
                     }}
                   >
                     PRODUCTS
-                  </Link>
+                  </a>
                 </NextLink>
               )
             }
           </MenuItem>
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
             <NextLink href="/blog" passHref>
-              <Link
-                sx={{
+              <a
+                style={{
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
                 }}
               >
                 CONTENT
-              </Link>
+              </a>
             </NextLink>
           </MenuItem>
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
             <NextLink href="/about">
-              <Link
-                sx={{
+              <a
+                style={{
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
                 }}
               >
                 ABOUT US
-              </Link>
+              </a>
             </NextLink>
           </MenuItem>
           <MenuItem sx={{ display: { xs: 'none', md: 'flex' } }}>
             <NextLink href="/contactUs">
-              <Link
-                sx={{
+              <a
+                style={{
                   color: '#fff',
                   fontSize: 13,
                   fontWeight: 'bold',
                 }}
               >
                 CONTACT US
-              </Link>
+              </a>
             </NextLink>
           </MenuItem>
           {/*  */}
