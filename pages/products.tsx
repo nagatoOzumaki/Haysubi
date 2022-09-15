@@ -56,7 +56,8 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
           <Box
             sx={{
               position: 'sticky',
-              top: 10,
+              top: 0,
+              pb: 10,
               overflowY: 'scroll',
               scrollBehavior: 'smooth',
               height: { xs: 800, md: 900 },

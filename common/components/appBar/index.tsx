@@ -19,9 +19,11 @@ import {
   LoginOutlined,
   LogoutOutlined,
   MenuOutlined,
+  PersonOutline,
   ShoppingCartOutlined,
 } from '@mui/icons-material';
 import Image from 'next/image';
+import { Divider } from '@mui/material';
 import { useCartState, useUserInfoState, useWishList } from '../../store/Store';
 import { openDrawer, setLogout } from '../../store/actions';
 import LoginModalToggle from './LoginModalToggle';
@@ -39,12 +41,12 @@ const AppHeaderBar = () => {
     dispatch(setLogout());
   };
 
-  const [, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
 
-  // const isMenuOpen = Boolean(anchorEl);
+  const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -55,10 +57,10 @@ const AppHeaderBar = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  // const handleMenuClose = () => {
-  //   setAnchorEl(null);
-  //   handleMobileMenuClose();
-  // };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
@@ -69,41 +71,40 @@ const AppHeaderBar = () => {
 
   // ------------------------------
   const menuId = 'primary-search-account-menu';
-  // const renderMenu = (
-  //   <Menu
-  //     anchorEl={anchorEl}
-  //     anchorOrigin={{
-  //       vertical: 'bottom',
-  //       horizontal: 'right',
-  //     }}
-  //     id={menuId}
-  //     keepMounted
-  //     transformOrigin={{
-  //       vertical: 'top',
-  //       horizontal: 'left',
-  //     }}
-  //     open={isMenuOpen}
-  //     onClose={handleMenuClose}
-  //   >
-  //     <MenuItem onClick={handleMenuClose}>
-  //       <IconButton sx={{ color: '#000', fontSize: 14 }}>
-  //         <PersonOutline /> Profil
-  //       </IconButton>
-  //     </MenuItem>
-  //     <Divider />
-  //     {userInfo ? (
-  //       <MenuItem onClick={handleMenuClose}>
-  //         <IconButton
-  //           onClick={handleLogout}
-  //           sx={{ p: 0.3, color: '#000', fontSize: 14 }}
-  //         >
-  //           <LogoutOutlined /> Log Out
-  //         </IconButton>
-  //       </MenuItem>
-  //     ) : null}
-  //   </Menu>
-  // );
-  // -----------------------------------------
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'left',
+      }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <MenuItem onClick={handleMenuClose}>
+        <IconButton sx={{ color: '#000', fontSize: 14 }}>
+          <PersonOutline /> Profil
+        </IconButton>
+      </MenuItem>
+      <Divider />
+      {userInfo ? (
+        <MenuItem onClick={handleMenuClose}>
+          <IconButton
+            onClick={handleLogout}
+            sx={{ p: 0.3, color: '#000', fontSize: 14 }}
+          >
+            <LogoutOutlined /> Log Out
+          </IconButton>
+        </MenuItem>
+      ) : null}
+    </Menu>
+  );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
@@ -455,7 +456,7 @@ const AppHeaderBar = () => {
       </AppBar>
 
       {renderMobileMenu}
-      {/* {renderMenu} */}
+      {renderMenu}
     </>
   );
 };

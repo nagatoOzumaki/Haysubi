@@ -62,7 +62,7 @@ const QuantityInput: FC<PropTypes> = ({ product }) => {
   }, [product.id, wishList]);
 
   return (
-    <Paper sx={{ p: 2, width: 200, height: 190 }}>
+    <Paper sx={{ p: 2, width: 200, height: 190, border: '1px solid #ddd' }}>
       <Typography
         sx={{ color: '#fb0', fontWeight: 'bold', fontSize: 23, pb: 2 }}
       >

@@ -63,7 +63,12 @@ const ProductDetails = ({ product }: Props) => {
       <ProductMetaData />
       <Container
         maxWidth="xl"
-        sx={{ bgcolor: '#fff', pt: 1, boxShadow: 3, mt: { md: -3, xs: -4 } }}
+        sx={{
+          bgcolor: '#fff',
+          pt: 1,
+          boxShadow: 3,
+          mt: { md: -3, xs: -4 },
+        }}
       >
         <Grid container>
           <Grid xs={12} md={0.4} item>
@@ -166,7 +171,7 @@ const ProductDetails = ({ product }: Props) => {
               sx={{
                 display: 'flex',
                 mt: { xs: -3, md: -10 },
-                zIndex: -2,
+
                 justifyContent: 'center',
                 ml: 16,
               }}

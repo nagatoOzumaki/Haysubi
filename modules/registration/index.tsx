@@ -24,7 +24,7 @@ const Index: FC<Props> = () => {
     >
       {/* close */}
 
-      <Box
+      {/* <Box
         sx={{
           display: 'flex',
           p: { xs: 0, md: 1 },
@@ -38,13 +38,13 @@ const Index: FC<Props> = () => {
           right: { xs: 2, md: 9 },
           backgroundColor: '#fff',
         }}
-      >
-        {/* <CloseRounded
+      > */}
+      {/* <CloseRounded
           onClick={closeLoginModal}
           sx={{ width: 34, height: 34 }}
           color="primary"
         /> */}
-      </Box>
+      {/* </Box> */}
       {/* close */}
       {isRegistred ? <Login /> : <Register />}
 
