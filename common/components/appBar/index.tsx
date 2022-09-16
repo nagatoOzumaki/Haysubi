@@ -125,7 +125,7 @@ const AppHeaderBar = () => {
       onClick={handleMobileMenuClose}
     >
       <MenuItem>
-        <NextLink href="/products">
+        <NextLink prefetch={false} href="/products">
           <a>
             <IconButton
               size="large"
