@@ -125,7 +125,7 @@ const AppHeaderBar = () => {
       onClick={handleMobileMenuClose}
     >
       <MenuItem>
-        <NextLink prefetch={false} href="/products">
+        <NextLink href="/products">
           <a>
             <IconButton
               size="large"
@@ -321,7 +321,12 @@ const AppHeaderBar = () => {
                   PRODUCTS
                 </a>
               ) : (
-                <NextLink href="/products" shallow={true} passHref>
+                <NextLink
+                  prefetch={false}
+                  href="/products"
+                  shallow={true}
+                  passHref
+                >
                   <a
                     style={{
                       color: '#fff',
