@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
@@ -24,12 +23,23 @@ import {
 } from '@mui/icons-material';
 import Image from 'next/image';
 import { Divider } from '@mui/material';
-import { useCartState, useUserInfoState, useWishList } from '../../store/Store';
-import { openDrawer, setLogout } from '../../store/actions';
-import LoginModalToggle from './LoginModalToggle';
 import SearchBar from './SearchBar';
+import {
+  useCartState,
+  useDarkModeState,
+  useUserInfoState,
+  useWishList,
+} from '../../store/Store';
+import {
+  openDrawer,
+  setDarkMode,
+  setLightMode,
+  setLogout,
+} from '../../store/actions';
+import LoginModalToggle from './LoginModalToggle';
 import isSsr from '../../utils/isServerSideRendering';
 import SangoLogo from '../../../public/images/icons/SangoLogo.jpeg';
+import DarkModeToggle from './DarkModeToggle';
 
 // ---------------------------
 const AppHeaderBar = () => {
@@ -37,6 +47,7 @@ const AppHeaderBar = () => {
   const wishList = useWishList();
   const userInfo = useUserInfoState();
   const dispatch = useDispatch()<any>;
+  const isDarkMode = useDarkModeState();
   const handleLogout = () => {
     dispatch(setLogout());
   };
@@ -94,11 +105,13 @@ const AppHeaderBar = () => {
       </MenuItem>
       <Divider />
       {userInfo ? (
-        <MenuItem onClick={handleMenuClose}>
-          <IconButton
-            onClick={handleLogout}
-            sx={{ p: 0.3, color: '#000', fontSize: 14 }}
-          >
+        <MenuItem
+          onClick={() => {
+            handleLogout();
+            handleMenuClose();
+          }}
+        >
+          <IconButton sx={{ p: 0.3, color: '#000', fontSize: 14 }}>
             <LogoutOutlined /> Log Out
           </IconButton>
         </MenuItem>
@@ -279,7 +292,7 @@ const AppHeaderBar = () => {
                 <Image
                   src={SangoLogo}
                   alt="sangotech logo"
-                  width="100%"
+                  width="150%"
                   height="100%"
                 />
               </a>
@@ -321,12 +334,7 @@ const AppHeaderBar = () => {
                   PRODUCTS
                 </a>
               ) : (
-                <NextLink
-                  prefetch={false}
-                  href="/products"
-                  shallow={true}
-                  passHref
-                >
+                <NextLink href="/products" shallow={true} passHref>
                   <a
                     style={{
                       color: '#fff',
@@ -380,9 +388,10 @@ const AppHeaderBar = () => {
             </NextLink>
           </MenuItem>
           {/*  */}
-          <div style={{ flexGrow: 3 }} />
+          {/* <div style={{ flexGrow: 0 }} /> */}
+
           <SearchBar />
-          <Box sx={{ flexGrow: 3 }} />
+          {/* <Box sx={{ flexGrow: 1 }} /> */}
 
           {/* 
                     right navBar
@@ -391,8 +400,7 @@ const AppHeaderBar = () => {
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
-              // justifyContent: 'space-around',
-              // gap: 3,
+
               pr: 6,
             }}
           >
@@ -457,6 +465,16 @@ const AppHeaderBar = () => {
               <MoreIcon />
             </IconButton>
           </Box>
+          <DarkModeToggle
+            // value="dark"
+            onChange={() => {
+              if (isDarkMode) {
+                dispatch(setLightMode());
+              } else {
+                dispatch(setDarkMode());
+              }
+            }}
+          />
         </Toolbar>
       </AppBar>
 
