@@ -64,7 +64,7 @@ const ProductDetails = ({ product }: Props) => {
       <Container
         maxWidth="xl"
         sx={{
-          bgcolor: '#fff',
+          bgcolor: 'secondary.main',
           pt: 1,
           boxShadow: 3,
           mt: { md: -3, xs: -4 },

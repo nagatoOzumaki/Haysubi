@@ -1,8 +1,12 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, IconButton } from '@mui/material';
 import { NextSeo } from 'next-seo';
-import { ReactElement, useEffect } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { GetServerSidePropsContext } from 'next';
+import {
+  ArrowBackIosRounded,
+  ArrowForwardIosRounded,
+} from '@mui/icons-material';
 import { Products } from '../common/types/@appTypes';
 import fetchData from '../common/utils/hooks/fetchData';
 import ProductsList from '../common/components/productList/ProductsList';
@@ -23,6 +27,7 @@ type Props = {
 };
 
 const Home: NextPageWithLayout<Props> = ({ products }) => {
+  const [filtersDisplay, setFiltersDisplay] = useState<boolean>(false);
   const productsStore = useProductsState();
   const dispatch = useDispatch<any>();
   const dataFetchingState = useDataFetchingState();
@@ -47,26 +52,53 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
         sx={{
           backgroundColor: 'secondary.main',
           p: 1,
-          mt: 1,
+
           // position: 'relative',
         }}
         container
       >
-        <Grid md={1.2} xs={4} item>
+        <Grid
+          md={filtersDisplay ? 1.2 : 0.6}
+          xs={filtersDisplay ? 4 : 1.4}
+          sx={{
+            position: 'sticky',
+            top: 0,
+            pb: 10,
+            pt: 5,
+            overflowY: 'scroll',
+            scrollBehavior: 'smooth',
+            height: { xs: 800, md: 900 },
+          }}
+          item
+        >
+          <IconButton
+            sx={{
+              position: 'absolute',
+              right: { xs: 1, sm: 15 },
+              top: filtersDisplay ? 10 : '30%',
+              zIndex: 2314234,
+            }}
+            onClick={() => setFiltersDisplay(!filtersDisplay)}
+          >
+            {filtersDisplay ? (
+              <>
+                <ArrowBackIosRounded />
+              </>
+            ) : (
+              <>
+                <ArrowForwardIosRounded />
+              </>
+            )}
+          </IconButton>
           <Box
             sx={{
-              position: 'sticky',
-              top: 0,
-              pb: 10,
-              overflowY: 'scroll',
-              scrollBehavior: 'smooth',
-              height: { xs: 800, md: 900 },
+              display: filtersDisplay ? 'auto' : 'none',
             }}
           >
             <FilterBar />
           </Box>
         </Grid>
-        <Grid md={10} xs={7} item>
+        <Grid md={filtersDisplay ? 10 : 11} xs={filtersDisplay ? 7 : 10} item>
           <ProductsList
             products={dataFetchingState === 'loading' ? null : productsStore}
           />

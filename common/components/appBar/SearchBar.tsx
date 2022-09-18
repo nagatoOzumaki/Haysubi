@@ -14,10 +14,16 @@ import {
 import { useProductsState } from '../../store/Store';
 
 const Search = styled('div')(({ theme }) => ({
+  //
+  transition: theme.transitions.create(['width', 'transform'], {
+    duration: theme.transitions.duration.complex,
+  }),
+
+  //
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
+  '&:active': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginRight: theme.spacing(2),
@@ -104,7 +110,27 @@ const SearchBar = () => {
   }, [dispatch, searchQuery]);
 
   return (
-    <Search>
+    <Search
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        '&:hover': {
+          backgroundColor: 'secondary.main',
+          color: 'primary.main',
+          width: {
+            xs: '90%',
+            sm: '80%',
+          },
+          position: {
+            xs: 'absolute',
+          },
+          zIndex: 23243423,
+          height: {
+            xs: '50%',
+          },
+        },
+      }}
+    >
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>

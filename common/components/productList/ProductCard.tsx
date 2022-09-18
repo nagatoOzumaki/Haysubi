@@ -99,7 +99,7 @@ const ProductCard: FC<Props> = ({ product }) => {
         <Grid item>
           <Button
             variant="contained"
-            sx={{ backgroundColor: 'rgb(10,13,90)' }}
+            sx={{ backgroundColor: 'secondary.main', color: 'primary.main' }}
             onClick={handleAddToCart}
             disabled={!isProductInStock}
           >

@@ -75,8 +75,8 @@ const Index: NextPageWithLayout<null> = () => (
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  backgroundColor: 'rgba(0,0,0,0.8)',
-                  color: '#fff',
+                  backgroundColor: 'primary.main',
+                  color: 'secondary.main',
                   fontSize: 20,
                   '&:hover': {
                     cursor: 'pointer',

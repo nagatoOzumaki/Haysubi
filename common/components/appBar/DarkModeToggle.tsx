@@ -55,7 +55,9 @@ export default function DarkModeToggle(props: any) {
   return (
     <FormGroup>
       <FormControlLabel
-        control={<MaterialUISwitch {...props} sx={{ m: 1 }} defaultChecked />}
+        control={
+          <MaterialUISwitch size="small" {...props} defaultChecked={false} />
+        }
         label={null}
       />
     </FormGroup>
