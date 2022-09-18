@@ -27,7 +27,7 @@ type Props = {
 };
 
 const Home: NextPageWithLayout<Props> = ({ products }) => {
-  const [filtersDisplay, setFiltersDisplay] = useState<boolean>(false);
+  const [filtersDisplay, setFiltersDisplay] = useState<boolean>(true);
   const productsStore = useProductsState();
   const dispatch = useDispatch<any>();
   const dataFetchingState = useDataFetchingState();
@@ -52,53 +52,55 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
         sx={{
           backgroundColor: 'secondary.main',
           p: 1,
-
-          // position: 'relative',
         }}
         container
       >
         <Grid
           md={filtersDisplay ? 1.2 : 0.6}
           xs={filtersDisplay ? 4 : 1.4}
-          sx={{
-            position: 'sticky',
-            top: 0,
-            pb: 10,
-            pt: 5,
-            overflowY: 'scroll',
-            scrollBehavior: 'smooth',
-            height: { xs: 800, md: 900 },
-          }}
+          sx={{ position: 'relative' }}
           item
         >
           <IconButton
             sx={{
-              position: 'absolute',
-              right: { xs: 1, sm: 15 },
-              top: filtersDisplay ? 10 : '30%',
+              position: 'sticky',
+              marginLeft: filtersDisplay ? '60%' : '30%',
+              top: filtersDisplay ? 0 : '36%',
               zIndex: 2314234,
             }}
             onClick={() => setFiltersDisplay(!filtersDisplay)}
           >
             {filtersDisplay ? (
               <>
-                <ArrowBackIosRounded />
+                <ArrowBackIosRounded color="primary" />
               </>
             ) : (
               <>
-                <ArrowForwardIosRounded />
+                <ArrowForwardIosRounded color="primary" />
               </>
             )}
           </IconButton>
           <Box
             sx={{
+              position: 'sticky',
+              top: 0,
+              pb: 10,
+              pt: 5,
+              overflowY: 'scroll',
               display: filtersDisplay ? 'auto' : 'none',
+              scrollBehavior: 'smooth',
+              height: { xs: 800, md: 900 },
             }}
           >
             <FilterBar />
           </Box>
         </Grid>
-        <Grid md={filtersDisplay ? 10 : 11} xs={filtersDisplay ? 7 : 10} item>
+        <Grid
+          sx={{ pl: 2 }}
+          md={filtersDisplay ? 10 : 11}
+          xs={filtersDisplay ? 7 : 10}
+          item
+        >
           <ProductsList
             products={dataFetchingState === 'loading' ? null : productsStore}
           />

@@ -1,6 +1,8 @@
-import { Container, Box, Typography, Paper } from '@mui/material';
+import { Container, Box, Typography, Paper, Grid } from '@mui/material';
 import { Children, cloneElement, isValidElement, useReducer } from 'react';
 import paymentReducer from '../../../common/store/reducers/paymentReducer';
+import CartItemsList from '../../cartPage/CartItemsList';
+import CheckoutCard from '../../cartPage/CheckoutCard';
 import PaimentStepper from '../components/Stepper';
 
 type PropTypes = {
@@ -43,46 +45,45 @@ const PaymentLayout = ({ children }: PropTypes) => {
     return child;
   });
   return (
-    <Container
-      maxWidth="xl"
-      // sx={{
-      //   border: '1px solid #000',
-      //   p: { xs: 1, md: 7 },
-      //   mt: { xs: 2, md: 5 },
-      //   mb: 2,
-      //   position: 'relative',
-      //   height: 600,
-      // }}
-    >
-      <Paper
-        elevation={8}
-        sx={{
-          border: '1px solid #000',
-          p: { xs: 1, md: 7 },
-          mt: { xs: 2, md: 5 },
-          mb: 2,
-          position: 'relative',
-        }}
-      >
-        <Typography variant="h6" sx={{ p: 1 }}>
-          Payment
-        </Typography>
-        {step === 1 || step === 2 || step === 3 || step === 4 || step === 5 ? (
-          <Box>
-            <PaimentStepper step={step} />
-          </Box>
-        ) : null}
-        <Container
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            ml: { xs: 2, md: 10 },
-          }}
-          maxWidth="xl"
-        >
-          {childrenWithProps}
-        </Container>
-      </Paper>
+    <Container maxWidth="xl">
+      <Grid spacing={3} container>
+        <Grid xs={7} sx={{ xs: 7 }} item>
+          <Paper
+            elevation={8}
+            sx={{
+              mb: 2,
+              position: 'relative',
+            }}
+          >
+            <Typography variant="h6" sx={{ p: 1 }}>
+              Payment
+            </Typography>
+            {step === 1 ||
+            step === 2 ||
+            step === 3 ||
+            step === 4 ||
+            step === 5 ? (
+              <Box>
+                <PaimentStepper step={step} />
+              </Box>
+            ) : null}
+            <Container
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                ml: { xs: 2, md: 10 },
+              }}
+              maxWidth="xl"
+            >
+              {childrenWithProps}
+            </Container>
+          </Paper>
+        </Grid>
+        <Grid sx={{ display: { xs: 'none', sm: 'block' } }} item>
+          <CheckoutCard />
+          <CartItemsList />
+        </Grid>
+      </Grid>
     </Container>
   );
 };
