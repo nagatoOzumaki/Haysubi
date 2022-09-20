@@ -40,7 +40,7 @@ import LoginModalToggle from './LoginModalToggle';
 import isSsr from '../../utils/isServerSideRendering';
 import SangoLogo from '../../../public/images/icons/SangoLogo.jpeg';
 import DarkModeToggle from './DarkModeToggle';
-
+import CartItemsList from '../../../modules/cartPage/CartItemsList';
 // ---------------------------
 const AppHeaderBar = () => {
   const cart = useCartState();
@@ -53,19 +53,27 @@ const AppHeaderBar = () => {
   };
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorCartList, setAnchorCart] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
-
+  const isCartListOpen = Boolean(anchorCartList);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
+  // cart lsit-----------------
+  const handleCartListClose = () => {
+    setAnchorCart(null);
+  };
+  //---------
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
+    handleMobileMenuClose();
   };
 
   const handleMenuClose = () => {
@@ -80,6 +88,29 @@ const AppHeaderBar = () => {
     dispatch(openDrawer());
   };
 
+  //
+  const menuCartListId = 'primary-cart-list-id-menu';
+  const renderCartList = (
+    <Menu
+      sx={{ zIndex: 21432235234 }}
+      anchorEl={anchorCartList}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+      id={menuCartListId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'left',
+      }}
+      open={isCartListOpen}
+      onClose={handleCartListClose}
+    >
+      <MenuItem>helowrgewjr</MenuItem>
+      <CartItemsList />
+    </Menu>
+  );
   // ------------------------------
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -408,7 +439,11 @@ const AppHeaderBar = () => {
               <a>
                 <IconButton
                   size="large"
-                  aria-label="show 4 new mails"
+                  aria-label="cart list"
+                  aria-controls={menuCartListId}
+                  aria-haspopup="true"
+                  onMouseEnter={handleCartListClose}
+                  onMouseLeave={handleCartListClose}
                   color="inherit"
                   sx={{ pl: 2 }}
                 >
@@ -480,6 +515,7 @@ const AppHeaderBar = () => {
 
       {renderMobileMenu}
       {renderMenu}
+      {renderCartList}
     </>
   );
 };

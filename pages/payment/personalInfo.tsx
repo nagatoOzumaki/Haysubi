@@ -36,10 +36,10 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
     dispatch({ type: PaymentInfoActions.SET_STEP, payload: 1 });
   }, [dispatch]);
   return (
-    <Grid container spacing={2} sx={{ height: { xs: 600, md: 350 } }}>
-      <Grid item xs={12} height={0}>
+    <Box sx={{}}>
+      <Box>
         <PaymentHeader title="Contact information" />
-      </Grid>
+      </Box>
 
       <Formik
         initialValues={{
@@ -75,7 +75,7 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
       >
         {({ values }) => (
           <Form>
-            <Grid spacing={3} container ml={1}>
+            <Grid spacing={3} p={3} container>
               <Grid item>
                 <MyTextInput
                   label="First Name"
@@ -110,38 +110,30 @@ const PersonalInfo = ({ dispatch, paymentInfo }: PropsType) => {
                   }}
                 />
               </Grid>
+              <Grid xs={12} display="flex" justifyContent="space-between" item>
+                <Button
+                  sx={{ mr: 2 }}
+                  variant="outlined"
+                  onClick={() => {
+                    router.back();
+                  }}
+                >
+                  Back
+                </Button>
+                <Button
+                  type="submit"
+                  // disabled={!isNextButtonEnabled}
+                  variant="contained"
+                  sx={{ backgroundColor: 'green' }}
+                >
+                  Next
+                </Button>
+              </Grid>
             </Grid>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                position: 'absolute',
-                bottom: 53,
-                right: 50,
-              }}
-            >
-              <Button
-                sx={{ mr: 2 }}
-                variant="outlined"
-                onClick={() => {
-                  router.back();
-                }}
-              >
-                Back
-              </Button>
-              <Button
-                type="submit"
-                // disabled={!isNextButtonEnabled}
-                variant="contained"
-                sx={{ backgroundColor: 'green' }}
-              >
-                Next
-              </Button>
-            </Box>
           </Form>
         )}
       </Formik>
-    </Grid>
+    </Box>
   );
 };
 

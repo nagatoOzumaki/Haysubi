@@ -37,14 +37,10 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
   }, [dispatch]);
 
   return (
-    <Grid
-      container
-      spacing={2}
-      sx={{ mt: { xs: 4, md: 4 }, height: { xs: 570, md: 340 } }}
-    >
-      <Grid xs={12} item>
+    <Box>
+      <Box>
         <PaymentHeader title="Home information" />
-      </Grid>
+      </Box>
 
       <Formik
         initialValues={{
@@ -80,7 +76,7 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
       >
         {({ values }) => (
           <Form>
-            <Grid spacing={3} container ml={1}>
+            <Grid spacing={3} p={3} container>
               <Grid md={4} item>
                 <MyTextInput
                   label="zip code"
@@ -117,38 +113,29 @@ const HomeDeliveryInfoStep = ({ dispatch, paymentInfo }: PropsType) => {
                   }}
                 />
               </Grid>
+              <Grid item xs={12} display="flex" justifyContent="space-between">
+                <Button
+                  sx={{ mr: 2 }}
+                  variant="outlined"
+                  onClick={() => {
+                    router.back();
+                  }}
+                >
+                  Back
+                </Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{ backgroundColor: 'green' }}
+                >
+                  Next
+                </Button>
+              </Grid>
             </Grid>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                position: 'absolute',
-                mt: 3,
-                bottom: 30,
-                right: 30,
-              }}
-            >
-              <Button
-                sx={{ mr: 2 }}
-                variant="outlined"
-                onClick={() => {
-                  router.back();
-                }}
-              >
-                Back
-              </Button>
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{ backgroundColor: 'green' }}
-              >
-                Next
-              </Button>
-            </Box>
           </Form>
         )}
       </Formik>
-    </Grid>
+    </Box>
   );
 };
 HomeDeliveryInfoStep.getLayout = function getLayout(page: ReactElement) {

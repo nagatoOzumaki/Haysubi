@@ -166,115 +166,95 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
   }, [dispatch]);
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
+    <Box>
+      <Box>
         <PaymentHeader title="Withdrawal point information" />
-      </Grid>
-      <Grid
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          height: { xs: 400, md: 200 },
+      </Box>
+
+      <Formik
+        onSubmit={values => {
+          dispatch({
+            type: PaymentInfoActions.SET_DELIVERY_METHOD,
+            payload: values.method,
+          });
+
+          dispatch({
+            type: PaymentInfoActions.SET_WITHDRAWAL_POINT,
+            payload: values.withdrawalPoint,
+          });
+
+          dispatch({
+            type: PaymentInfoActions.SET_CITY,
+            payload: values.city,
+          });
+
+          router.push('/payment/verification');
         }}
-        item
+        validationSchema={testSchema}
+        initialValues={initialValues}
+        validateOnChange
       >
-        <Formik
-          onSubmit={values => {
-            dispatch({
-              type: PaymentInfoActions.SET_DELIVERY_METHOD,
-              payload: values.method,
-            });
-
-            dispatch({
-              type: PaymentInfoActions.SET_WITHDRAWAL_POINT,
-              payload: values.withdrawalPoint,
-            });
-
-            dispatch({
-              type: PaymentInfoActions.SET_CITY,
-              payload: values.city,
-            });
-
-            router.push('/payment/verification');
-          }}
-          validationSchema={testSchema}
-          initialValues={initialValues}
-          validateOnChange
-        >
-          {({ values }) => (
-            <Form>
-              {/* --------------------------------------------------------- */}
-              <Grid container spacing={5} alignItems="center">
-                <Grid xs={12} item>
-                  <FormControl sx={{ mt: 5 }}>
-                    <InputLabel htmlFor="city">Cities</InputLabel>
-                    <Select
-                      sx={{ width: 200 }}
-                      autoFocus
-                      defaultValue={paymentInfo.city}
-                      onChange={(e: any) => {
-                        values.city = e.target.value;
-                        handleOnChange(values);
-                        handleWithdrawalPointChange(e.target.value);
-                      }}
-                      label="city"
-                      name="city"
-                    >
-                      {cities.map(point => (
-                        <MenuItem key={point.coordonates} value={point.address}>
-                          {point.address}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-
-                {/* Points */}
-                <Grid item>
-                  {city ? (
-                    <div>
-                      <FormControl>
-                        <InputLabel htmlFor="withdrawal-point">
-                          Points
-                        </InputLabel>
-                        <Select
-                          sx={{ width: 200 }}
-                          autoFocus
-                          onChange={(e: any) => {
-                            values.withdrawalPoint = e.target.value;
-                            handleOnChange(values);
-                            handleWithdrawalPointChange(e.target.value);
-                          }}
-                          label="Withdrawal Points"
-                          defaultValue={paymentInfo.withdrawalPoint}
-                          name="withdrawalPoint"
-                        >
-                          {/* @ts-ignore */}
-                          {withdrawalPoint[values.city].map(point => (
-                            <MenuItem
-                              key={point.coordonates}
-                              value={point.address}
-                            >
-                              {point.address}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-                    </div>
-                  ) : null}
-                </Grid>
+        {({ values }) => (
+          <Form>
+            {/* --------------------------------------------------------- */}
+            <Grid container spacing={3} p={3}>
+              <Grid xs={12} item>
+                <FormControl>
+                  <InputLabel htmlFor="city">Cities</InputLabel>
+                  <Select
+                    sx={{ minWidth: 200 }}
+                    autoFocus
+                    defaultValue={paymentInfo.city}
+                    onChange={(e: any) => {
+                      values.city = e.target.value;
+                      handleOnChange(values);
+                      handleWithdrawalPointChange(e.target.value);
+                    }}
+                    label="city"
+                    name="city"
+                  >
+                    {cities.map(point => (
+                      <MenuItem key={point.coordonates} value={point.address}>
+                        {point.address}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </Grid>
-              {/* --------------------------------------------------- */}
 
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  position: 'absolute',
-                  bottom: 30,
-                  right: 30,
-                }}
-              >
+              {/* Points */}
+              <Grid item>
+                {city ? (
+                  <div>
+                    <FormControl>
+                      <InputLabel htmlFor="withdrawal-point">Points</InputLabel>
+                      <Select
+                        sx={{ minWidth: 200 }}
+                        autoFocus
+                        onChange={(e: any) => {
+                          values.withdrawalPoint = e.target.value;
+                          handleOnChange(values);
+                          handleWithdrawalPointChange(e.target.value);
+                        }}
+                        label="Withdrawal Points"
+                        defaultValue={paymentInfo.withdrawalPoint}
+                        name="withdrawalPoint"
+                      >
+                        {/* @ts-ignore */}
+                        {withdrawalPoint[values.city].map(point => (
+                          <MenuItem
+                            key={point.coordonates}
+                            value={point.address}
+                          >
+                            {point.address}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </div>
+                ) : null}
+              </Grid>
+              <Grid item xs={12} display="flex" justifyContent="space-between">
                 <Button
                   sx={{ mr: 2 }}
                   variant="outlined"
@@ -292,12 +272,12 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
                 >
                   Next
                 </Button>
-              </Box>
-            </Form>
-          )}
-        </Formik>
-      </Grid>
-    </Grid>
+              </Grid>
+            </Grid>
+          </Form>
+        )}
+      </Formik>
+    </Box>
   );
 };
 

@@ -12,7 +12,7 @@ const HeaderLayout: FC<ChildrenProps> = ({ children }) => (
     <AppHeaderBar />
 
     {/* <Container maxWidth="xl"> */}
-    <Box mt={6}> {children}</Box>
+    <Box> {children}</Box>
     {/* next section is for chatbot and chatbot toogle */}
   </div>
 );

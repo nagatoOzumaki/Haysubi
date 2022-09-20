@@ -81,7 +81,13 @@ function ColorlibStepIcon(props: StepIconProps) {
     <ColorlibStepIconRoot
       ownerState={{ completed, active }}
       className={className}
-      sx={{ width: { xs: 40, md: 60 }, height: { xs: 40, md: 60 } }}
+      sx={{
+        width: 30,
+        height: 30,
+        display: 'flex',
+        alignItems: 'center',
+        mt: 1,
+      }}
     >
       {icons[String(props.icon)]}
     </ColorlibStepIconRoot>
@@ -89,11 +95,11 @@ function ColorlibStepIcon(props: StepIconProps) {
 }
 
 const steps = [
-  'Personal Information',
-  'Delivery Method',
-  'Delivery Method Details',
-  'Verification',
-  'Payment',
+  'personal information',
+  'delivery method',
+  'delivery method Details',
+  'verification',
+  'payment',
 ];
 
 function PaimentStepper({ step }: { step: number }) {
@@ -103,7 +109,9 @@ function PaimentStepper({ step }: { step: number }) {
         <Step
           key={label}
           active={index === step - 1}
-          sx={{ width: { xs: 11, md: 23 } }}
+          sx={{
+            width: { xs: 11, md: 23 },
+          }}
         >
           <StepLabel StepIconComponent={ColorlibStepIcon}>
             <Typography sx={{ display: { xs: 'none', md: 'block' } }}>

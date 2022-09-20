@@ -1,7 +1,8 @@
 export default {
   primary: {
     // main: '#083f8f',
-    main: 'rgba(0,0,0,0.9)',
+    main: '#222935',
+    // 'rgba(0,0,0,0.9)',
     success:'green'
   },
   secondary: {

@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import InputLabel from '@mui/material/InputLabel';
 import * as Yup from 'yup';
 
-import { Grid, Typography, Button, Box, Radio } from '@mui/material';
+import { Grid, Button, Box, Radio } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 
 import { useRouter } from 'next/router';
@@ -54,109 +54,90 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
   }, [dispatch]);
 
   return (
-    <Grid
-      container
-      spacing={2}
-      sx={{ height: { xs: 420, md: 300 }, position: 'relative' }}
-    >
-      <Grid item xs={12} height={0}>
+    <Box sx={{}}>
+      <Box>
         <PaymentHeader title="Delivery information" />
-      </Grid>
-      <Grid xs={12} sx={{ display: 'flex', alignItems: 'center' }} item>
-        <Formik
-          onSubmit={values => {
-            dispatch({
-              type: PaymentInfoActions.SET_DELIVERY_METHOD,
-              payload: values.method,
-            });
+      </Box>
 
-            dispatch({
-              type: PaymentInfoActions.SET_WITHDRAWAL_POINT,
-              payload: values.withdrawalPoint,
-            });
+      <Formik
+        onSubmit={values => {
+          dispatch({
+            type: PaymentInfoActions.SET_DELIVERY_METHOD,
+            payload: values.method,
+          });
 
-            dispatch({
-              type: PaymentInfoActions.SET_CITY,
-              payload: values.city,
-            });
-            if (values.method === 'delivery') {
-              router.push('/payment/homeDeliveryInfo');
-            } else {
-              router.push('/payment/withdrawalPointInfo');
-            }
-          }}
-          validationSchema={testSchema}
-          initialValues={initialValues}
-          validateOnChange
-        >
-          {({ values }) => (
-            <Form>
-              {' '}
-              <Typography
+          dispatch({
+            type: PaymentInfoActions.SET_WITHDRAWAL_POINT,
+            payload: values.withdrawalPoint,
+          });
+
+          dispatch({
+            type: PaymentInfoActions.SET_CITY,
+            payload: values.city,
+          });
+          if (values.method === 'delivery') {
+            router.push('/payment/homeDeliveryInfo');
+          } else {
+            router.push('/payment/withdrawalPointInfo');
+          }
+        }}
+        validationSchema={testSchema}
+        initialValues={initialValues}
+        validateOnChange
+      >
+        {({ values }) => (
+          <Form>
+            {' '}
+            {/* <Typography
                 sx={{ fontSize: { xs: 17, md: 23 }, mb: { xs: 2, md: 8 } }}
               >
                 How do you like to get the product ?
-              </Typography>
-              <Box
-                sx={{
-                  // position: 'relative',
-                  ml: 5,
-                }}
-              >
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Field
-                    type="radio"
-                    value="delivery"
-                    name="method"
-                    as={() => (
-                      <Radio
-                        checked={values.method === 'delivery'}
-                        onChange={() => {
-                          values.method = 'delivery';
-                          handleOnChange(values);
-                        }}
-                      />
-                    )}
-                  />{' '}
-                  <InputLabel>Home Delivery</InputLabel>{' '}
-                </Box>
-                <Box>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Field
-                      type="radio"
-                      value="withdrawal"
-                      name="method"
-                      as={() => (
-                        <Radio
-                          checked={values.method === 'withdrawal'}
-                          onChange={() => {
-                            values.method = 'withdrawal';
-                            handleOnChange(values);
-                          }}
-                        />
-                      )}
-                    />{' '}
-                    <InputLabel>Withdrawal Point</InputLabel>
-                    <WithdrawalPointsInfo />
-                  </Box>
-                </Box>
-              </Box>
-              {/* --------------------------------------------------------- */}
-              {/* --------------------------------------------------- */}
-              <Box
+              </Typography> */}
+            <Grid container spacing={3} p={3}>
+              <Grid
+                item
+                xs={12}
                 sx={{
                   display: 'flex',
-                  justifyContent: 'flex-end',
-                  position: 'absolute',
-                  bottom: 20,
-                  right: 40,
+                  alignItems: 'center',
                 }}
               >
+                <Field
+                  type="radio"
+                  value="delivery"
+                  name="method"
+                  as={() => (
+                    <Radio
+                      checked={values.method === 'delivery'}
+                      onChange={() => {
+                        values.method = 'delivery';
+                        handleOnChange(values);
+                      }}
+                    />
+                  )}
+                />{' '}
+                <InputLabel>Home Delivery</InputLabel>{' '}
+              </Grid>
+
+              <Grid xs={12} display="flex" alignItems="center" item>
+                <Field
+                  type="radio"
+                  value="withdrawal"
+                  name="method"
+                  as={() => (
+                    <Radio
+                      checked={values.method === 'withdrawal'}
+                      onChange={() => {
+                        values.method = 'withdrawal';
+                        handleOnChange(values);
+                      }}
+                    />
+                  )}
+                />
+                <InputLabel>Withdrawal Point</InputLabel>
+                <WithdrawalPointsInfo />
+              </Grid>
+              <Grid item xs={12} display="flex" justifyContent="space-between">
                 <Button
                   sx={{ mr: 2 }}
                   variant="outlined"
@@ -173,12 +154,12 @@ const DeliveryMethod = ({ dispatch, paymentInfo }: PropsType) => {
                 >
                   Next
                 </Button>
-              </Box>
-            </Form>
-          )}
-        </Formik>
-      </Grid>
-    </Grid>
+              </Grid>
+            </Grid>
+          </Form>
+        )}
+      </Formik>
+    </Box>
   );
 };
 

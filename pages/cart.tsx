@@ -4,7 +4,7 @@ import CartItemsList from '../modules/cartPage/CartItemsList';
 import CheckoutCard from '../modules/cartPage/CheckoutCard';
 
 const cart: NextPage = () => (
-  <Container maxWidth="xl">
+  <Container maxWidth="xl" sx={{ pt: 5 }}>
     <Typography variant="h4">Shopping Cart</Typography>
     <Grid spacing={5} container>
       <Grid item md={7} xs={12}>

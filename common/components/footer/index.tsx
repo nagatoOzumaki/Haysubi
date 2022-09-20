@@ -14,7 +14,8 @@ import NextLink from 'next/link';
 const Footer: FC = () => (
   <Box
     sx={{
-      backgroundColor: 'rgba(0, 0,0, 1)',
+      backgroundColor: '#005080',
+      //  'rgba(0, 0,0, 1)',
 
       p: 5,
 
