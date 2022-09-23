@@ -1,12 +1,5 @@
-import { RemoveShoppingCart } from '@mui/icons-material';
-import {
-  Button,
-  ButtonGroup,
-  Grid,
-  Link,
-  TableRow,
-  Typography,
-} from '@mui/material';
+import { Close } from '@mui/icons-material';
+import { Button, Grid, Link, Typography } from '@mui/material';
 import Image from 'next/image';
 import { FC, useEffect, useState } from 'react';
 import NextLink from 'next/link';
@@ -63,48 +56,37 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
   }, [product.id, wishList]);
 
   return (
-    <TableRow
-      // hover
-      tabIndex={-1}
-      sx={{
-        p: 2,
-        pl: 2,
-        display: 'flex',
-        alignItems: 'center',
-        border: '1px solid #bbb',
-        position: 'relative',
-      }}
-    >
-      <Grid container>
-        <Grid
-          lg={6}
-          sx={{
-            display: 'flex',
-            alignItems: { lg: 'flex-end', xs: 'flex-start' },
-            pb: { lg: 0, xs: 2 },
-          }}
-          item
-        >
+    <>
+      <Grid
+        sx={{ p: 1, border: '1px solid #eee', position: 'relative' }}
+        container
+      >
+        <Grid xs={4} sm={3} display="flex" alignItems="center" item>
           <Image
             src={`${product.image[0]}`}
             loader={() => product.image[0]}
-            width={70}
-            height={140}
+            width="100%"
+            height={150}
             alt={product.title}
           />
+        </Grid>
+
+        <Grid
+          xs={5}
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          item
+        >
           <NextLink href={`product/${product.id}`}>
             <Link sx={{ cursor: 'pointer' }}>
               <Typography
                 variant="body1"
                 sx={{
-                  mt: { xs: 4, lg: 0 },
-                  ml: 1,
-                  mb: { lg: 4, xs: 0 },
-                  fontWeight: 'bold',
                   display: 'flex',
                   alignItems: { lg: 'flex-end', xs: 'flex-start' },
-                  height: { md: 46, xs: 44 },
-                  width: { md: 240, xs: 200 },
+
+                  width: '100%',
                   whiteSpace: 'wrap',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -114,19 +96,6 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
               </Typography>
             </Link>
           </NextLink>
-        </Grid>
-
-        <Grid
-          item
-          lg={2}
-          xs={3.5}
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            mt: { xs: 9, lg: 0 },
-            ml: { xs: -24, lg: 0 },
-          }}
-        >
           <Typography
             sx={{
               color: '#fb0',
@@ -140,45 +109,44 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
           </Typography>
         </Grid>
         <Grid
+          xs={12}
+          sm={2}
           item
-          lg={3}
-          xs={5}
           sx={{
             display: 'flex',
+            width: 30,
             alignItems: 'center',
-            mt: { xs: 9, lg: 0 },
+            justifyContent: { xs: 'flex-end', sm: 'center' },
+            flexDirection: { xs: 'row', sm: 'column-reverse' },
           }}
         >
-          <ButtonGroup
-            sx={{ display: 'block', mb: 1 }}
+          <Button
+            variant="contained"
             disabled={!isProductInStock}
+            onClick={handleDecrement}
           >
-            <Button variant="contained" onClick={handleDecrement}>
-              -
-            </Button>
-            <Button type="button">{quantity}</Button>
-            <Button variant="contained" onClick={handleIncrement}>
-              +
-            </Button>
-          </ButtonGroup>
-        </Grid>
-        <Grid
-          item
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-
-            position: 'absolute',
-            top: 3,
-            right: -9,
-          }}
-        >
-          <Button onClick={() => remove(product)}>
-            <RemoveShoppingCart color="primary" />
+            -
+          </Button>
+          <Button type="button" disabled={!isProductInStock}>
+            {quantity}
+          </Button>
+          <Button
+            variant="contained"
+            disabled={!isProductInStock}
+            onClick={handleIncrement}
+          >
+            +
           </Button>
         </Grid>
+
+        <Button
+          sx={{ position: 'absolute', right: 0, top: '40%' }}
+          onClick={() => remove(product)}
+        >
+          <Close color="primary" />
+        </Button>
       </Grid>
-    </TableRow>
+    </>
   );
 };
 export default CartItemCard;

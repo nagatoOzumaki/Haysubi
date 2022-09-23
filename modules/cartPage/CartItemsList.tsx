@@ -51,7 +51,7 @@ const CartItemsList = () => {
         {cartItems.length !== 0 ? (
           <Table
             component={Paper}
-            elevation={2}
+            elevation={1}
             stickyHeader
             aria-label="sticky table"
           >

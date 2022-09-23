@@ -51,14 +51,15 @@ const PaymentLayout = ({ children }: PropTypes) => {
     return child;
   });
   return (
-    <Box sx={{ pt: 10, backgroundColor: '#F6F9FC', height: 1000 }}>
+    <Box sx={{ mt: 3, backgroundColor: '#F6F9FC', p: 0, pb: 3 }}>
       <Container maxWidth="xl">
         <Grid spacing={3} container>
           <Grid xs={12} md={7} item>
             <Paper
-              elevation={2}
+              elevation={0}
               sx={{
                 mb: 2,
+                border: '1px solid #000',
               }}
             >
               <Typography variant="h6" sx={{ p: 1 }}>
@@ -113,7 +114,9 @@ const PaymentLayout = ({ children }: PropTypes) => {
                 {' DH'}
               </Typography>
             </Box>
-            <CartItemsList />
+            <Box sx={{ border: '1px solid #000' }}>
+              <CartItemsList />
+            </Box>
           </Grid>
         </Grid>
       </Container>

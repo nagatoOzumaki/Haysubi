@@ -13,6 +13,7 @@ import NextLink from 'next/link';
 import { useDispatch } from 'react-redux';
 import {
   AutoStoriesOutlined,
+  Close,
   FavoriteBorder,
   LaptopChromebook,
   LoginOutlined,
@@ -22,7 +23,7 @@ import {
   ShoppingCartOutlined,
 } from '@mui/icons-material';
 import Image from 'next/image';
-import { Divider } from '@mui/material';
+import { Divider, Grid, Typography } from '@mui/material';
 import SearchBar from './SearchBar';
 import {
   useCartState,
@@ -41,6 +42,8 @@ import isSsr from '../../utils/isServerSideRendering';
 import SangoLogo from '../../../public/images/icons/SangoLogo.jpeg';
 import DarkModeToggle from './DarkModeToggle';
 import CartItemsList from '../../../modules/cartPage/CartItemsList';
+import CheckoutCard from '../../../modules/cartPage/CheckoutCard';
+
 // ---------------------------
 const AppHeaderBar = () => {
   const cart = useCartState();
@@ -53,9 +56,8 @@ const AppHeaderBar = () => {
   };
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [anchorCartList, setAnchorCart] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [anchorCartList, setAnchorCartList] =
+    React.useState<null | HTMLElement>(null);
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -68,12 +70,14 @@ const AppHeaderBar = () => {
   };
   // cart lsit-----------------
   const handleCartListClose = () => {
-    setAnchorCart(null);
+    setAnchorCartList(null);
   };
+  // const handleCartListOpen = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorCartList(event.currentTarget);
+  // };
   //---------
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
-    handleMobileMenuClose();
   };
 
   const handleMenuClose = () => {
@@ -90,25 +94,45 @@ const AppHeaderBar = () => {
 
   //
   const menuCartListId = 'primary-cart-list-id-menu';
+  // working2
   const renderCartList = (
     <Menu
-      sx={{ zIndex: 21432235234 }}
+      sx={{ m: 7, backgroundColor: '#ebe', width: 500 }}
       anchorEl={anchorCartList}
       anchorOrigin={{
-        vertical: 'bottom',
+        vertical: 'top',
         horizontal: 'right',
       }}
       id={menuCartListId}
       keepMounted
       transformOrigin={{
         vertical: 'top',
-        horizontal: 'left',
+        horizontal: 'center',
       }}
       open={isCartListOpen}
       onClose={handleCartListClose}
     >
-      <MenuItem>helowrgewjr</MenuItem>
-      <CartItemsList />
+      <IconButton onClick={handleCartListClose}>
+        <Close />
+      </IconButton>
+      <NextLink href="/cart">
+        <a>Basket</a>
+      </NextLink>
+      <Grid spacing={5} container>
+        <Grid item md={7} xs={12}>
+          <CartItemsList />
+        </Grid>
+        <Grid item md={3} xs={12}>
+          <CheckoutCard />
+        </Grid>
+      </Grid>
+      <Grid pt={2} pb={4} item>
+        <Typography variant="body2">
+          The price and availability of items at Hysubi are subject to change.
+          The Cart is a temporary place to store a list of your items and
+          reflects each item{"'"}s most recent price.
+        </Typography>
+      </Grid>
     </Menu>
   );
   // ------------------------------
@@ -303,7 +327,6 @@ const AppHeaderBar = () => {
       <AppBar
         position="static"
         sx={{
-          // width: '100%',
           height: 100,
           display: 'flex',
           justifyContent: 'center',
@@ -436,14 +459,14 @@ const AppHeaderBar = () => {
             }}
           >
             <NextLink href="/cart">
+              {/* working1 */}
               <a>
                 <IconButton
                   size="large"
-                  aria-label="cart list"
-                  aria-controls={menuCartListId}
-                  aria-haspopup="true"
-                  onMouseEnter={handleCartListClose}
-                  onMouseLeave={handleCartListClose}
+                  // aria-label="cart list"
+                  // aria-controls={menuCartListId}
+                  // aria-haspopup="true"
+                  // onMouseEnter={handleCartListOpen}
                   color="inherit"
                   sx={{ pl: 2 }}
                 >

@@ -57,14 +57,14 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
       >
         <Grid
           md={filtersDisplay ? 1.2 : 0.6}
-          xs={filtersDisplay ? 4 : 1.4}
+          xs={filtersDisplay ? 4 : 0.5}
           sx={{ position: 'relative' }}
           item
         >
           <IconButton
             sx={{
               position: 'sticky',
-              marginLeft: filtersDisplay ? '60%' : '30%',
+              marginLeft: filtersDisplay ? '60%' : -1,
               top: filtersDisplay ? 0 : '36%',
               zIndex: 2314234,
             }}

@@ -19,7 +19,7 @@ export const MyTextInput: FC<any> = ({ label, InputColor, ...props }) => {
         variant="outlined"
         sx={{
           input: {
-            borderWidth: 3,
+            borderWidth: '1px',
             borderColor: 'blue',
             color: InputColor || '#000',
           },
@@ -29,6 +29,7 @@ export const MyTextInput: FC<any> = ({ label, InputColor, ...props }) => {
           borderColor: 'rgba(255,255,255,0.3)',
           borderWidth: '1px',
           borderStyle: 'solid',
+          outline: 'none',
         }}
       />
       {meta.touched && meta.error ? (

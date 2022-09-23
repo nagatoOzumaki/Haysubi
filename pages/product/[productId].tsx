@@ -67,7 +67,7 @@ const ProductDetails = ({ product }: Props) => {
           bgcolor: 'secondary.main',
           pt: 1,
           boxShadow: 3,
-          mt: { md: -3, xs: -4 },
+          mt: { md: 1, xs: -4 },
         }}
       >
         <Grid container>
