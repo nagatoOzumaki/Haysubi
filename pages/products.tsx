@@ -56,7 +56,7 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
         container
       >
         <Grid
-          md={filtersDisplay ? 1.2 : 0.6}
+          md={filtersDisplay ? 1.2 : 0.2}
           xs={filtersDisplay ? 4 : 0.5}
           sx={{ position: 'relative' }}
           item
@@ -64,7 +64,10 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
           <IconButton
             sx={{
               position: 'sticky',
-              marginLeft: filtersDisplay ? '60%' : -1,
+              marginLeft: {
+                xs: filtersDisplay ? '60%' : -1,
+                md: filtersDisplay ? '60%' : 0,
+              },
               top: filtersDisplay ? 0 : '36%',
               zIndex: 2314234,
             }}
@@ -87,6 +90,8 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
               pb: 10,
               pt: 5,
               overflowY: 'scroll',
+
+              scrollbarWidth: 'none',
               display: filtersDisplay ? 'auto' : 'none',
               scrollBehavior: 'smooth',
               height: { xs: 800, md: 900 },
