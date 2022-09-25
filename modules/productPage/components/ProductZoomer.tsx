@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import { FC } from 'react';
 import ReactImageMagnify from 'react-image-magnify';
 
@@ -30,12 +29,7 @@ const ProductZoomer: FC<PropTypes> = ({ productImage }) => {
     isHintEnabled: true,
     shouldUsePositiveSpaceLens: true,
   };
-  return (
-    <Box sx={{ zIndex: 32308832349 }}>
-      {' '}
-      <ReactImageMagnify {...imageProps} />
-    </Box>
-  );
+  return <ReactImageMagnify style={{ zIndex: 13 }} {...imageProps} />;
 };
 
 export default ProductZoomer;

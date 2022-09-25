@@ -9,9 +9,6 @@ import {
   Divider,
   Grid,
   IconButton,
-  Link,
-  List,
-  ListItem,
   Typography,
 } from '@mui/material';
 import { marked } from 'marked';
@@ -100,24 +97,12 @@ const Article: NextPage<any> = ({ frontmatter, content }) => {
         sx={{ direction: 'rtl' }}
         dangerouslySetInnerHTML={{ __html: marked(content) }}
       ></Container>
+
+      {/* ------------------------------------------------- */}
       <Box sx={{ position: 'fixed', bottom: 0, right: 0 }}>
         <ArticleActions />
       </Box>
-      <Box sx={{ direction: 'rtl' }}>
-        <Typography>Bibliographie:</Typography>
-        <List>
-          <ListItem>
-            <Link href="#">1-ressource one</Link>
-          </ListItem>
-          <ListItem>
-            <Link>2-ressource two</Link>
-          </ListItem>
-          <ListItem>
-            {' '}
-            <Link>3-ressource three</Link>
-          </ListItem>
-        </List>
-      </Box>
+      {/* ------------------------------------------------- */}
 
       <Divider />
       <Box sx={{ m: 3, direction: 'rtl' }}>

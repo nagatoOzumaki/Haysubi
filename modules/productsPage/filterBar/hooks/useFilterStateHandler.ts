@@ -11,19 +11,20 @@ const useFilterStateHandler = (filter: FilterElement) => {
     const router = useRouter();
     const currentFilter = useFilter();
     const handleFilter = 
-      (event: React.FormEvent<HTMLInputElement>) => {
-        dispatch(dataIsLoading())
+     async (event: React.FormEvent<HTMLInputElement>) => {
+        await dispatch(dataIsLoading())
         const { checked, value } :any= event.target;
         if (checked) {
           selectedValues.current = [...selectedValues.current, value];
-          dispatch(addFilter({ [filter]: selectedValues.current }));
-        } else {
-          selectedValues.current = [
+         await dispatch(addFilter({ [filter]: selectedValues.current }));
+        }
+        else {
+            selectedValues.current = [
             ...selectedValues.current.filter(
               selectedValue => value !== selectedValue
             ),
           ];
-          dispatch(addFilter({ [filter]: selectedValues.current }));
+          await dispatch(addFilter({ [filter]: selectedValues.current }));
           
         }
         

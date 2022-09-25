@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Backdrop from '@mui/material/Backdrop';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
@@ -8,18 +7,30 @@ import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import PrintIcon from '@mui/icons-material/Print';
 import ShareIcon from '@mui/icons-material/Share';
-
-const actions = [
-  { icon: <FileCopyIcon />, name: 'Copy' },
-  { icon: <SaveIcon />, name: 'Save' },
-  { icon: <PrintIcon />, name: 'Print' },
-  { icon: <ShareIcon />, name: 'Share' },
-];
+import { Modal } from '@mui/material';
+import ShareToSocialMedia from './ShareToSocialMedial';
 
 export default function ArticleActions() {
   const [open, setOpen] = React.useState(false);
+  const [shareToSocialMediaOpen, setCloseShareToSocialMediaOpen] =
+    React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleCloseShareToSocialMedia = () => {
+    setCloseShareToSocialMediaOpen(false);
+  };
+  const handleOpenShareToSocialMedia = () => {
+    setCloseShareToSocialMediaOpen(true);
+  };
+  const actions = [
+    { icon: <FileCopyIcon />, name: 'Copy' },
+    { icon: <SaveIcon />, name: 'Save' },
+    { icon: <PrintIcon />, name: 'Print' },
+    {
+      icon: <ShareIcon onClick={handleOpenShareToSocialMedia} />,
+      name: 'Share',
+    },
+  ];
 
   return (
     <Box
@@ -31,7 +42,7 @@ export default function ArticleActions() {
         flexGrow: 1,
       }}
     >
-      <Backdrop open={open} />
+      {/* <Backdrop open={open} sx={{ backgroundColor: 'transparent' }} /> */}
       <SpeedDial
         ariaLabel="article actions"
         sx={{
@@ -54,6 +65,16 @@ export default function ArticleActions() {
           />
         ))}
       </SpeedDial>
+
+      <Modal
+        open={shareToSocialMediaOpen}
+        onClose={handleCloseShareToSocialMedia}
+        aria-labelledby="share to social media"
+        aria-describedby="share to social media"
+        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
+        <ShareToSocialMedia />
+      </Modal>
     </Box>
   );
 }

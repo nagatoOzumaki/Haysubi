@@ -38,6 +38,7 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
     dispatch(addProductsToStore(products));
 
     dispatch(fetchingSuccessed());
+
     return () => {
       dispatch(clearProductsToStore());
     };
@@ -106,9 +107,11 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
           xs={filtersDisplay ? 7 : 10}
           item
         >
-          <ProductsList
-            products={dataFetchingState === 'loading' ? null : productsStore}
-          />
+          {dataFetchingState === 'loading' ? (
+            <ProductsList products={null} />
+          ) : (
+            <ProductsList products={productsStore} />
+          )}
         </Grid>
       </Grid>
     </>
@@ -128,6 +131,7 @@ export const getServerSideProps = async (
         },
       };
     }
+
     const returnObject = {
       props: {
         products,

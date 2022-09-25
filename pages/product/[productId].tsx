@@ -68,6 +68,7 @@ const ProductDetails = ({ product }: Props) => {
           pt: 1,
           boxShadow: 3,
           mt: { md: 1, xs: -4 },
+          zIndex: -1,
         }}
       >
         <Grid container>
@@ -118,7 +119,7 @@ const ProductDetails = ({ product }: Props) => {
                 alt="image"
               /> */}
             {/* </Box> */}
-            <Box sx={{}}>
+            <Box sx={{ zIndex: 8211432432234343 }}>
               <ProductZoomer productImage={currentMainImage} />
             </Box>
           </Grid>
@@ -171,7 +172,6 @@ const ProductDetails = ({ product }: Props) => {
               sx={{
                 display: 'flex',
                 mt: { xs: -3, md: -10 },
-
                 justifyContent: 'center',
                 ml: 16,
               }}
