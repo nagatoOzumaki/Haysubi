@@ -11,6 +11,7 @@ import { Form, Formik } from 'formik';
 
 import { useRouter } from 'next/router';
 import { ReactElement, useEffect, useState } from 'react';
+
 import {
   PaymentInfoActions,
   PaymentInfoState,
@@ -23,6 +24,7 @@ import {
   enableNext,
 } from '../../modules/paymentPage/utils/nextButtonControl';
 import PaymentHeader from '../../modules/paymentPage/components/PaymentHeader';
+import WithdrawalPointsMap from '../../modules/paymentPage/components/WithdrawalPointsMap';
 
 type PropsType = {
   dispatch: any;
@@ -254,6 +256,25 @@ const WithdrawalPointInfo = ({ dispatch, paymentInfo }: PropsType) => {
                   </div>
                 ) : null}
               </Grid>
+              {values.withdrawalPoint ? (
+                <>
+                  {/* <Grid sx={{ display: 'flex', alignItems: 'flex-end' }} item>
+                    <Typography variant="body2">
+                      click on the map to see the localisation
+                    </Typography>
+                  </Grid> */}
+                  <Grid
+                    xs={12}
+                    sx={{
+                      height: { xs: 300, sm: 400, md: 500 },
+                      overflowY: 'hidden',
+                    }}
+                    item
+                  >
+                    <WithdrawalPointsMap />
+                  </Grid>
+                </>
+              ) : null}
               <Grid item xs={12} display="flex" justifyContent="space-between">
                 <Button
                   sx={{ mr: 2 }}

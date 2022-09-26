@@ -61,7 +61,7 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
         sx={{ p: 1, border: '1px solid #eee', position: 'relative' }}
         container
       >
-        <Grid xs={4} sm={3} display="flex" alignItems="center" item>
+        <Grid xs={4} sm={2} display="flex" alignItems="center" item>
           <Image
             src={`${product.image[0]}`}
             loader={() => product.image[0]}
@@ -79,13 +79,18 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
           item
         >
           <NextLink href={`product/${product.id}`}>
-            <Link sx={{ cursor: 'pointer' }}>
+            <Link
+              sx={{
+                cursor: 'pointer',
+                textDecoration: 'none',
+              }}
+            >
               <Typography
                 variant="body1"
                 sx={{
                   display: 'flex',
                   alignItems: { lg: 'flex-end', xs: 'flex-start' },
-
+                  height: { xs: 61 },
                   width: '100%',
                   whiteSpace: 'wrap',
                   overflow: 'hidden',
@@ -110,7 +115,7 @@ const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
         </Grid>
         <Grid
           xs={12}
-          sm={2}
+          sm={3}
           item
           sx={{
             display: 'flex',
