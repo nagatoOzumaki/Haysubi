@@ -48,16 +48,33 @@ function DrawerList() {
     <Box>
       {ListContent.map(({ title, subTitles }: ListItemType) => (
         <Box key={title}>
-          <Typography sx={{ ml: -4 }} variant="h5">
+          <Typography
+            sx={{
+              fontWeight: 'bold',
+              fontSize: 25,
+              backgroundColor: '#F3F9FF',
+              color: '#000',
+              p: 1,
+              textTransform: 'capitalize',
+            }}
+            variant="h5"
+          >
             {title}
           </Typography>
           <List>
             {subTitles.map(subTitle => (
-              <ListItem key={subTitle[0]} disablePadding>
+              <ListItem
+                key={subTitle[0]}
+                sx={{ backgroundColor: '#sss', border: '1px solid #eee' }}
+                disablePadding
+              >
                 <NextLink href={subTitle[0]}>
                   <>
                     <ListItemButton>
-                      <ListItemText primary={<a>{subTitle[1]}</a>} />
+                      <ListItemText
+                        sx={{ pl: 3 }}
+                        primary={<a>{subTitle[1]}</a>}
+                      />
                     </ListItemButton>
                   </>
                 </NextLink>

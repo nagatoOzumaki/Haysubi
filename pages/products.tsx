@@ -70,7 +70,7 @@ const Home: NextPageWithLayout<Props> = ({ products }) => {
                 md: filtersDisplay ? '60%' : 0,
               },
               top: filtersDisplay ? 0 : '36%',
-              zIndex: 2314234,
+              zIndex: 2314,
             }}
             onClick={() => setFiltersDisplay(!filtersDisplay)}
           >
