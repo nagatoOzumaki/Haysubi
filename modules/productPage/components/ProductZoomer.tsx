@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import ReactImageMagnify from 'react-image-magnify';
 
-type PropTypes = { productImage: string };
+type PropTypes = { productImage: string; props?: any };
 
-const ProductZoomer: FC<PropTypes> = ({ productImage }) => {
+const ProductZoomer: FC<PropTypes> = ({ productImage, ...props }) => {
   const imageProps = {
     smallImage: {
       alt: 'product',
@@ -29,7 +29,9 @@ const ProductZoomer: FC<PropTypes> = ({ productImage }) => {
     isHintEnabled: true,
     shouldUsePositiveSpaceLens: true,
   };
-  return <ReactImageMagnify style={{ zIndex: 13 }} {...imageProps} />;
+  return (
+    <ReactImageMagnify style={{ zIndex: 13 }} {...imageProps} {...props} />
+  );
 };
 
 export default ProductZoomer;

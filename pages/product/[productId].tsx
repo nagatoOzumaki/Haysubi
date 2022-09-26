@@ -11,7 +11,7 @@ import fetchData from '../../common/utils/hooks/fetchData';
 import Reviews from '../../modules/productPage/components/reviews';
 import FooterLayout from '../../common/layouts/footerLayout/FooterLayout';
 import ChatbotLayout from '../../common/layouts/chatbotLayout';
-import SuggestionsSilder from '../../modules/productPage/components/slider/suggestionsSlider';
+import SuggestionsSilder from '../../modules/productPage/components/slider/SuggestionsSlider';
 import QuantityInput from '../../modules/productPage/components/QuantityInput';
 import ProductZoomer from '../../modules/productPage/components/ProductZoomer';
 
@@ -104,7 +104,7 @@ const ProductDetails = ({ product }: Props) => {
             md={3.5}
             sx={{
               ml: 8,
-              maxHeight: { md: 950 },
+              maxHeight: { md: 600 },
               minHeight: { md: 500 },
               p: 2,
             }}
@@ -119,7 +119,7 @@ const ProductDetails = ({ product }: Props) => {
                 alt="image"
               /> */}
             {/* </Box> */}
-            <Box sx={{ zIndex: 8211432432234343 }}>
+            <Box sx={{ backgroundColor: 'red' }}>
               <ProductZoomer productImage={currentMainImage} />
             </Box>
           </Grid>
