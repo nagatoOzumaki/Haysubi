@@ -1,19 +1,34 @@
-import { Grid, Paper, Fab, Link, Box } from '@mui/material';
+import { Grid, Paper, Fab, Link, Box, Typography } from '@mui/material';
 import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined';
 import NextLink from 'next/link';
 import { ReactElement } from 'react';
+import NextImage from 'next/image';
 import FooterLayout from '../common/layouts/footerLayout/FooterLayout';
 import { NextPageWithLayout } from './_app';
 import ChatbotLayout from '../common/layouts/chatbotLayout';
+import Gamer from '../public/images/profils/gamer.webp';
+import Architect from '../public/images/profils/architect.jpg';
+import Developer from '../public/images/profils/developper.jpg';
+import Student from '../public/images/profils/student.jpg';
+import Photographer from '../public/images/profils/photographer.jpeg';
+import Designer from '../public/images/profils/designer.jpeg';
 
 const categories = [1, 2, 3, 4, 5, 6];
 const profils = [
   'designer',
   'photographer',
-  'developper',
+  'developer',
   'student',
   'gamer',
   'architect',
+];
+const profilsIcons = [
+  Designer,
+  Photographer,
+  Developer,
+  Student,
+  Gamer,
+  Architect,
 ];
 
 const Index: NextPageWithLayout<null> = () => (
@@ -64,28 +79,46 @@ const Index: NextPageWithLayout<null> = () => (
         container
         item
       >
-        {profils.map(profil => (
+        {profils.map((profil, index) => (
           <Grid key={profil} item xs={6} md={4} lg={4}>
             <NextLink href={`/products?profil=${profil}`}>
               <Paper
                 elevation={3}
                 sx={{
-                  p: { xs: 10, md: 11 },
                   height: { md: 300 },
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  backgroundColor: 'primary.main',
                   color: 'secondary.main',
+                  border: '2px solid #000',
+                  boxShadow: '1px 2px  10px #000',
                   fontSize: 20,
+                  position: 'relative',
                   '&:hover': {
                     cursor: 'pointer',
-                    backgroundColor: '#fff',
-                    color: '#000',
+                    m: 0.1,
+                    p: 0.1,
+                    border: 'none',
                   },
                 }}
               >
-                <a> As {profil}</a>
+                <a>
+                  <NextImage
+                    width="600%"
+                    height="363%"
+                    alt="fs"
+                    src={profilsIcons[index]}
+                  />
+                  <Typography
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      p: 1,
+                      color: '#000',
+                      fontWeight: 'bold',
+                      backgroundColor: '#fff',
+                    }}
+                  >
+                    As {profil}{' '}
+                  </Typography>
+                </a>
               </Paper>
             </NextLink>
           </Grid>

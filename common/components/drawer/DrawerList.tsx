@@ -50,9 +50,9 @@ function DrawerList() {
         <Box key={title}>
           <Typography
             sx={{
-              fontWeight: 'bold',
+              // fontWeight: 'bold',
               fontSize: 25,
-              backgroundColor: '#F3F9FF',
+              // backgroundColor: '#F3F9FF',
               color: '#000',
               p: 1,
               textTransform: 'capitalize',

@@ -15,7 +15,7 @@ type PropTypes = {
 };
 
 const CartItemCard: FC<PropTypes> = ({ product, remove }) => {
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number>(product.quantity);
   const [, setInWishList] = useState<boolean | null>(null);
   const [, setItemInCart] = useState<boolean | null>(null);
   const { cartItems } = useCartState();

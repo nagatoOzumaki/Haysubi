@@ -14,7 +14,7 @@ const ProductsList: FC<Props> = ({ products }) => (
   >
     {products
       ? products.map(product => (
-          <Grid key={product.id} xs={12} sm={5.9} md={3} lg={2.9} xl={2.4} item>
+          <Grid key={product.id} xs={12} sm={6} md={4} lg={2.9} xl={2.4} item>
             <ProductCard product={product} />
           </Grid>
         ))
