@@ -119,7 +119,13 @@ const ProductDetails = ({ product }: Props) => {
                 alt="image"
               /> */}
             {/* </Box> */}
-            <Box sx={{ backgroundColor: 'red' }}>
+            <Box
+              sx={{
+                backgroundColor: 'red',
+                width: 'fit-content',
+                blockSize: 'fit-content',
+              }}
+            >
               <ProductZoomer productImage={currentMainImage} />
             </Box>
           </Grid>

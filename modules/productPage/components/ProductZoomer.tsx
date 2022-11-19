@@ -18,8 +18,8 @@ const ProductZoomer: FC<PropTypes> = ({ productImage, ...props }) => {
       height: 1800,
     },
     enlargedImageContainerDimensions: {
-      width: '230%',
-      height: '120%',
+      width: '300%', // 270
+      height: '190%', // 120
       backgroundColor: '#000',
     },
     lensStyle: {

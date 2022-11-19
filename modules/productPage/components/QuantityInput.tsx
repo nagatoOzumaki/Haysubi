@@ -75,7 +75,7 @@ const QuantityInput: FC<PropTypes> = ({ product }) => {
         sx={{ color: '#fb0', fontWeight: 'bold', fontSize: 23, pb: 2 }}
       >
         {' '}
-        {product.price}
+        {(product.price as unknown as number) * quantity}
         {' DH'}
         <Divider />
       </Typography>
