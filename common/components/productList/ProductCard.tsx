@@ -114,7 +114,7 @@ const ProductCard: FC<Props> = ({ product }) => {
           </span>
         </Grid> */}
         <Grid xs={12} p={1} pl={6} pr={6} item>
-          {!isProductInStock ? (
+          {/* {!isProductInStock ? (
             <Badge
               sx={{
                 width: 70,
@@ -127,14 +127,24 @@ const ProductCard: FC<Props> = ({ product }) => {
               showZero
             />
           ) : null}
-          {isProductInStock ? (
-            <Button
+          
+          
+          
+          
+          */}
+            
+          {/* -------------------------- add to cart and order -------------------------------------- */}
+
+
+          <Button
               variant="contained"
               fullWidth
               onClick={handleAddToCart}
               disabled={!isProductInStock}
               sx={{
-                backgroundColor: '#ef5350',
+                // backgroundColor: '#ef5350',
+                                backgroundColor: '#f68b1e',
+
                 '&:hover': {
                   backgroundColor: '#ef5350',
                 },
@@ -152,32 +162,9 @@ const ProductCard: FC<Props> = ({ product }) => {
                 <AddShoppingCartOutlined />
               )}
             </Button>
-          ) : (
-            <>
-              {' '}
-              <Button
-                variant="contained"
-                fullWidth
-                onClick={handleAddToCart}
-                // disabled={!isProductInStock}
-                sx={{
-                  backgroundColor: '#64b5f6',
-                  '&:hover': {
-                    backgroundColor: '#64b5f6',
-                  },
-                  fontSize: 10,
-                }}
-              >
-                {/* <Badge
-                color="primary"
-                badgeContent={<Button>Order</Button>}
-                showZero
-              > */}
-                order product
-                {/* </Badge> */}
-              </Button>
-            </>
-          )}
+            
+       {/* here miising  */}
+          {/* ---------------------------------------------------------- */}
         </Grid>
       </Grid>
     </Card>

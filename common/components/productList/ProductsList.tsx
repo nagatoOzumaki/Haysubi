@@ -4,17 +4,24 @@ import { Products } from '../../types/@appTypes';
 import ProductCard from './ProductCard';
 import ProductSkelton from './ProductSkelton';
 
-type Props = { products: Products | null | undefined };
-const ProductsList: FC<Props> = ({ products }) => (
+type Props = { products: Products | null | undefined,isFilterBarDisplayed:boolean};
+const ProductsList: FC<Props> = ({ products,isFilterBarDisplayed }) =>
+{
+const isF=isFilterBarDisplayed;
+ return(
+
   <Grid
     container
-    sx={{ width: { xs: 'auto', md: 'auto' } }}
-    spacing={0.5}
-    p={0}
+    sx={{ width: { xs: 'auto', md: 'auto' },display:'center', justifyContent:'center',justi:'left' }}
+     spacing={0}
+    
   >
     {products
       ? products.map(product => (
-          <Grid key={product.id} xs={12} sm={6} md={4} lg={2.9} xl={2.4} item>
+          <Grid key={product.id} xs={12} sm={5.9} md={4} lg={isF?4:4}
+          xl={isF?2.8:2.4}
+          
+           item>
             <ProductCard product={product} />
           </Grid>
         ))
@@ -26,6 +33,7 @@ const ProductsList: FC<Props> = ({ products }) => (
           </Grid>
         ))}
   </Grid>
-);
+)
+        };
 
 export default ProductsList;

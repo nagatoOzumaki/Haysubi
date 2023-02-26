@@ -13,7 +13,7 @@ import Student from '../public/images/profils/student.jpg';
 import Photographer from '../public/images/profils/photographer.jpeg';
 import Designer from '../public/images/profils/designer.jpeg';
 
-const categories = [1, 2, 3, 4, 5, 6];
+const categories = ["Informatiques", "Telephones & Tablette", "Gaming", "Accessoire", "Design", "TV & Hi Tech"];
 const profils = [
   'designer',
   'photographer',
@@ -32,8 +32,14 @@ const profilsIcons = [
 ];
 
 const Index: NextPageWithLayout<null> = () => (
-  <Box sx={{}}>
+  <Box   >
     <Grid container p={3}>
+
+    <Grid xs={12} display='flex' justifyContent='center' p={2} item>
+<Typography fontSize={18}>
+  Categories
+</Typography>
+</Grid>
       <Grid
         xs={12}
         columnSpacing={3}
@@ -46,32 +52,42 @@ const Index: NextPageWithLayout<null> = () => (
         {categories.map(category => (
           <Grid key={category} item xs={6} md={3.5}>
             <Paper
-              elevation={2}
+              elevation={4}
               sx={{
-                bgcolor: '#bbb',
+                bgcolor: '#fff',
                 '&:hover': {
                   boxShadow: '1px solid #000',
                 },
               }}
             >
-              <NextLink href={`/products?category=${category}`}>
+              <NextLink href={`/products?category=${category}`}
+              
+              >
                 <Link
                   sx={{
+                    cursor:'pointer',
                     p: 1,
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     textDecoration: 'none',
+                   color: '#f68b1e',
+                   fontSize:16
+
                   }}
                 >
-                  Category {category}
+                   {category}
                 </Link>
               </NextLink>
             </Paper>
           </Grid>
         ))}
       </Grid>
-
+<Grid xs={12} display='flex' justifyContent='center' p={2} item>
+<Typography fontSize={18}>
+  Profils
+</Typography>
+</Grid>
       <Grid
         spacing={4}
         xs={12}
@@ -87,7 +103,7 @@ const Index: NextPageWithLayout<null> = () => (
                 sx={{
                   height: { md: 300 },
                   color: 'secondary.main',
-                  border: '2px solid #000',
+                  // border: '1px solid #f68b1e', 
                   boxShadow: '1px 2px  10px #000',
                   fontSize: 20,
                   position: 'relative',
